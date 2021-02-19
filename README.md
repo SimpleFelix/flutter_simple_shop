@@ -1,4 +1,7 @@
 
+<font face="黑体" color=red size=12>此仓库不再更新,正在使用Getx重构应用</font>
+
+
 ![logo](https://static.saintic.com/picbed/huang/2020/12/14/1607875349615.png)
 
 [![qq群 1102781545](https://badgen.net/badge/QQ%E7%BE%A4/1102781545/pink)](https://jq.qq.com/?_wv=1027&k=gxaTJ7i5)
