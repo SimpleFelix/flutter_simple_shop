@@ -1,6 +1,8 @@
 
 # 【<font face="黑体" color=red size=12>此仓库不再更新,正在使用Getx重构</font>】
 
+> Get版本 https://github.com/mdddj/simple_shop_v2 数据啥的都有
+
 
 ![logo](https://static.saintic.com/picbed/huang/2020/12/14/1607875349615.png)
 
