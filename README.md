@@ -1,7 +1,7 @@
 
-# 【<font face="黑体" color=red size=12>此仓库不再更新,正在使用Getx重构</font>】
+# <font face="黑体" color=red size=12>此仓库不再更新,正在使用Getx重构</font>
 
-> Get版本 https://github.com/mdddj/simple_shop_v2 数据啥的都有
+## Get版本 https://github.com/mdddj/simple_shop_v2 数据啥的都有
 
 
 ![logo](https://static.saintic.com/picbed/huang/2020/12/14/1607875349615.png)
@@ -17,6 +17,11 @@
 有问题也可以提交iss,或者加flutter学习群提问,看到都会回复的,群号1102781545
 
 ## 更新日志
+
+#### v2.0.1
+      [升级]  升级到空安全版本, flutter版本2.2.0
+      [插件]  更新了部分依赖插件
+      * 时隔一年的更新,感谢支持
 
 #### v2.0
     [新增] 品牌列表,品牌详情,品牌商品列表页面
