@@ -9,10 +9,10 @@ CouponInfo couponInfoFromJson(String str) => CouponInfo.fromJson(json.decode(str
 String couponInfoToJson(CouponInfo data) => json.encode(data.toJson());
 
 class CouponInfo {
-  int time;
-  int code;
-  String msg;
-  CouponData data;
+  int? time;
+  int? code;
+  String? msg;
+  CouponData? data;
 
   CouponInfo({
     this.time,
@@ -32,22 +32,22 @@ class CouponInfo {
     "time": time,
     "code": code,
     "msg": msg,
-    "data": data.toJson(),
+    "data": data!.toJson(),
   };
 }
 
 class CouponData {
-  String couponClickUrl;
-  String couponEndTime;
-  String couponInfo;
-  String couponStartTime;
-  String itemId;
-  String couponTotalCount;
-  String couponRemainCount;
-  String itemUrl;
-  String tpwd;
-  String maxCommissionRate;
-  String shortUrl;
+  String? couponClickUrl;
+  String? couponEndTime;
+  String? couponInfo;
+  String? couponStartTime;
+  String? itemId;
+  String? couponTotalCount;
+  String? couponRemainCount;
+  String? itemUrl;
+  String? tpwd;
+  String? maxCommissionRate;
+  String? shortUrl;
 
   CouponData({
     this.couponClickUrl,

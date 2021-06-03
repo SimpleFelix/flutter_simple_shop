@@ -1,9 +1,8 @@
-import 'package:extended_image/extended_image.dart';
 import 'package:flustars/flustars.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart' as Sc;
-import 'package:fsuper/fsuper.dart';
+import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
 import '../fluro/NavigatorUtil.dart';
 import '../util/image_util.dart';
 
@@ -153,7 +152,7 @@ class WaterfallGoodsCard extends StatelessWidget {
 
   // 商品卡片主图
   Widget _image() {
-    String img = datum.mainPic;
+    String? img = datum.mainPic;
     return ExtendedImageWidget(
       src: img,
       height: 645,

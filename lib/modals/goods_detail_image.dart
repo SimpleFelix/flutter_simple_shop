@@ -16,10 +16,10 @@ class DetailImage {
     this.height,
   });
 
-  String img;
-  List<dynamic> hotAreaList;
-  String width;
-  String height;
+  String? img;
+  List<dynamic>? hotAreaList;
+  String? width;
+  String? height;
 
   factory DetailImage.fromJson(Map<String, dynamic> json) => DetailImage(
     img: json["img"],
@@ -30,7 +30,7 @@ class DetailImage {
 
   Map<String, dynamic> toJson() => {
     "img": img,
-    "hotAreaList": List<dynamic>.from(hotAreaList.map((x) => x)),
+    "hotAreaList": List<dynamic>.from(hotAreaList!.map((x) => x)),
     "width": width,
     "height": height,
   };

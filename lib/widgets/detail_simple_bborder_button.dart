@@ -4,7 +4,7 @@ class DetailSimpleBorderButton extends StatelessWidget {
  final  String text; // 文字
  final bool isCurrent; // 是否选中样式
 
-  DetailSimpleBorderButton({@required this.text, @required this.isCurrent});
+  DetailSimpleBorderButton({required this.text, required this.isCurrent});
 
   @override
   Widget build(BuildContext context) {

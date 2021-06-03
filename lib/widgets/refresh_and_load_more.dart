@@ -7,9 +7,9 @@ class RefreshAndLoadMore extends StatelessWidget {
 
   dynamic refreshFun;
   dynamic loadMoreFun;
-  RefreshController controller;
+  RefreshController? controller;
   dynamic listViewCntroller;
-  List<Widget> children;
+  List<Widget>? children;
 
   RefreshAndLoadMore({this.refreshFun, this.loadMoreFun, this.children,this.controller,this.listViewCntroller});
 
@@ -17,7 +17,7 @@ class RefreshAndLoadMore extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: SmartRefresher(
-        controller: controller,
+        controller: controller!,
         onRefresh: refreshFun,
         onLoading: loadMoreFun,
         enablePullDown: true,
@@ -28,7 +28,7 @@ class RefreshAndLoadMore extends StatelessWidget {
         child: ListView(
           controller: listViewCntroller??null,
           physics: ClampingScrollPhysics(),
-          children: children,
+          children: children!,
         ),
       ),
     );

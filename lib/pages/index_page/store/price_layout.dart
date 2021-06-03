@@ -6,7 +6,7 @@ class PriceLayout extends StatelessWidget {
 
   final String original;// 原价
   final String discounts;// 优惠价
-  const PriceLayout({Key key,@required this.original, @required this.discounts}) : super(key: key);
+  const PriceLayout({Key? key,required this.original, required this.discounts}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

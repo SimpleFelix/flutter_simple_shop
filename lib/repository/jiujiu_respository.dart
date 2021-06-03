@@ -41,13 +41,13 @@ class JiuJiuRepository extends LoadingMoreBase<NineGoodsItem> {
 
           NineGoodsData goodsData =NineGoodsData.fromJson(json.decode(result.data.toString()));
 
-          if(goodsData.data.list.length!=20){
+          if(goodsData.data!.list!.length!=20){
             _hasMore = false;
           }
 
           if(pageIndex==1) clear();
 
-          for (var item in goodsData.data.list) {
+          for (var item in goodsData.data!.list!) {
             if (!contains(item) && hasMore) {
               add(item);
             }

@@ -4,16 +4,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class UpDownBtnWidget extends StatelessWidget {
 
-  bool isCur;
-  String upText;
-  String downText;
+  bool? isCur;
+  String? upText;
+  String? downText;
   UpDownBtnWidget({this.isCur,this.downText,this.upText});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: new BoxDecoration(
-        color: isCur
+        color: isCur!
             ? Color.fromRGBO(254, 62, 59, 1.0)
             : Color.fromRGBO(248, 248, 248, 1.0),
         borderRadius: BorderRadius.all(Radius.circular(20.0)),
@@ -23,13 +23,13 @@ class UpDownBtnWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text(upText,
+          Text(upText!,
               style: TextStyle(
-                  color: isCur ? Colors.white : Colors.black38,
+                  color: isCur! ? Colors.white : Colors.black38,
                   fontSize: ScreenUtil().setSp(45))),
-          Text(downText,
+          Text(downText!,
               style: TextStyle(
-                  color: isCur ? Colors.white : Colors.black38,
+                  color: isCur! ? Colors.white : Colors.black38,
                   fontSize: ScreenUtil().setSp(30)))
         ],
       ),

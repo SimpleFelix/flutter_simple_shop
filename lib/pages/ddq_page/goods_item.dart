@@ -9,9 +9,9 @@ import '../../fluro/NavigatorUtil.dart';
 // 9.9商品卡片布局
 class GoodsItem extends StatelessWidget {
   final DdqGoodsListItem goodsItem;
-  final int state;
+  final int? state;
 
-  GoodsItem({@required this.goodsItem, this.state});
+  GoodsItem({required this.goodsItem, this.state});
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +49,7 @@ class GoodsItem extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           //标题
-                          Text(goodsItem.dtitle,
+                          Text(goodsItem.dtitle!,
                               style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   color: Colors.black),

@@ -11,7 +11,7 @@ import 'components/detail_product_list.dart';
 class BrandDetailPage extends StatefulWidget {
   final String brandId;
 
-  const BrandDetailPage({Key key, @required this.brandId}) : super(key: key);
+  const BrandDetailPage({Key? key, required this.brandId}) : super(key: key);
 
   @override
   _BrandDetailPageState createState() => _BrandDetailPageState();
@@ -19,7 +19,7 @@ class BrandDetailPage extends StatefulWidget {
 
 class _BrandDetailPageState extends State<BrandDetailPage>
     with AfterLayoutMixin<BrandDetailPage> {
-  BrandProvider _brandProvider;
+  BrandProvider? _brandProvider;
   EasyRefreshController _easyRefreshController = EasyRefreshController();
 
   @override
@@ -29,21 +29,21 @@ class _BrandDetailPageState extends State<BrandDetailPage>
   }
 
   Widget _buildBody() {
-    if (_brandProvider.brandDetailModel == null) return LoadingWidget();
+    if (_brandProvider!.brandDetailModel == null) return LoadingWidget();
     return EasyRefresh.custom(slivers: [
       SliverToBoxAdapter(
         child: BrandDetail(
-            brandDetailModel: _brandProvider.brandDetailModel,
-            bgColor: _brandProvider.detailBgColor),
+            brandDetailModel: _brandProvider!.brandDetailModel,
+            bgColor: _brandProvider!.detailBgColor),
       ),
-      DetailProductList(list: _brandProvider.brandGoodsList,)
+      DetailProductList(list: _brandProvider!.brandGoodsList,)
     ],controller: _easyRefreshController,onLoad: load,);
   }
 
   // 下一页列表
   Future<void> load()async{
     _easyRefreshController.callLoad();
-    bool hasNextPage = await _brandProvider.detailNextPage();
+    bool hasNextPage = await _brandProvider!.detailNextPage();
     _easyRefreshController.finishLoad(noMore: !hasNextPage);
   }
 
@@ -58,12 +58,12 @@ class _BrandDetailPageState extends State<BrandDetailPage>
   @override
   void afterFirstLayout(BuildContext context) async {
     await Future.delayed(Duration(seconds: 2));
-    await _brandProvider.detail(widget.brandId);
+    await _brandProvider!.detail(widget.brandId);
   }
 
   @override
   void dispose() {
-    _brandProvider.emptyDetail();
+    _brandProvider!.emptyDetail();
     super.dispose();
   }
 }

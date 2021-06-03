@@ -9,9 +9,9 @@ class UserUtil{
 
   static Future<SharedPreferences> refs = SharedPreferences.getInstance();
 
-  static Future<User> loadUserInfo() async {
+  static Future<User?> loadUserInfo() async {
     SharedPreferences _refs = await refs;
-    String userInfoJsonStr = _refs.getString("userInfo");
+    String? userInfoJsonStr = _refs.getString("userInfo");
     if (userInfoJsonStr == null) {
       return null;
     }

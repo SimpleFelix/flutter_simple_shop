@@ -10,13 +10,13 @@ import '../util/result_obj_util.dart';
 import '../util/user_utils.dart';
 
 class GoodsDetailProvider with ChangeNotifier {
-  GoodsDetail goodInfo; // 商品信息
-  CouponData couponData; // 优惠券信息
+  GoodsDetail? goodInfo; // 商品信息
+  CouponData? couponData; // 优惠券信息
   int isHaveFav = 0; // 是否已经收藏,0 - 没有,1 - 有
   bool have = false; // 商品是否有效
 
   // 获取商品详情信息
-  getGoodsDetailInfo(String goods_id) async {
+  getGoodsDetailInfo(String? goods_id) async {
     await getGoodsInfo({'id': goods_id}).then((res) {
       Result resultObj = ResultUtils.format(res);
       if (resultObj.code == 200) {
@@ -50,11 +50,11 @@ class GoodsDetailProvider with ChangeNotifier {
         await addGoodsFavorite({"goods": goodInfo, "userId": user.id})
             .then((res) {
           Result result = ResultUtils.format(res);
-          if (result.code == 200 && int.parse(result.data) == 1) {
+          if (result.code == 200 && int.parse(result.data!) == 1) {
             print("收藏成功!");
             isHaveFav = 1;
             notifyListeners();
-          } else if (result.code == 200 && int.parse(result.data) == 2) {
+          } else if (result.code == 200 && int.parse(result.data!) == 2) {
             print("已收藏");
           }
         });
@@ -66,10 +66,10 @@ class GoodsDetailProvider with ChangeNotifier {
   }
 
   // 用户移除某个商品收藏
-  Future<bool> removeGoodsFavoriteFun({String goodsId}) async {
-    String _goodsId = goodsId;
+  Future<bool> removeGoodsFavoriteFun({String? goodsId}) async {
+    String? _goodsId = goodsId;
     if(goodsId==null){
-      _goodsId = this.goodInfo.id.toString();
+      _goodsId = this.goodInfo!.id.toString();
     }
     // 判断用户是否已经登录
     await UserUtil.loadUserInfo().then((user) async {
@@ -77,7 +77,7 @@ class GoodsDetailProvider with ChangeNotifier {
         await removeGoodsFavorite({"goodsId": _goodsId, "userId": user.id})
             .then((res) {
           Result result = ResultUtils.format(res);
-          if (result.code == 200 && int.parse(result.data) == 1) {
+          if (result.code == 200 && int.parse(result.data!) == 1) {
             isHaveFav = 0;
             notifyListeners();
             print("取消收藏成功!");
@@ -96,11 +96,11 @@ class GoodsDetailProvider with ChangeNotifier {
     await UserUtil.loadUserInfo().then((user) async {
       if (user != null) {
         if (goodInfo != null) {
-        await haveGoodsFavorite({'goodsId': goodInfo.id, "userId": user.id})
+        await haveGoodsFavorite({'goodsId': goodInfo!.id, "userId": user.id})
               .then((res) {
             Result result = ResultUtils.format(res);
             if (result.code == 200) {
-              this.isHaveFav = int.parse(result.data);
+              this.isHaveFav = int.parse(result.data!);
               notifyListeners();
             }
           });
@@ -113,7 +113,7 @@ class GoodsDetailProvider with ChangeNotifier {
   }
 
   // 获取优惠券信息
-  getPrivilegeLinkData(String goods_id) async {
+  getPrivilegeLinkData(String? goods_id) async {
     await getPrivilegeLink({'goodsId': goods_id}).then((res) {
       Result resultObj = ResultUtils.format(res);
       if (resultObj.code == 200) {

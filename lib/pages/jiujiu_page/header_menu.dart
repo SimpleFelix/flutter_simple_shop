@@ -32,7 +32,7 @@ class _HeaderMenuState extends State<HeaderMenu>
 
   var current_index = 0; // 当前选中id
 
-  TabController _tabController;
+  TabController? _tabController;
 
   bool ic = true;// 当前是否能点击
 
@@ -81,7 +81,7 @@ class _HeaderMenuState extends State<HeaderMenu>
   @override
   void dispose() {
     super.dispose();
-    _tabController.dispose();
+    _tabController!.dispose();
   }
 
 //  选项卡是否可以被点击

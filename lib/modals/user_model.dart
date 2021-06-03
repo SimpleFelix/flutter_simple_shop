@@ -1,16 +1,16 @@
 
 class User {
-  int id;
-  String password;
-  String remark;
-  String bloglink;
-  String company;
-  String nickname;
-  String introduce;
-  String jobname;
-  String username;
-  String salt;
-  String avatar;
+  int? id;
+  String? password;
+  String? remark;
+  String? bloglink;
+  String? company;
+  String? nickname;
+  String? introduce;
+  String? jobname;
+  String? username;
+  String? salt;
+  String? avatar;
 
   User({
     this.id,

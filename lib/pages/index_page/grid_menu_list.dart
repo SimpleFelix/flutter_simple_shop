@@ -17,7 +17,7 @@ class GridMenuList extends StatefulWidget {
 
 class _GridMenuListState extends State<GridMenuList> {
   final int rowCount = 5;
-  List<IndexGridMenuItemModel> _items;
+  late List<IndexGridMenuItemModel> _items;
 
   @override
   void initState() {

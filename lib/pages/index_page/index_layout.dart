@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class IndexPublicLayout extends StatelessWidget {
-  final Widget child;
-  final bool transparencyBg; //是否透明背景
-  final EdgeInsetsGeometry padding;
-  final EdgeInsetsGeometry margin;
-  final BorderRadius borderRadius;
+  final Widget? child;
+  final bool? transparencyBg; //是否透明背景
+  final EdgeInsetsGeometry? padding;
+  final EdgeInsetsGeometry? margin;
+  final BorderRadius? borderRadius;
 
   IndexPublicLayout(
       {this.child, this.transparencyBg, this.padding, this.margin,this.borderRadius});
@@ -17,7 +17,7 @@ class IndexPublicLayout extends StatelessWidget {
   }
 
   Widget _buildWidget() {
-    if (transparencyBg != null && transparencyBg) {
+    if (transparencyBg != null && transparencyBg!) {
       return Container(
         decoration: _buildStyle(),
         padding: padding ?? EdgeInsets.only(top: 10.0),
@@ -37,7 +37,7 @@ class IndexPublicLayout extends StatelessWidget {
 
   BoxDecoration _buildStyle() {
     return BoxDecoration(
-        color: transparencyBg != null && transparencyBg
+        color: transparencyBg != null && transparencyBg!
             ? Colors.transparent
             : Colors.white,
         borderRadius: borderRadius ?? BorderRadius.all(Radius.circular(10)),

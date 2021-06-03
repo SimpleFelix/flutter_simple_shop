@@ -22,11 +22,11 @@ import '../../repository/GoodsListRepository.dart';
 ///
 
 class GoodsListPage extends StatefulWidget {
-  final String subcid;
-  final String cids;
-  final String brand;
-  final String title;
-  final  String showCates; // 是否显示分类选择
+  final String? subcid;
+  final String? cids;
+  final String? brand;
+  final String? title;
+  final  String? showCates; // 是否显示分类选择
   GoodsListPage(
       {this.subcid, this.cids, this.brand, this.title, this.showCates = "0"});
 
@@ -37,23 +37,23 @@ class GoodsListPage extends StatefulWidget {
 class _GoodsListPageState extends State<GoodsListPage>
     with TickerProviderStateMixin {
   bool showToTopBtn = false; //是否显示到达顶部按钮
-  CategoryProvider categoryProvider;
+  CategoryProvider? categoryProvider;
   bool changeSortIng = false; // 切换排序中
-  TabController _tabController; // 排序tab控制器
-  TabController categorysTabBarController; //主分类tab控制器
-  List<CategoryItem> categorys = [];
-  List<Subcategory> showSubcategorys = [];
-  GoodsListRepository goodsListRepository;
+  TabController? _tabController; // 排序tab控制器
+  TabController? categorysTabBarController; //主分类tab控制器
+  List<CategoryItem>? categorys = [];
+  List<Subcategory>? showSubcategorys = [];
+  late GoodsListRepository goodsListRepository;
   List<int> curs = [0, 1, 2, 5, 6];
   int current = 0;
   int priceSortType = 0; // 0:从高到低,1:从低到高
-  String initCid; // 分类初始化默认选中
-  String currentSubCategory; // 选中的子分类
-  String currentMainCategory;// 选中的主分类
+  String? initCid; // 分类初始化默认选中
+  String? currentSubCategory; // 选中的子分类
+  String? currentMainCategory;// 选中的主分类
 
   @override
   Widget build(BuildContext context) {
-    String t = FluroConvertUtils.fluroCnParamsDecode(widget.title);
+    String t = FluroConvertUtils.fluroCnParamsDecode(widget.title!);
     return Consumer<CategoryProvider>(builder: (context, categoryProvider, _) {
       return WillPopScope(
         onWillPop: () async {
@@ -95,12 +95,12 @@ class _GoodsListPageState extends State<GoodsListPage>
                           mainAxisSpacing: 5,
                           crossAxisSpacing: 5,
                           childAspectRatio: 0.8),
-                      itemCount: showSubcategorys.length > 10
+                      itemCount: showSubcategorys!.length > 10
                           ? 10
-                          : showSubcategorys.length,
+                          : showSubcategorys!.length,
                       shrinkWrap: true,
                       itemBuilder: (context, index) {
-                        return buildSubCategoryItem(showSubcategorys[index]);
+                        return buildSubCategoryItem(showSubcategorys![index]);
                       },
                     ),
                   ),
@@ -172,7 +172,7 @@ class _GoodsListPageState extends State<GoodsListPage>
   Widget buildSubCategoryItem(Subcategory subcategory) {
     return InkWell(
       onTap: () {
-        if (subcategory.subcid != int.parse(currentSubCategory)) {
+        if (subcategory.subcid != int.parse(currentSubCategory!)) {
           setState(() {
             currentSubCategory = subcategory.subcid.toString();
             currentMainCategory = "";
@@ -183,7 +183,7 @@ class _GoodsListPageState extends State<GoodsListPage>
                 brand: "");
           });
           this.goodsListRepository.refresh(true);
-          _tabController.animateTo(0);
+          _tabController!.animateTo(0);
         }
       },
       child: Container(
@@ -191,14 +191,14 @@ class _GoodsListPageState extends State<GoodsListPage>
         child: Column(
           children: <Widget>[
             ExtendedImage.network(
-              subcategory.scpic,
+              subcategory.scpic!,
               width: ScreenUtil().setWidth(200),
               fit: BoxFit.fill,
               cache: true,
               borderRadius: BorderRadius.all(Radius.circular(30.0)),
             ),
             Text(
-              subcategory.subcname,
+              subcategory.subcname!,
               style: TextStyle(
                   color: currentSubCategory == subcategory.subcid.toString()
                       ? Colors.pinkAccent
@@ -212,7 +212,7 @@ class _GoodsListPageState extends State<GoodsListPage>
 
   // 顶部主分类tab
   Widget buildTopCategorys(CategoryProvider categoryProvider) {
-    List<Tab> tabs = categorys.map((item) {
+    List<Tab> tabs = categorys!.map((item) {
       return Tab(text: item.cname);
     }).toList();
     tabs.insert(0, Tab(text: "首页"));
@@ -224,23 +224,23 @@ class _GoodsListPageState extends State<GoodsListPage>
         onTap: (index) async {
           if (index != 0) {
             setState(() {
-              currentMainCategory = categorys[index - 1].cid.toString();
+              currentMainCategory = categorys![index - 1].cid.toString();
               currentSubCategory = "";
               this.goodsListRepository = GoodsListRepository(
-                  cids: categorys[index - 1].cid.toString(),
+                  cids: categorys![index - 1].cid.toString(),
                   g_sort: "0",
                   subcid: "",
                   brand: "");
             });
             changeSubCategory(index - 1);
-            _tabController.animateTo(0);
+            _tabController!.animateTo(0);
             await this.goodsListRepository.refresh(true);
           } else {
             Navigator.pop(context);
           }
         },
         controller: categorysTabBarController,
-        tabs: categoryProvider.categorys.length != 0 ? tabs : [],
+        tabs: categoryProvider.categorys!.length != 0 ? tabs : [],
         indicator: RoundUnderlineTabIndicator(
             insets: EdgeInsets.only(bottom: 8),
             borderSide: BorderSide(
@@ -279,7 +279,7 @@ class _GoodsListPageState extends State<GoodsListPage>
       setState(() {
         categorys = categoryProvider.categorys;
         categorysTabBarController = TabController(
-            length: this.categorys.length + 1,
+            length: this.categorys!.length + 1,
             vsync: this,
             initialIndex: getInitCategoryTabIndex());
       });
@@ -292,9 +292,9 @@ class _GoodsListPageState extends State<GoodsListPage>
   // 主分类初始下标获取
   int getInitCategoryTabIndex() {
     var cid = widget.cids;
-    for (var item in categorys) {
+    for (var item in categorys!) {
       if (item.cid.toString() == cid) {
-        return categorys.indexOf(item) + 1;
+        return categorys!.indexOf(item) + 1;
       }
     }
     return 0;
@@ -365,7 +365,7 @@ class _GoodsListPageState extends State<GoodsListPage>
 
   // 传入主分类的下标
   void changeSubCategory(int index) {
-    List<Subcategory> subCates = categorys[index].subcategories;
+    List<Subcategory>? subCates = categorys![index].subcategories;
     setState(() {
       showSubcategorys = subCates;// 网格显示的子分类List
     });
@@ -374,10 +374,10 @@ class _GoodsListPageState extends State<GoodsListPage>
   @override
   void dispose() {
     super.dispose();
-    _tabController.dispose();
+    _tabController!.dispose();
   }
 
-  Widget buildPulltoRefreshHeader(PullToRefreshScrollNotificationInfo info) {
+  Widget buildPulltoRefreshHeader(PullToRefreshScrollNotificationInfo? info) {
     //print(info?.mode);
     //print(info?.dragOffset);
     //    print("------------");

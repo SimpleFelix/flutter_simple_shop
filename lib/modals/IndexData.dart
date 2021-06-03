@@ -10,15 +10,15 @@ IndexData indexDataFromJson(String str) => IndexData.fromJson(json.decode(str));
 String indexDataToJson(IndexData data) => json.encode(data.toJson());
 
 class IndexData {
-  List<Category> categorys;
-  int current;
-  int total;
-  List<Time> times;
-  List<RecentComment> recentComments;
-  Pager pager;
-  List<RecentPost> recentPosts;
-  List<Dtolist> dtolist;
-  List<Tag> tags;
+  List<Category>? categorys;
+  int? current;
+  int? total;
+  List<Time>? times;
+  List<RecentComment>? recentComments;
+  Pager? pager;
+  List<RecentPost>? recentPosts;
+  List<Dtolist>? dtolist;
+  List<Tag>? tags;
 
   IndexData({
     this.categorys,
@@ -45,22 +45,22 @@ class IndexData {
   );
 
   Map<String, dynamic> toJson() => {
-    "categorys": List<dynamic>.from(categorys.map((x) => x.toJson())),
+    "categorys": List<dynamic>.from(categorys!.map((x) => x.toJson())),
     "current": current,
     "total": total,
-    "times": List<dynamic>.from(times.map((x) => x.toJson())),
-    "RecentComments": List<dynamic>.from(recentComments.map((x) => x.toJson())),
-    "pager": pager.toJson(),
-    "RecentPosts": List<dynamic>.from(recentPosts.map((x) => x.toJson())),
-    "dtolist": List<dynamic>.from(dtolist.map((x) => x.toJson())),
-    "tags": List<dynamic>.from(tags.map((x) => x.toJson())),
+    "times": List<dynamic>.from(times!.map((x) => x.toJson())),
+    "RecentComments": List<dynamic>.from(recentComments!.map((x) => x.toJson())),
+    "pager": pager!.toJson(),
+    "RecentPosts": List<dynamic>.from(recentPosts!.map((x) => x.toJson())),
+    "dtolist": List<dynamic>.from(dtolist!.map((x) => x.toJson())),
+    "tags": List<dynamic>.from(tags!.map((x) => x.toJson())),
   };
 }
 
 class Category {
-  String categoryName;
-  int categoryId;
-  int size;
+  String? categoryName;
+  int? categoryId;
+  int? size;
 
   Category({
     this.categoryName,
@@ -82,16 +82,16 @@ class Category {
 }
 
 class Dtolist {
-  int id;
-  String title;
-  String category;
-  String categoryId;
-  int createTime;
-  String content;
-  String author;
-  String authorHeader;
-  List<Tag> tags;
-  String cover;
+  int? id;
+  String? title;
+  String? category;
+  String? categoryId;
+  int? createTime;
+  String? content;
+  String? author;
+  String? authorHeader;
+  List<Tag>? tags;
+  String? cover;
 
   Dtolist({
     this.id,
@@ -128,15 +128,15 @@ class Dtolist {
     "content": content,
     "author": author,
     "authorHeader": authorHeader,
-    "tags": List<dynamic>.from(tags.map((x) => x.toJson())),
+    "tags": List<dynamic>.from(tags!.map((x) => x.toJson())),
     "cover": cover == null ? null : cover,
   };
 }
 
 class Tag {
-  int id;
-  String name;
-  int count;
+  int? id;
+  String? name;
+  int? count;
 
   Tag({
     this.id,
@@ -158,10 +158,10 @@ class Tag {
 }
 
 class Pager {
-  int current;
-  int pages;
-  int size;
-  int total;
+  int? current;
+  int? pages;
+  int? size;
+  int? total;
 
   Pager({
     this.current,
@@ -187,11 +187,11 @@ class Pager {
 
 class RecentComment {
   dynamic id;
-  String articleTitle;
-  int articleId;
-  String name;
+  String? articleTitle;
+  int? articleId;
+  String? name;
   dynamic time;
-  String content;
+  String? content;
   dynamic email;
   dynamic url;
   dynamic ip;
@@ -258,17 +258,17 @@ class RecentComment {
 }
 
 class RecentPost {
-  int id;
-  String title;
-  String cover;
-  String author;
+  int? id;
+  String? title;
+  String? cover;
+  String? author;
   dynamic content;
   dynamic contentMd;
-  String category;
-  String state;
-  DateTime publishTime;
-  DateTime editTime;
-  DateTime createTime;
+  String? category;
+  String? state;
+  DateTime? publishTime;
+  DateTime? editTime;
+  DateTime? createTime;
   dynamic tags;
 
   RecentPost({
@@ -310,16 +310,16 @@ class RecentPost {
     "contentMd": contentMd,
     "category": category == null ? null : category,
     "state": state == null ? null : state,
-    "publishTime": publishTime == null ? null : publishTime.toIso8601String(),
-    "editTime": editTime == null ? null : editTime.toIso8601String(),
-    "createTime": createTime.toIso8601String(),
+    "publishTime": publishTime == null ? null : publishTime!.toIso8601String(),
+    "editTime": editTime == null ? null : editTime!.toIso8601String(),
+    "createTime": createTime!.toIso8601String(),
     "tags": tags,
   };
 }
 
 class Time {
-  String date;
-  List<RecentPost> articles;
+  String? date;
+  List<RecentPost>? articles;
 
   Time({
     this.date,
@@ -333,6 +333,6 @@ class Time {
 
   Map<String, dynamic> toJson() => {
     "date": date,
-    "articles": List<dynamic>.from(articles.map((x) => x.toJson())),
+    "articles": List<dynamic>.from(articles!.map((x) => x.toJson())),
   };
 }

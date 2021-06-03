@@ -6,8 +6,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 // 首页滑动置顶一
 class IndexFlexdHeaderWidget extends SliverPersistentHeaderDelegate {
 
-  final List<Widget> child;
-  final Color color;
+  final List<Widget>? child;
+  final Color? color;
   IndexFlexdHeaderWidget({this.child,this.color});
 
   @override
@@ -17,7 +17,7 @@ class IndexFlexdHeaderWidget extends SliverPersistentHeaderDelegate {
       duration: Duration(milliseconds: 1000),
       color: color,
       child: Column(
-        children: child,
+        children: child!,
       ),
     );
   }

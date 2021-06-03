@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class LoadAnimation extends StatefulWidget {
   final Widget child;
 
-  LoadAnimation({@required this.child, Key key}) : super(key: key);
+  LoadAnimation({required this.child, Key? key}) : super(key: key);
 
   @override
   _LoadAnimationState createState() => _LoadAnimationState();
@@ -12,7 +12,7 @@ class LoadAnimation extends StatefulWidget {
 
 class _LoadAnimationState extends State<LoadAnimation>
     with TickerProviderStateMixin {
-  AnimationController controller;
+  late AnimationController controller;
 
   @override
   void initState() {
@@ -37,7 +37,7 @@ class _LoadAnimationState extends State<LoadAnimation>
                 alignment: AlignmentGeometryTween(
                   begin: Alignment(-1.0 - .2 * 3, .0),
                   end: Alignment(1.0 + .2 * 3, .0),
-                ).chain(CurveTween(curve: Curves.easeOut)).evaluate(controller),
+                ).chain(CurveTween(curve: Curves.easeOut)).evaluate(controller)!,
                 child: child,
               );
             },

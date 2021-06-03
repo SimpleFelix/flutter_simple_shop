@@ -17,7 +17,7 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-  UserProvider userProvider;
+  UserProvider? userProvider;
   static ScrollController mController = new ScrollController();
   static ScrollController jiujiuController =
       new ScrollController(); // 9.9包邮页面滑动控制器
@@ -26,12 +26,12 @@ class _AppState extends State<App> {
 
   var _currentIndex = 0; //当前选中页面索引
 
-  IndexHome indexHome; // 淘客首页
+  IndexHome? indexHome; // 淘客首页
 
-  CategoryIndexPage categoryIndexPage; // 分类页面
+  CategoryIndexPage? categoryIndexPage; // 分类页面
 
   //我的页面
-  Personal me;
+  Personal? me;
 
   // 数据列表
   List<Dtolist> dtoList = [];
@@ -59,8 +59,8 @@ class _AppState extends State<App> {
     );
   }
 
-  Widget _buildAppBar() {
-    Widget widget = AppBar(
+  Widget? _buildAppBar() {
+    Widget? widget = AppBar(
       leading: Icon(Icons.message),
       title: Container(
         height: ScreenUtil().setHeight(120),
@@ -142,10 +142,14 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     // 屏幕适配初始化
-    ScreenUtil.init(context,designSize: Size(1440,2940), allowFontScaling: true);
-
+    ScreenUtil.init(
+        BoxConstraints(
+            maxWidth: MediaQuery.of(context).size.width,
+            maxHeight: MediaQuery.of(context).size.height),
+        designSize: Size(1440,2940),
+        orientation: Orientation.portrait);
     return Scaffold(
-      appBar: _buildAppBar(),
+      appBar: _buildAppBar() as PreferredSizeWidget?,
       // 滚动到顶部按钮
       floatingActionButton: !showToTopBtn || _currentIndex == 2 || _currentIndex == 3 || _currentIndex==0
       || _currentIndex==4

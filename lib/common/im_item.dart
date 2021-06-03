@@ -8,13 +8,13 @@ class ImItem extends StatelessWidget {
   final String title;
 
   //图片路径
-  final String imagePath;
+  final String? imagePath;
 
   //图标
-  final Icon icon;
+  final Icon? icon;
 
 
-  ImItem({Key key,@required this.title, this.imagePath, this.icon}) : super(key:key);
+  ImItem({Key? key,required this.title, this.imagePath, this.icon}) : super(key:key);
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,7 @@ class ImItem extends StatelessWidget {
           children: <Widget>[
             //图标获取图片
             Container(
-              child: imagePath!=null?Image.asset(imagePath,width: 32.0,height: 32.0,):
+              child: imagePath!=null?Image.asset(imagePath!,width: 32.0,height: 32.0,):
               SizedBox(
                 height: 32.0,
                 width: 32.0,

@@ -9,10 +9,10 @@ DtkCategory dtkCategoryFromJson(String str) => DtkCategory.fromJson(json.decode(
 String dtkCategoryToJson(DtkCategory data) => json.encode(data.toJson());
 
 class DtkCategory {
-  int time;
-  int code;
-  String msg;
-  List<CategoryItem> data;
+  int? time;
+  int? code;
+  String? msg;
+  List<CategoryItem>? data;
 
   DtkCategory({
     this.time,
@@ -32,15 +32,15 @@ class DtkCategory {
     "time": time,
     "code": code,
     "msg": msg,
-    "data": List<dynamic>.from(data.map((x) => x.toJson())),
+    "data": List<dynamic>.from(data!.map((x) => x.toJson())),
   };
 }
 
 class CategoryItem {
-  int cid;
-  String cname;
-  String cpic;
-  List<Subcategory> subcategories;
+  int? cid;
+  String? cname;
+  String? cpic;
+  List<Subcategory>? subcategories;
 
   CategoryItem({
     this.cid,
@@ -60,14 +60,14 @@ class CategoryItem {
     "cid": cid,
     "cname": cname,
     "cpic": cpic,
-    "subcategories": List<dynamic>.from(subcategories.map((x) => x.toJson())),
+    "subcategories": List<dynamic>.from(subcategories!.map((x) => x.toJson())),
   };
 }
 
 class Subcategory {
-  int subcid;
-  String subcname;
-  String scpic;
+  int? subcid;
+  String? subcname;
+  String? scpic;
 
   Subcategory({
     this.subcid,

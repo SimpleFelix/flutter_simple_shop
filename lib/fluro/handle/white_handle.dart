@@ -4,7 +4,7 @@ import '../../pages/user_home_page/white/index.dart';
 
 // 发布动态
 var whiteHandle = Handler(
-    handlerFunc: (BuildContext context,Map<String,List<String>> params){
+    handlerFunc: (BuildContext? context,Map<String,List<String>> params){
       return WhiteIndex();
     }
 );

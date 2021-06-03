@@ -3,8 +3,8 @@ import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 
 var orderAllHandle = Handler(
-  handlerFunc: (BuildContext context,Map<String,List<String>> params){
-    String stype = params["stype"]?.first;
+  handlerFunc: (BuildContext? context,Map<String,List<String>> params){
+    String? stype = params["stype"]?.first;
     return MyOrderHomePage(stype: stype,);
   }
 );

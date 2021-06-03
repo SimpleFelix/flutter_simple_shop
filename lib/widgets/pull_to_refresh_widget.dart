@@ -5,7 +5,7 @@ class PullToRefreshWidgetFoot extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomFooter(
-      builder: (BuildContext context,LoadStatus mode){
+      builder: (BuildContext context,LoadStatus? mode){
         Widget body ;
         if(mode==LoadStatus.idle){
           body =  Image.asset("assets/images/loading.gif");

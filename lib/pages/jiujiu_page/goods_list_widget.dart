@@ -5,13 +5,13 @@ import './goods_item_widget.dart';
 
 class GoodsListWidget extends StatelessWidget {
 
-  final List<NineGoodsItem> list;
-  final bool isInitLoading;
-  GoodsListWidget({@required this.list,this.isInitLoading});
+  final List<NineGoodsItem>? list;
+  final bool? isInitLoading;
+  GoodsListWidget({required this.list,this.isInitLoading});
 
   @override
   Widget build(BuildContext context) {
-    return isInitLoading? Container(
+    return isInitLoading!? Container(
       height: ScreenUtil().setHeight(500),
       width: ScreenUtil().setWidth(1440),
       child: Center(
@@ -21,9 +21,9 @@ class GoodsListWidget extends StatelessWidget {
       child: ListView.builder(
         physics: NeverScrollableScrollPhysics(),
         shrinkWrap: true,
-        itemCount: list.length,
+        itemCount: list!.length,
         itemBuilder: (context,index){
-          return GoodsItemWidget(goodsItem: list[index]);
+          return GoodsItemWidget(goodsItem: list![index]);
         },
       ),
     );

@@ -2,11 +2,11 @@ import 'package:demo1/modals/Result.dart';
 import 'package:demo1/util/result_obj_util.dart';
 import 'package:demo1/util/system_toast.dart';
 import 'package:demo1/util/user_utils.dart';
-import 'package:fbutton/fbutton.dart';
+import 'package:fbutton_nullsafety/fbutton_nullsafety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:fsuper/fsuper.dart';
+import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
 import '../../../util/request_service.dart';
 import 'dart:math';
 
@@ -74,7 +74,7 @@ class _OrderAddState extends State<OrderAddIndexPage> {
                               SystemToast.show("绑定成功");
                               print("order:${result.data}");
                             }else{
-                              SystemToast.show(result.msg);
+                              SystemToast.show(result.msg!);
                             }
                       });
                     }

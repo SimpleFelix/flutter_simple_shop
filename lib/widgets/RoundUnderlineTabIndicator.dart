@@ -26,35 +26,35 @@ class RoundUnderlineTabIndicator extends Decoration {
   final EdgeInsetsGeometry insets;
 
   @override
-  Decoration lerpFrom(Decoration a, double t) {
+  Decoration? lerpFrom(Decoration? a, double t) {
     if (a is UnderlineTabIndicator) {
       return UnderlineTabIndicator(
         borderSide: BorderSide.lerp(a.borderSide, borderSide, t),
-        insets: EdgeInsetsGeometry.lerp(a.insets, insets, t),
+        insets: EdgeInsetsGeometry.lerp(a.insets, insets, t)!,
       );
     }
     return super.lerpFrom(a, t);
   }
 
   @override
-  Decoration lerpTo(Decoration b, double t) {
+  Decoration? lerpTo(Decoration? b, double t) {
     if (b is UnderlineTabIndicator) {
       return UnderlineTabIndicator(
         borderSide: BorderSide.lerp(borderSide, b.borderSide, t),
-        insets: EdgeInsetsGeometry.lerp(insets, b.insets, t),
+        insets: EdgeInsetsGeometry.lerp(insets, b.insets, t)!,
       );
     }
     return super.lerpTo(b, t);
   }
 
   @override
-  _UnderlinePainter createBoxPainter([ VoidCallback onChanged ]) {
+  _UnderlinePainter createBoxPainter([ VoidCallback? onChanged ]) {
     return _UnderlinePainter(this, onChanged);
   }
 }
 
 class _UnderlinePainter extends BoxPainter {
-  _UnderlinePainter(this.decoration, VoidCallback onChanged)
+  _UnderlinePainter(this.decoration, VoidCallback? onChanged)
       : assert(decoration != null),
         super(onChanged);
 
@@ -85,8 +85,8 @@ class _UnderlinePainter extends BoxPainter {
   void paint(Canvas canvas, Offset offset, ImageConfiguration configuration) {
     assert(configuration != null);
     assert(configuration.size != null);
-    final Rect rect = offset & configuration.size;
-    final TextDirection textDirection = configuration.textDirection;
+    final Rect rect = offset & configuration.size!;
+    final TextDirection textDirection = configuration.textDirection!;
     final Rect indicator = _indicatorRectFor(rect, textDirection).deflate(borderSide.width / 2.0);
 //    final Paint paint = borderSide.toPaint()..strokeCap = StrokeCap.square;
     // 改为圆角
@@ -106,7 +106,7 @@ class VgTab extends StatelessWidget {
   /// At least one of [text], [icon], and [child] must be non-null. The [text]
   /// and [child] arguments must not be used at the same time.
   const VgTab({
-    Key key,
+    Key? key,
     this.text,
     this.icon,
     this.child,
@@ -117,20 +117,20 @@ class VgTab extends StatelessWidget {
   /// The text to display as the tab's label.
   ///
   /// Must not be used in combination with [child].
-  final String text;
+  final String? text;
 
   /// The widget to be used as the tab's label.
   ///
   /// Usually a [Text] widget, possibly wrapped in a [Semantics] widget.
   ///
   /// Must not be used in combination with [text].
-  final Widget child;
+  final Widget? child;
 
   /// An icon to display as the tab's label.
-  final Widget icon;
+  final Widget? icon;
 
   Widget _buildLabelText() {
-    return child ?? Text(text, softWrap: false, overflow: TextOverflow.fade);
+    return child ?? Text(text!, softWrap: false, overflow: TextOverflow.fade);
   }
 
   @override
@@ -138,7 +138,7 @@ class VgTab extends StatelessWidget {
     assert(debugCheckHasMaterial(context));
 
     double height;
-    Widget label;
+    Widget? label;
     if (icon == null) {
       height = _kTabHeight;
       label = _buildLabelText();

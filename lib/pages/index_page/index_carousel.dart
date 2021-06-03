@@ -3,7 +3,7 @@ import 'package:demo1/pages/index_page/model/index_carousel_item_model.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 import 'package:palette_generator/palette_generator.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -50,20 +50,20 @@ class _IndexCarouselState extends State<IndexCarousel> {
           loop: true,
           onTap: (int index) async {
             IndexCarouselItemModel item = _carouselList[index];
-            if (item.clickType == "brower" && await canLaunch(item.params)) {
-              await launch(item.params);
+            if (item.clickType == "brower" && await canLaunch(item.params!)) {
+              await launch(item.params!);
             }
           },
           onIndexChanged: (index) {
             Future.delayed(Duration(seconds: 0), () {
               IndexCarouselItemModel item = _carouselList[index];
-              _updatePaletteGenerator(index, item.imageUrl);
+              _updatePaletteGenerator(index, item.imageUrl!);
             });
           },
           itemBuilder: (BuildContext context, int index) {
             IndexCarouselItemModel item = _carouselList[index];
             return ExtendedImage.network(
-              item.imageUrl,
+              item.imageUrl!,
               fit: BoxFit.cover,
               borderRadius: BorderRadius.all(Radius.circular(50.sp)),
               shape: BoxShape.rectangle,

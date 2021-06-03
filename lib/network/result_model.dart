@@ -15,9 +15,9 @@ class Result {
     this.data,
   });
 
-  int state;
-  String message;
-  String data;
+  int? state;
+  String? message;
+  String? data;
 
   factory Result.fromJson(Map<String, dynamic> json) => Result(
     state: json["state"],

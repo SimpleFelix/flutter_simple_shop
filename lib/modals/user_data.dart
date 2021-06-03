@@ -10,8 +10,8 @@ UserData userDataFromJson(String str) => UserData.fromJson(json.decode(str));
 String userDataToJson(UserData data) => json.encode(data.toJson());
 
 class UserData {
-  User user;
-  String token;
+  User? user;
+  String? token;
 
   UserData({
     this.user,
@@ -24,7 +24,7 @@ class UserData {
   );
 
   Map<String, dynamic> toJson() => {
-    "user": user.toJson(),
+    "user": user!.toJson(),
     "token": token,
   };
 }

@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 
 class AtText extends SpecialText {
   static const String flag = "@";
-  final int start;
+  final int? start;
 
   /// whether show background for @somebody
   final bool showAtBackground;
 
-  AtText(TextStyle textStyle, SpecialTextGestureTapCallback onTap,
+  AtText(TextStyle textStyle, SpecialTextGestureTapCallback? onTap,
       {this.showAtBackground: false, this.start})
       : super(
     flag,
@@ -19,8 +19,8 @@ class AtText extends SpecialText {
 
   @override
   InlineSpan finishText() {
-    TextStyle textStyle =
-    this.textStyle?.copyWith(color: Colors.pinkAccent, fontSize: 16.0);
+    TextStyle? textStyle =
+    this.textStyle.copyWith(color: Colors.pinkAccent, fontSize: 16.0);
 
     final String atText = toString();
 
@@ -29,23 +29,23 @@ class AtText extends SpecialText {
         background: Paint()..color = Colors.pinkAccent.withOpacity(0.15),
         text: atText,
         actualText: atText,
-        start: start,
+        start: start!,
 
         ///caret can move into special text
         deleteAll: true,
         style: textStyle,
         recognizer: (TapGestureRecognizer()
           ..onTap = () {
-            if (onTap != null) onTap(atText);
+            if (onTap != null) onTap!(atText);
           }))
         : SpecialTextSpan(
         text: atText,
         actualText: atText,
-        start: start,
+        start: start!,
         style: textStyle,
         recognizer: (TapGestureRecognizer()
           ..onTap = () {
-            if (onTap != null) onTap(atText);
+            if (onTap != null) onTap!(atText);
           }));
   }
 }

@@ -17,7 +17,7 @@ class DDQWidget extends StatefulWidget {
 
 class _DDQWidgetState extends State<DDQWidget> {
   final GlobalKey globalKey = GlobalKey();
-  DdqProvider ddqProvider;
+  DdqProvider? ddqProvider;
   bool isLoading = true;
 
   @override
@@ -42,7 +42,7 @@ class _DDQWidgetState extends State<DDQWidget> {
   }
 
   /// 标题version2
-  Widget _buildWidgetTitle({String title,double height}) {
+  Widget _buildWidgetTitle({String? title,required double height}) {
     String showTitle = title ?? "限时抢购";
     return Container(
       height: ScreenUtil().setHeight(height),
@@ -68,7 +68,7 @@ class _DDQWidgetState extends State<DDQWidget> {
 
   /// 商品列表version2
   Widget _buildWidgetGoosList() {
-    List<DdqGoodsListItem> list = ddqProvider.goodsList;
+    List<DdqGoodsListItem> list = ddqProvider!.goodsList!;
     if (list.length >= 3) {
       return Container(
         height: ScreenUtil().setHeight(700),
@@ -79,21 +79,21 @@ class _DDQWidgetState extends State<DDQWidget> {
                 list[0].actualPrice.toString(),
                 list[0].originalPrice.toString(),
                 list[0].monthSales.toString(),
-                list[0].dtitle),
+                list[0].dtitle!),
             SizedBox(width: ScreenUtil().setWidth(50)),
             _mimiGoodsCard(
                 list[1].mainPic,
                 list[1].actualPrice.toString(),
                 list[1].originalPrice.toString(),
                 list[1].monthSales.toString(),
-                list[1].dtitle),
+                list[1].dtitle!),
             SizedBox(width: ScreenUtil().setWidth(50)),
             _mimiGoodsCard(
                 list[2].mainPic,
                 list[2].actualPrice.toString(),
                 list[2].originalPrice.toString(),
                 list[2].monthSales.toString(),
-                list[2].dtitle),
+                list[2].dtitle!),
           ],
         ),
       );
@@ -107,7 +107,7 @@ class _DDQWidgetState extends State<DDQWidget> {
 
   // 商品卡片布局
   Widget _mimiGoodsCard(
-      String src, String price, String orginPrice, String xl, String title) {
+      String? src, String price, String orginPrice, String xl, String title) {
     return Container(
       width: ScreenUtil().setWidth(380),
       decoration: BoxDecoration(

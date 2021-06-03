@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:demo1/constant/color.dart';
 import 'package:demo1/provider/user_provider.dart';
-import 'package:nav_router/nav_router.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import './app.dart';
 import './provider/providers.dart';
@@ -29,14 +28,13 @@ class _MyAppState extends State<MyApp> {
     return MultiProvider(
       providers: providers,
       child: Consumer<UserProvider>(
-        builder: (context, userProvider, _) => MaterialApp(
+        builder: (context, userProvider, _) => GetMaterialApp(
           debugShowCheckedModeBanner: false,
           title: '典典小卖部',
           //自定义主题
-          navigatorKey: navGK,
           // 声明路由
           onGenerateRoute: Application.router.generator,
-          home: new App(),
+          home: App(),
         ),
       ),
     );

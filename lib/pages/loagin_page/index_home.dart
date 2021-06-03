@@ -7,9 +7,9 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
-  String _email, _password;
+  String? _email, _password;
   bool _isObscure = true;
-  Color _eyeColor;
+  Color? _eyeColor;
   List _loginMethod = [
     {
       "title": "facebook",
@@ -125,9 +125,9 @@ class _LoginPageState extends State<LoginPage> {
           ),
           color: Colors.black,
           onPressed: () {
-            if (_formKey.currentState.validate()) {
+            if (_formKey.currentState!.validate()) {
               ///只有输入的内容符合要求通过才会到达此处
-              _formKey.currentState.save();
+              _formKey.currentState!.save();
               //TODO 执行登录方法
               print('email:$_email , assword:$_password');
             }
@@ -158,10 +158,10 @@ class _LoginPageState extends State<LoginPage> {
 
   TextFormField buildPasswordTextField(BuildContext context) {
     return TextFormField(
-      onSaved: (String value) => _password = value,
+      onSaved: (String? value) => _password = value,
       obscureText: _isObscure,
-      validator: (String value) {
-        if (value.isEmpty) {
+      validator: (String? value) {
+        if (value!.isEmpty) {
           return '请输入密码';
         }
         return value;
@@ -189,15 +189,15 @@ class _LoginPageState extends State<LoginPage> {
       decoration: InputDecoration(
         labelText: 'Emall Address',
       ),
-      validator: (String value) {
+      validator: (String? value) {
         var emailReg = RegExp(
             r"[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?");
-        if (!emailReg.hasMatch(value)) {
+        if (!emailReg.hasMatch(value!)) {
           return '请输入正确的邮箱地址';
         }
         return value;
       },
-      onSaved: (String value) => _email = value,
+      onSaved: (String? value) => _email = value,
     );
   }
 

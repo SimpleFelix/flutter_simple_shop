@@ -9,9 +9,9 @@ CarouselRes carouselResFromJson(String str) => CarouselRes.fromJson(json.decode(
 String carouselResToJson(CarouselRes data) => json.encode(data.toJson());
 
 class CarouselRes {
-    int code;
-    String msg;
-    List<Datum> data;
+    int? code;
+    String? msg;
+    List<Datum>? data;
 
     CarouselRes({
         this.code,
@@ -28,19 +28,19 @@ class CarouselRes {
     Map<String, dynamic> toJson() => {
         "code": code,
         "msg": msg,
-        "data": List<dynamic>.from(data.map((x) => x.toJson())),
+        "data": List<dynamic>.from(data!.map((x) => x.toJson())),
     };
 }
 
 class Datum {
-    int id;
-    String name;
-    String url;
-    String type;
-    String view;
-    int clickCount;
-    String remark;
-    String src;
+    int? id;
+    String? name;
+    String? url;
+    String? type;
+    String? view;
+    int? clickCount;
+    String? remark;
+    String? src;
 
     Datum({
         this.id,

@@ -1,15 +1,15 @@
 import 'package:demo1/fluro/NavigatorUtil.dart';
 import 'package:demo1/modals/user_model.dart';
 import 'package:demo1/widgets/my_clipper.dart';
-import 'package:fbutton/fbutton.dart';
+import 'package:fbutton_nullsafety/fbutton_nullsafety.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fsuper/fsuper.dart';
+import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
 
 // 头部容器
 class HeaderIndex extends StatelessWidget {
-  final User user;
+  final User? user;
 
   HeaderIndex(this.user);
 
@@ -49,7 +49,7 @@ class HeaderIndex extends StatelessWidget {
                         child: ClipOval(
                           child: user != null
                               ? Image.network(
-                                  "${user.avatar != "" ? user.avatar : "http://picbed.demo.saintic.com/static/upload/huang/2020/05/26/15905000070355377.jpg"}",
+                                  "${user!.avatar != "" ? user!.avatar : "http://picbed.demo.saintic.com/static/upload/huang/2020/05/26/15905000070355377.jpg"}",
                                   width: ScreenUtil().setWidth(180),
                                   height: ScreenUtil().setHeight(180),
                                   fit: BoxFit.cover,
@@ -79,7 +79,7 @@ class HeaderIndex extends StatelessWidget {
                                   },
                                   child: Text(
                                       user != null
-                                          ? "${user.nickname != "" ? user.nickname : "用户@" + user.username}"
+                                          ? "${user!.nickname != "" ? user!.nickname : "用户@" + user!.username!}"
                                           : "登录/注册",
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
@@ -184,7 +184,7 @@ class HeaderIndex extends StatelessWidget {
                             text: "提现",
                             color: Colors.pinkAccent,
                             onPressed: () {},
-                            clickEffect: true,
+                            clickEffect: true, highlightColor: Colors.grey.shade100,
                           ),
                         )
                       ],

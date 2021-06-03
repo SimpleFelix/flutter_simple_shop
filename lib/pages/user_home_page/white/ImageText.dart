@@ -6,12 +6,12 @@ import 'package:html/parser.dart';
 
 class ImageText extends SpecialText {
   static const String flag = "<img";
-  final int start;
-  final SpecialTextGestureTapCallback onTap;
+  final int? start;
+  final SpecialTextGestureTapCallback? onTap;
   ImageText(TextStyle textStyle, {this.start, this.onTap})
       : super(ImageText.flag, "/>", textStyle);
-  String _imageUrl;
-  String get imageUrl => _imageUrl;
+  String? _imageUrl;
+  String? get imageUrl => _imageUrl;
   @override
   InlineSpan finishText() {
     ///content already has endflag "/"
@@ -26,21 +26,21 @@ class ImageText extends SpecialText {
     var html = parse(text);
 
     var img = html.getElementsByTagName("img").first;
-    var url = img.attributes["src"];
+    var url = img.attributes["src"]!;
     _imageUrl = url;
 
     BoxFit fit = BoxFit.cover;
 
     double pmWidth = ScreenUtil().setWidth(1300);
 
-    double height = double.tryParse(img.attributes["height"]);
-    double width = double.tryParse(img.attributes["width"]);
+    double? height = double.tryParse(img.attributes["height"]!);
+    double? width = double.tryParse(img.attributes["width"]!);
 
 
     bool knowImageSize = true;
     if (knowImageSize) {
-      double imgWidth = ScreenUtil().setWidth(width);
-      double imgHeight = ScreenUtil().setHeight(height);
+      double imgWidth = ScreenUtil().setWidth(width!);
+      double imgHeight = ScreenUtil().setHeight(height!);
       if(imgWidth>pmWidth){
         double bl = pmWidth / pmWidth;
         height = imgHeight * bl;
@@ -52,7 +52,7 @@ class ImageText extends SpecialText {
     }
 
     return ExtendedWidgetSpan(
-        start: start,
+        start: start!,
         actualText: text,
         child: Container(
           width: pmWidth,
@@ -70,7 +70,7 @@ class ImageText extends SpecialText {
         ));
   }
 
-  Widget loadStateChanged(ExtendedImageState state) {
+  Widget? loadStateChanged(ExtendedImageState state) {
     switch (state.extendedImageLoadState) {
       case LoadState.loading:
         return Container(

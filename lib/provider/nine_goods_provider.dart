@@ -7,7 +7,7 @@ import '../modals/Result.dart';
 
 class NineGoodsProvider with ChangeNotifier {
 
-  List<NineGoodsItem> goods = [];
+  List<NineGoodsItem>? goods = [];
   String currentNineCid = "-1";
   int page = 1;
 
@@ -21,9 +21,9 @@ class NineGoodsProvider with ChangeNotifier {
        NineGoodsData goodsData =NineGoodsData.fromJson(json.decode(result.data.toString()));
        if(goodsData.code==0){
          if(pageId!="1"){
-           goods.addAll(goodsData.data.list);
+           goods!.addAll(goodsData.data!.list!);
          }else{
-           goods = goodsData.data.list;
+           goods = goodsData.data!.list;
          }
          notifyListeners();
        }else{

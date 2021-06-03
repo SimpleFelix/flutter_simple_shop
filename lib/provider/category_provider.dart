@@ -8,7 +8,7 @@ import '../util/result_obj_util.dart';
 import '../modals/Result.dart';
 
 class CategoryProvider with ChangeNotifier {
-  List<CategoryItem> categorys = [];
+  List<CategoryItem>? categorys = [];
 
   loadDtkCategoryDatas(BuildContext context) async {
     await getDtkCategorys().then((res) {

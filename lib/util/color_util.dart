@@ -10,6 +10,6 @@ class ColorUtil{
       NetworkImage(MImageUtils.magesProcessor(netImageUrl)),
       maximumColorCount: 20,
     );
-    return paletteGenerator.dominantColor.color;
+    return paletteGenerator.dominantColor!.color;
   }
 }

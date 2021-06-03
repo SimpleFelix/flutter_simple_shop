@@ -20,7 +20,7 @@ class BrandListPage extends StatefulWidget {
 class _BrandListPageState extends State<BrandListPage> with AfterLayoutMixin<BrandListPage> {
   CategoryController _categoryController = CategoryController();
   EasyRefreshController _easyRefreshController = EasyRefreshController();
-  BrandProvider _brandProvider;
+  BrandProvider? _brandProvider;
 
   @override
   void didChangeDependencies() {
@@ -46,7 +46,7 @@ class _BrandListPageState extends State<BrandListPage> with AfterLayoutMixin<Bra
     );
   }
 
-  List<Widget> _items() => _brandProvider.lists
+  List<Widget> _items() => _brandProvider!.lists
       .map((e) => BrandItemCard(
             storeInfo: e,
           ))
@@ -54,27 +54,27 @@ class _BrandListPageState extends State<BrandListPage> with AfterLayoutMixin<Bra
 
   /// 刷新页面
   Future<void> _refresh() async {
-    await _brandProvider.refresh();
+    await _brandProvider!.refresh();
     _easyRefreshController.finishRefresh();
   }
 
   /// 加载下一页
   Future<void> _load() async {
-    await _brandProvider.load();
+    await _brandProvider!.load();
     _easyRefreshController.finishLoad();
   }
 
   /// 菜单被选择
-  void _categoryOnSelect(int index, MainCategory item) async {
+  void _categoryOnSelect(int index, MainCategory? item) async {
     _categoryController.toIndex(index);
-    _brandProvider.setCid("${item.cid}");
+    _brandProvider!.setCid("${item!.cid}");
     _easyRefreshController.callRefresh();
   }
 
   @override
   void afterFirstLayout(BuildContext context) async {
-    int cid = Provider.of<IndexProvider>(context, listen: false).mainCategorys[0].cid; // 默认获取下标0的分类
-    _brandProvider.setCid("$cid");
+    int? cid = Provider.of<IndexProvider>(context, listen: false).mainCategorys[0].cid; // 默认获取下标0的分类
+    _brandProvider!.setCid("$cid");
     await _refresh();
   }
 }

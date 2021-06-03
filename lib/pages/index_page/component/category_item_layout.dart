@@ -4,15 +4,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'category_notification_stream.dart';
 
 class CategoryItemDefaultLayout extends StatefulWidget {
-  final int index;
-  final String name;
-  final TextStyle textStyle;
-  final TextStyle currentStyle;
-  final int current;
+  final int? index;
+  final String? name;
+  final TextStyle? textStyle;
+  final TextStyle? currentStyle;
+  final int? current;
   final OnRenderEnd onRendeEnd;
 
   const CategoryItemDefaultLayout(
-      {this.index, this.name, this.textStyle, Key key, this.current, this.currentStyle, @required this.onRendeEnd})
+      {this.index, this.name, this.textStyle, Key? key, this.current, this.currentStyle, required this.onRendeEnd})
       : super(key: key);
 
   @override
@@ -22,11 +22,11 @@ class CategoryItemDefaultLayout extends StatefulWidget {
 class _CategoryItemDefaultLayoutState extends State<CategoryItemDefaultLayout> {
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
       _notificationWidgetInfoTo();
     });
 
-    CategoryNotificationStreamUtil.instance.changeStream.listen((event) {
+    CategoryNotificationStreamUtil.instance.changeStream!.listen((event) {
       print("$event");
       _notificationWidgetInfoTo();
     });
@@ -36,7 +36,7 @@ class _CategoryItemDefaultLayoutState extends State<CategoryItemDefaultLayout> {
 
   void _notificationWidgetInfoTo() {
     if (widget.onRendeEnd != null) {
-      final RenderBox box = context.findRenderObject();
+      final RenderBox box = context.findRenderObject() as RenderBox;
       widget.onRendeEnd(widget.index, box.localToGlobal(Offset.zero), context.size);
     }
   }
@@ -49,11 +49,11 @@ class _CategoryItemDefaultLayoutState extends State<CategoryItemDefaultLayout> {
       alignment: Alignment.topCenter,
       child: widget.index == widget.current
           ? Text(
-              widget.name,
+              widget.name!,
               style: widget.currentStyle ?? TextStyle(fontSize: 55.sp, color: Theme.of(context).primaryColor),
             )
           : Text(
-              widget.name,
+              widget.name!,
               style: widget.textStyle ?? TextStyle(fontSize: 55.sp, color: Color.fromRGBO(255, 255, 255, .65)),
             ),
     );
@@ -66,4 +66,4 @@ class _CategoryItemDefaultLayoutState extends State<CategoryItemDefaultLayout> {
   }
 }
 
-typedef OnRenderEnd = void Function(int index, Offset offset, Size size);
+typedef OnRenderEnd = void Function(int? index, Offset offset, Size? size);

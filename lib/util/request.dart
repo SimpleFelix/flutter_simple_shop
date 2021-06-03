@@ -23,7 +23,7 @@ String formatUrl(String apiName) {
   return BASE_URL + apiName;
 }
 
-Future request(apiName, {dynamic data, String method}) async {
+Future request(apiName, {dynamic data, String? method}) async {
   try {
     Response response;
     Dio dio = Dio();

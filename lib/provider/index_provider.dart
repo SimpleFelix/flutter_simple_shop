@@ -12,8 +12,8 @@ class IndexProvider with ChangeNotifier {
   Color topBackground = Colors.pinkAccent;
   List<MainCategory> mainCategorys = []; // 超级分类数据
   List<MainTopic> mainTopic = []; // 轮播
-  StoreData storeData; // 首页显示的品牌
-  Map<int,Color> brandBgColorMap = Map(); // 背景颜色
+  StoreData? storeData; // 首页显示的品牌
+  Map<int?,Color> brandBgColorMap = Map(); // 背景颜色
 
   /// 加载超级分类菜单
   Future<void> fetchCategorys() async {
@@ -31,7 +31,7 @@ class IndexProvider with ChangeNotifier {
 
   /// 获取品牌栏目列表
   Future<void> fetchStores() async {
-    StoreData _storeData = await IndexService.fetchStores(StoreListParamsModel(mainCategorys[0].cid.toString(), "1", "10"));
+    StoreData? _storeData = await IndexService.fetchStores(StoreListParamsModel(mainCategorys[0].cid.toString(), "1", "10"));
     this.storeData = _storeData;
     this.getBrandBgColors();
     notifyListeners();
@@ -46,9 +46,9 @@ class IndexProvider with ChangeNotifier {
   /// 获取品牌logo的主要背景颜色
   Future<void> getBrandBgColors ()async{
     if(storeData!=null){
-      if(storeData.lists.isNotEmpty){
-        for(StoreInfo info in storeData.lists){
-          Color color = await ColorUtil.getImageMainColor(info.brandLogo);
+      if(storeData!.lists!.isNotEmpty){
+        for(StoreInfo info in storeData!.lists!){
+          Color color = await ColorUtil.getImageMainColor(info.brandLogo!);
           brandBgColorMap[info.brandId] = color;
         }
         notifyListeners();

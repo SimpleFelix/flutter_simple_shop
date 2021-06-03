@@ -14,8 +14,8 @@ class DdqIndexHome extends StatefulWidget {
 }
 
 class _DdqIndexHomeState extends State<DdqIndexHome> {
-  DdqProvider ddqProvider;
-  int cur;
+  DdqProvider? ddqProvider;
+  int? cur;
 
   @override
   Widget build(BuildContext context) {
@@ -109,7 +109,7 @@ class _DdqIndexHomeState extends State<DdqIndexHome> {
                   border: Border(
                       bottom: BorderSide(width: 0.5, color: Colors.white70))),
               child: DdqTimesWidget(
-                timesList: ddqProvider.roundsList,
+                timesList: ddqProvider!.roundsList,
                 ddqProvider: ddqProvider,
               ),
             )));
@@ -128,9 +128,9 @@ class _DdqIndexHomeState extends State<DdqIndexHome> {
     return SliverList(
         delegate: SliverChildBuilderDelegate((context, index) {
       return GoodsItem(
-        goodsItem: this.ddqProvider.goodsList[index],
-        state: this.ddqProvider.status,
+        goodsItem: this.ddqProvider!.goodsList![index],
+        state: this.ddqProvider!.status,
       );
-    }, childCount: this.ddqProvider.goodsList.length));
+    }, childCount: this.ddqProvider!.goodsList!.length));
   }
 }

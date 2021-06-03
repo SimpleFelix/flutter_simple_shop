@@ -11,7 +11,7 @@ class CategoryIndexPage extends StatefulWidget {
 }
 
 class _CategoryIndexPageState extends State<CategoryIndexPage> {
-  CategoryProvider categoryProvider;
+  CategoryProvider? categoryProvider;
 
   int current = 0;
 
@@ -20,7 +20,7 @@ class _CategoryIndexPageState extends State<CategoryIndexPage> {
     return Consumer<CategoryProvider>(
       builder: (context, categoryProvider, _) => Container(
           width: MediaQuery.of(context).size.width,
-          child: categoryProvider.categorys.length != 0
+          child: categoryProvider.categorys!.length != 0
               ? Row(
                   children: <Widget>[
                     //左侧
@@ -28,7 +28,7 @@ class _CategoryIndexPageState extends State<CategoryIndexPage> {
                       width: ScreenUtil().setWidth(300),
                       color: Color.fromRGBO(248, 248, 248, 1.0),
                       child: ListView.builder(
-                          itemCount: categoryProvider.categorys.length,
+                          itemCount: categoryProvider.categorys!.length,
                           itemBuilder: (context, index) {
                             return InkWell(
                               onTap: () {
@@ -37,7 +37,7 @@ class _CategoryIndexPageState extends State<CategoryIndexPage> {
                                 });
                               },
                               child: LeftWidgetItem(
-                                  item: categoryProvider.categorys[index],
+                                  item: categoryProvider.categorys![index],
                                   isCurrent: current == index),
                             );
                           }),
@@ -62,17 +62,17 @@ class _CategoryIndexPageState extends State<CategoryIndexPage> {
                                             mainAxisSpacing: 10.0,
                                             crossAxisSpacing: 10.0),
                                     itemCount: categoryProvider
-                                        .categorys[current]
-                                        .subcategories
+                                        .categorys![current]
+                                        .subcategories!
                                         .length,
                                     itemBuilder: (context, sIndex) {
                                       return RightWidgetItme(
                                           cid: categoryProvider
-                                              .categorys[current].cid
+                                              .categorys![current].cid
                                               .toString(),
                                           item: categoryProvider
-                                              .categorys[current]
-                                              .subcategories[sIndex]);
+                                              .categorys![current]
+                                              .subcategories![sIndex]);
                                     }),
                               ],
                             ),
@@ -100,7 +100,7 @@ class _CategoryIndexPageState extends State<CategoryIndexPage> {
       height: ScreenUtil().setHeight(150),
       alignment: Alignment.centerLeft,
       child: Text(
-        this.categoryProvider.categorys[current].cname,
+        this.categoryProvider!.categorys![current].cname!,
         style: TextStyle(
             fontWeight: FontWeight.w500,
             fontSize: ScreenUtil().setSp(60),

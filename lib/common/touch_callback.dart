@@ -12,9 +12,9 @@ class TouchCallBack extends StatefulWidget {
   final Color background;
   //传入参数列表
   TouchCallBack({
-    Key key,
-    @required this.child,
-    @required this.onParessed,
+    Key? key,
+    required this.child,
+    required this.onParessed,
     this.isfeed: true,
     this.background: const Color(0xffd8d8d8),
   }) : super(key: key);

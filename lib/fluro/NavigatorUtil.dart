@@ -23,7 +23,7 @@ class NavigatorUtil {
 
 //跳转到商品列表页面
   static void gotoGoodslistPage(BuildContext context,
-      {String subcid, String cids, String brand, String title,String showCates}) {
+      {String? subcid, String? cids, String? brand, String? title,String? showCates}) {
     if (title != null) {
       title = FluroConvertUtils.fluroCnParamsEncode(title);
     }
@@ -56,7 +56,7 @@ class NavigatorUtil {
   }
 
   // 前往好单库商品详情页面
-  static void gotoHaodankuGoodsDetailPage(BuildContext context,String goodsId){
+  static void gotoHaodankuGoodsDetailPage(BuildContext context,String? goodsId){
     Application.router.navigateTo(context, Routes.hdkDetail+"?goods_id=$goodsId");
   }
 }

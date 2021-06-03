@@ -9,10 +9,10 @@ NineGoodsData nineGoodsDataFromJson(String str) => NineGoodsData.fromJson(json.d
 String nineGoodsDataToJson(NineGoodsData data) => json.encode(data.toJson());
 
 class NineGoodsData {
-  int time;
-  int code;
-  String msg;
-  Data data;
+  int? time;
+  int? code;
+  String? msg;
+  Data? data;
 
   NineGoodsData({
     this.time,
@@ -32,14 +32,14 @@ class NineGoodsData {
     "time": time,
     "code": code,
     "msg": msg,
-    "data": data.toJson(),
+    "data": data!.toJson(),
   };
 }
 
 class Data {
-  List<NineGoodsItem> list;
-  int totalNum;
-  String pageId;
+  List<NineGoodsItem>? list;
+  int? totalNum;
+  String? pageId;
 
   Data({
     this.list,
@@ -54,68 +54,68 @@ class Data {
   );
 
   Map<String, dynamic> toJson() => {
-    "list": List<dynamic>.from(list.map((x) => x.toJson())),
+    "list": List<dynamic>.from(list!.map((x) => x.toJson())),
     "totalNum": totalNum,
     "pageId": pageId,
   };
 }
 
 class NineGoodsItem {
-  int id;
-  String goodsId;
-  String title;
-  String dtitle;
-  double originalPrice;
-  double actualPrice;
-  int shopType;
-  int goldSellers;
-  int monthSales;
-  int twoHoursSales;
-  int dailySales;
-  int commissionType;
-  String desc;
-  int couponReceiveNum;
-  String couponLink;
-  DateTime couponEndTime;
-  DateTime couponStartTime;
-  double couponPrice;
-  String couponConditions;
-  int activityType;
-  DateTime createTime;
-  String mainPic;
-  String marketingMainPic;
-  String sellerId;
-  int cid;
-  double discounts;
-  double commissionRate;
-  int couponTotalNum;
-  int haitao;
-  String activityStartTime;
-  String activityEndTime;
-  String shopName;
-  int shopLevel;
-  double descScore;
-  int brand;
-  int brandId;
-  String brandName;
-  int hotPush;
-  String teamName;
-  String itemLink;
-  int tchaoshi;
-  String detailPics;
-  double dsrScore;
-  double dsrPercent;
-  double shipScore;
-  double shipPercent;
-  double serviceScore;
-  double servicePercent;
-  List<int> subcid;
-  int nineCid;
-  int quanMLink;
-  int hzQuanOver;
-  int yunfeixian;
-  double estimateAmount;
-  int tbcid;
+  int? id;
+  String? goodsId;
+  String? title;
+  String? dtitle;
+  double? originalPrice;
+  double? actualPrice;
+  int? shopType;
+  int? goldSellers;
+  int? monthSales;
+  int? twoHoursSales;
+  int? dailySales;
+  int? commissionType;
+  String? desc;
+  int? couponReceiveNum;
+  String? couponLink;
+  DateTime? couponEndTime;
+  DateTime? couponStartTime;
+  double? couponPrice;
+  String? couponConditions;
+  int? activityType;
+  DateTime? createTime;
+  String? mainPic;
+  String? marketingMainPic;
+  String? sellerId;
+  int? cid;
+  double? discounts;
+  double? commissionRate;
+  int? couponTotalNum;
+  int? haitao;
+  String? activityStartTime;
+  String? activityEndTime;
+  String? shopName;
+  int? shopLevel;
+  double? descScore;
+  int? brand;
+  int? brandId;
+  String? brandName;
+  int? hotPush;
+  String? teamName;
+  String? itemLink;
+  int? tchaoshi;
+  String? detailPics;
+  double? dsrScore;
+  double? dsrPercent;
+  double? shipScore;
+  double? shipPercent;
+  double? serviceScore;
+  double? servicePercent;
+  List<int>? subcid;
+  int? nineCid;
+  int? quanMLink;
+  int? hzQuanOver;
+  int? yunfeixian;
+  double? estimateAmount;
+  int? tbcid;
 
   NineGoodsItem({
     this.id,
@@ -249,12 +249,12 @@ class NineGoodsItem {
     "desc": desc,
     "couponReceiveNum": couponReceiveNum,
     "couponLink": couponLink,
-    "couponEndTime": couponEndTime.toIso8601String(),
-    "couponStartTime": couponStartTime.toIso8601String(),
+    "couponEndTime": couponEndTime!.toIso8601String(),
+    "couponStartTime": couponStartTime!.toIso8601String(),
     "couponPrice": couponPrice,
     "couponConditions": couponConditions,
     "activityType": activityType,
-    "createTime": createTime.toIso8601String(),
+    "createTime": createTime!.toIso8601String(),
     "mainPic": mainPic,
     "marketingMainPic": marketingMainPic,
     "sellerId": sellerId,
@@ -282,7 +282,7 @@ class NineGoodsItem {
     "shipPercent": shipPercent,
     "serviceScore": serviceScore,
     "servicePercent": servicePercent,
-    "subcid": List<dynamic>.from(subcid.map((x) => x)),
+    "subcid": List<dynamic>.from(subcid!.map((x) => x)),
     "nineCid": nineCid,
     "quanMLink": quanMLink,
     "hzQuanOver": hzQuanOver,

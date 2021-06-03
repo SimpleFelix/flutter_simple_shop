@@ -15,9 +15,9 @@ class HdkGoodsDetailModel {
     this.info,
   });
 
-  List<String> images;
-  List<Video> video;
-  Info info;
+  List<String>? images;
+  List<Video>? video;
+  Info? info;
 
   factory HdkGoodsDetailModel.fromJson(Map<String, dynamic> json) => HdkGoodsDetailModel(
     images: List<String>.from(json["images"].map((x) => x)),
@@ -26,9 +26,9 @@ class HdkGoodsDetailModel {
   );
 
   Map<String, dynamic> toJson() => {
-    "images": List<dynamic>.from(images.map((x) => x)),
-    "video": List<dynamic>.from(video.map((x) => x.toJson())),
-    "info": info.toJson()
+    "images": List<dynamic>.from(images!.map((x) => x)),
+    "video": List<dynamic>.from(video!.map((x) => x.toJson())),
+    "info": info!.toJson()
   };
 }
 
@@ -47,17 +47,17 @@ class Video {
     this.videoLikeCount,
   });
 
-  String itemid;
-  String douyinCid;
-  String dynamicImage;
-  String videoUrl;
-  String itemidTitle;
-  String firstFrame;
-  String douyinEmceeFans;
-  String videoForwardCount;
-  String videoCommentCount;
-  String videoShareCount;
-  String videoLikeCount;
+  String? itemid;
+  String? douyinCid;
+  String? dynamicImage;
+  String? videoUrl;
+  String? itemidTitle;
+  String? firstFrame;
+  String? douyinEmceeFans;
+  String? videoForwardCount;
+  String? videoCommentCount;
+  String? videoShareCount;
+  String? videoLikeCount;
 
   factory Video.fromJson(Map<String, dynamic> json) => Video(
     itemid: json["itemid"],
@@ -90,68 +90,68 @@ class Video {
 
 
 class Info {
-  String userid;
-  String tkmoney;
-  String couponmoney;
-  String tktype;
-  String starttime;
-  String startTime;
-  String couponendtime;
-  String productId;
-  String itemtitle;
-  String itempic;
-  String couponexplain;
-  String isquality;
-  String isBrand;
-  String isLive;
-  String generalIndex;
-  String sellerName;
-  String sellernick;
-  String shopname;
-  String onlineUsers;
-  String originalImg;
-  String planlink;
-  String reportStatus;
-  String activityType;
-  String itempicCopy;
-  String shoptype;
-  String itemprice;
-  String videoid;
-  String todaysale;
-  String couponnum;
-  String discount;
-  String itemendprice;
-  String itemdesc;
-  String itemsale;
-  String couponsurplus;
-  String cuntao;
-  String sellerId;
-  String fqcat;
-  String couponreceive;
-  String couponurl;
-  String endTime;
-  String guideArticle;
-  String itemid;
-  String itemsale2;
-  String tkrates;
-  String tkurl;
-  String activityid;
-  String sonCategory;
-  String taobaoImage;
-  String downType;
-  String dxRates;
-  String shopid;
-  String deposit;
-  String isExplosion;
-  String me;
-  String isShipping;
-  String itemshorttitle;
-  String couponreceive2;
-  String couponstarttime;
-  String couponCondition;
-  String originalArticle;
-  String todaycouponreceive;
-  String depositDeduct;
+  String? userid;
+  String? tkmoney;
+  String? couponmoney;
+  String? tktype;
+  String? starttime;
+  String? startTime;
+  String? couponendtime;
+  String? productId;
+  String? itemtitle;
+  String? itempic;
+  String? couponexplain;
+  String? isquality;
+  String? isBrand;
+  String? isLive;
+  String? generalIndex;
+  String? sellerName;
+  String? sellernick;
+  String? shopname;
+  String? onlineUsers;
+  String? originalImg;
+  String? planlink;
+  String? reportStatus;
+  String? activityType;
+  String? itempicCopy;
+  String? shoptype;
+  String? itemprice;
+  String? videoid;
+  String? todaysale;
+  String? couponnum;
+  String? discount;
+  String? itemendprice;
+  String? itemdesc;
+  String? itemsale;
+  String? couponsurplus;
+  String? cuntao;
+  String? sellerId;
+  String? fqcat;
+  String? couponreceive;
+  String? couponurl;
+  String? endTime;
+  String? guideArticle;
+  String? itemid;
+  String? itemsale2;
+  String? tkrates;
+  String? tkurl;
+  String? activityid;
+  String? sonCategory;
+  String? taobaoImage;
+  String? downType;
+  String? dxRates;
+  String? shopid;
+  String? deposit;
+  String? isExplosion;
+  String? me;
+  String? isShipping;
+  String? itemshorttitle;
+  String? couponreceive2;
+  String? couponstarttime;
+  String? couponCondition;
+  String? originalArticle;
+  String? todaycouponreceive;
+  String? depositDeduct;
 
   Info(
       {this.userid,

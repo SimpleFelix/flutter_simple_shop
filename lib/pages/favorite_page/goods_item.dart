@@ -7,16 +7,16 @@ import 'package:demo1/widgets/title_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fsuper/fsuper.dart';
+import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
 import '../../modals/favorites_model.dart';
 
 // 收藏商品列表卡片布局
 class FavoriteGoodsItem extends StatelessWidget {
   final Good good;
-  final bool isShowEditIcon; //是否显示选中按钮
-  final List<String> selectListIds;
-  final UserProvider userProvider;
-  FavoriteGoodsItem({@required this.good, this.isShowEditIcon,this.selectListIds,this.userProvider});
+  final bool? isShowEditIcon; //是否显示选中按钮
+  final List<String>? selectListIds;
+  final UserProvider? userProvider;
+  FavoriteGoodsItem({required this.good, this.isShowEditIcon,this.selectListIds,this.userProvider});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class FavoriteGoodsItem extends StatelessWidget {
         child: Row(
           children: <Widget>[
             ExtendedImageWidget(
-              src: MImageUtils.magesProcessor(good.mainPic),
+              src: MImageUtils.magesProcessor(good.mainPic!),
               height: 460,
               width: 460,
             ),
@@ -76,7 +76,7 @@ class FavoriteGoodsItem extends StatelessWidget {
           ],
         ),
       ),
-      isShowEditIcon ? Positioned(
+      isShowEditIcon! ? Positioned(
         right: 10,
         top: 10,
         child: Container(
@@ -88,10 +88,10 @@ class FavoriteGoodsItem extends StatelessWidget {
           child: Checkbox(
             value: isSelectValue(),
             onChanged: (value){
-              if(value){
-                userProvider.addRemoveFavoriteGoodsId(good.id.toString());
+              if(value!){
+                userProvider!.addRemoveFavoriteGoodsId(good.id.toString());
               }else{
-                userProvider.removeFavoriteGoodsId(good.id.toString());
+                userProvider!.removeFavoriteGoodsId(good.id.toString());
               }
             },
           ),
@@ -103,7 +103,7 @@ class FavoriteGoodsItem extends StatelessWidget {
   //计算是否在将在删除列表中
   bool isSelectValue(){
     // 如果不存在则返回-1
-    var index = selectListIds.indexOf(good.id.toString());
+    var index = selectListIds!.indexOf(good.id.toString());
     if(index==-1){
       return false;
     }
@@ -113,7 +113,7 @@ class FavoriteGoodsItem extends StatelessWidget {
   // 建立有效期组件
   Widget _calcDateHowLong() {
     DateTime now = DateTime.now();
-    DateTime endTime = good.couponEndTime;
+    DateTime endTime = good.couponEndTime!;
 
     var difference = endTime.difference(now);
     Widget returnWidget = FSuper(

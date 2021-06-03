@@ -26,17 +26,17 @@ class OrderAllData {
     this.empty,
   });
 
-  int number;
-  int size;
-  List<OrderAuditObject> content;
-  OrderAllDataSort sort;
-  int numberOfElements;
-  bool first;
-  Pageable pageable;
-  bool last;
-  int totalPages;
-  int totalElements;
-  bool empty;
+  int? number;
+  int? size;
+  List<OrderAuditObject>? content;
+  OrderAllDataSort? sort;
+  int? numberOfElements;
+  bool? first;
+  Pageable? pageable;
+  bool? last;
+  int? totalPages;
+  int? totalElements;
+  bool? empty;
 
   factory OrderAllData.fromJson(Map<String, dynamic> json) => OrderAllData(
     number: json["number"],
@@ -55,11 +55,11 @@ class OrderAllData {
   Map<String, dynamic> toJson() => {
     "number": number,
     "size": size,
-    "content": List<dynamic>.from(content.map((x) => x.toJson())),
-    "sort": sort.toJson(),
+    "content": List<dynamic>.from(content!.map((x) => x.toJson())),
+    "sort": sort!.toJson(),
     "numberOfElements": numberOfElements,
     "first": first,
-    "pageable": pageable.toJson(),
+    "pageable": pageable!.toJson(),
     "last": last,
     "totalPages": totalPages,
     "totalElements": totalElements,
@@ -80,15 +80,15 @@ class OrderAuditObject {
     this.spic,
   });
 
-  int id;
-  String createTime;
-  String orderid;
-  int userid;
-  String smoney;
-  String sdate;
-  String stip;
-  int stype;
-  String spic;
+  int? id;
+  String? createTime;
+  String? orderid;
+  int? userid;
+  String? smoney;
+  String? sdate;
+  String? stip;
+  int? stype;
+  String? spic;
 
   factory OrderAuditObject.fromJson(Map<String, dynamic> json) => OrderAuditObject(
     id: json["id"],

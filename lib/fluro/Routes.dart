@@ -37,7 +37,7 @@ class Routes {
   static void configureRoutes(FluroRouter router) {
     // 定义404
     router.notFoundHandler =
-        new Handler(handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+        new Handler(handlerFunc: (BuildContext? context, Map<String, List<String>> params) {
       return NotFoundPage();
     });
 

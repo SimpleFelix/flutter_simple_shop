@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/screenutil.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 class ListItem extends StatelessWidget {
 
   String title;
-  Widget actions;
+  Widget? actions;
   Function onTap;
-  Widget leftAction;
+  Widget? leftAction;
   bool isCard;
 
-  ListItem({@required this.title,this.actions,@required this.onTap,this.leftAction,this.isCard:false});
+  ListItem({required this.title,this.actions,required this.onTap,this.leftAction,this.isCard:false});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap:onTap,
+      onTap:onTap as void Function()?,
       child: Container(
         height: ScreenUtil().setHeight(200),
         width: ScreenUtil().setWidth(1440),

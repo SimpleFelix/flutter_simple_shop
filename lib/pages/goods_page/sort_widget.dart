@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 class SortWidget extends StatelessWidget {
 
   final dynamic onTap;
-  final String title;
-  final bool current;
-  final Widget icon;
+  final String? title;
+  final bool? current;
+  final Widget? icon;
 
   SortWidget({this.onTap, this.title, this.current,this.icon}); //是否选中状态
 
@@ -15,10 +15,10 @@ class SortWidget extends StatelessWidget {
     return Tab(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Text(title),
-          icon!=null ? icon : Container()
-        ],
+       children: [
+         Text(title!),
+         icon??Container()
+       ],
       )
     );
   }

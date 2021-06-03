@@ -8,8 +8,8 @@ class RequestParamsUtils{
 
   /// 根据request参数的key进行排序,并生成一个新的map返回
   /// 在参数上面添加了一个时间戳来进行验证
-  static Map<String, String> keySort(Map<String, String> oldParamsMap) {
-    Map<String, String> newParamsMap = Map();
+  static Map<String, String?> keySort(Map<String, String?> oldParamsMap) {
+    Map<String, String?> newParamsMap = Map();
     String timeToken = DateTime.now().millisecondsSinceEpoch.toString();
     oldParamsMap["timeToken"] = timeToken; // 给参数加上时间戳
     List<String> oldKeys = oldParamsMap.keys.toList();
@@ -36,7 +36,7 @@ class RequestParamsUtils{
   /// 和服务器进行比对
   /// 如果验证不通过
   /// 则非法请求
-  static String generateToken(Map<String, String> params) {
+  static String generateToken(Map<String, String?> params) {
     print("进来了");
     String value = json.encode(params);
     print("json="+value);

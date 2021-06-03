@@ -3,7 +3,7 @@ import 'package:demo1/constant/color.dart';
 import 'package:demo1/provider/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fsuper/fsuper.dart';
+import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../provider/goods_detail_provider.dart';
@@ -19,7 +19,7 @@ import './action_buttons.dart';
 import '../../widgets/no_data.dart';
 
 class DetailIndex extends StatefulWidget {
-  final String goods_id;
+  final String? goods_id;
 
   DetailIndex({this.goods_id});
 
@@ -29,10 +29,10 @@ class DetailIndex extends StatefulWidget {
 
 class _DetailIndexState extends State<DetailIndex> {
   // 商品详情provide
-  GoodsDetailProvider goodsDetailProvider;
+  GoodsDetailProvider? goodsDetailProvider;
 
   // 用户provider
-  UserProvider userProvider;
+  UserProvider? userProvider;
 
   bool loadIng = true;
 
@@ -42,7 +42,7 @@ class _DetailIndexState extends State<DetailIndex> {
       builder: (context, goodsInfoProvider, _) {
         if (loadIng) {
           return Scaffold(
-            appBar: _appBarWidget(),
+            appBar: _appBarWidget() as PreferredSizeWidget?,
             body: Center(
               child: CircularProgressIndicator(),
             ),
@@ -51,7 +51,7 @@ class _DetailIndexState extends State<DetailIndex> {
         return goodsInfoProvider.goodInfo != null && goodsInfoProvider.have
             ? WillPopScope(
                 onWillPop: () {
-                  this.goodsDetailProvider.setNullInfo();
+                  this.goodsDetailProvider!.setNullInfo();
                   return Future.value(true);
                 },
                 child: Scaffold(
@@ -64,11 +64,11 @@ class _DetailIndexState extends State<DetailIndex> {
                               child: Column(
                                 children: <Widget>[
                                   // 轮播图
-                                  _imgSwiper(goodsInfoProvider.goodInfo.imgs,goodsInfoProvider),
+                                  _imgSwiper(goodsInfoProvider.goodInfo!.imgs,goodsInfoProvider),
                                   SizedBox(height: ScreenUtil().setHeight(15)),
                                   // 标题
                                   TitleWidget(
-                                    title: goodsInfoProvider.goodInfo.dtitle,
+                                    title: goodsInfoProvider.goodInfo!.dtitle,
                                     size: 60,
                                     color: Colors.black,
                                   ),
@@ -79,10 +79,10 @@ class _DetailIndexState extends State<DetailIndex> {
                                         left: 20, top: 5, bottom: 5),
                                     child: CouponPriceWidget(
                                       actualPrice: goodsInfoProvider
-                                          .goodInfo.actualPrice
+                                          .goodInfo!.actualPrice
                                           .toString(),
                                       originalPrice: goodsInfoProvider
-                                          .goodInfo.originalPrice,
+                                          .goodInfo!.originalPrice,
                                       couponPriceFontSize: 100,
                                       originalPriceFontSize: 55,
                                       interval: 15.0,
@@ -100,19 +100,19 @@ class _DetailIndexState extends State<DetailIndex> {
                                       children: <Widget>[
                                         Container(
                                           child: Text(
-                                              "月销:${goodsInfoProvider.goodInfo.monthSales}",
+                                              "月销:${goodsInfoProvider.goodInfo!.monthSales}",
                                               style: TextStyle(
                                                   color: Colors.grey)),
                                         ),
                                         Container(
                                           child: Text(
-                                              "两小时销量:${goodsInfoProvider.goodInfo.twoHoursSales}",
+                                              "两小时销量:${goodsInfoProvider.goodInfo!.twoHoursSales}",
                                               style: TextStyle(
                                                   color: Colors.grey)),
                                         ),
                                         Container(
                                           child: Text(
-                                              "当天销量:${goodsInfoProvider.goodInfo.dailySales}",
+                                              "当天销量:${goodsInfoProvider.goodInfo!.dailySales}",
                                               style: TextStyle(
                                                   color: Colors.grey)),
                                         ),
@@ -140,8 +140,8 @@ class _DetailIndexState extends State<DetailIndex> {
                                                       .setHeight(78)),
                                               Container(
                                                 child: Text(
-                                                    "该商品可领取满${goodsInfoProvider.goodInfo.couponConditions}"
-                                                    "减${NumUtil.getNumByValueDouble(goodsInfoProvider.goodInfo.couponPrice, 0).toString()}红包"),
+                                                    "该商品可领取满${goodsInfoProvider.goodInfo!.couponConditions}"
+                                                    "减${NumUtil.getNumByValueDouble(goodsInfoProvider.goodInfo!.couponPrice, 0).toString()}红包"),
                                               ),
                                               Icon(Icons.help_outline,
                                                   color: Colors.black26,
@@ -153,7 +153,7 @@ class _DetailIndexState extends State<DetailIndex> {
                                         Padding(
                                           padding: EdgeInsets.only(right: 20),
                                           child: Text(
-                                            "券金额:${NumUtil.getNumByValueDouble(goodsInfoProvider.goodInfo.couponPrice, 0).toString()}",
+                                            "券金额:${NumUtil.getNumByValueDouble(goodsInfoProvider.goodInfo!.couponPrice, 0).toString()}",
                                             style:
                                                 TextStyle(color: primaryColor),
                                           ),
@@ -316,7 +316,7 @@ class _DetailIndexState extends State<DetailIndex> {
 
                                   // 推荐理由
                                   IconBlockWidget(
-                                    desc: goodsInfoProvider.goodInfo.desc,
+                                    desc: goodsInfoProvider.goodInfo!.desc,
                                   ),
                                   Container(
                                     height: 10.0,
@@ -333,7 +333,7 @@ class _DetailIndexState extends State<DetailIndex> {
                                   // 详情图
                                   DetailImagesWidget(
                                       images: goodsInfoProvider
-                                          .goodInfo.detailPics),
+                                          .goodInfo!.detailPics),
                                 ],
                               ),
                             )),
@@ -341,7 +341,7 @@ class _DetailIndexState extends State<DetailIndex> {
                         ActionButtons(
                           goodsDetailProvider: goodsDetailProvider,
                           userProvider: userProvider,
-                          goodsId: goodsInfoProvider.goodInfo.goodsId,
+                          goodsId: goodsInfoProvider.goodInfo!.goodsId,
                           getCallBack: () {
                            _gotoGetCouperLink();
                           },
@@ -350,7 +350,7 @@ class _DetailIndexState extends State<DetailIndex> {
                     )))
             : Scaffold(
                 backgroundColor: Colors.white,
-                appBar: _appBarWidget(),
+                appBar: _appBarWidget() as PreferredSizeWidget?,
                 body: NoDataWidget(),
               );
       },
@@ -359,15 +359,15 @@ class _DetailIndexState extends State<DetailIndex> {
 
   void _gotoGetCouperLink() async {
     await this
-        .goodsDetailProvider
-        .getPrivilegeLinkData(this.goodsDetailProvider.goodInfo.goodsId);
-    String couponClickUrl = goodsDetailProvider.couponData.couponClickUrl;
+        .goodsDetailProvider!
+        .getPrivilegeLinkData(this.goodsDetailProvider!.goodInfo!.goodsId);
+    String couponClickUrl = goodsDetailProvider!.couponData!.couponClickUrl!;
 //    Clipboard.setData(ClipboardData(text: goodsDetailProvider.couponData.tpwd));
     String url = "taobao://${couponClickUrl.substring(8)}";
     if (await canLaunch(url)) {
       await launch(url);
     } else {
-      launch(goodsDetailProvider.couponData.couponClickUrl);
+      launch(goodsDetailProvider!.couponData!.couponClickUrl!);
     }
   }
 
@@ -385,7 +385,7 @@ class _DetailIndexState extends State<DetailIndex> {
 
   //商品是否赠送运费险
   Widget _haveYunfeixian() {
-    int yfx = goodsDetailProvider.goodInfo.yunfeixian;
+    int? yfx = goodsDetailProvider!.goodInfo!.yunfeixian;
     if (yfx == 1) {
       return FSuper(
         text: '赠送运费险',
@@ -400,7 +400,7 @@ class _DetailIndexState extends State<DetailIndex> {
 
   // 判断商品参加啥活动
   String _activityTypeStr() {
-    int activityType = goodsDetailProvider.goodInfo.activityType;
+    int? activityType = goodsDetailProvider!.goodInfo!.activityType;
     String str = "该商品正在参加满减活动";
     if (activityType == 2) {
       str = "该商品正在参加淘抢购活动";
@@ -414,7 +414,7 @@ class _DetailIndexState extends State<DetailIndex> {
   // 计算有效期
   String _calcHowLong() {
     DateTime now = DateTime.now();
-    DateTime endTime = goodsDetailProvider.goodInfo.couponEndTime;
+    DateTime endTime = goodsDetailProvider!.goodInfo!.couponEndTime!;
     var difference = endTime.difference(now);
     var str =
         "${difference.inDays}天${difference.inHours % 24}小时${difference.inMinutes % 60}分";
@@ -431,7 +431,7 @@ class _DetailIndexState extends State<DetailIndex> {
   //   return userJiner;
   // }
 
-  Widget _imgSwiper(String images,GoodsDetailProvider goodsDetailProvider) {
+  Widget _imgSwiper(String? images,GoodsDetailProvider goodsDetailProvider) {
     if (images != null && images != "") {
       return SwiperWidget(images: images,goodsDetailProvider: goodsDetailProvider);
     }
@@ -446,7 +446,7 @@ class _DetailIndexState extends State<DetailIndex> {
       title: Text("详情"),
       leading: BackButton(
         onPressed: () {
-          this.goodsDetailProvider.setNullInfo();
+          this.goodsDetailProvider!.setNullInfo();
           Navigator.pop(context);
         },
       ),

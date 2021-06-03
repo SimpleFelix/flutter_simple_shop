@@ -33,9 +33,9 @@ class IndexGoodsRepository extends LoadingMoreBase<GoodsItem> {
       if (res != null) {
         Result result = ResultUtils.format(res);
         if (result != null && result.code == 200 && result.data != null) {
-          GoodsList goodsList = GoodsList.fromJson(json.decode(result.data));
+          GoodsList goodsList = GoodsList.fromJson(json.decode(result.data!));
           if (goodsList.code == 0) {
-            List<GoodsItem> newList = goodsList.data.list;
+            List<GoodsItem> newList = goodsList.data!.list!;
             // 成功加载数据
             if (newList.length != pageSize) {
               // 如果加载过来 的数据不足[pageSize]条,则设置不存在下一页

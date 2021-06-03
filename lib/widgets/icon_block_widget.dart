@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class IconBlockWidget extends StatelessWidget {
-  String desc;
+  String? desc;
 
   IconBlockWidget({this.desc});
 
@@ -49,7 +49,7 @@ class IconBlockWidget extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.only(top: 5.0),
                   child: Text(
-                    desc,
+                    desc!,
                     style: TextStyle(color: Colors.black38),
                   ),
                 )

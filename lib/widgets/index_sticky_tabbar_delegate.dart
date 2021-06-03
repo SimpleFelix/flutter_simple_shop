@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 class IndexStickyTabBarDelegate extends SliverPersistentHeaderDelegate {
-  EdgeInsets padding;
+  EdgeInsets? padding;
   final TabBar child;
-  Color color;
-  IndexStickyTabBarDelegate({@required this.child,this.color,this.padding});
+  Color? color;
+  IndexStickyTabBarDelegate({required this.child,this.color,this.padding});
 
   @override
   Widget build(

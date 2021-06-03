@@ -1,10 +1,10 @@
 import 'package:demo1/provider/goods_detail_provider.dart';
 import 'package:demo1/widgets/refresh_and_load_more.dart';
-import 'package:fbutton/fbutton.dart';
+import 'package:fbutton_nullsafety/fbutton_nullsafety.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fsuper/fsuper.dart';
+import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
 import 'package:provider/provider.dart';
 import 'package:demo1/provider/user_provider.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -20,8 +20,8 @@ class FavoriteIndexHome extends StatefulWidget {
 }
 
 class _IndexState extends State<FavoriteIndexHome> {
-  UserProvider userProvider;
-  GoodsDetailProvider goodsDetailProvider;
+  UserProvider? userProvider;
+  GoodsDetailProvider? goodsDetailProvider;
   RefreshController rc = RefreshController(initialRefresh: true);
 
   @override
@@ -29,7 +29,7 @@ class _IndexState extends State<FavoriteIndexHome> {
     return Consumer<UserProvider>(
       builder: (context, userProvider, _) {
         return Scaffold(
-          backgroundColor: userProvider.goods.length == 0 ? Colors.white : null,
+          backgroundColor: userProvider.goods!.length == 0 ? Colors.white : null,
           appBar: AppBar(
             title: Text("收藏"),
             centerTitle: true,
@@ -55,10 +55,10 @@ class _IndexState extends State<FavoriteIndexHome> {
                   controller: rc,
                   loadMoreFun: l,
                   refreshFun: r,
-                  children: userProvider.goods.length != 0
+                  children: userProvider.goods!.length != 0
                       ? this
-                          .userProvider
-                          .goods
+                          .userProvider!
+                          .goods!
                           .map((good) => FavoriteGoodsItem(
                               good: good,
                               isShowEditIcon: userProvider.isEditFavoriteIng,
@@ -96,13 +96,13 @@ class _IndexState extends State<FavoriteIndexHome> {
                                 children: <Widget>[
                                   Checkbox(
                                     value: userProvider.editFavoriteIds.length ==
-                                        userProvider.goods.length,
+                                        userProvider.goods!.length,
                                     onChanged: (v) {
-                                      userProvider.selectAll(v);
+                                      userProvider.selectAll(v!);
                                     },
                                   ),
                                   Text(userProvider.editFavoriteIds.length ==
-                                          userProvider.goods.length
+                                          userProvider.goods!.length
                                       ? "取消全选"
                                       : "全选")
                                 ],
@@ -150,7 +150,7 @@ class _IndexState extends State<FavoriteIndexHome> {
                                                               onPressed: () async {
                                                                 userProvider.editFavoriteIds
                                                                     .forEach((id) async {
-                                                                  await goodsDetailProvider
+                                                                  await goodsDetailProvider!
                                                                       .removeGoodsFavoriteFun(
                                                                           goodsId: id);
                                                                 });
@@ -165,7 +165,7 @@ class _IndexState extends State<FavoriteIndexHome> {
                                             }
                                           : null,
                                       clickEffect: true,
-                                      shadowBlur: 10.0,
+                                      shadowBlur: 10.0, highlightColor:  Colors.grey.shade100,
                                     ),
                                     InkWell(
                                         onTap: () {
@@ -189,18 +189,18 @@ class _IndexState extends State<FavoriteIndexHome> {
   }
 
   Future<void> r() async {
-    await this.userProvider.loadUserFavoriteGoodsListFun(1);
+    await this.userProvider!.loadUserFavoriteGoodsListFun(1);
     rc.refreshCompleted();
-    rc.footerMode.value = LoadStatus.idle;
+    rc.footerMode!.value = LoadStatus.idle;
   }
 
   void l() async {
     // 判断是不是最后一页
-    if (!this.userProvider.pageInfo.last) {
-      await this.userProvider.loadNextPageUserFavoriteGoodsListFun();
+    if (!this.userProvider!.pageInfo!.last!) {
+      await this.userProvider!.loadNextPageUserFavoriteGoodsListFun();
       rc.loadComplete();
     } else {
-      rc.footerMode.value = LoadStatus.noMore;
+      rc.footerMode!.value = LoadStatus.noMore;
     }
   }
 

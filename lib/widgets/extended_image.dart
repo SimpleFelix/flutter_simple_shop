@@ -2,14 +2,14 @@ import 'package:flustars/flustars.dart' hide ScreenUtil;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:extended_image/extended_image.dart';
-import 'package:flutter_screenutil/screenutil.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../util/image_util.dart';
 
 // 图像扩展组件
 class ExtendedImageWidget extends StatelessWidget {
-  final String src;
-  final double height;
-  final double width;
+  final String? src;
+  final double? height;
+  final double? width;
   final BorderRadius radius;
   final BoxFit fit;
   final bool knowSize;
@@ -31,11 +31,11 @@ class ExtendedImageWidget extends StatelessWidget {
         child: buildExtendedImage(w: width, h: height));
   }
 
-  Widget buildExtendedImage({double w, double h}) {
+  Widget buildExtendedImage({double? w, double? h}) {
     Widget image = Stack(
       children: <Widget>[
         ExtendedImage.network(
-          MImageUtils.magesProcessor(src),
+          MImageUtils.magesProcessor(src!),
           fit: fit,
           borderRadius: radius,
           shape: BoxShape.rectangle,
@@ -46,8 +46,8 @@ class ExtendedImageWidget extends StatelessWidget {
             if (state.extendedImageLoadState == LoadState.loading) {
               Widget loadingWidget = Container(
                 alignment: Alignment.center,
-                width: ScreenUtil().setWidth(w),
-                height: ScreenUtil().setHeight(h),
+                width: ScreenUtil().setWidth(w!),
+                height: ScreenUtil().setHeight(h!),
                 color: Colors.grey.withOpacity(0.4),
                 child: CircularProgressIndicator(
                   strokeWidth: 2.0,
@@ -67,8 +67,8 @@ class ExtendedImageWidget extends StatelessWidget {
 
             if (state.extendedImageLoadState == LoadState.failed) {
               return Container(
-                width: ScreenUtil().setWidth(w ?? width),
-                height: ScreenUtil().setHeight(h ?? height),
+                width: ScreenUtil().setWidth(w ?? width!),
+                height: ScreenUtil().setHeight(h ?? height!),
                 child: Center(
                   child: Column(children: <Widget>[
                     Text("图片加载失败"),
@@ -84,14 +84,14 @@ class ExtendedImageWidget extends StatelessWidget {
             }
 
             if (state.extendedImageLoadState == LoadState.completed) {
-              Size isize = Size(state.extendedImageInfo.image.width.toDouble(),
-                  state.extendedImageInfo.image.height.toDouble());
+              Size isize = Size(state.extendedImageInfo!.image.width.toDouble(),
+                  state.extendedImageInfo!.image.height.toDouble());
 
               Widget wight =  ExtendedRawImage(
                 fit: fit,
                 image: state.extendedImageInfo?.image,
-                height: knowSize ?  ScreenUtil().setHeight(height) : isize.height,
-                width: knowSize ? ScreenUtil().setWidth(width) : isize.width,
+                height: knowSize ?  ScreenUtil().setHeight(height!) : isize.height,
+                width: knowSize ? ScreenUtil().setWidth(width!) : isize.width,
               );
 
 //              print("src:${src}的图片尺寸为:\n${isize.width}:${isize.height}");

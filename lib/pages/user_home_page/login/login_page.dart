@@ -1,8 +1,8 @@
+import 'package:fbutton_nullsafety/fbutton_nullsafety.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fbutton/fbutton.dart';
-import 'package:fsuper/fsuper.dart';
+import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
 import 'package:provider/provider.dart';
 import '../../../provider/user_provider.dart';
 
@@ -17,7 +17,7 @@ class _UserLoginPageState extends State<UserLoginPage> {
   String username = ""; // 用户名
   String password = ""; // 密码
   bool loading = false;// 是否登录中
-  UserProvider userProvider;// 用户状态管理
+  UserProvider? userProvider;// 用户状态管理
 
   @override
   Widget build(BuildContext context) {
@@ -124,7 +124,7 @@ class _UserLoginPageState extends State<UserLoginPage> {
                   color: Colors.pink,
                   loading: loading,
                   onPressed: () async{
-                    bool isLoginSuccess = await this.userProvider.login(username, password);
+                    bool isLoginSuccess = await this.userProvider!.login(username, password);
                     if(isLoginSuccess){
                       Navigator.pop(context);
                     }
@@ -139,7 +139,7 @@ class _UserLoginPageState extends State<UserLoginPage> {
                   clickLoading: true,
                   loadingColor: Colors.white,
                   loadingText: "正在登录...",
-                  imageAlignment: ImageAlignment.left,
+                  imageAlignment: ImageAlignment.left, highlightColor: Colors.grey.shade100,
                 )
               ],
             ),

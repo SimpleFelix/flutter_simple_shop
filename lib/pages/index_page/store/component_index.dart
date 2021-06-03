@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 class StoreComponentIndex extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    StoreData storeData = Provider.of<IndexProvider>(context).storeData;
+    StoreData? storeData = Provider.of<IndexProvider>(context).storeData;
     return storeData != null
         ? Container(
             margin: EdgeInsets.symmetric(horizontal: 50.w),
@@ -20,7 +20,7 @@ class StoreComponentIndex extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(50.sp)),
             ),
             child: Column(
-              children: [_buildTitle(context), StoreItemCard(storeInfo: storeData.lists[0]),StoreGoodsCard(storeInfo: storeData.lists[0],)],
+              children: [_buildTitle(context), StoreItemCard(storeInfo: storeData.lists![0]),StoreGoodsCard(storeInfo: storeData.lists![0],)],
             ),
           )
         : Container();
@@ -37,10 +37,10 @@ class StoreComponentIndex extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text("品牌特卖", style: Theme.of(context).textTheme.subtitle2),
-            Text("今日上新774款", style: Theme.of(context).textTheme.bodyText2.copyWith(color: Colors.grey,fontSize: 52.sp)),
+            Text("今日上新774款", style: Theme.of(context).textTheme.bodyText2!.copyWith(color: Colors.grey,fontSize: 52.sp)),
           ],
         )),
-        Flexible(child: Container(child: Text("特步5折特卖 >", style: Theme.of(context).textTheme.bodyText2.copyWith(color: Colors.pinkAccent)), alignment: Alignment.centerRight)),
+        Flexible(child: Container(child: Text("特步5折特卖 >", style: Theme.of(context).textTheme.bodyText2!.copyWith(color: Colors.pinkAccent)), alignment: Alignment.centerRight)),
       ]),
     );
   }

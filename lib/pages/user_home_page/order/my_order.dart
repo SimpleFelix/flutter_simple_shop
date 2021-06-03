@@ -3,14 +3,14 @@ import 'package:demo1/modals/order_list_model.dart';
 import 'package:demo1/widgets/loading_more_list_indicator.dart';
 import 'package:demo1/widgets/pullto_refresh_header.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/screenutil.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:loading_more_list/loading_more_list.dart';
 import 'package:pull_to_refresh_notification/pull_to_refresh_notification.dart';
 import '../../../repository/order_respository.dart';
 
 class MyOrderHomePage extends StatefulWidget {
 
-  String stype; // 审核类型
+  String? stype; // 审核类型
 
   MyOrderHomePage({this.stype});
 
@@ -46,7 +46,7 @@ class _MyOrderHomePageState extends State<MyOrderHomePage> {
                   SliverListConfig<OrderAuditObject>(
 
                     itemBuilder: (c,item,index){
-                      String createTimeStr = DateUtil.formatDateMs(int.parse(item.createTime),format: "yyyy-MM-dd HH:mm:ss");
+                      String createTimeStr = DateUtil.formatDateMs(int.parse(item.createTime!),format: "yyyy-MM-dd HH:mm:ss");
                       String stateTip = "等待审核";
                       Color stateTipColor = Colors.black;
                       Icon stateIcon = Icon(Icons.info_outline,color: stateTipColor,);

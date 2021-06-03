@@ -29,13 +29,13 @@ class PostCard extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.only(bottom: 8.0),
                       child: Text(
-                        dtolist.title,
+                        dtolist.title!,
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ),
                     //作者
                     Text(
-                      dtolist.author,
+                      dtolist.author!,
                       style: TextStyle(color: Colors.grey[500]),
                     )
                   ],
@@ -43,7 +43,7 @@ class PostCard extends StatelessWidget {
 
                 //头像
                 CircleAvatar(
-                  backgroundImage: NetworkImage(dtolist.authorHeader),
+                  backgroundImage: NetworkImage(dtolist.authorHeader!),
                   radius: 20.0,
                   backgroundColor: Colors.white,
                 )
@@ -57,7 +57,7 @@ class PostCard extends StatelessWidget {
             alignment: AlignmentDirectional.topStart,
             padding: EdgeInsets.all(32.0),
             child: new Text(
-              dtolist.content,
+              dtolist.content!,
               softWrap: true,
               textAlign: TextAlign.left,
             ),

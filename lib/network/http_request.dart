@@ -12,7 +12,7 @@ import 'dio_errors.dart';
 /// 2020-12-1 14:11:37
 ///
 class HttpRequest {
-  static Dio dio;
+  static Dio? dio;
 
   // static const String HOST = "http://192.168.43.44:8089/tkapi";
   static const String HOST = "http://192.168.199.118:8089/tkapi";
@@ -53,11 +53,11 @@ class HttpRequest {
   /// @[url] 接口地址. (require)
   /// @[data] 参数. 列子:{"id":"10553823"}
   /// @[method] 请求方法.
-  static Future<String> req(String url, {Map<String, String> data, String method,ServerError onError}) async {
+  static Future<String> req(String url, {Map<String, String?>? data, String? method,ServerError? onError}) async {
     /// 请求前的准备
     method = method ?? GET;
     onError = onError ?? serverErrorDefaultHandle;
-    Dio dio = createInstance();
+    Dio dio = createInstance()!;
     data = data ?? Map<String, String>();
     ServerEncryptionData serverEncryptionData = RequestUtil.handleParams(data);
     dio.interceptors.add(ParamsTokenInterceptor(serverEncryptionData.paramsToken));
@@ -65,7 +65,7 @@ class HttpRequest {
     /// 准备完成
 
     /// 开始请求数据
-    Response response;
+    Response? response;
 
     try {
       switch (method) {
@@ -82,7 +82,7 @@ class HttpRequest {
       if (response != null) {
         Result result = Result.fromJson(response.data);
         if(result.state==SUCCESS_CODE){
-          String data = AesUtil.aesDecrypt(result.data);
+          String data = AesUtil.aesDecrypt(result.data!);
           return data;
         }else{
           onError(result.state,result.message,url);
@@ -97,7 +97,7 @@ class HttpRequest {
   }
 
   /// 创建dio实例
-  static Dio createInstance() {
+  static Dio? createInstance() {
     if (dio == null) {
       BaseOptions options = BaseOptions(baseUrl:HOST, connectTimeout: TIMEOUT);
       dio = Dio(options);
@@ -107,10 +107,10 @@ class HttpRequest {
 }
 
 /// 定义服务器错误处理函数HOST
-typedef ServerError = void Function(int code,String message,String api);
+typedef ServerError = void Function(int? code,String? message,String api);
 
 /// 默认错误处理
 /// 这里只打印了一下服务器返回的报错信息
-void serverErrorDefaultHandle(int code,String message,String api){
+void serverErrorDefaultHandle(int? code,String? message,String api){
   print("服务器自定义错误.code=$code,message=$message,url=$api");
 }

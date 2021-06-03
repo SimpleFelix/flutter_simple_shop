@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../modals/GoodsInfo.dart';
 
 class ShopInfoWidget extends StatelessWidget {
-  final GoodsDetail goodsInfo;
+  final GoodsDetail? goodsInfo;
 
   ShopInfoWidget({this.goodsInfo});
 
@@ -21,7 +21,7 @@ class ShopInfoWidget extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.only(top: 5.0, bottom: 5.0, right: 10.0),
                   child: Image.network(
-                    MImageUtils.magesProcessor(goodsInfo.shopLogo),
+                    MImageUtils.magesProcessor(goodsInfo!.shopLogo!),
                     width: ScreenUtil().setWidth(180),
                     height: ScreenUtil().setHeight(180),
                   ),
@@ -32,7 +32,7 @@ class ShopInfoWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Text(
-                        goodsInfo.shopName,
+                        goodsInfo!.shopName!,
                         style: TextStyle(
                             fontWeight: FontWeight.w600,
                             fontSize: ScreenUtil().setSp(50)),
@@ -41,7 +41,7 @@ class ShopInfoWidget extends StatelessWidget {
                           child: Row(
                         children: <Widget>[
                           // 店铺类型
-                          goodsInfo.shopType == 1
+                          goodsInfo!.shopType == 1
                               ? Image.asset(
                                   "assets/icons/tianmao.png",
                                   width: ScreenUtil().setWidth(60),
@@ -54,7 +54,7 @@ class ShopInfoWidget extends StatelessWidget {
                                 ),
 
                           //是否金牌卖家
-                          goodsInfo.goldSellers == 1
+                          goodsInfo!.goldSellers == 1
                               ? Container(
                                   margin: EdgeInsets.only(left: 5.0),
                                   child: Image.asset(
@@ -92,13 +92,13 @@ class ShopInfoWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Container(
-                    child: Text("宝贝描述:${goodsInfo.descScore}"),
+                    child: Text("宝贝描述:${goodsInfo!.descScore}"),
                   ),
                   Container(
-                    child: Text("卖家服务:${goodsInfo.serviceScore}"),
+                    child: Text("卖家服务:${goodsInfo!.serviceScore}"),
                   ),
                   Container(
-                    child: Text("物流服务:${goodsInfo.shipScore}"),
+                    child: Text("物流服务:${goodsInfo!.shipScore}"),
                   )
                 ],
               ),

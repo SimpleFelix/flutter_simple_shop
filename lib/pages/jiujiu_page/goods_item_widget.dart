@@ -11,7 +11,7 @@ import '../../fluro/NavigatorUtil.dart';
 class GoodsItemWidget extends StatelessWidget {
   final NineGoodsItem goodsItem;
 
-  GoodsItemWidget({@required this.goodsItem});
+  GoodsItemWidget({required this.goodsItem});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class GoodsItemWidget extends StatelessWidget {
         children: <Widget>[
           // 商品图片
           ExtendedImage.network(
-            MImageUtils.magesProcessor(goodsItem.mainPic),
+            MImageUtils.magesProcessor(goodsItem.mainPic!),
             fit: BoxFit.cover,
             width: ScreenUtil().setWidth(500),
             cache: true,
@@ -56,7 +56,7 @@ class GoodsItemWidget extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             //标题
-                            Text(goodsItem.dtitle,
+                            Text(goodsItem.dtitle!,
                                 style: TextStyle(
                                     fontWeight: FontWeight.w600,
                                     color: Colors.black),

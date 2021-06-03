@@ -8,13 +8,13 @@ import 'package:flutter/material.dart';
 class StoreGoodsItemLayout extends StatelessWidget {
   final StoreGoods storeGoods;
 
-  const StoreGoodsItemLayout({Key key, @required this.storeGoods}) : super(key: key);
+  const StoreGoodsItemLayout({Key? key, required this.storeGoods}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.grey[100].withOpacity(.8),
+        color: Colors.grey[100]!.withOpacity(.8),
         borderRadius: BorderRadius.all(Radius.circular(10)),
       ),
       child: Column(
@@ -22,7 +22,7 @@ class StoreGoodsItemLayout extends StatelessWidget {
         children: [
           Stack(
             children: [
-              Image.network(MImageUtils.magesProcessor(storeGoods.mainPic)),
+              Image.network(MImageUtils.magesProcessor(storeGoods.mainPic!)),
               Positioned(
                 child: _buildDiscountLayout(),
                 bottom: 0,

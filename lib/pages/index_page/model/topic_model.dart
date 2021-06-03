@@ -15,12 +15,12 @@ class MainTopic {
     this.topBanner,
   });
 
-  int topicId;
-  String topicName;
-  DateTime startTime;
-  DateTime endTime;
-  List<String> banner;
-  List<String> topBanner;
+  int? topicId;
+  String? topicName;
+  DateTime? startTime;
+  DateTime? endTime;
+  List<String>? banner;
+  List<String>? topBanner;
 
   factory MainTopic.fromJson(Map<String, dynamic> json) => MainTopic(
     topicId: json["topicId"],
@@ -34,9 +34,9 @@ class MainTopic {
   Map<String, dynamic> toJson() => {
     "topicId": topicId,
     "topicName": topicName,
-    "startTime": startTime.toIso8601String(),
-    "endTime": endTime.toIso8601String(),
-    "banner": List<dynamic>.from(banner.map((x) => x)),
-    "topBanner": List<dynamic>.from(topBanner.map((x) => x)),
+    "startTime": startTime!.toIso8601String(),
+    "endTime": endTime!.toIso8601String(),
+    "banner": List<dynamic>.from(banner!.map((x) => x)),
+    "topBanner": List<dynamic>.from(topBanner!.map((x) => x)),
   };
 }

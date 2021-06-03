@@ -9,9 +9,9 @@ Result resultFromJson(String str) => Result.fromJson(json.decode(str));
 String resultToJson(Result data) => json.encode(data.toJson());
 
 class Result {
-  int code;
-  String msg;
-  String data;
+  int? code;
+  String? msg;
+  String? data;
 
   Result({
     this.code,

@@ -14,10 +14,10 @@ class GoodsListRepository extends LoadingMoreBase<GoodsItem> {
   int pageSize = 50; // 每页条数，默认为100，最大值200，若小于10，则按10条处理，每页条数仅支持输入10,50,100,200
 
   //外面传进来的参数
-  String g_sort;
-  String brand;
-  String cids;
-  String subcid;
+  String? g_sort;
+  String? brand;
+  String? cids;
+  String? subcid;
 
   GoodsListRepository({this.g_sort, this.brand, this.cids, this.subcid});
 
@@ -52,7 +52,7 @@ class GoodsListRepository extends LoadingMoreBase<GoodsItem> {
         GoodsList _goods =
             GoodsList.fromJson(json.decode(result.data.toString()));
         if (_goods.code == 0) {
-          if (pageSize != _goods.data.list.length) {
+          if (pageSize != _goods.data!.list!.length) {
             _hasMore = false;
           }
 
@@ -60,7 +60,7 @@ class GoodsListRepository extends LoadingMoreBase<GoodsItem> {
             clear();
           }
 
-          for (var item in _goods.data.list) {
+          for (var item in _goods.data!.list!) {
             if (!contains(item) && hasMore) {
               add(item);
             }

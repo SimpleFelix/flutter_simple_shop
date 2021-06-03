@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 // 资源未找到
 class NotFoundPage extends StatelessWidget {
-  final String title;
-  final String desc;
+  final String? title;
+  final String? desc;
 
   NotFoundPage({this.title, this.desc});
 

@@ -4,9 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 // 自定义选择项目工具条
 class CustomSelectToolbar extends StatefulWidget {
-  final List<SelectMenu> items;
-  final int select;
-  final bool hideSubTitle;
+  final List<SelectMenu>? items;
+  final int? select;
+  final bool? hideSubTitle;
 
   CustomSelectToolbar({this.items, this.select, this.hideSubTitle});
 
@@ -18,7 +18,7 @@ class _CustomSelectToolbarState extends State<CustomSelectToolbar>
     with AfterLayoutMixin<CustomSelectToolbar> {
   @override
   Widget build(BuildContext context) {
-    bool hide = widget.hideSubTitle;
+    bool? hide = widget.hideSubTitle;
     return Stack(
       children: [
         Container(
@@ -28,16 +28,16 @@ class _CustomSelectToolbarState extends State<CustomSelectToolbar>
                   child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
-                      children: widget.items
-                          .map((f) => _buildItemWidget(f, hide, widget.select))
+                      children: widget.items!
+                          .map((f) => _buildItemWidget(f, hide!, widget.select))
                           .toList(),
                     ),
                   ),
                 )
               : Container(
                   child: Row(
-                    children: widget.items
-                        .map((f) => _buildItemWidget(f, hide, widget.select))
+                    children: widget.items!
+                        .map((f) => _buildItemWidget(f, hide!, widget.select))
                         .toList(),
                   ),
                 ),
@@ -55,7 +55,7 @@ class _CustomSelectToolbarState extends State<CustomSelectToolbar>
   }
 
   Widget _buildItemWidget(
-      SelectMenu selectMenu, bool hideSubTitle, int select) {
+      SelectMenu selectMenu, bool hideSubTitle, int? select) {
     Widget widget = Container(
       width: getItemWidgetWidth(),
       child: Container(
@@ -67,7 +67,7 @@ class _CustomSelectToolbarState extends State<CustomSelectToolbar>
               duration: Duration(milliseconds: 500),
               padding: EdgeInsets.only(top: hideSubTitle ? 0 : 0),
               child: Text(
-                selectMenu.title,
+                selectMenu.title!,
                 style: TextStyle(
                     color: _buildPrimaryColor(getIndexNumber(selectMenu)),
                     fontSize: 60.sp),
@@ -89,7 +89,7 @@ class _CustomSelectToolbarState extends State<CustomSelectToolbar>
                           ? Colors.redAccent
                           : Colors.transparent),
                   child: Text(
-                    selectMenu.subTitle,
+                    selectMenu.subTitle!,
                     style: TextStyle(
                         fontSize: 45.sp,
                         color: getIndexNumber(selectMenu) == select
@@ -132,8 +132,8 @@ class _CustomSelectToolbarState extends State<CustomSelectToolbar>
 
   int getIndexNumber(SelectMenu selectMenu) {
     int index = 0;
-    for (int i = 0; i <= widget.items.length; i++) {
-      SelectMenu item = widget.items[i];
+    for (int i = 0; i <= widget.items!.length; i++) {
+      SelectMenu item = widget.items![i];
       if (item.subTitle == selectMenu.subTitle &&
           item.title == selectMenu.title) {
         index = i;
@@ -143,12 +143,12 @@ class _CustomSelectToolbarState extends State<CustomSelectToolbar>
     return index;
   }
 
-  int getItemSize() => widget.items.length; // 获取item的长度
+  int getItemSize() => widget.items!.length; // 获取item的长度
 
   // 计算每个item的宽度
   double getItemWidgetWidth() {
     double ww = MediaQuery.of(context).size.width - 100.w;
-    if (widget.items.isNotEmpty) {
+    if (widget.items!.isNotEmpty) {
       switch (getItemSize()) {
         case 1:
           return ww;
@@ -176,8 +176,8 @@ class _CustomSelectToolbarState extends State<CustomSelectToolbar>
 }
 
 class SelectMenu {
-  String title;
-  String subTitle;
+  String? title;
+  String? subTitle;
 
   SelectMenu({this.title, this.subTitle});
 }

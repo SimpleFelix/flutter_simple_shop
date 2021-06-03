@@ -8,11 +8,11 @@ import 'package:flutter/material.dart';
 
 /// 品牌信息卡片
 class BrandDetail extends StatelessWidget {
-  final BrandDetailModel brandDetailModel;
+  final BrandDetailModel? brandDetailModel;
   final Color bgColor;
 
   const BrandDetail(
-      {Key key, @required this.brandDetailModel, @required this.bgColor})
+      {Key? key, required this.brandDetailModel, required this.bgColor})
       : super(key: key);
 
   @override
@@ -42,7 +42,7 @@ class BrandDetail extends StatelessWidget {
 
   Widget _buildData(){
     return Container(
-      child: Text("${Numeral(brandDetailModel.fansNum)}粉丝   ${Numeral(brandDetailModel.sales)}近期销量",style: TextStyle(
+      child: Text("${Numeral(brandDetailModel!.fansNum!)}粉丝   ${Numeral(brandDetailModel!.sales!)}近期销量",style: TextStyle(
         color: Colors.white.withOpacity(.8),
         fontSize: 45.sp
       ),),
@@ -53,7 +53,7 @@ class BrandDetail extends StatelessWidget {
     return Row(
       children: [
         Text(
-          brandDetailModel.brandName,
+          brandDetailModel!.brandName!,
           style: TextStyle(
               fontSize: 55.sp, color: Colors.white, fontWeight: FontWeight.bold),
         ),
@@ -67,7 +67,7 @@ class BrandDetail extends StatelessWidget {
 
   Widget _buildTag() {
     return TagWidget2(
-      tag: "${brandDetailModel.brandFeatures}",
+      tag: "${brandDetailModel!.brandFeatures}",
     );
   }
 
@@ -80,7 +80,7 @@ class BrandDetail extends StatelessWidget {
         child: CircleAvatar(
           backgroundColor: Colors.white,
           child: Image.network(
-            MImageUtils.magesProcessor(brandDetailModel.brandLogo),
+            MImageUtils.magesProcessor(brandDetailModel!.brandLogo!),
             width: 300.w,
             height: 300.w,
             fit: BoxFit.cover,
@@ -94,7 +94,7 @@ class BrandDetail extends StatelessWidget {
     showDialog(context: context,builder: (context){
       return AlertDialog(
         title: Text("关于品牌"),
-        content: Text(brandDetailModel.brandDesc),
+        content: Text(brandDetailModel!.brandDesc!),
       );
     });
   }

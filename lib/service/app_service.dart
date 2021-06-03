@@ -26,7 +26,7 @@ class IndexService {
   }
 
   /// 获取品牌栏目列表
-  static Future<StoreData> fetchStores(StoreListParamsModel params) async {
+  static Future<StoreData?> fetchStores(StoreListParamsModel params) async {
     String response = await HttpRequest.req(Apis.BRAND_LIST,
         data: {"cid": params.cid, "pageId": params.pageId, "pageSize": params.pageSize});
     if (response.isNotEmpty) return StoreData.fromJson(json.decode(response));
@@ -34,7 +34,7 @@ class IndexService {
   }
 
   /// 获取品牌详情
-  static Future<BrandDetailModel> fetchStoreDetail(StoreDetailParamsModel params) async {
+  static Future<BrandDetailModel?> fetchStoreDetail(StoreDetailParamsModel params) async {
     String response = await HttpRequest.req(Apis.BRAND_DETAIL,data: {"brandId":params.brandId,"pageId":params.pageId,"pageSize":params.pageSize});
     if(response.isNotEmpty) return BrandDetailModel.fromJson(json.decode(response));
     return null;

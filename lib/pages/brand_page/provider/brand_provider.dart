@@ -14,7 +14,7 @@ class BrandProvider extends ChangeNotifier {
   String brandId = "";
   int pageId = 1;
   int pageSize = 20;
-  BrandDetailModel brandDetailModel;
+  BrandDetailModel? brandDetailModel;
   List<BrandDetailGoodsList> brandGoodsList = [];
   Color detailBgColor = Colors.white;
 
@@ -26,9 +26,9 @@ class BrandProvider extends ChangeNotifier {
     page = 1;
     StoreListParamsModel storeListParamsModel =
         StoreListParamsModel(this.cid, "${this.page}", "${this.size}");
-    StoreData storeData = await IndexService.fetchStores(storeListParamsModel);
+    StoreData? storeData = await IndexService.fetchStores(storeListParamsModel);
     if (storeData != null) {
-      this.lists.addAll(storeData.lists);
+      this.lists.addAll(storeData.lists!);
     }
     notifyListeners();
   }
@@ -39,9 +39,9 @@ class BrandProvider extends ChangeNotifier {
     print("正在加载下一页:$page");
     StoreListParamsModel storeListParamsModel =
         StoreListParamsModel(this.cid, "${this.page}", "${this.size}");
-    StoreData storeData = await IndexService.fetchStores(storeListParamsModel);
+    StoreData? storeData = await IndexService.fetchStores(storeListParamsModel);
     if (storeData != null) {
-      this.lists.addAll(storeData.lists);
+      this.lists.addAll(storeData.lists!);
     }
     notifyListeners();
   }
@@ -52,12 +52,12 @@ class BrandProvider extends ChangeNotifier {
     this.brandId = _brandId;
     StoreDetailParamsModel storeDetailParamsModel =
         StoreDetailParamsModel(_brandId, "$pageSize", "$pageId");
-    BrandDetailModel brandDetailModel =
+    BrandDetailModel? brandDetailModel =
         await IndexService.fetchStoreDetail(storeDetailParamsModel);
     if (brandDetailModel != null) {
       this.detailBgColor =
-          await ColorUtil.getImageMainColor(brandDetailModel.brandLogo);
-      this.brandGoodsList.addAll(brandDetailModel.list);
+          await ColorUtil.getImageMainColor(brandDetailModel.brandLogo!);
+      this.brandGoodsList.addAll(brandDetailModel.list!);
       this.brandDetailModel = brandDetailModel;
     }
     notifyListeners();
@@ -68,12 +68,12 @@ class BrandProvider extends ChangeNotifier {
     this.pageId = this.pageId = 1;
     StoreDetailParamsModel storeDetailParamsModel =
     StoreDetailParamsModel(this.brandId, "$pageSize", "$pageId");
-    BrandDetailModel brandDetailModel =
+    BrandDetailModel? brandDetailModel =
     await IndexService.fetchStoreDetail(storeDetailParamsModel);
     if(brandDetailModel!=null){
-      this.brandGoodsList.addAll(brandDetailModel.list);
+      this.brandGoodsList.addAll(brandDetailModel.list!);
       notifyListeners();
-      if(brandDetailModel.list.length!=this.pageSize){
+      if(brandDetailModel.list!.length!=this.pageSize){
         return false;
       }
       return true;

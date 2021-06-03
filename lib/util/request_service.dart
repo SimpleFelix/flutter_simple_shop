@@ -91,7 +91,7 @@ Future findOrderList(data){
 }
 
 // 获取好订单详情接口,需要传入一个商品id:goods_id
-Future getHaodankuDetailInfo(String goods_id){
+Future getHaodankuDetailInfo(String? goods_id){
   return post(Api.API_HDK_DETAIL,data: {"goods_id":goods_id});
 }
 
@@ -101,14 +101,14 @@ Future getIndexGridSpecial(){
 }
 
 // 获取商店信息
-Future<ShopInfo> getShopInfo(String shopName) async {
+Future<ShopInfo?> getShopInfo(String shopName) async {
   await post(Api.API_GET_SHOP_INFO,data:{"shopName":shopName}).then((res){
     Result result = ResultUtils.format(res);
     if(result.code==200){
       ShopInfo shopInfo = ShopInfo.fromJson(json.decode(result.data.toString()));
       return shopInfo;
     }else{
-      SystemToast.show(result.msg);
+      SystemToast.show(result.msg!);
       return null;
     }
   });

@@ -6,19 +6,19 @@ import 'package:flutter/material.dart';
 
 /// 品牌的商品列表
 class DetailProductList extends StatelessWidget {
-  final List<BrandDetailGoodsList> list;
+  final List<BrandDetailGoodsList>? list;
 
-  const DetailProductList({Key key, this.list}) : super(key: key);
+  const DetailProductList({Key? key, this.list}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SliverList(
         delegate:
-            SliverChildBuilderDelegate(_builderList, childCount: list.length));
+            SliverChildBuilderDelegate(_builderList, childCount: list!.length));
   }
 
   Widget _builderList(BuildContext context, int index) {
-    BrandDetailGoodsList brandDetailGoodsList = list[index];
+    BrandDetailGoodsList brandDetailGoodsList = list![index];
     return Card(
       elevation: 1,
       child: Container(
@@ -44,7 +44,7 @@ class DetailProductList extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            item.dTitle,
+            item.dTitle!,
             style: TextStyle(
                 color: Colors.black,
                 fontSize: 50.sp,
@@ -64,7 +64,7 @@ class DetailProductList extends StatelessWidget {
     return Container(
         color: Colors.grey[200],
         child: Image.network(
-          MImageUtils.magesProcessor(item.mainPic),
+          MImageUtils.magesProcessor(item.mainPic!),
           width: imageSize.width,
           height: imageSize.height,
         ));

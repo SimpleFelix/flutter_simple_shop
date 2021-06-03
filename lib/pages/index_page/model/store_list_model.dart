@@ -1,6 +1,6 @@
 import 'dart:convert' show json;
 
-T asT<T>(dynamic value) {
+T? asT<T>(dynamic value) {
   if (value is T) {
     return value;
   }
@@ -17,10 +17,10 @@ class StoreData {
   });
 
 
-  factory StoreData.fromJson(Map<String, dynamic> jsonRes){ if(jsonRes == null){return null;}
-  final List<StoreInfo> lists = jsonRes['lists'] is List ? <StoreInfo>[]: null;
+  factory StoreData.fromJson(Map<String, dynamic> jsonRes){
+  final List<StoreInfo>? lists = jsonRes['lists'] is List ? <StoreInfo>[]: null;
   if(lists!=null) {
-    for (final dynamic item in jsonRes['lists']) { if (item != null) { lists.add(StoreInfo.fromJson(asT<Map<String,dynamic>>(item)));  } }
+    for (final dynamic item in jsonRes['lists']) { if (item != null) { lists.add(StoreInfo.fromJson(asT<Map<String,dynamic>>(item)!));  } }
   }
 
 
@@ -30,10 +30,10 @@ class StoreData {
     totalCount : asT<int>(jsonRes['totalCount']),
   );}
 
-  List<StoreInfo> lists;
-  int currentPage;
-  int pageSize;
-  int totalCount;
+  List<StoreInfo>? lists;
+  int? currentPage;
+  int? pageSize;
+  int? totalCount;
 
   Map<String, dynamic> toJson() => <String, dynamic>{
     'lists': lists,
@@ -60,10 +60,10 @@ class StoreInfo {
   });
 
 
-  factory StoreInfo.fromJson(Map<String, dynamic> jsonRes){ if(jsonRes == null){return null;}
-  final List<StoreGoods> goodsList = jsonRes['goodsList'] is List ? <StoreGoods>[]: null;
+  factory StoreInfo.fromJson(Map<String, dynamic> jsonRes){
+  final List<StoreGoods>? goodsList = jsonRes['goodsList'] is List ? <StoreGoods>[]: null;
   if(goodsList!=null) {
-    for (final dynamic item in jsonRes['goodsList']) { if (item != null) { goodsList.add(StoreGoods.fromJson(asT<Map<String,dynamic>>(item)));  } }
+    for (final dynamic item in jsonRes['goodsList']) { if (item != null) { goodsList.add(StoreGoods.fromJson(asT<Map<String,dynamic>>(item)!));  } }
   }
 
 
@@ -77,14 +77,14 @@ class StoreInfo {
     goodsList:goodsList,
   );}
 
-  int brandId;
-  String brandName;
-  String brandLogo;
-  String brandFeatures;
-  int sales;
-  double maxDiscountAmount;
-  double maxDiscount;
-  List<StoreGoods> goodsList;
+  int? brandId;
+  String? brandName;
+  String? brandLogo;
+  String? brandFeatures;
+  int? sales;
+  double? maxDiscountAmount;
+  double? maxDiscount;
+  List<StoreGoods>? goodsList;
 
   Map<String, dynamic> toJson() => <String, dynamic>{
     'brandId': brandId,
@@ -135,8 +135,8 @@ class StoreGoods {
   });
 
 
-  factory StoreGoods.fromJson(Map<String, dynamic> jsonRes){ if(jsonRes == null){return null;}
-  final List<String> specialText = jsonRes['specialText'] is List ? <String>[]: null;
+  factory StoreGoods.fromJson(Map<String, dynamic> jsonRes){
+  final List<String?>? specialText = jsonRes['specialText'] is List ? <String?>[]: null;
   if(specialText!=null) {
     for (final dynamic item in jsonRes['specialText']) { if (item != null) { specialText.add(asT<String>(item));  } }
   }
@@ -172,34 +172,34 @@ class StoreGoods {
     dTitle : asT<String>(jsonRes['dTitle']),
   );}
 
-  int id;
-  String goodsId;
-  int cid;
-  String brandId;
-  String title;
-  String desc;
-  List<String> specialText;
-  int commissionType;
-  double commissionRate;
-  int activityType;
-  int dailySales;
-  int monthSales;
-  String mainPic;
-  String marketingMainPic;
-  String video;
-  double originPrice;
-  double actualPrice;
-  String couponId;
-  int couponPrice;
-  String couponLink;
-  String couponConditions;
-  int couponReceiveNum;
-  int couponTotalNum;
-  String couponEndTime;
-  String couponStartTime;
-  double discount;
-  int freeshipRemoteDistrct;
-  String dTitle;
+  int? id;
+  String? goodsId;
+  int? cid;
+  String? brandId;
+  String? title;
+  String? desc;
+  List<String?>? specialText;
+  int? commissionType;
+  double? commissionRate;
+  int? activityType;
+  int? dailySales;
+  int? monthSales;
+  String? mainPic;
+  String? marketingMainPic;
+  String? video;
+  double? originPrice;
+  double? actualPrice;
+  String? couponId;
+  int? couponPrice;
+  String? couponLink;
+  String? couponConditions;
+  int? couponReceiveNum;
+  int? couponTotalNum;
+  String? couponEndTime;
+  String? couponStartTime;
+  double? discount;
+  int? freeshipRemoteDistrct;
+  String? dTitle;
 
   Map<String, dynamic> toJson() => <String, dynamic>{
     'id': id,

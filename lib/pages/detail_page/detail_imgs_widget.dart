@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../widgets/detail_simple_bborder_button.dart';
 
 class DetailImagesWidget extends StatelessWidget {
-  final String images;
+  final String? images;
 
   DetailImagesWidget({this.images});
 
@@ -51,8 +51,8 @@ class DetailImagesWidget extends StatelessWidget {
     List<Widget> imagesWidget = [];
     if (images != "" && images != null) {
       List imagesArr = _getImageList();
-      for (DetailImage item in imagesArr) {
-        String src = _getUrl(item.img);
+      for (DetailImage item in imagesArr as Iterable<DetailImage>) {
+        String src = _getUrl(item.img!);
         imagesWidget.add(ExtendedImage.network(
           src,
           fit: BoxFit.fill,
@@ -67,7 +67,7 @@ class DetailImagesWidget extends StatelessWidget {
   }
 
   List<DetailImage> _getImageList() {
-    return detailImageFromJson(images);
+    return detailImageFromJson(images!);
   }
 
   String _getUrl(String src){

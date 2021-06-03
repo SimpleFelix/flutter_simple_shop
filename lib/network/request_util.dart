@@ -9,8 +9,8 @@ class RequestUtil{
   /// [params] 请求参数
   /// 返回处理加工的数据
   /// 提交服务器的原始数据
-  static ServerEncryptionData handleParams(Map<String, String> params){
-    Map<String, String> newParams = RequestParamsUtils.keySort(params);
+  static ServerEncryptionData handleParams(Map<String, String?> params){
+    Map<String, String?> newParams = RequestParamsUtils.keySort(params);
     String paramsToken = RequestParamsUtils.generateToken(newParams);
     String data = AesUtil.encryptAESCbc128WithPadding7(base64Encode(utf8.encode(json.encode(newParams))));
     print("-----------------------------------------参数&MD5-------------------------------------");

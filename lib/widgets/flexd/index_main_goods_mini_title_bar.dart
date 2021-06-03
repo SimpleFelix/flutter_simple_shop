@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class IndexMainGoodsMiniTitleBar extends SliverPersistentHeaderDelegate {
 
-  final Widget child;
-  final double height;
+  final Widget? child;
+  final double? height;
   IndexMainGoodsMiniTitleBar({this.child,this.height});
 
   @override
@@ -16,11 +16,11 @@ class IndexMainGoodsMiniTitleBar extends SliverPersistentHeaderDelegate {
 
   @override
   // TODO: implement maxExtent
-  double get maxExtent => height;
+  double get maxExtent => height!;
 
   @override
   // TODO: implement minExtent
-  double get minExtent => height;
+  double get minExtent => height!;
 
   @override
   bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) {

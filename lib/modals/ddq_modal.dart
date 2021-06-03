@@ -9,10 +9,10 @@ DtkDdqModal dtkDdqModalFromJson(String str) => DtkDdqModal.fromJson(json.decode(
 String dtkDdqModalToJson(DtkDdqModal data) => json.encode(data.toJson());
 
 class DtkDdqModal {
-  int time;
-  int code;
-  String msg;
-  DdqData data;
+  int? time;
+  int? code;
+  String? msg;
+  DdqData? data;
 
   DtkDdqModal({
     this.time,
@@ -32,15 +32,15 @@ class DtkDdqModal {
     "time": time,
     "code": code,
     "msg": msg,
-    "data": data.toJson(),
+    "data": data!.toJson(),
   };
 }
 
 class DdqData {
-  DateTime ddqTime;
-  int status;
-  List<DdqGoodsListItem> goodsList;
-  List<RoundsList> roundsList;
+  DateTime? ddqTime;
+  int? status;
+  List<DdqGoodsListItem>? goodsList;
+  List<RoundsList>? roundsList;
 
   DdqData({
     this.ddqTime,
@@ -57,53 +57,53 @@ class DdqData {
   );
 
   Map<String, dynamic> toJson() => {
-    "ddqTime": ddqTime.toIso8601String(),
+    "ddqTime": ddqTime!.toIso8601String(),
     "status": status,
-    "goodsList": List<dynamic>.from(goodsList.map((x) => x.toJson())),
-    "roundsList": List<dynamic>.from(roundsList.map((x) => x.toJson())),
+    "goodsList": List<dynamic>.from(goodsList!.map((x) => x.toJson())),
+    "roundsList": List<dynamic>.from(roundsList!.map((x) => x.toJson())),
   };
 }
 
 class DdqGoodsListItem {
-  int id;
-  String goodsId;
-  String itemLink;
-  String title;
-  String dtitle;
-  int cid;
-  List<int> subcid;
-  String ddqDesc;
-  String mainPic;
-  double originalPrice;
-  double actualPrice;
-  double couponPrice;
-  double discounts;
-  String couponLink;
-  DateTime couponEndTime;
-  DateTime couponStartTime;
-  String couponConditions;
-  int commissionType;
-  double commissionRate;
-  DateTime createTime;
-  int couponReceiveNum;
-  int couponTotalNum;
-  int monthSales;
-  int activityType;
-  String activityStartTime;
-  String activityEndTime;
-  String shopName;
-  int shopLevel;
-  String sellerId;
-  int brand;
-  int brandId;
-  String brandName;
-  int twoHoursSales;
-  int dailySales;
-  int quanMLink;
-  int hzQuanOver;
-  int yunfeixian;
-  double estimateAmount;
-  int tbcid;
+  int? id;
+  String? goodsId;
+  String? itemLink;
+  String? title;
+  String? dtitle;
+  int? cid;
+  List<int>? subcid;
+  String? ddqDesc;
+  String? mainPic;
+  double? originalPrice;
+  double? actualPrice;
+  double? couponPrice;
+  double? discounts;
+  String? couponLink;
+  DateTime? couponEndTime;
+  DateTime? couponStartTime;
+  String? couponConditions;
+  int? commissionType;
+  double? commissionRate;
+  DateTime? createTime;
+  int? couponReceiveNum;
+  int? couponTotalNum;
+  int? monthSales;
+  int? activityType;
+  String? activityStartTime;
+  String? activityEndTime;
+  String? shopName;
+  int? shopLevel;
+  String? sellerId;
+  int? brand;
+  int? brandId;
+  String? brandName;
+  int? twoHoursSales;
+  int? dailySales;
+  int? quanMLink;
+  int? hzQuanOver;
+  int? yunfeixian;
+  double? estimateAmount;
+  int? tbcid;
 
   DdqGoodsListItem({
     this.id,
@@ -196,7 +196,7 @@ class DdqGoodsListItem {
     "title": title,
     "dtitle": dtitle,
     "cid": cid,
-    "subcid": List<dynamic>.from(subcid.map((x) => x)),
+    "subcid": List<dynamic>.from(subcid!.map((x) => x)),
     "ddqDesc": ddqDesc,
     "mainPic": mainPic,
     "originalPrice": originalPrice,
@@ -204,12 +204,12 @@ class DdqGoodsListItem {
     "couponPrice": couponPrice,
     "discounts": discounts,
     "couponLink": couponLink,
-    "couponEndTime": couponEndTime.toIso8601String(),
-    "couponStartTime": couponStartTime.toIso8601String(),
+    "couponEndTime": couponEndTime!.toIso8601String(),
+    "couponStartTime": couponStartTime!.toIso8601String(),
     "couponConditions": couponConditions,
     "commissionType": commissionType,
     "commissionRate": commissionRate,
-    "createTime": createTime.toIso8601String(),
+    "createTime": createTime!.toIso8601String(),
     "couponReceiveNum": couponReceiveNum,
     "couponTotalNum": couponTotalNum,
     "monthSales": monthSales,
@@ -233,8 +233,8 @@ class DdqGoodsListItem {
 }
 
 class RoundsList {
-  DateTime ddqTime;
-  int status;
+  DateTime? ddqTime;
+  int? status;
 
   RoundsList({
     this.ddqTime,
@@ -247,7 +247,7 @@ class RoundsList {
   );
 
   Map<String, dynamic> toJson() => {
-    "ddqTime": ddqTime.toIso8601String(),
+    "ddqTime": ddqTime!.toIso8601String(),
     "status": status,
   };
 }

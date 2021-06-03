@@ -7,19 +7,19 @@ class LoadingMoreListCostumIndicator extends StatelessWidget {
   final IndicatorStatus status;
 
   ///call back of loading failed
-  final Function tryAgain;
+  final Function? tryAgain;
 
   ///text to show
-  final String text;
+  final String? text;
 
   ///background color
-  final Color backgroundColor;
+  final Color? backgroundColor;
 
   ///whether it need sliver as container
   final bool isSliver;
 
   ///emppty widget
-  final Widget emptyWidget;
+  final Widget? emptyWidget;
   LoadingMoreListCostumIndicator(this.status,
       {this.tryAgain,
         this.text,
@@ -29,7 +29,7 @@ class LoadingMoreListCostumIndicator extends StatelessWidget {
   @override
   @override
   Widget build(BuildContext context) {
-    Widget widget;
+    Widget? widget;
     switch (status) {
       case IndicatorStatus.none:
         widget = Container(height: 0.0);
@@ -87,7 +87,7 @@ class LoadingMoreListCostumIndicator extends StatelessWidget {
         if (tryAgain != null) {
           widget = GestureDetector(
             onTap: () {
-              tryAgain();
+              tryAgain!();
             },
             child: widget,
           );
@@ -101,7 +101,7 @@ class LoadingMoreListCostumIndicator extends StatelessWidget {
         if (tryAgain != null) {
           widget = GestureDetector(
             onTap: () {
-              tryAgain();
+              tryAgain!();
             },
             child: widget,
           );

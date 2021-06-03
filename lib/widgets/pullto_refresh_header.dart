@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/screenutil.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pull_to_refresh_notification/pull_to_refresh_notification.dart';
 
 
 
 
-  Widget buildPulltoRefreshHeader(PullToRefreshScrollNotificationInfo info) {
+  Widget buildPulltoRefreshHeader(PullToRefreshScrollNotificationInfo? info) {
     //print(info?.mode);
     //print(info?.dragOffset);
     //    print("------------");
     var offset = info?.dragOffset ?? 0.0;
     var mode = info?.mode;
-    Widget refreshWiget = Container();
+    Widget? refreshWiget = Container();
     //it should more than 18, so that RefreshProgressIndicator can be shown fully
     if (info?.refreshWidget != null &&
         offset > 18.0 &&
         mode != RefreshIndicatorMode.error) {
-      refreshWiget = info.refreshWidget;
+      refreshWiget = info!.refreshWidget;
     }
 
     Widget child;

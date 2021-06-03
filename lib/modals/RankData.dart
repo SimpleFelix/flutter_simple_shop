@@ -9,10 +9,10 @@ RankListGoods rankListGoodsFromJson(String str) => RankListGoods.fromJson(json.d
 String rankListGoodsToJson(RankListGoods data) => json.encode(data.toJson());
 
 class RankListGoods {
-  int time;
-  int code;
-  String msg;
-  List<Datum> data;
+  int? time;
+  int? code;
+  String? msg;
+  List<Datum>? data;
 
   RankListGoods({
     this.time,
@@ -32,44 +32,44 @@ class RankListGoods {
     "time": time,
     "code": code,
     "msg": msg,
-    "data": List<dynamic>.from(data.map((x) => x.toJson())),
+    "data": List<dynamic>.from(data!.map((x) => x.toJson())),
   };
 }
 
 class Datum {
-  int id;
-  String goodsId;
-  int ranking;
-  String dtitle;
-  double actualPrice;
-  double commissionRate;
-  double couponPrice;
-  int couponReceiveNum;
-  int couponTotalNum;
-  int monthSales;
-  int twoHoursSales;
-  int dailySales;
-  int hotPush;
-  String mainPic;
-  String title;
-  String desc;
-  double originalPrice;
-  String couponLink;
-  DateTime couponStartTime;
-  DateTime couponEndTime;
-  int commissionType;
-  DateTime createTime;
-  int activityType;
-  String imgs;
-  String guideName;
-  int shopType;
-  String couponConditions;
-  int newRankingGoods;
-  String sellerId;
-  int quanMLink;
-  int hzQuanOver;
-  int yunfeixian;
-  double estimateAmount;
+  int? id;
+  String? goodsId;
+  int? ranking;
+  String? dtitle;
+  double? actualPrice;
+  double? commissionRate;
+  double? couponPrice;
+  int? couponReceiveNum;
+  int? couponTotalNum;
+  int? monthSales;
+  int? twoHoursSales;
+  int? dailySales;
+  int? hotPush;
+  String? mainPic;
+  String? title;
+  String? desc;
+  double? originalPrice;
+  String? couponLink;
+  DateTime? couponStartTime;
+  DateTime? couponEndTime;
+  int? commissionType;
+  DateTime? createTime;
+  int? activityType;
+  String? imgs;
+  String? guideName;
+  int? shopType;
+  String? couponConditions;
+  int? newRankingGoods;
+  String? sellerId;
+  int? quanMLink;
+  int? hzQuanOver;
+  int? yunfeixian;
+  double? estimateAmount;
 
   Datum({
     this.id,
@@ -162,10 +162,10 @@ class Datum {
     "desc": desc,
     "originalPrice": originalPrice,
     "couponLink": couponLink,
-    "couponStartTime": couponStartTime.toIso8601String(),
-    "couponEndTime": couponEndTime.toIso8601String(),
+    "couponStartTime": couponStartTime!.toIso8601String(),
+    "couponEndTime": couponEndTime!.toIso8601String(),
     "commissionType": commissionType,
-    "createTime": createTime.toIso8601String(),
+    "createTime": createTime!.toIso8601String(),
     "activityType": activityType,
     "imgs": imgs,
     "guideName": guideName,

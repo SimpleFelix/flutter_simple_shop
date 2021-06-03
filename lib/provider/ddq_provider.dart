@@ -10,10 +10,10 @@ import '../util/system_toast.dart';
 // 钉钉抢转态管理
 class DdqProvider with ChangeNotifier {
 
-  List<DdqGoodsListItem> goodsList = [];
-  List<RoundsList> roundsList = [];
-  DateTime ddqTime;
-  int status;
+  List<DdqGoodsListItem>? goodsList = [];
+  List<RoundsList>? roundsList = [];
+  DateTime? ddqTime;
+  int? status;
 
   //时间段
   String dateTime = "";
@@ -26,12 +26,12 @@ class DdqProvider with ChangeNotifier {
         DtkDdqModal ddqModal = DtkDdqModal.fromJson(json.decode(result.data.toString()));
         if(ddqModal!=null && ddqModal.code==0){
           if(dateTime==""){
-            goodsList = ddqModal.data.goodsList;
-            roundsList = ddqModal.data.roundsList;
-            ddqTime=ddqModal.data.ddqTime;
-            status =ddqModal.data.status;
+            goodsList = ddqModal.data!.goodsList;
+            roundsList = ddqModal.data!.roundsList;
+            ddqTime=ddqModal.data!.ddqTime;
+            status =ddqModal.data!.status;
           }else{
-            goodsList = ddqModal.data.goodsList;
+            goodsList = ddqModal.data!.goodsList;
           }
           notifyListeners();
         }else{
@@ -43,7 +43,7 @@ class DdqProvider with ChangeNotifier {
     });
   }
 
-  timeChange(DateTime time,int state) async {
+  timeChange(DateTime? time,int? state) async {
     this.ddqTime = time;
     this.goodsList=[];
     this.status=state;

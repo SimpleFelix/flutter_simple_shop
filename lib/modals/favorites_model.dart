@@ -9,8 +9,8 @@ FavoritesAllData favoritesAllDataFromJson(String str) => FavoritesAllData.fromJs
 String favoritesAllDataToJson(FavoritesAllData data) => json.encode(data.toJson());
 
 class FavoritesAllData {
-  PageInfo pageInfo;
-  List<Good> goods;
+  PageInfo? pageInfo;
+  List<Good>? goods;
 
   FavoritesAllData({
     this.pageInfo,
@@ -23,65 +23,65 @@ class FavoritesAllData {
   );
 
   Map<String, dynamic> toJson() => {
-    "pageInfo": pageInfo.toJson(),
-    "goods": List<dynamic>.from(goods.map((x) => x.toJson())),
+    "pageInfo": pageInfo!.toJson(),
+    "goods": List<dynamic>.from(goods!.map((x) => x.toJson())),
   };
 }
 
 class Good {
-  int id;
-  String activityEndTime;
-  int couponTotalNum;
-  String couponConditions;
-  int couponReceiveNum;
-  String marketingMainPic;
-  String activityStartTime;
-  double servicePercent;
-  int estimateAmount;
-  int commissionType;
-  int commissionRate;
-  DateTime couponStartTime;
-  DateTime createTime;
-  String title;
-  String goodsId;
-  String couponLink;
-  DateTime couponEndTime;
-  int couponPrice;
-  int activityType;
-  String mainPic;
-  String actualPrice;
-  int monthSales;
-  String dtitle;
-  int goldSellers;
-  int twoHoursSales;
-  double originalPrice;
-  int shopType;
-  int dailySales;
-  double descScore;
-  int brand;
-  String brandName;
-  String detailPics;
-  double shipScore;
-  double discounts;
-  double shipPercent;
-  int shopLevel;
-  int hotPush;
-  int hzQuanOver;
-  int yunfeixian;
-  int tbcid;
-  String shopName;
-  String sellerId;
-  int brandId;
-  double dsrPercent;
-  double dsrScore;
-  int haitao;
-  int tchaoshi;
-  String itemLink;
-  int cid;
-  int quanMLink;
-  double serviceScore;
-  String teamName;
-  int nineCid;
+  int? id;
+  String? activityEndTime;
+  int? couponTotalNum;
+  String? couponConditions;
+  int? couponReceiveNum;
+  String? marketingMainPic;
+  String? activityStartTime;
+  double? servicePercent;
+  int? estimateAmount;
+  int? commissionType;
+  int? commissionRate;
+  DateTime? couponStartTime;
+  DateTime? createTime;
+  String? title;
+  String? goodsId;
+  String? couponLink;
+  DateTime? couponEndTime;
+  int? couponPrice;
+  int? activityType;
+  String? mainPic;
+  String? actualPrice;
+  int? monthSales;
+  String? dtitle;
+  int? goldSellers;
+  int? twoHoursSales;
+  double? originalPrice;
+  int? shopType;
+  int? dailySales;
+  double? descScore;
+  int? brand;
+  String? brandName;
+  String? detailPics;
+  double? shipScore;
+  double? discounts;
+  double? shipPercent;
+  int? shopLevel;
+  int? hotPush;
+  int? hzQuanOver;
+  int? yunfeixian;
+  int? tbcid;
+  String? shopName;
+  String? sellerId;
+  int? brandId;
+  double? dsrPercent;
+  double? dsrScore;
+  int? haitao;
+  int? tchaoshi;
+  String? itemLink;
+  int? cid;
+  int? quanMLink;
+  double? serviceScore;
+  String? teamName;
+  int? nineCid;
 
   Good({
     this.id,
@@ -207,12 +207,12 @@ class Good {
     "estimateAmount": estimateAmount,
     "commissionType": commissionType,
     "commissionRate": commissionRate,
-    "couponStartTime": couponStartTime.toIso8601String(),
-    "createTime": createTime.toIso8601String(),
+    "couponStartTime": couponStartTime!.toIso8601String(),
+    "createTime": createTime!.toIso8601String(),
     "title": title,
     "goodsId": goodsId,
     "couponLink": couponLink,
-    "couponEndTime": couponEndTime.toIso8601String(),
+    "couponEndTime": couponEndTime!.toIso8601String(),
     "couponPrice": couponPrice,
     "activityType": activityType,
     "mainPic": mainPic,
@@ -253,17 +253,17 @@ class Good {
 }
 
 class PageInfo {
-  int number;
-  int size;
-  List<Content> content;
-  PageInfoSort sort;
-  int numberOfElements;
-  bool first;
-  int totalPages;
-  int totalElements;
-  bool last;
-  Pageable pageable;
-  bool empty;
+  int? number;
+  int? size;
+  List<Content>? content;
+  PageInfoSort? sort;
+  int? numberOfElements;
+  bool? first;
+  int? totalPages;
+  int? totalElements;
+  bool? last;
+  Pageable? pageable;
+  bool? empty;
 
   PageInfo({
     this.number,
@@ -296,23 +296,23 @@ class PageInfo {
   Map<String, dynamic> toJson() => {
     "number": number,
     "size": size,
-    "content": List<dynamic>.from(content.map((x) => x.toJson())),
-    "sort": sort.toJson(),
+    "content": List<dynamic>.from(content!.map((x) => x.toJson())),
+    "sort": sort!.toJson(),
     "numberOfElements": numberOfElements,
     "first": first,
     "totalPages": totalPages,
     "totalElements": totalElements,
     "last": last,
-    "pageable": pageable.toJson(),
+    "pageable": pageable!.toJson(),
     "empty": empty,
   };
 }
 
 class Content {
-  int id;
-  int goodsId;
-  int userId;
-  int createDate;
+  int? id;
+  int? goodsId;
+  int? userId;
+  int? createDate;
 
   Content({
     this.id,
@@ -337,12 +337,12 @@ class Content {
 }
 
 class Pageable {
-  PageableSort sort;
-  int offset;
-  int pageNumber;
-  int pageSize;
-  bool paged;
-  bool unpaged;
+  PageableSort? sort;
+  int? offset;
+  int? pageNumber;
+  int? pageSize;
+  bool? paged;
+  bool? unpaged;
 
   Pageable({
     this.sort,
@@ -363,7 +363,7 @@ class Pageable {
   );
 
   Map<String, dynamic> toJson() => {
-    "sort": sort.toJson(),
+    "sort": sort!.toJson(),
     "offset": offset,
     "pageNumber": pageNumber,
     "pageSize": pageSize,
@@ -373,7 +373,7 @@ class Pageable {
 }
 
 class PageableSort {
-  String ref;
+  String? ref;
 
   PageableSort({
     this.ref,
@@ -389,9 +389,9 @@ class PageableSort {
 }
 
 class PageInfoSort {
-  bool unsorted;
-  bool sorted;
-  bool empty;
+  bool? unsorted;
+  bool? sorted;
+  bool? empty;
 
   PageInfoSort({
     this.unsorted,

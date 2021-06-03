@@ -18,7 +18,7 @@ import 'menu_data.dart';
 
 // 9.9包邮专区
 class JiujiuIndexHome extends StatefulWidget {
-  final ScrollController scrollController;
+  final ScrollController? scrollController;
 
   JiujiuIndexHome({this.scrollController});
 
@@ -28,12 +28,12 @@ class JiujiuIndexHome extends StatefulWidget {
 
 class _JiujiuIndexHomeState extends State<JiujiuIndexHome>
     with TickerProviderStateMixin {
-  NineGoodsProvider nineGoodsProvider;
+  NineGoodsProvider? nineGoodsProvider;
   bool initLoading = false;
   bool nextPageLoading = false;
 
-  JiuJiuRepository jiuJiuRepository;
-  TabController tabController;
+  late JiuJiuRepository jiuJiuRepository;
+  TabController? tabController;
 
   RefreshController _refreshController =
       RefreshController(initialRefresh: true);
@@ -42,7 +42,7 @@ class _JiujiuIndexHomeState extends State<JiujiuIndexHome>
   void _onRefresh() async {
     if (this.nineGoodsProvider != null) {
       _setInitLoadingState(true);
-      await nineGoodsProvider.loadNineGoodsList("1", "");
+      await nineGoodsProvider!.loadNineGoodsList("1", "");
       _setInitLoadingState(false);
     }
     _refreshController.refreshCompleted();
@@ -52,7 +52,7 @@ class _JiujiuIndexHomeState extends State<JiujiuIndexHome>
   void _onLoading() async {
     if (nineGoodsProvider != null && !nextPageLoading) {
       _setNextPageLoadingState(true);
-      await nineGoodsProvider.loadNextPageData();
+      await nineGoodsProvider!.loadNextPageData();
       _setNextPageLoadingState(false);
     }
 
@@ -290,7 +290,7 @@ class _JiujiuIndexHomeState extends State<JiujiuIndexHome>
     if (this.nineGoodsProvider != nineGoodsProvider) {
       this.nineGoodsProvider = nineGoodsProvider;
       _setInitLoadingState(true);
-      await this.nineGoodsProvider.loadNineGoodsList("1", "-1");
+      await this.nineGoodsProvider!.loadNineGoodsList("1", "-1");
       _setInitLoadingState(false);
     }
   }
@@ -310,8 +310,8 @@ class _JiujiuIndexHomeState extends State<JiujiuIndexHome>
 //  选项卡被切换
   void onChangeCallBack(index, cid) async {
     _setInitLoadingState(true);
-    await nineGoodsProvider.setCurrentNineCid(cid.toString());
-    await nineGoodsProvider.loadNineGoodsList("1", cid.toString());
+    await nineGoodsProvider!.setCurrentNineCid(cid.toString());
+    await nineGoodsProvider!.loadNineGoodsList("1", cid.toString());
     _setInitLoadingState(false);
   }
 }

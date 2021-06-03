@@ -9,10 +9,10 @@ GoodsList goodsListFromJson(String str) => GoodsList.fromJson(json.decode(str));
 String goodsListToJson(GoodsList data) => json.encode(data.toJson());
 
 class GoodsList {
-  int time;
-  int code;
-  String msg;
-  Goods data;
+  int? time;
+  int? code;
+  String? msg;
+  Goods? data;
 
   GoodsList({
     this.time,
@@ -32,14 +32,14 @@ class GoodsList {
     "time": time,
     "code": code,
     "msg": msg,
-    "data": data.toJson(),
+    "data": data!.toJson(),
   };
 }
 
 class Goods {
-  List<GoodsItem> list;
-  int totalNum;
-  String pageId;
+  List<GoodsItem>? list;
+  int? totalNum;
+  String? pageId;
 
   Goods({
     this.list,
@@ -54,70 +54,70 @@ class Goods {
   );
 
   Map<String, dynamic> toJson() => {
-    "list": List<dynamic>.from(list.map((x) => x.toJson())),
+    "list": List<dynamic>.from(list!.map((x) => x.toJson())),
     "totalNum": totalNum,
     "pageId": pageId,
   };
 }
 
 class GoodsItem {
-  int id;
-  String goodsId;
-  String title;
-  String dtitle;
-  double originalPrice;
-  double actualPrice;
-  int shopType;
-  int goldSellers;
-  int monthSales;
-  int twoHoursSales;
-  int dailySales;
-  int commissionType;
-  String desc;
-  int couponReceiveNum;
-  String couponLink;
-  DateTime couponEndTime;
-  DateTime couponStartTime;
-  double couponPrice;
-  String couponConditions;
-  int activityType;
-  DateTime createTime;
-  String mainPic;
-  String marketingMainPic;
-  String sellerId;
-  int cid;
-  double discounts;
-  double commissionRate;
-  int couponTotalNum;
-  int haitao;
-  String activityStartTime;
-  String activityEndTime;
-  String shopName;
-  int shopLevel;
-  double descScore;
-  int brand;
-  int brandId;
-  String brandName;
-  int hotPush;
-  String teamName;
-  String itemLink;
-  int tchaoshi;
-  String detailPics;
-  double dsrScore;
-  double dsrPercent;
-  double shipScore;
-  double shipPercent;
-  double serviceScore;
-  double servicePercent;
-  List<int> subcid;
-  int quanMLink;
-  int hzQuanOver;
-  int yunfeixian;
-  double estimateAmount;
-  String shopLogo;
-  List<String> specialText;
-  int freeshipRemoteDistrict;
-  int tbcid;
+  int? id;
+  String? goodsId;
+  String? title;
+  String? dtitle;
+  double? originalPrice;
+  double? actualPrice;
+  int? shopType;
+  int? goldSellers;
+  int? monthSales;
+  int? twoHoursSales;
+  int? dailySales;
+  int? commissionType;
+  String? desc;
+  int? couponReceiveNum;
+  String? couponLink;
+  DateTime? couponEndTime;
+  DateTime? couponStartTime;
+  double? couponPrice;
+  String? couponConditions;
+  int? activityType;
+  DateTime? createTime;
+  String? mainPic;
+  String? marketingMainPic;
+  String? sellerId;
+  int? cid;
+  double? discounts;
+  double? commissionRate;
+  int? couponTotalNum;
+  int? haitao;
+  String? activityStartTime;
+  String? activityEndTime;
+  String? shopName;
+  int? shopLevel;
+  double? descScore;
+  int? brand;
+  int? brandId;
+  String? brandName;
+  int? hotPush;
+  String? teamName;
+  String? itemLink;
+  int? tchaoshi;
+  String? detailPics;
+  double? dsrScore;
+  double? dsrPercent;
+  double? shipScore;
+  double? shipPercent;
+  double? serviceScore;
+  double? servicePercent;
+  List<int>? subcid;
+  int? quanMLink;
+  int? hzQuanOver;
+  int? yunfeixian;
+  double? estimateAmount;
+  String? shopLogo;
+  List<String>? specialText;
+  int? freeshipRemoteDistrict;
+  int? tbcid;
 
   GoodsItem({
     this.id,
@@ -234,7 +234,7 @@ class GoodsItem {
     yunfeixian: json["yunfeixian"],
     estimateAmount: json["estimateAmount"].toDouble(),
     shopLogo: json["shopLogo"],
-    specialText: json["specialText"]!=null? List<String>.from(json["specialText"].map((x) => x)):List<String>(),
+    specialText: json["specialText"]!=null ? List<String>.from(json["specialText"].map((x) => x)):<String>[],
     freeshipRemoteDistrict: json["freeshipRemoteDistrict"],
     tbcid: json["tbcid"],
   );
@@ -255,12 +255,12 @@ class GoodsItem {
     "desc": desc,
     "couponReceiveNum": couponReceiveNum,
     "couponLink": couponLink,
-    "couponEndTime": couponEndTime.toIso8601String(),
-    "couponStartTime": couponStartTime.toIso8601String(),
+    "couponEndTime": couponEndTime!.toIso8601String(),
+    "couponStartTime": couponStartTime!.toIso8601String(),
     "couponPrice": couponPrice,
     "couponConditions": couponConditions,
     "activityType": activityType,
-    "createTime": createTime.toIso8601String(),
+    "createTime": createTime!.toIso8601String(),
     "mainPic": mainPic,
     "marketingMainPic": marketingMainPic,
     "sellerId": sellerId,
@@ -288,13 +288,13 @@ class GoodsItem {
     "shipPercent": shipPercent,
     "serviceScore": serviceScore,
     "servicePercent": servicePercent,
-    "subcid": List<dynamic>.from(subcid.map((x) => x)),
+    "subcid": List<dynamic>.from(subcid!.map((x) => x)),
     "quanMLink": quanMLink,
     "hzQuanOver": hzQuanOver,
     "yunfeixian": yunfeixian,
     "estimateAmount": estimateAmount,
     "shopLogo": shopLogo,
-    "specialText": List<dynamic>.from(specialText.map((x) => x)),
+    "specialText": List<dynamic>.from(specialText!.map((x) => x)),
     "freeshipRemoteDistrict": freeshipRemoteDistrict,
     "tbcid": tbcid,
   };

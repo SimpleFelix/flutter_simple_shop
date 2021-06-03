@@ -6,15 +6,15 @@ import 'package:extended_text/extended_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fsuper/fsuper.dart';
+import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
 
 
 // 商品特殊组件显示
 
 class GoodsText extends SpecialText{
   static final String flag = "[goodsId=";
-  final int start;
-  final SpecialTextGestureTapCallback onTap;
+  final int? start;
+  final SpecialTextGestureTapCallback? onTap;
   GoodsText(TextStyle textStyle,{this.start,this.onTap}) : super(flag, "End]", textStyle);
 
 
@@ -25,14 +25,14 @@ class GoodsText extends SpecialText{
     String goodsText = getContent();
     String jsonStr = goodsText.substring(0,goodsText.lastIndexOf("End"));
     GoodsInfo goodsInfo = GoodsInfo.fromJson(json.decode(jsonStr));
-    String dtitle = goodsInfo.data.dtitle;
-    String mainPic = goodsInfo.data.mainPic;
-    String actualPrice = goodsInfo.data.actualPrice.toString();//券后价
-    String discounts = goodsInfo.data.discounts.toString();// 折扣力度
+    String? dtitle = goodsInfo.data!.dtitle;
+    String mainPic = goodsInfo.data!.mainPic!;
+    String actualPrice = goodsInfo.data!.actualPrice.toString();//券后价
+    String discounts = goodsInfo.data!.discounts.toString();// 折扣力度
     return ExtendedWidgetSpan(
         actualText: toString(),
         deleteAll: true,
-        start: start,
+        start: start!,
         child: GestureDetector(
           onTap: (){
             print("商品卡片被按下了");

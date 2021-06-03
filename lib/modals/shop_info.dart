@@ -18,12 +18,12 @@ class ShopInfo {
     this.shopUrl,
   });
 
-  String sellerNick;
-  String pictUrl;
-  String shopTitle;
-  String shopType;
-  int userId;
-  String shopUrl;
+  String? sellerNick;
+  String? pictUrl;
+  String? shopTitle;
+  String? shopType;
+  int? userId;
+  String? shopUrl;
 
   factory ShopInfo.fromJson(Map<String, dynamic> json) => ShopInfo(
     sellerNick: json["seller_nick"],

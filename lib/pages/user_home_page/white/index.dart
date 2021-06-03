@@ -157,9 +157,10 @@ class _WhiteIndexState extends State<WhiteIndex> {
           buildSvgPictureIcon("assets/svg/tupian.svg", 80,onTap:() async {
             print("上传图片");
             //insertText("<img src='http://picbed.demo.saintic.com/static/upload/huang/2020/05/28/15906484463213831.jpg' width='${1440}' height='400'/>");
-            File image = await ImagePicker.pickImage(source: ImageSource.gallery);
-            print('加载到的图片:${image}');
-            Rect wh = await ImageUtil().getImageWH(localUrl: image.path);
+            var _imagePicker = await ImagePicker().getImage(source: ImageSource.gallery) ;
+            var file = File(_imagePicker!.path);
+            print('加载到的图片:${file}');
+            Rect wh = await ImageUtil().getImageWH(localUrl: file.path);
             print("宽:${wh.width}+高:${wh.height}");
             insertText("<img src='http://picbed.demo.saintic.com/static/upload/huang/2020/05/28/15906580683243296.jpg' width='${wh.width}' height='${wh.height}'/>");
             insertText("<img src='http://picbed.demo.saintic.com/static/upload/huang/2020/05/28/15906609098456196.jpg' width='${3840}' height='${2400}'/>");

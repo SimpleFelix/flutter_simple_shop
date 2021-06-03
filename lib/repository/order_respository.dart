@@ -33,12 +33,12 @@ class OrderRespository extends LoadingMoreBase<OrderAuditObject>{
           Result result = ResultUtils.format(res);
           if(result.code==200){
 
-            OrderAllData orderAllData = OrderAllData.fromJson(json.decode(result.data));
-            _hasMore = !orderAllData.last;
+            OrderAllData orderAllData = OrderAllData.fromJson(json.decode(result.data!));
+            _hasMore = !orderAllData.last!;
 
             if(pageIndex==1) clear();
 
-            List<OrderAuditObject> content = orderAllData.content;
+            List<OrderAuditObject> content = orderAllData.content!;
 
             for(OrderAuditObject item in content){
               if(!contains(item)){

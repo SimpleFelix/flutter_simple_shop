@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 class StoreItemCard extends StatelessWidget {
   final StoreInfo storeInfo;
 
-  const StoreItemCard({Key key, @required this.storeInfo}) : super(key: key);
+  const StoreItemCard({Key? key, required this.storeInfo}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,14 +21,14 @@ class StoreItemCard extends StatelessWidget {
   }
 
   Widget _buildInfo(BuildContext context) {
-    Color bgColor = Provider.of<IndexProvider>(context).brandBgColorMap[storeInfo.brandId];
+    Color? bgColor = Provider.of<IndexProvider>(context).brandBgColorMap[storeInfo.brandId];
     bgColor = bgColor ?? Colors.grey[200];
     return Container(
       height: 350.h,
       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
       margin: EdgeInsets.only(top: 30.h),
       decoration: BoxDecoration(
-        color: bgColor.withOpacity(.05),
+        color: bgColor!.withOpacity(.05),
         borderRadius: BorderRadius.all(Radius.circular(30.sp)),
       ),
       child: Column(
@@ -49,7 +49,7 @@ class StoreItemCard extends StatelessWidget {
                   ),
                   SizedBox(width: 30.w),
                   Text(
-                    storeInfo.brandName,
+                    storeInfo.brandName!,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(fontSize: 55.sp, color: Colors.black),
@@ -87,7 +87,7 @@ class StoreItemCard extends StatelessWidget {
 
   Image _buildLogo() {
     return Image.network(
-      storeInfo.brandLogo,
+      storeInfo.brandLogo!,
       width: 100.w,
       height: 100.h,
     );

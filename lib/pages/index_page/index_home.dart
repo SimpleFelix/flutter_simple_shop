@@ -29,9 +29,9 @@ import 'grid_menu_list.dart';
 import 'model/category_model.dart';
 
 class IndexHome extends StatefulWidget {
-  final ScrollController mController;
+  final ScrollController? mController;
 
-  IndexHome({Key key, this.mController}) : super(key: key);
+  IndexHome({Key? key, this.mController}) : super(key: key);
 
   @override
   _IndexHomeState createState() => _IndexHomeState();
@@ -39,10 +39,10 @@ class IndexHome extends StatefulWidget {
 
 class _IndexHomeState extends State<IndexHome> with TickerProviderStateMixin, AfterLayoutMixin<IndexHome> {
 //   状态管理
-  DtkIndexGoodsModal _dtkIndexGoodsModal;
-  CategoryProvider _categoryProvider;
-  IndexProvider _indexProvider;
-  List<CategoryItem> categorys = [];
+  DtkIndexGoodsModal? _dtkIndexGoodsModal;
+  CategoryProvider? _categoryProvider;
+  IndexProvider? _indexProvider;
+  List<CategoryItem>? categorys = [];
   GlobalKey _titleKey = GlobalKey();
 
   bool _titleIsInTop = false;
@@ -51,11 +51,11 @@ class _IndexHomeState extends State<IndexHome> with TickerProviderStateMixin, Af
   IndexGoodsRepository indexGoodsRepository = IndexGoodsRepository();
   ScrollController _mainScrollController = ScrollController();
 
-  TabController tabController;
+  TabController? tabController;
 
   bool carouselISLoaded = false; // 轮播图资源是否准备完毕
   bool categortListIsLoaded = false; // 分类数据是否准备好
-  Color bgColor;
+  Color? bgColor;
   int carouselHeight = 500; // 轮播图高度
 
   @override
@@ -124,17 +124,17 @@ class _IndexHomeState extends State<IndexHome> with TickerProviderStateMixin, Af
   /// 初始化数据
   /// 从上往下顺序加载
   Future<void> _initDatas() async {
-    await _indexProvider.fetchCategorys(); // 超级菜单
-    await _indexProvider.fetchTopics(); // 专辑列表
-    await _indexProvider.fetchStores(); // 商店列表
+    await _indexProvider!.fetchCategorys(); // 超级菜单
+    await _indexProvider!.fetchTopics(); // 专辑列表
+    await _indexProvider!.fetchStores(); // 商店列表
     setState(() {
       carouselISLoaded = true;
     });
-    await _dtkIndexGoodsModal.getGoodsList(1); // 首页商品列表
-    await _categoryProvider.loadDtkCategoryDatas(context); // 分类数据
+    await _dtkIndexGoodsModal!.getGoodsList(1); // 首页商品列表
+    await _categoryProvider!.loadDtkCategoryDatas(context); // 分类数据
     setState(() {
-      this.categorys = _categoryProvider.categorys;
-      tabController = TabController(length: this.categorys.length + 1, vsync: this);
+      this.categorys = _categoryProvider!.categorys;
+      tabController = TabController(length: this.categorys!.length + 1, vsync: this);
       setState(() {
         categortListIsLoaded = true;
       });
@@ -153,7 +153,7 @@ class _IndexHomeState extends State<IndexHome> with TickerProviderStateMixin, Af
               extendItems: [
                 InsetCustomItem(
                     index: 0,
-                    child: CategoryItemDefaultLayout(name: "首页", index: 0),
+                    child: CategoryItemDefaultLayout(name: "首页", index: 0, onRendeEnd: (int? index, Offset offset, Size? size) {  },),
                     onTap: () {
                       print("我点击了首页");
                     }),
@@ -168,11 +168,14 @@ class _IndexHomeState extends State<IndexHome> with TickerProviderStateMixin, Af
                       print("双十二预售");
                     })
               ],
-              onSelect: (int index, MainCategory item) {
-                print("选中了:${item.cname},index是:$index");
+              onSelect: (int index, MainCategory? item) {
+                if(item!=null){
+                  print("选中了:${item.cname},index是:$index");
+                }
+
               },
             ),
-          ], color: _indexProvider.topBackground),
+          ], color: _indexProvider!.topBackground),
           floating: true,
           pinned: true,
         ),
@@ -213,7 +216,7 @@ class _IndexHomeState extends State<IndexHome> with TickerProviderStateMixin, Af
                 decoration: BoxDecoration(
                     color: _titleIsInTop ? Colors.white : Color.fromRGBO(235, 235, 235, 1),
                     boxShadow: _titleIsInTop
-                        ? [BoxShadow(color: Colors.grey[200], blurRadius: 1.0, spreadRadius: 1.0, offset: Offset(1, 1))]
+                        ? [BoxShadow(color: Colors.grey[200]!, blurRadius: 1.0, spreadRadius: 1.0, offset: Offset(1, 1))]
                         : []),
                 child: CustomSelectToolbar(items: [
                   SelectMenu(title: "佛系推荐", subTitle: '发现好物'),
@@ -237,7 +240,7 @@ class _IndexHomeState extends State<IndexHome> with TickerProviderStateMixin, Af
             child: AnimatedContainer(
               duration: Duration(milliseconds: 1000),
               height: ScreenUtil().setHeight(carouselHeight + 50),
-              color: _indexProvider.topBackground,
+              color: _indexProvider!.topBackground,
             )),
         Column(
           children: <Widget>[
@@ -312,7 +315,7 @@ class _IndexHomeState extends State<IndexHome> with TickerProviderStateMixin, Af
 
   //获取title的位置信息
   double _titleLocationHandler() {
-    RenderBox renderBox = _titleKey.currentContext.findRenderObject();
+    RenderBox renderBox = _titleKey.currentContext!.findRenderObject() as RenderBox;
     Offset offset = renderBox.localToGlobal(Offset(0, 0));
     return offset.dy;
   }

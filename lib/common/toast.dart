@@ -15,7 +15,7 @@ void showToast(
   );
 }
 
-void showLoading(context, [String text]) {
+void showLoading(context, [String? text]) {
   text = text ?? "Loading...";
   showDialog(
       barrierDismissible: false,
@@ -51,7 +51,7 @@ void showLoading(context, [String text]) {
                 Padding(
                   padding: const EdgeInsets.only(top: 20.0),
                   child: Text(
-                    text,
+                    text!,
                     style: Theme.of(context).textTheme.subtitle1,
                   ),
                 ),

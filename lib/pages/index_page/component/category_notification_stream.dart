@@ -14,19 +14,19 @@ class CategoryNotificationStreamUtil{
   static final CategoryNotificationStreamUtil _instance = CategoryNotificationStreamUtil._internal();
 
 
-  StreamController _controller;
-  Stream _stream;
+  StreamController? _controller;
+  Stream? _stream;
 
   static CategoryNotificationStreamUtil get instance => _instance;
-  Stream get changeStream => _stream;
-  StreamController get ctrl => _controller;
+  Stream? get changeStream => _stream;
+  StreamController? get ctrl => _controller;
 
-  void disposeStream() => _controller.close();
+  void disposeStream() => _controller!.close();
 
   void init() {
     _controller ??= StreamController.broadcast();
-    _stream ??= _controller.stream;
-    if(_controller.isClosed){
+    _stream ??= _controller!.stream;
+    if(_controller!.isClosed){
       _controller = null;
       _stream = null;
       init();
@@ -35,6 +35,6 @@ class CategoryNotificationStreamUtil{
 
   void notifiy(Notification notification){
     init();
-    _controller.sink.add(notification);
+    _controller!.sink.add(notification);
   }
 }

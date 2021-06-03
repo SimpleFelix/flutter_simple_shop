@@ -18,11 +18,11 @@ class MainCategory {
     this.subcategories,
   });
 
-  int cid;
-  String cname;
-  String cpic;
+  int? cid;
+  String? cname;
+  String? cpic;
   GlobalKey key = GlobalKey();
-  List<Subcategory> subcategories;
+  List<Subcategory>? subcategories;
 
   factory MainCategory.fromJson(Map<String, dynamic> json) => MainCategory(
     cid: json["cid"],
@@ -35,7 +35,7 @@ class MainCategory {
     "cid": cid,
     "cname": cname,
     "cpic": cpic,
-    "subcategories": List<dynamic>.from(subcategories.map((x) => x.toJson())),
+    "subcategories": List<dynamic>.from(subcategories!.map((x) => x.toJson())),
   };
 }
 
@@ -46,9 +46,9 @@ class Subcategory {
     this.scpic,
   });
 
-  int subcid;
-  String subcname;
-  String scpic;
+  int? subcid;
+  String? subcname;
+  String? scpic;
 
   factory Subcategory.fromJson(Map<String, dynamic> json) => Subcategory(
     subcid: json["subcid"],
