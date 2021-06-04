@@ -1,12 +1,12 @@
 
 # <font face="黑体" color=red size=12>此仓库不再更新,正在使用Getx重构</font>
 
-## Get版本 https://github.com/mdddj/simple_shop_v2 数据啥的都有
+## Get版本 https://github.com/mdddj/simple_shop_v2 
 
 
 ![logo](https://static.saintic.com/picbed/huang/2020/12/14/1607875349615.png)
 
-[![qq群 1102781545](https://badgen.net/badge/QQ%E7%BE%A4/1102781545/pink)](https://jq.qq.com/?_wv=1027&k=gxaTJ7i5)
+[![qq群 667186542](https://badgen.net/badge/QQ%E7%BE%A4/1102781545/pink)](https://jq.qq.com/?_wv=1027&k=Z0AHodXB)
 ![典典的小卖部](https://badgen.net/badge/%E5%85%B8%E5%85%B8%E7%9A%84%E5%B0%8F%E5%8D%96%E9%83%A8/v2.0.0+1/red)
 ![start](https://badgen.net/github/stars/mdddj/flutter_simple_shop)
 ![fork](https://badgen.net/github/forks/mdddj/flutter_simple_shop)
@@ -19,26 +19,17 @@
 ## 更新日志
 
 #### v2.0.1
-      [升级]  升级到空安全版本, flutter版本2.2.0
-      [插件]  更新了部分依赖插件
-      * 时隔一年的更新,感谢支持
+     [升级]  升级到空安全版本, flutter版本2.2.0
+     [插件]  更新了部分依赖插件
+     * 时隔一年的更新,感谢支持
 
 #### v2.0
     [新增] 品牌列表,品牌详情,品牌商品列表页面
     [新增] 废除旧接口,增加了API接口加密(token,AES,时间戳验证)
     app开始升级到2.0
 
-## 注意事项1
 
-导入项目后pub get 后可能会有如下报错, 重启一下AS就行了,这个坑等官方后面修复
-
-```dart
-error: The named parameter 'colors' isn't defined
-error: The named parameter 'offset' isn't defined
-error: The named parameter 'vsync' isn't defined
-```
-
-## 注意事项2
+## 注意
 
 启动前需要创建一个数字签名,如何配置请看[官方文档](https://flutter.cn/docs/deployment/android)
 **没有`key.jks`文件极有可能启动不起来**
