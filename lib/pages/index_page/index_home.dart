@@ -3,7 +3,6 @@ import 'dart:ui';
 import 'package:after_layout/after_layout.dart';
 import 'package:dd_taoke_sdk/model/category.dart';
 import 'package:dd_taoke_sdk/model/product.dart';
-import 'package:demo1/modals/dtkCategorys.dart';
 import 'package:demo1/pages/index_page/store/component_index.dart';
 import 'package:demo1/provider/category_provider.dart';
 import 'package:demo1/provider/index_provider.dart';
@@ -42,7 +41,7 @@ class _IndexHomeState extends State<IndexHome> with TickerProviderStateMixin, Af
   DtkIndexGoodsModal? _dtkIndexGoodsModal;
   CategoryProvider? _categoryProvider;
   IndexProvider? _indexProvider;
-  List<CategoryItem>? categorys = [];
+  List<Category> categorys = [];
   GlobalKey _titleKey = GlobalKey();
 
   bool _titleIsInTop = false;
@@ -125,7 +124,7 @@ class _IndexHomeState extends State<IndexHome> with TickerProviderStateMixin, Af
     await _categoryProvider!.loadDtkCategoryDatas(context); // 分类数据
     setState(() {
       this.categorys = _categoryProvider!.categorys;
-      tabController = TabController(length: this.categorys!.length + 1, vsync: this);
+      tabController = TabController(length: this.categorys.length + 1, vsync: this);
       setState(() {
         categortListIsLoaded = true;
       });
@@ -188,6 +187,8 @@ class _IndexHomeState extends State<IndexHome> with TickerProviderStateMixin, Af
         SliverToBoxAdapter(
           child: DDQWidget(),
         ),
+
+        /// 品牌推荐
         SliverToBoxAdapter(
           child: StoreComponentIndex(),
         ),

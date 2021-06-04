@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 class StoreComponentIndex extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    StoreData? storeData = Provider.of<IndexProvider>(context).storeData;
+    final storeData = context.watch<IndexProvider>().storeData;
     return storeData != null
         ? Container(
             margin: EdgeInsets.symmetric(horizontal: 50.w),

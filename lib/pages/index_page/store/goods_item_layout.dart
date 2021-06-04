@@ -1,4 +1,4 @@
-import 'package:demo1/pages/index_page/model/store_list_model.dart';
+import 'package:dd_taoke_sdk/model/product.dart';
 import 'package:demo1/util/image_util.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:demo1/pages/index_page/store/price_layout.dart';
@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 /// 商品卡片布局
 class StoreGoodsItemLayout extends StatelessWidget {
-  final StoreGoods storeGoods;
+  final Product storeGoods;
 
   const StoreGoodsItemLayout({Key? key, required this.storeGoods}) : super(key: key);
 
@@ -30,7 +30,7 @@ class StoreGoodsItemLayout extends StatelessWidget {
               )
             ],
           ),
-          PriceLayout(original: "${storeGoods.actualPrice}", discounts: "${storeGoods.originPrice}")
+          PriceLayout(original: "${storeGoods.actualPrice}", discounts: "${storeGoods.originalPrice}")
         ],
       ),
     );
@@ -45,7 +45,7 @@ class StoreGoodsItemLayout extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(30.sp)),
       ),
       child: Text(
-        "${storeGoods.discount}折",
+        "${storeGoods.discounts}折",
         style: TextStyle(fontSize: 50.sp, color: Colors.white),
       ),
     );

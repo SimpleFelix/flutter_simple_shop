@@ -1,4 +1,5 @@
 import 'package:fbutton_nullsafety/fbutton_nullsafety.dart';
+import 'package:fcontrol_nullsafety/fdefine.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -170,6 +171,7 @@ class _UserLoginPageState extends State<UserLoginPage> {
                     Padding(
                       padding: const EdgeInsets.only(left: 5.0),
                       child: FSuper(
+                        lightOrientation: FLightOrientation.LeftBottom,
                         text: "我已阅读并同意",
                         spans: [
                           TextSpan(

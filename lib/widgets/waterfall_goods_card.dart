@@ -1,4 +1,5 @@
 import 'package:dd_taoke_sdk/model/product.dart';
+import 'package:fcontrol_nullsafety/fdefine.dart';
 import 'package:flustars/flustars.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -61,6 +62,7 @@ class WaterfallGoodsCard extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   padding: EdgeInsets.symmetric(horizontal:  Sc.ScreenUtil().setWidth(40)),
                   child: FSuper(
+                    lightOrientation: FLightOrientation.LeftBottom,
                     text: '领 ${NumUtil.getNumByValueDouble(product.couponPrice,0)} 元券',
                     padding: EdgeInsets.symmetric(horizontal: Sc.ScreenUtil().setWidth(40)),
                     strokeColor: Colors.pink,
@@ -110,7 +112,7 @@ class WaterfallGoodsCard extends StatelessWidget {
           ),
           Container(
             child: Text(
-              "两小时销量${twoHoursSales},月销${product.monthSales}",
+              "两小时销量$twoHoursSales,月销${product.monthSales}",
               style: TextStyle(
                   fontSize: Sc.ScreenUtil().setSp(35),
                   color: Colors.pinkAccent),

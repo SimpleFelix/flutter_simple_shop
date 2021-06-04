@@ -1,6 +1,5 @@
+import 'package:dd_taoke_sdk/model/category.dart';
 import 'package:dd_taoke_sdk/model/product.dart';
-import 'package:demo1/modals/dtkCategorys.dart';
-import 'package:demo1/modals/goods_list_modal.dart';
 import 'package:demo1/provider/category_provider.dart';
 import 'package:demo1/widgets/loading_more_list_indicator.dart';
 import 'package:demo1/widgets/waterfall_goods_card.dart';
@@ -42,7 +41,7 @@ class _GoodsListPageState extends State<GoodsListPage>
   bool changeSortIng = false; // 切换排序中
   TabController? _tabController; // 排序tab控制器
   TabController? categorysTabBarController; //主分类tab控制器
-  List<CategoryItem>? categorys = [];
+  List<Category>? categorys = [];
   List<Subcategory>? showSubcategorys = [];
   late GoodsListRepository goodsListRepository;
   List<int> curs = [0, 1, 2, 5, 6];
@@ -241,7 +240,7 @@ class _GoodsListPageState extends State<GoodsListPage>
           }
         },
         controller: categorysTabBarController,
-        tabs: categoryProvider.categorys!.length != 0 ? tabs : [],
+        tabs: categoryProvider.categorys.length != 0 ? tabs : [],
         indicator: RoundUnderlineTabIndicator(
             insets: EdgeInsets.only(bottom: 8),
             borderSide: BorderSide(

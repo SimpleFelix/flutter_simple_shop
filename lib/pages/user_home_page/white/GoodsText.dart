@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:demo1/modals/GoodsInfo.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:extended_text/extended_text.dart';
+import 'package:fcontrol_nullsafety/fdefine.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -65,7 +66,7 @@ class GoodsText extends SpecialText{
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text("${dtitle}",
+                      Text("$dtitle",
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis
                           ,style: TextStyle(
@@ -74,16 +75,17 @@ class GoodsText extends SpecialText{
                             fontSize: ScreenUtil().setSp(60)
                       )),
                       FSuper(
+                        lightOrientation: FLightOrientation.LeftBottom,
                         padding: EdgeInsets.fromLTRB(9, 6, 9, 6),
                         text: '¥',
                         spans: [
                           TextSpan(
-                            text: '${actualPrice}券后 ',
+                            text: '$actualPrice券后 ',
                             style: TextStyle(
                                 fontSize: 16, fontWeight: FontWeight.w800),
                           ),
                           TextSpan(
-                            text: '${discounts}折',
+                            text: '$discounts折',
                             style: TextStyle(fontSize: 11),
                           ),
                         ],

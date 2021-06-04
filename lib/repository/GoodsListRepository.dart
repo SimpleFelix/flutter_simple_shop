@@ -33,7 +33,7 @@ class GoodsListRepository extends LoadingMoreBase<Product> {
   @override
   Future<bool> loadData([bool isloadMoreAction = false]) async {
     bool isSuccess = false;
-    print("正在获取第${pageindex}页数据,排序:${g_sort},品牌:${brand},主类目:${cids},子类目:${subcid}");
+    print("正在获取第$pageindex页数据,排序:$g_sort,品牌:$brand,主类目:$cids,子类目:$subcid");
 
     final result = await DdTaokeSdk.instance.getProducts(
         param: ProductListParam(

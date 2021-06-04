@@ -8,6 +8,7 @@ import 'package:demo1/util/request_service.dart';
 import 'package:demo1/util/result_obj_util.dart';
 import 'package:demo1/util/system_toast.dart';
 import 'package:demo1/widgets/extended_image.dart';
+import 'package:fcontrol_nullsafety/fdefine.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -359,6 +360,7 @@ class _HodgepodgeWidgetState extends State<HodgepodgeWidget> {
 
   Widget buildTextPrice(String? price) {
     Widget priceText = FSuper(
+      lightOrientation: FLightOrientation.LeftBottom,
       spans: [
         TextSpan(
           text: "¥ ",
@@ -435,6 +437,7 @@ class _HodgepodgeWidgetState extends State<HodgepodgeWidget> {
      tagColor = getColor(tagTextColor);
     }
     return FSuper(
+      lightOrientation: FLightOrientation.LeftBottom,
       spans: [
         TextSpan(text: titleText + "  ", style: titleTextStyle),
         TextSpan(

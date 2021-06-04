@@ -1,6 +1,7 @@
 import 'package:common_utils/common_utils.dart';
 import 'package:demo1/constant/color.dart';
 import 'package:demo1/provider/user_provider.dart';
+import 'package:fcontrol_nullsafety/fdefine.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
@@ -374,6 +375,7 @@ class _DetailIndexState extends State<DetailIndex> {
   //商品是否包邮
   Widget _isFreeshipRemoteDistrict() {
     return FSuper(
+      lightOrientation: FLightOrientation.LeftBottom,
       text: '包邮',
       padding: EdgeInsets.all(2),
       margin: EdgeInsets.only(right: 5),
@@ -388,6 +390,7 @@ class _DetailIndexState extends State<DetailIndex> {
     int? yfx = goodsDetailProvider!.goodInfo!.yunfeixian;
     if (yfx == 1) {
       return FSuper(
+        lightOrientation: FLightOrientation.LeftBottom,
         text: '赠送运费险',
         padding: EdgeInsets.all(2),
 //        corner: Corner.all(3),

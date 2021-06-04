@@ -152,20 +152,15 @@ class _CustomSelectToolbarState extends State<CustomSelectToolbar>
       switch (getItemSize()) {
         case 1:
           return ww;
-          break;
         case 2:
           return ww / 2;
-          break;
         case 3:
           return ww / 3;
-          break;
         case 4:
           return ww / 4;
-          break;
         default:
           // 使用滑动组件
           return ww / 4;
-          break;
       }
     }
     return 0;

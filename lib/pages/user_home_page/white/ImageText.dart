@@ -104,6 +104,5 @@ class ImageText extends SpecialText {
           },
         );
     }
-    return null;
   }
 }

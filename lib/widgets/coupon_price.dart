@@ -1,3 +1,4 @@
+import 'package:fcontrol_nullsafety/fdefine.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
@@ -47,7 +48,8 @@ class CouponPriceWidget extends StatelessWidget {
             child: Text(
               actualPrice.toString(),
               style: TextStyle(
-                  color: Colors.pinkAccent, fontSize: ScreenUtil().setSp(couponPriceFontSize!)),
+                  color: Colors.pinkAccent,
+                  fontSize: ScreenUtil().setSp(couponPriceFontSize ?? 80)),
             ),
           ),
           Container(
@@ -74,6 +76,7 @@ class CouponPriceWidget extends StatelessWidget {
     numStr = numStr.substring(0, numStr.lastIndexOf(".") + 2);
     double discount = double.parse(numStr) * 10;
     return FSuper(
+      lightOrientation: FLightOrientation.LeftBottom,
       backgroundColor: primaryColor,
       padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),
       margin: EdgeInsets.only(left: 10),

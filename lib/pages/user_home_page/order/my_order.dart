@@ -76,7 +76,7 @@ class _MyOrderHomePageState extends State<MyOrderHomePage> {
                                   children: <Widget>[
                                     stateIcon,
                                     SizedBox(width: ScreenUtil().setWidth(20),),
-                                    Text("${stateTip}",style: TextStyle(color: stateTipColor),),
+                                    Text("$stateTip",style: TextStyle(color: stateTipColor),),
                                   ],
                                 )
                               ],

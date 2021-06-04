@@ -17,6 +17,7 @@ import 'package:demo1/widgets/extended_image.dart';
 import 'package:demo1/widgets/my_drawable_start_text.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:fbutton_nullsafety/fbutton_nullsafety.dart';
+import 'package:fcontrol_nullsafety/fdefine.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -292,6 +293,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
                         FSuper(
+                          lightOrientation: FLightOrientation.LeftBottom,
                           height: ScreenUtil().setHeight(150),
                           width: ScreenUtil().setWidth(335),
                           text: '复制口令',
@@ -322,6 +324,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
                           },
                         ),
                         FSuper(
+                          lightOrientation: FLightOrientation.LeftBottom,
                           height: ScreenUtil().setHeight(150),
                           width: ScreenUtil().setWidth(335),
                           text: '立即领券',
@@ -497,6 +500,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
         Container(
           alignment: Alignment.topLeft,
           child: FSuper(
+            lightOrientation: FLightOrientation.LeftBottom,
             textAlign: TextAlign.start,
             spans: [
               TextSpan(
@@ -666,6 +670,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
             child: Row(
               children: <Widget>[
                 FSuper(
+                  lightOrientation: FLightOrientation.LeftBottom,
                   text: "满减",
                   backgroundColor: Colors.red,
                   textAlign: TextAlign.center,
@@ -725,6 +730,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               FSuper(
+                lightOrientation: FLightOrientation.LeftBottom,
                 spans: <TextSpan>[
                   TextSpan(
                       text: "原价 ${info!.itemprice}",
@@ -734,6 +740,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
                 ],
               ),
               FSuper(
+                lightOrientation: FLightOrientation.LeftBottom,
                 text: "已售 ${info!.itemsale}",
               )
             ],
@@ -757,6 +764,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             FSuper(
+              lightOrientation: FLightOrientation.LeftBottom,
               text: '券后价 ¥',
               spans: [
                 TextSpan(
@@ -775,6 +783,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
 
             // 预计可得
             FSuper(
+              lightOrientation: FLightOrientation.LeftBottom,
               text: "预计收益 ¥${info!.tkmoney}",
               backgroundColor: Colors.pinkAccent.withOpacity(0.1),
               shadowBlur: 4,

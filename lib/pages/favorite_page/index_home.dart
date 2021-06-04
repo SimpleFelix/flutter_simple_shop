@@ -1,6 +1,7 @@
 import 'package:demo1/provider/goods_detail_provider.dart';
 import 'package:demo1/widgets/refresh_and_load_more.dart';
 import 'package:fbutton_nullsafety/fbutton_nullsafety.dart';
+import 'package:fcontrol_nullsafety/fdefine.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -115,6 +116,7 @@ class _IndexState extends State<FavoriteIndexHome> {
                                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   children: <Widget>[
                                     FSuper(
+                                      lightOrientation: FLightOrientation.LeftBottom,
                                       text: "已选 ",
                                       spans: [
                                         TextSpan(

@@ -1,4 +1,4 @@
-import 'package:demo1/pages/index_page/model/store_list_model.dart';
+import 'package:dd_taoke_sdk/model/brand_list_model.dart';
 import 'package:demo1/provider/index_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class StoreItemCard extends StatelessWidget {
-  final StoreInfo storeInfo;
+  final ListElement storeInfo;
 
   const StoreItemCard({Key? key, required this.storeInfo}) : super(key: key);
 

@@ -90,7 +90,7 @@ class _LoginPageState extends State<LoginPage> {
                   color: Theme.of(context).iconTheme.color),
               onPressed: () {
                 //TODO : 第三方登录方法
-                Scaffold.of(context).showSnackBar(new SnackBar(
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                   content: new Text("${item['title']}登录"),
                   action: new SnackBarAction(
                     label: "取消",
@@ -141,7 +141,7 @@ class _LoginPageState extends State<LoginPage> {
       padding: const EdgeInsets.only(top: 8.0),
       child: Align(
         alignment: Alignment.centerRight,
-        child: FlatButton(
+        child: TextButton(
           child: Text(
             '忘记密码？',
             style: TextStyle(fontSize: 14.0, color: Colors.grey),

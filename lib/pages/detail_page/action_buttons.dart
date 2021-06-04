@@ -1,5 +1,6 @@
 import 'package:demo1/constant/color.dart';
 import 'package:demo1/provider/user_provider.dart';
+import 'package:fcontrol_nullsafety/fdefine.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -25,6 +26,7 @@ class ActionButtons extends StatelessWidget {
       bottom: ScreenUtil().setHeight(50),
       left: ScreenUtil().setWidth(70),
       child: FSuper(
+        lightOrientation: FLightOrientation.LeftBottom,
         width: ScreenUtil().setWidth(1300),
         height: ScreenUtil().setHeight(240),
         backgroundColor: Color.fromRGBO(255, 255, 255, 0.85),
@@ -43,6 +45,7 @@ class ActionButtons extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   FSuper(
+                    lightOrientation: FLightOrientation.LeftBottom,
                     height: ScreenUtil().setHeight(250),
 //                    width: ScreenUtil().setWidth(180),
                     text: "首页",
@@ -54,6 +57,7 @@ class ActionButtons extends StatelessWidget {
                     ),
                   ),
                   FSuper(
+                    lightOrientation: FLightOrientation.LeftBottom,
                     height: ScreenUtil().setHeight(250),
 //                    width: ScreenUtil().setWidth(180),
                     text: "分享",
@@ -74,6 +78,7 @@ class ActionButtons extends StatelessWidget {
                             await userProvider!.loadUserFavoriteGoodsListFun(1);
                           },
                           child: FSuper(
+                            lightOrientation: FLightOrientation.LeftBottom,
                             height: ScreenUtil().setHeight(250),
 //                    width: ScreenUtil().setWidth(180),
                             text: "收藏",
@@ -92,6 +97,7 @@ class ActionButtons extends StatelessWidget {
                             await userProvider!.loadUserFavoriteGoodsListFun(1);
                           },
                           child: FSuper(
+                            lightOrientation: FLightOrientation.LeftBottom,
                             height: ScreenUtil().setHeight(250),
 //                    width: ScreenUtil().setWidth(180),
                             text: "收藏",
@@ -108,6 +114,7 @@ class ActionButtons extends StatelessWidget {
               ),
             ),
             FSuper(
+              lightOrientation: FLightOrientation.LeftBottom,
               width: ScreenUtil().setWidth(620),
               height: ScreenUtil().setHeight(250),
               padding:

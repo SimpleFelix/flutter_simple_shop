@@ -4,6 +4,7 @@ import 'package:demo1/util/image_util.dart';
 import 'package:demo1/widgets/coupon_price.dart';
 import 'package:demo1/widgets/extended_image.dart';
 import 'package:demo1/widgets/title_widget.dart';
+import 'package:fcontrol_nullsafety/fdefine.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -117,6 +118,7 @@ class FavoriteGoodsItem extends StatelessWidget {
 
     var difference = endTime.difference(now);
     Widget returnWidget = FSuper(
+      lightOrientation: FLightOrientation.LeftBottom,
       text: "剩余有效期${difference.inDays}天${difference.inHours % 24}小时",
       padding: EdgeInsets.all(2),
       strokeColor: Color(0xffFF7043),
@@ -124,6 +126,7 @@ class FavoriteGoodsItem extends StatelessWidget {
     );
     if (difference.inDays < 0) {
       returnWidget = FSuper(
+        lightOrientation: FLightOrientation.LeftBottom,
         text: "已失效",
         padding: EdgeInsets.all(2),
         strokeColor: Color(0xffc2bfc2),

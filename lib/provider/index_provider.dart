@@ -1,9 +1,8 @@
 import 'package:dd_taoke_sdk/dd_taoke_sdk.dart';
+import 'package:dd_taoke_sdk/model/brand_list_model.dart';
 import 'package:dd_taoke_sdk/model/carousel_model.dart';
 import 'package:dd_taoke_sdk/model/category.dart';
-import 'package:demo1/modals/params_model/store_params_model.dart';
-import 'package:demo1/pages/index_page/model/store_list_model.dart';
-import 'package:demo1/service/app_service.dart';
+import 'package:dd_taoke_sdk/params/brand_param.dart';
 import 'package:demo1/util/color_util.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +11,7 @@ class IndexProvider with ChangeNotifier {
   Color topBackground = Colors.pinkAccent;
   List<Category> categorys = []; /// 超级分类列表
   List<Carousel> carousel = []; /// 轮播图展示列表
-  StoreData? storeData; // 首页显示的品牌
+  BrandListResult? storeData; // 首页显示的品牌
   Map<int?,Color> brandBgColorMap = Map(); // 背景颜色
 
   /// 加载超级分类菜单
@@ -32,8 +31,9 @@ class IndexProvider with ChangeNotifier {
 
   /// 获取品牌栏目列表
   Future<void> fetchStores() async {
-    StoreData? _storeData = await IndexService.fetchStores(StoreListParamsModel(categorys[0].cid.toString(), "1", "10"));
-    this.storeData = _storeData;
+
+    final result = await DdTaokeSdk.instance.getBrandList(param: BrandListParam(cid: categorys[0].cid.toString(), pageId: '1', pageSize: '1'));
+    this.storeData = result;
     this.getBrandBgColors();
     notifyListeners();
   }
@@ -48,7 +48,7 @@ class IndexProvider with ChangeNotifier {
   Future<void> getBrandBgColors ()async{
     if(storeData!=null){
       if(storeData!.lists!.isNotEmpty){
-        for(StoreInfo info in storeData!.lists!){
+        for(final info in storeData!.lists!){
           Color color = await ColorUtil.getImageMainColor(info.brandLogo!);
           brandBgColorMap[info.brandId] = color;
         }
