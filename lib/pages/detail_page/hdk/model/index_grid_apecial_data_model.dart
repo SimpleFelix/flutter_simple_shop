@@ -124,7 +124,7 @@ class GoodsInfo {
     this.product_id,
     this.itemdesc,
     this.itemsale,
-    this.itempic,
+    required this.itempic,
     this.seller_name,
     this.activity_type,
     this.videoid,
@@ -189,7 +189,7 @@ class GoodsInfo {
     product_id: asT<String>(jsonRes['product_id']),
     itemdesc: asT<String>(jsonRes['itemdesc']),
     itemsale: asT<String>(jsonRes['itemsale']),
-    itempic: asT<String>(jsonRes['itempic']),
+    itempic: asT<String>(jsonRes['itempic'])!,
     seller_name: asT<String>(jsonRes['seller_name']),
     activity_type: asT<String>(jsonRes['activity_type']),
     videoid: asT<String>(jsonRes['videoid']),
@@ -253,7 +253,7 @@ class GoodsInfo {
   String? product_id;
   String? itemdesc;
   String? itemsale;
-  String? itempic;
+  String itempic;
   String? seller_name;
   String? activity_type;
   String? videoid;

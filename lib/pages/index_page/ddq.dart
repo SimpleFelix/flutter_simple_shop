@@ -116,7 +116,7 @@ class _DDQWidgetState extends State<DDQWidget> {
       child: Column(
         children: <Widget>[
           ExtendedImageWidget(
-            src: src,
+            src: src!,
             height: 400,
             width: 370,
             radius: BorderRadius.all(

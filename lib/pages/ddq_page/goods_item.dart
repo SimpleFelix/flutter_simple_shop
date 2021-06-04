@@ -27,7 +27,7 @@ class GoodsItem extends StatelessWidget {
               height: 500,
               padding: EdgeInsets.all(10.0),
               child: ExtendedImageWidget(
-                src: goodsItem.mainPic,
+                src: goodsItem.mainPic!,
                 width: 450,
                 height: 450,
               )),

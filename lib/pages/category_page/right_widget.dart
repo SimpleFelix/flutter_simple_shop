@@ -20,7 +20,7 @@ class RightWidgetItme extends StatelessWidget {
         color: Colors.white,
         child: Column(
           children: <Widget>[
-            ExtendedImageWidget(src: item.scpic,width: 200,height: 200,),
+            ExtendedImageWidget(src: item.scpic!,width: 50,height: 50,),
             Text(item.subcname!)
           ],
         ),

@@ -1,4 +1,7 @@
+import 'package:demo1/provider/index_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:loading_more_list/loading_more_list.dart';
 import 'package:provider/provider.dart';
 import '../../provider/category_provider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -17,9 +20,10 @@ class _CategoryIndexPageState extends State<CategoryIndexPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<CategoryProvider>(
+    return Consumer<IndexProvider>(
       builder: (context, categoryProvider, _) => Container(
           width: MediaQuery.of(context).size.width,
+          height: Get.height - kToolbarHeight - Get.mediaQuery.padding.top,
           child: categoryProvider.categorys.length != 0
               ? Row(
                   children: <Widget>[
@@ -46,37 +50,16 @@ class _CategoryIndexPageState extends State<CategoryIndexPage> {
                     //右侧
                     Expanded(
                       child: Container(
-                          alignment: Alignment.topLeft,
-                          padding: EdgeInsets.only(left: 20, right: 20),
                           color: Colors.white,
-                          child: SingleChildScrollView(
-                            child: Column(
-                              children: <Widget>[
-                                _buildTitle(),
-                                GridView.builder(
-                                    physics: NeverScrollableScrollPhysics(),
-                                    shrinkWrap: true,
-                                    gridDelegate:
-                                        SliverGridDelegateWithMaxCrossAxisExtent(
-                                            maxCrossAxisExtent: 125,
-                                            mainAxisSpacing: 10.0,
-                                            crossAxisSpacing: 10.0),
-                                    itemCount: categoryProvider
-                                        .categorys[current]
-                                        .subcategories!
-                                        .length,
-                                    itemBuilder: (context, sIndex) {
-                                      return RightWidgetItme(
-                                          cid: categoryProvider
-                                              .categorys[current].cid
-                                              .toString(),
-                                          item: categoryProvider
-                                              .categorys[current]
-                                              .subcategories![sIndex]);
-                                    }),
-                              ],
-                            ),
-                          )),
+                          child: WaterfallFlow.builder(
+                              gridDelegate: SliverWaterfallFlowDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 3),
+                              itemBuilder: (context, sIndex) {
+                                return RightWidgetItme(
+                                    cid: categoryProvider.categorys[current].cid.toString(),
+                                    item:
+                                        categoryProvider.categorys[current].subcategories![sIndex]);
+                              },itemCount: (categoryProvider.categorys[current].subcategories??[]).length,)),
                     )
                   ],
                 )
@@ -102,9 +85,7 @@ class _CategoryIndexPageState extends State<CategoryIndexPage> {
       child: Text(
         this.categoryProvider!.categorys[current].cname!,
         style: TextStyle(
-            fontWeight: FontWeight.w500,
-            fontSize: ScreenUtil().setSp(60),
-            color: Colors.black),
+            fontWeight: FontWeight.w500, fontSize: ScreenUtil().setSp(60), color: Colors.black),
       ),
     );
   }

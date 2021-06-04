@@ -418,7 +418,7 @@ class _HodgepodgeWidgetState extends State<HodgepodgeWidget> {
     );
   }
 
-  ExtendedImageWidget buildExtendedImageWidget(String? src) {
+  ExtendedImageWidget buildExtendedImageWidget(String src) {
     return ExtendedImageWidget(
       src: src,
       height: (_warpHei / 2 - 30 - 150 - 30 - 20 - 90),

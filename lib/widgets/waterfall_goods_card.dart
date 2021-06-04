@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart' as Sc;
 import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
 import '../fluro/NavigatorUtil.dart';
-import '../util/image_util.dart';
 
 // 小部件
 import '../widgets/coupon_price.dart';
@@ -123,11 +122,6 @@ class WaterfallGoodsCard extends StatelessWidget {
     );
   }
 
-  Future<Rect> _getImageWH() async {
-    Rect rect2 = await WidgetUtil.getImageWH(
-        url: MImageUtils.magesProcessor(product.mainPic!));
-    return rect2;
-  }
 
   // 标题
   Widget _title(String dtitle) {
@@ -155,7 +149,7 @@ class WaterfallGoodsCard extends StatelessWidget {
 
   // 商品卡片主图
   Widget _image() {
-    String? img = product.mainPic;
+    String img = product.mainPic!;
     return ExtendedImageWidget(
       src: img,
       height: 645,

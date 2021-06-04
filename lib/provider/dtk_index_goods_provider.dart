@@ -17,30 +17,7 @@ class DtkIndexGoodsModal with ChangeNotifier {
 
   // 获取商品列表数据
   getGoodsList(page) async {
-    await getGoodsListFuture({'pageId': page, 'pageSize': 10}).then((res) {
-      Result result = ResultUtils.format(res);
-      if (result.code == 200 && result.data != null) {
-        GoodsList goodsList = GoodsList.fromJson(json.decode(result.data!));
-        if (goodsList.code == 0) {
-          List<GoodsItem> newList = goodsList.data!.list!;
-          // 成功加载数据
-          if (page == 1) {
-            // 加载第一页数据
-            indexGoods = newList;
-          } else {
-            //加载下一页数据
-            indexGoods.addAll(newList);
-          }
-          if (newList.length != 10) {
-            // 如果加载过来 的数据不足20条,则设置不存在下一页
-            noMore = true;
-          }
-          notifyListeners();
-        }
-      } else {
-        print("加载商品列表失败!");
-      }
-    });
+
   }
 
   setLoadingState(bool isLoading) {
