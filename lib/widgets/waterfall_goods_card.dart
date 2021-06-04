@@ -1,3 +1,4 @@
+import 'package:dd_taoke_sdk/model/product.dart';
 import 'package:flustars/flustars.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,15 +13,15 @@ import 'extended_image.dart'; // 原价和券后价小部件
 
 // 瀑布流商品卡片
 class WaterfallGoodsCard extends StatelessWidget {
-  final dynamic datum;
+  final Product product;
 
-  WaterfallGoodsCard(this.datum);
+  WaterfallGoodsCard(this.product);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
         onTap: () {
-          NavigatorUtil.gotoGoodsDetailPage(context, datum.id.toString());
+          NavigatorUtil.gotoGoodsDetailPage(context, product.id.toString());
         },
         child: Container(
             //width: Sc.ScreenUtil().setWidth(640), // (1440-150) / 2
@@ -37,14 +38,14 @@ class WaterfallGoodsCard extends StatelessWidget {
                 SizedBox(height: Sc.ScreenUtil().setHeight(20)),
 
                 // 标题
-                _title(datum.dtitle),
+                _title(product.dtitle!),
 
                 SizedBox(height: Sc.ScreenUtil().setHeight(20)),
                 // 购买理由
                 Container(
                   padding: EdgeInsets.symmetric(horizontal:  Sc.ScreenUtil().setWidth(40)),
                   child: Text(
-                    datum.desc,
+                    product.desc!,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
@@ -60,7 +61,7 @@ class WaterfallGoodsCard extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   padding: EdgeInsets.symmetric(horizontal:  Sc.ScreenUtil().setWidth(40)),
                   child: FSuper(
-                    text: '领 ${NumUtil.getNumByValueDouble(datum.couponPrice,0)} 元券',
+                    text: '领 ${NumUtil.getNumByValueDouble(product.couponPrice,0)} 元券',
                     padding: EdgeInsets.symmetric(horizontal: Sc.ScreenUtil().setWidth(40)),
                     strokeColor: Colors.pink,
                     strokeWidth: 0.3,
@@ -76,19 +77,19 @@ class WaterfallGoodsCard extends StatelessWidget {
                     verticalDirection: VerticalDirection.up,
                     children: <Widget>[
                       CouponPriceWidget(
-                          actualPrice: datum.actualPrice.toString(),
-                          originalPrice: datum.originalPrice),
+                          actualPrice: product.actualPrice.toString(),
+                          originalPrice: product.originalPrice),
                     ],
                   ),
                 ),
-//                _hot(datum.twoHoursSales),
+//                _hot(product.twoHoursSales),
                 // 图标或者标签显示
 //                Container(
 //                  margin: EdgeInsets.only(top: 5.0),
 //                  child: Row(
 //                    children: <Widget>[
-//                      _tag("可领${datum.couponPrice}元优惠券", Colors.pinkAccent),
-//                      _iconByActivityType(datum.activityType),
+//                      _tag("可领${product.couponPrice}元优惠券", Colors.pinkAccent),
+//                      _iconByActivityType(product.activityType),
 //                    ],
 //                  ),
 //                )
@@ -109,7 +110,7 @@ class WaterfallGoodsCard extends StatelessWidget {
           ),
           Container(
             child: Text(
-              "两小时销量${twoHoursSales},月销${datum.monthSales}",
+              "两小时销量${twoHoursSales},月销${product.monthSales}",
               style: TextStyle(
                   fontSize: Sc.ScreenUtil().setSp(35),
                   color: Colors.pinkAccent),
@@ -122,7 +123,7 @@ class WaterfallGoodsCard extends StatelessWidget {
 
   Future<Rect> _getImageWH() async {
     Rect rect2 = await WidgetUtil.getImageWH(
-        url: MImageUtils.magesProcessor(datum.mainPic));
+        url: MImageUtils.magesProcessor(product.mainPic!));
     return rect2;
   }
 
@@ -152,7 +153,7 @@ class WaterfallGoodsCard extends StatelessWidget {
 
   // 商品卡片主图
   Widget _image() {
-    String? img = datum.mainPic;
+    String? img = product.mainPic;
     return ExtendedImageWidget(
       src: img,
       height: 645,

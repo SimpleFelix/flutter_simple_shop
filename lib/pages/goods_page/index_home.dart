@@ -1,3 +1,4 @@
+import 'package:dd_taoke_sdk/model/product.dart';
 import 'package:demo1/modals/dtkCategorys.dart';
 import 'package:demo1/modals/goods_list_modal.dart';
 import 'package:demo1/provider/category_provider.dart';
@@ -146,7 +147,7 @@ class _GoodsListPageState extends State<GoodsListPage>
                   ),
                 ),
                 // 商品列表
-                LoadingMoreSliverList(SliverListConfig<GoodsItem>(
+                LoadingMoreSliverList(SliverListConfig<Product>(
                   sourceList: goodsListRepository,
                   extendedListDelegate: SliverWaterfallFlowDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,

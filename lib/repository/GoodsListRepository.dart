@@ -1,12 +1,9 @@
-import 'dart:convert';
-
-import 'package:demo1/modals/Result.dart';
-import 'package:demo1/util/result_obj_util.dart';
-import 'package:demo1/modals/goods_list_modal.dart';
+import 'package:dd_taoke_sdk/dd_taoke_sdk.dart';
+import 'package:dd_taoke_sdk/model/product.dart';
+import 'package:dd_taoke_sdk/params/product_list_param.dart';
 import 'package:loading_more_list/loading_more_list.dart';
-import '../util/request_service.dart';
 
-class GoodsListRepository extends LoadingMoreBase<GoodsItem> {
+class GoodsListRepository extends LoadingMoreBase<Product> {
   int pageindex = 1;
   bool _hasMore = true;
   bool forceRefresh = false;
@@ -36,45 +33,22 @@ class GoodsListRepository extends LoadingMoreBase<GoodsItem> {
   @override
   Future<bool> loadData([bool isloadMoreAction = false]) async {
     bool isSuccess = false;
-    print(
-        "正在获取第${pageindex}页数据,排序:${g_sort},品牌:${brand},主类目:${cids},子类目:${subcid}");
-    await getGoodsListFuture({
-      "pageId": pageindex,
-      "sort": g_sort,
-      "brand": brand,
-      "cids": cids,
-      "subcid": subcid,
-      "pageSize": pageSize
-    }).then((res) {
-      Result result = ResultUtils.format(res);
-      if (result.data != null && result.code == 200) {
-        GoodsList _goods =
-            GoodsList.fromJson(json.decode(result.data.toString()));
-        if (_goods.code == 0) {
-          if (pageSize != _goods.data!.list!.length) {
-            _hasMore = false;
-          }
+    print("正在获取第${pageindex}页数据,排序:${g_sort},品牌:${brand},主类目:${cids},子类目:${subcid}");
 
-          if (pageindex == 1) {
-            clear();
-          }
+    final result = await DdTaokeSdk.instance.getProducts(
+        param: ProductListParam(
+            pageId: '$pageindex',
+            sort: '$g_sort',
+            brand: '$brand',
+            cids: '$cids',
+            subcid: '$subcid'));
 
-          for (var item in _goods.data!.list!) {
-            if (!contains(item) && hasMore) {
-              add(item);
-            }
-          }
-
-          pageindex++;
-          isSuccess = true;
-          print("获取数据成功");
-        } else {
-          isSuccess = false;
-        }
-      } else {
-        isSuccess = false;
-      }
-    });
+    if (result != null) {
+      addAll(result.list ?? []);
+      isSuccess = true;
+    } else {
+      isSuccess = false;
+    }
 
     return isSuccess;
   }

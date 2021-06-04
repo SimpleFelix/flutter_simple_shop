@@ -1,12 +1,16 @@
 import 'dart:convert';
 
+import 'package:dd_taoke_sdk/dd_taoke_sdk.dart';
+import 'package:dd_taoke_sdk/model/product.dart';
+import 'package:dd_taoke_sdk/params/product_list_param.dart';
 import 'package:demo1/modals/Result.dart';
 import 'package:demo1/util/result_obj_util.dart';
 import 'package:demo1/modals/goods_list_modal.dart';
 import 'package:loading_more_list/loading_more_list.dart';
 import '../util/request_service.dart';
 
-class IndexGoodsRepository extends LoadingMoreBase<GoodsItem> {
+/// 首页商品列表
+class IndexGoodsRepository extends LoadingMoreBase<Product> {
   int pageindex = 1;
   bool _hasMore = true;
   bool forceRefresh = false;
@@ -28,42 +32,14 @@ class IndexGoodsRepository extends LoadingMoreBase<GoodsItem> {
   @override
   Future<bool> loadData([bool isloadMoreAction = false]) async {
     bool isSuccess = false;
-    await getGoodsListFuture({'pageId': pageindex, 'pageSize': pageSize})
-        .then((res) {
-      if (res != null) {
-        Result result = ResultUtils.format(res);
-        if (result.code == 200 && result.data != null) {
-          GoodsList goodsList = GoodsList.fromJson(json.decode(result.data!));
-          if (goodsList.code == 0) {
-            List<GoodsItem> newList = goodsList.data!.list!;
-            // 成功加载数据
-            if (newList.length != pageSize) {
-              // 如果加载过来 的数据不足[pageSize]条,则设置不存在下一页
-              _hasMore = false;
-            }
-
-            if (pageindex == 1) {
-              clear();
-            }
-
-            for (var item in newList) {
-              if (!contains(item) && hasMore) {
-                add(item);
-              }
-            }
-
-            pageindex++;
-            isSuccess = true;
-          }
-        } else {
-          print("加载商品列表失败!");
-          isSuccess = false;
-        }
-      } else {
-        isSuccess = false;
-      }
-    });
-
+    final result = await DdTaokeSdk.instance.getProducts(param: ProductListParam(pageId: '$pageindex',pageSize: '$pageSize'));
+    if(result!=null){
+      addAll(result.list??[]);
+      pageindex++;
+      isSuccess = true;
+    }else{
+      isSuccess = false;
+    }
     return isSuccess;
   }
 }

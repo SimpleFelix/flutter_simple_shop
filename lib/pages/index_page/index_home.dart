@@ -2,8 +2,8 @@ import 'dart:ui';
 
 import 'package:after_layout/after_layout.dart';
 import 'package:dd_taoke_sdk/model/category.dart';
+import 'package:dd_taoke_sdk/model/product.dart';
 import 'package:demo1/modals/dtkCategorys.dart';
-import 'package:demo1/modals/goods_list_modal.dart';
 import 'package:demo1/pages/index_page/store/component_index.dart';
 import 'package:demo1/provider/category_provider.dart';
 import 'package:demo1/provider/index_provider.dart';
@@ -89,7 +89,7 @@ class _IndexHomeState extends State<IndexHome> with TickerProviderStateMixin, Af
 
   // 首页商品列表
   Widget _buildGoodsList() {
-    return LoadingMoreSliverList(SliverListConfig<GoodsItem>(
+    return LoadingMoreSliverList(SliverListConfig<Product>(
       extendedListDelegate: SliverWaterfallFlowDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2, crossAxisSpacing: ScreenUtil().setHeight(30), mainAxisSpacing: ScreenUtil().setWidth(30)),
       itemBuilder: (context, item, index) {
@@ -101,15 +101,6 @@ class _IndexHomeState extends State<IndexHome> with TickerProviderStateMixin, Af
       indicatorBuilder: (context, state) {
         return LoadingMoreListCostumIndicator(state, isSliver: true);
       },
-//      collectGarbage: (List<int> indexes) {
-//        indexes.forEach((index) {
-//          final item = indexGoodsRepository[index];
-//          final provider = ExtendedNetworkImageProvider(
-//            item.mainPic,
-//          );
-//          provider.evict();
-//        });
-//      },
     ));
   }
 
