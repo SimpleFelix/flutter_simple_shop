@@ -1,7 +1,7 @@
 
 // 9.9 包邮的菜单数据
 
-var menu_text = [
+var menuText = [
   "精选",
   "居家百货",
   "美食",
@@ -15,6 +15,6 @@ var menu_text = [
   "文娱车品"
 ];
 
-var menu_ids = [
+var menuIds = [
   -1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
 ];

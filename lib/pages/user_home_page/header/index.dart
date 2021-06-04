@@ -2,6 +2,7 @@ import 'package:demo1/fluro/NavigatorUtil.dart';
 import 'package:demo1/modals/user_model.dart';
 import 'package:demo1/widgets/my_clipper.dart';
 import 'package:fbutton_nullsafety/fbutton_nullsafety.dart';
+import 'package:fcontrol_nullsafety/fdefine.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -165,6 +166,7 @@ class HeaderIndex extends StatelessWidget {
                         Expanded(
                           child: Container(
                             child: FSuper(
+                              lightOrientation:FLightOrientation.LeftBottom,
                               spans: <TextSpan>[
                                 TextSpan(
                                     text: "- -",

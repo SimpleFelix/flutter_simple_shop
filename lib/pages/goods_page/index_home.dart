@@ -408,7 +408,7 @@ class _GoodsListPageState extends State<GoodsListPage>
               padding: EdgeInsets.only(left: 5.0),
               alignment: Alignment.center,
               child: Text(
-                "刷新失败,点击重试" ?? "",
+                "刷新失败,点击重试",
                 style: TextStyle(fontSize: 12.0, inherit: false),
               ),
             ),
@@ -441,7 +441,7 @@ class _GoodsListPageState extends State<GoodsListPage>
               color: Colors.transparent,
               alignment: Alignment.center,
               child: Text(
-                "$modeStr" ?? "",
+                "$modeStr",
                 style: TextStyle(
                     fontSize: ScreenUtil().setSp(50),
                     inherit: false,

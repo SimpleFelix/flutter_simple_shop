@@ -1,13 +1,10 @@
-import 'dart:convert';
-
-import 'package:demo1/modals/Result.dart';
-import 'package:demo1/util/result_obj_util.dart';
-import 'package:flutter/material.dart';
-import 'package:demo1/modals/NineGoodsData.dart';
+import 'package:dd_taoke_sdk/dd_taoke_sdk.dart';
+import 'package:dd_taoke_sdk/model/product.dart';
+import 'package:dd_taoke_sdk/params/nine_nine_param.dart';
 import 'package:loading_more_list/loading_more_list.dart';
-import '../util/request_service.dart';
 
-class JiuJiuRepository extends LoadingMoreBase<NineGoodsItem> {
+/// 获取数据仓库
+class JiuJiuRepository extends LoadingMoreBase<Product> {
   int pageIndex = 1; // 默认第一页
   bool _hasMore = true; // 是否还存在下一页
   String cid; // 类别ID
@@ -16,7 +13,6 @@ class JiuJiuRepository extends LoadingMoreBase<NineGoodsItem> {
   JiuJiuRepository(this.cid);
 
   @override
-  // TODO: implement hasMore
   bool get hasMore => _hasMore;
 
   @override
@@ -32,37 +28,17 @@ class JiuJiuRepository extends LoadingMoreBase<NineGoodsItem> {
   @override
   Future<bool> loadData([bool isloadMoreAction = false]) async {
     bool isSuccess = false; // 是否加载成功
-    await getNineGoods({"pageId": pageIndex, "nineCid": cid}).then((res) {
-      Result result = ResultUtils.format(res);
-      if (result.code == 200 && result.data != null) {
-        NineGoodsData goodsData =
-            NineGoodsData.fromJson(json.decode(result.data.toString()));
-        if (goodsData.code == 0) {
 
-          NineGoodsData goodsData =NineGoodsData.fromJson(json.decode(result.data.toString()));
+    final result =await DdTaokeSdk.instance.getNineNineProducts(param: NineNineParam(pageId: '$pageIndex',nineCid: '$cid',pageSize: '10'));
 
-          if(goodsData.data!.list!.length!=20){
-            _hasMore = false;
-          }
+    if(result!=null){
+      addAll(result.list??[]);
+      isSuccess = true;
+    }else{
+      isSuccess = false;
+    }
 
-          if(pageIndex==1) clear();
-
-          for (var item in goodsData.data!.list!) {
-            if (!contains(item) && hasMore) {
-              add(item);
-            }
-          }
-
-          pageIndex++;
-          isSuccess= true;
-        } else {
-          isSuccess = false;
-        }
-      } else {
-        isSuccess = false;
-      }
-      return isSuccess;
-    });
+    _hasMore = result!=null && result.list!=null && result.list!.isNotEmpty;
     return isSuccess;
   }
 }

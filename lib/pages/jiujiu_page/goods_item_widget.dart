@@ -1,15 +1,15 @@
+import 'package:dd_taoke_sdk/model/product.dart';
 import 'package:demo1/util/image_util.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../modals/NineGoodsData.dart';
 import '../../widgets/tag_widget.dart';
 import '../../fluro/NavigatorUtil.dart';
 
 // 9.9商品卡片布局
 class GoodsItemWidget extends StatelessWidget {
-  final NineGoodsItem goodsItem;
+  final Product goodsItem;
 
   GoodsItemWidget({required this.goodsItem});
 

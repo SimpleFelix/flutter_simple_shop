@@ -1,4 +1,4 @@
-import 'package:demo1/modals/NineGoodsData.dart';
+import 'package:dd_taoke_sdk/model/product.dart';
 import 'package:demo1/pages/jiujiu_page/image_nav.dart';
 import 'package:demo1/repository/jiujiu_respository.dart';
 import 'package:demo1/widgets/RoundUnderlineTabIndicator.dart';
@@ -7,12 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:loading_more_list/loading_more_list.dart';
 import 'package:provider/provider.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:pull_to_refresh_notification/pull_to_refresh_notification.dart';
-import './header_menu.dart';
-import './goods_list_widget.dart';
 import '../../provider/nine_goods_provider.dart'; // 9.9包邮的provider
-import '../../widgets/pull_to_refresh_widget.dart';
 import 'goods_item_widget.dart';
 import 'menu_data.dart';
 
@@ -35,34 +31,10 @@ class _JiujiuIndexHomeState extends State<JiujiuIndexHome>
   late JiuJiuRepository jiuJiuRepository;
   TabController? tabController;
 
-  RefreshController _refreshController =
-      RefreshController(initialRefresh: true);
-
-  //  刷新
-  void _onRefresh() async {
-    if (this.nineGoodsProvider != null) {
-      _setInitLoadingState(true);
-      await nineGoodsProvider!.loadNineGoodsList("1", "");
-      _setInitLoadingState(false);
-    }
-    _refreshController.refreshCompleted();
-  }
-
-//  加载更多
-  void _onLoading() async {
-    if (nineGoodsProvider != null && !nextPageLoading) {
-      _setNextPageLoadingState(true);
-      await nineGoodsProvider!.loadNextPageData();
-      _setNextPageLoadingState(false);
-    }
-
-    _refreshController.loadComplete();
-  }
-
   @override
   void initState() {
     this.jiuJiuRepository = JiuJiuRepository("-1");
-    this.tabController = TabController(length: menu_text.length, vsync: this);
+    this.tabController = TabController(length: menuText.length, vsync: this);
     super.initState();
   }
 
@@ -102,7 +74,7 @@ class _JiujiuIndexHomeState extends State<JiujiuIndexHome>
                   onTap: (index) async {
                     setState(() {
                       jiuJiuRepository =
-                          JiuJiuRepository(menu_ids[index].toString());
+                          JiuJiuRepository(menuIds[index].toString());
                     });
                     await jiuJiuRepository.refresh(true);
                   },
@@ -114,7 +86,7 @@ class _JiujiuIndexHomeState extends State<JiujiuIndexHome>
                         width: 2,
                         color: Colors.pinkAccent,
                       )),
-                  tabs: menu_text.map((item) {
+                  tabs: menuText.map((item) {
                     return Tab(text: item);
                   }).toList(),
                   labelColor: Colors.pinkAccent,
@@ -127,7 +99,7 @@ class _JiujiuIndexHomeState extends State<JiujiuIndexHome>
                       TextStyle(fontSize: ScreenUtil().setSp(50)),
                 )),
           ),
-          LoadingMoreSliverList(SliverListConfig<NineGoodsItem>(
+          LoadingMoreSliverList(SliverListConfig<Product>(
               itemBuilder: (context, item, index) {
                 return GoodsItemWidget(
                   goodsItem: item,
@@ -136,32 +108,6 @@ class _JiujiuIndexHomeState extends State<JiujiuIndexHome>
               sourceList: jiuJiuRepository))
           //
         ], rebuildCustomScrollView: true),
-      ),
-    );
-  }
-
-  SmartRefresher buildSmartRefresher_old(NineGoodsProvider nineGoodsProvider) {
-    return SmartRefresher(
-      controller: _refreshController,
-      onRefresh: _onRefresh,
-      onLoading: _onLoading,
-      enablePullDown: true,
-      enablePullUp: true,
-      physics: ClampingScrollPhysics(),
-      header: BezierCircleHeader(),
-      footer: PullToRefreshWidgetFoot(),
-      child: ListView(
-        controller: widget.scrollController,
-        physics: ClampingScrollPhysics(),
-        children: <Widget>[
-          buildRow1(),
-          buildRow2(),
-          HeaderMenu(onChangeCallBack: this.onChangeCallBack),
-          GoodsListWidget(
-            list: nineGoodsProvider.goods,
-            isInitLoading: initLoading,
-          ),
-        ],
       ),
     );
   }
@@ -290,7 +236,6 @@ class _JiujiuIndexHomeState extends State<JiujiuIndexHome>
     if (this.nineGoodsProvider != nineGoodsProvider) {
       this.nineGoodsProvider = nineGoodsProvider;
       _setInitLoadingState(true);
-      await this.nineGoodsProvider!.loadNineGoodsList("1", "-1");
       _setInitLoadingState(false);
     }
   }
@@ -301,17 +246,9 @@ class _JiujiuIndexHomeState extends State<JiujiuIndexHome>
     });
   }
 
-  void _setNextPageLoadingState(bool isLoading) {
-    setState(() {
-      nextPageLoading = isLoading;
-    });
-  }
-
 //  选项卡被切换
   void onChangeCallBack(index, cid) async {
     _setInitLoadingState(true);
-    await nineGoodsProvider!.setCurrentNineCid(cid.toString());
-    await nineGoodsProvider!.loadNineGoodsList("1", cid.toString());
     _setInitLoadingState(false);
   }
 }

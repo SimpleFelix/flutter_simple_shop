@@ -99,6 +99,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.0.2"
+  dd_taoke_sdk:
+    dependency: "direct main"
+    description:
+      name: dd_taoke_sdk
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.0.3"
   decimal:
     dependency: transitive
     description:
@@ -191,7 +198,7 @@ packages:
     source: hosted
     version: "3.0.1"
   fcontrol_nullsafety:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: fcontrol_nullsafety
       url: "https://pub.flutter-io.cn"
@@ -344,7 +351,7 @@ packages:
       name: image_picker
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.8.0"
+    version: "0.8.0+1"
   image_picker_for_web:
     dependency: transitive
     description:

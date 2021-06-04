@@ -1,11 +1,11 @@
+import 'package:dd_taoke_sdk/model/product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../modals/NineGoodsData.dart';
 import './goods_item_widget.dart';
 
 class GoodsListWidget extends StatelessWidget {
 
-  final List<NineGoodsItem>? list;
+  final List<Product>? list;
   final bool? isInitLoading;
   GoodsListWidget({required this.list,this.isInitLoading});
 
