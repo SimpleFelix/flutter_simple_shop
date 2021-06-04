@@ -1,7 +1,5 @@
 
-# <font face="黑体" color=red size=12>此仓库不再更新,正在使用Getx重构</font>
 
-## Get版本 https://github.com/mdddj/simple_shop_v2 
 
 
 ![logo](https://static.saintic.com/picbed/huang/2020/12/14/1607875349615.png)
@@ -10,6 +8,11 @@
 ![典典的小卖部](https://badgen.net/badge/%E5%85%B8%E5%85%B8%E7%9A%84%E5%B0%8F%E5%8D%96%E9%83%A8/v2.0.0+1/red)
 ![start](https://badgen.net/github/stars/mdddj/flutter_simple_shop)
 ![fork](https://badgen.net/github/forks/mdddj/flutter_simple_shop)
+
+
+## 使用Getx版本重构版本
+
+https://github.com/mdddj/simple_shop_v2 
 
 ## 关于
 
