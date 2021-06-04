@@ -1,14 +1,14 @@
+import 'package:dd_taoke_sdk/model/product.dart';
 import 'package:demo1/widgets/extended_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../modals/ddq_modal.dart';
 import '../../widgets/tag_widget.dart';
 import '../../fluro/NavigatorUtil.dart';
 
 // 9.9商品卡片布局
 class GoodsItem extends StatelessWidget {
-  final DdqGoodsListItem goodsItem;
+  final Product goodsItem;
   final int? state;
 
   GoodsItem({required this.goodsItem, this.state});

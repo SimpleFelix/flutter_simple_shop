@@ -128,9 +128,9 @@ class _DdqIndexHomeState extends State<DdqIndexHome> {
     return SliverList(
         delegate: SliverChildBuilderDelegate((context, index) {
       return GoodsItem(
-        goodsItem: this.ddqProvider!.goodsList![index],
+        goodsItem: this.ddqProvider!.goodsList[index],
         state: this.ddqProvider!.status,
       );
-    }, childCount: this.ddqProvider!.goodsList!.length));
+    }, childCount: this.ddqProvider!.goodsList.length));
   }
 }

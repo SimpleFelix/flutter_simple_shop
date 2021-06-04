@@ -1,5 +1,5 @@
 import 'dart:ui';
-import 'package:demo1/modals/ddq_modal.dart';
+import 'package:dd_taoke_sdk/model/product.dart';
 import 'package:demo1/widgets/extended_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -68,7 +68,7 @@ class _DDQWidgetState extends State<DDQWidget> {
 
   /// 商品列表version2
   Widget _buildWidgetGoosList() {
-    List<DdqGoodsListItem> list = ddqProvider!.goodsList!;
+    List<Product> list = ddqProvider!.goodsList;
     if (list.length >= 3) {
       return Container(
         height: ScreenUtil().setHeight(700),

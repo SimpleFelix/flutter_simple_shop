@@ -1,5 +1,5 @@
+import 'package:dd_taoke_sdk/model/ddq_result.dart';
 import 'package:flutter/material.dart';
-import '../modals/ddq_modal.dart';
 import '../provider/ddq_provider.dart';
 import './up_down_btn_widget.dart';
 
