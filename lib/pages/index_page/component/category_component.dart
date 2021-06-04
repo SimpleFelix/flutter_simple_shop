@@ -1,7 +1,6 @@
+import 'package:dd_taoke_sdk/model/category.dart';
 import 'package:demo1/pages/index_page/component/category_notification_stream.dart';
-import 'package:demo1/pages/index_page/model/category_model.dart';
 import 'package:demo1/provider/index_provider.dart';
-import 'package:demo1/util/extended_util.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -65,7 +64,7 @@ class _CategoryComponentState extends State<CategoryComponent> {
 
   @override
   Widget build(BuildContext context) {
-    List<MainCategory> categorys = Provider.of<IndexProvider>(context).mainCategorys;
+    final categorys = context.watch<IndexProvider>().categorys;
     int extendItemsLength = widget.extendItems == null ? 0 : widget.extendItems!.length;
     return Stack(
       children: [
@@ -84,7 +83,7 @@ class _CategoryComponentState extends State<CategoryComponent> {
                   if (insetCustomItem != null) {
                     return GestureDetector(child: insetCustomItem.child, onTap: insetCustomItem.onTap as void Function()?);
                   } else {
-                    MainCategory mainCategory = categorys[index - _getCountWhereInCategoryIndex(index)];
+                    final mainCategory = categorys[index - _getCountWhereInCategoryIndex(index)];
                     return GestureDetector(
                       child: CategoryItemDefaultLayout(
                         name: mainCategory.cname,
@@ -167,9 +166,9 @@ class _CategoryComponentState extends State<CategoryComponent> {
 
   /// 菜单被点击事件
   /// 不包含扩展项目
-  void _onTap(String? name, List<MainCategory> categorys) {
+  void _onTap(String? name, List<Category> categorys) {
     int _index = -1;
-    MainCategory? _item;
+    Category? _item;
 
     for (int i = 0; i < categorys.length; i++) {
       if (categorys[i].cname == name) {
@@ -178,7 +177,7 @@ class _CategoryComponentState extends State<CategoryComponent> {
         break;
       }
     }
-    widget.onSelect!(_index, _item);
+    widget.onSelect?.call(_index, _item);
   }
 
   /// 判断下标是否需要插入自定义布局
@@ -212,7 +211,7 @@ class InsetCustomItem {
 /// 菜单项被选择
 /// [index] 选择的下标
 /// [item] 选择的菜单信息
-typedef SelectWithItem = void Function(int index, MainCategory? item);
+typedef SelectWithItem = void Function(int index, Category? item);
 
 class CategoryController {
   late _CategoryComponentState _state;

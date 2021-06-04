@@ -4,8 +4,8 @@ import '../provider/ddq_provider.dart';
 import './up_down_btn_widget.dart';
 
 class DdqTimesWidget extends StatelessWidget {
-  List<RoundsList>? timesList;
-  DdqProvider? ddqProvider;
+ final  List<RoundsList>? timesList;
+ final DdqProvider? ddqProvider;
 
   DdqTimesWidget({required this.timesList,required this.ddqProvider});
 

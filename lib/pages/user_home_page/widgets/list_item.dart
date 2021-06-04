@@ -4,11 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ListItem extends StatelessWidget {
 
-  String title;
-  Widget? actions;
-  Function onTap;
-  Widget? leftAction;
-  bool isCard;
+  final String title;
+  final Widget? actions;
+  final Function onTap;
+  final Widget? leftAction;
+  final bool isCard;
 
   ListItem({required this.title,this.actions,required this.onTap,this.leftAction,this.isCard:false});
 

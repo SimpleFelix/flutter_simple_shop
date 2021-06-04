@@ -21,7 +21,7 @@ class CategoryNotificationStreamUtil{
   Stream? get changeStream => _stream;
   StreamController? get ctrl => _controller;
 
-  void disposeStream() => _controller!.close();
+  void disposeStream() => _controller?.close();
 
   void init() {
     _controller ??= StreamController.broadcast();

@@ -1,6 +1,4 @@
 import 'dart:convert';
-import 'package:demo1/modals/Result.dart';
-import 'package:demo1/util/result_obj_util.dart';
 import 'package:demo1/util/system_toast.dart';
 import 'package:dio/dio.dart';
 

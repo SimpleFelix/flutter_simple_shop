@@ -20,7 +20,7 @@ class MySpecialTextSpanBuilder extends SpecialTextSpanBuilder {
   @override
   SpecialText? createSpecialText(String flag,
       {TextStyle? textStyle, SpecialTextGestureTapCallback? onTap, int? index}) {
-    if (flag == null || flag == "") return null;
+    if (flag == "") return null;
 
     ///index is end index of start flag, so text start index should be index-(flag.length-1)
     if (isStart(flag, AtText.flag)) {

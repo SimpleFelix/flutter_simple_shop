@@ -70,14 +70,14 @@ void showConfirmDialog(BuildContext context,String content, Function confirmCall
           title: new Text("提示"),
           content: new Text(content),
           actions: <Widget>[
-            new FlatButton(
+            new TextButton(
               onPressed: () {
                 confirmCallback();
                 Navigator.of(context).pop();
               },
               child: new Text("确认"),
             ),
-            new FlatButton(
+            new TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },

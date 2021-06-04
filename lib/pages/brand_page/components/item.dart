@@ -1,4 +1,3 @@
-import 'package:demo1/pages/brand_page/provider/brand_provider.dart';
 import 'package:demo1/pages/index_page/model/store_list_model.dart';
 import 'package:demo1/pages/index_page/store/goods_item_layout.dart';
 import 'package:demo1/util/image_util.dart';

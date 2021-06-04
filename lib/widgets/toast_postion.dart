@@ -50,7 +50,6 @@ class Toast {
         //文字垂直方向的内边距
         double pdVertical = 10.0,
       }) async {
-    assert(msg != null);
     _msg = msg;
     _startedTime = DateTime.now();
     _showTime = showTime;

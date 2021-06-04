@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:demo1/modals/Result.dart';
 import 'package:demo1/modals/order_list_model.dart';
-import 'package:demo1/modals/page_info_model.dart';
 import 'package:demo1/util/request_service.dart';
 import 'package:demo1/util/result_obj_util.dart';
 import 'package:demo1/util/user_utils.dart';

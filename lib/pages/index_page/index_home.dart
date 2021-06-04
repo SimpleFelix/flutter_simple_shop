@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:after_layout/after_layout.dart';
+import 'package:dd_taoke_sdk/model/category.dart';
 import 'package:demo1/modals/dtkCategorys.dart';
 import 'package:demo1/modals/goods_list_modal.dart';
 import 'package:demo1/pages/index_page/store/component_index.dart';
@@ -26,7 +27,6 @@ import 'component/category_component.dart';
 import 'component/category_item_layout.dart';
 import 'component/topic_carousel.dart';
 import 'grid_menu_list.dart';
-import 'model/category_model.dart';
 
 class IndexHome extends StatefulWidget {
   final ScrollController? mController;
@@ -168,7 +168,7 @@ class _IndexHomeState extends State<IndexHome> with TickerProviderStateMixin, Af
                       print("双十二预售");
                     })
               ],
-              onSelect: (int index, MainCategory? item) {
+              onSelect: (int index, Category? item) {
                 if(item!=null){
                   print("选中了:${item.cname},index是:$index");
                 }

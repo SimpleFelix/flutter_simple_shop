@@ -24,7 +24,7 @@ import 'package:pull_to_refresh_notification/pull_to_refresh_notification.dart';
       child = GestureDetector(
           onTap: () {
             // refreshNotification;
-            info?.pullToRefreshNotificationState?.show();
+            info?.pullToRefreshNotificationState.show();
           },
           child: Container(
             color: Colors.transparent,

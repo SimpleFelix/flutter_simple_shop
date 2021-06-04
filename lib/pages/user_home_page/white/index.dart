@@ -41,17 +41,6 @@ class _WhiteIndexState extends State<WhiteIndex> {
 
 
   @override
-  void initState() {
-    _focusNode.addListener((){
-      if(!_focusNode.hasFocus){
-        print("失去焦点");
-      }else{
-        print("获取焦点");
-      }
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
     var keyboardHeight = MediaQuery.of(context).viewInsets.bottom;
     if (keyboardHeight > 0) {

@@ -1,4 +1,3 @@
-import 'package:dd_taoke_sdk/dd_taoke_sdk.dart';
 import 'package:dd_taoke_sdk/network/util.dart';
 import 'package:flutter/material.dart';
 import 'package:demo1/provider/user_provider.dart';
@@ -9,7 +8,6 @@ import './provider/providers.dart';
 import 'package:fluro/fluro.dart';
 import './fluro/Application.dart';
 import './fluro/Routes.dart';
-// 路由配置-----end
 
 void main() {
   /// 初始化sdk能力

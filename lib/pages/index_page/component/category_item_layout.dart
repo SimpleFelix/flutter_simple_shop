@@ -35,10 +35,8 @@ class _CategoryItemDefaultLayoutState extends State<CategoryItemDefaultLayout> {
   }
 
   void _notificationWidgetInfoTo() {
-    if (widget.onRendeEnd != null) {
-      final RenderBox box = context.findRenderObject() as RenderBox;
-      widget.onRendeEnd(widget.index, box.localToGlobal(Offset.zero), context.size);
-    }
+    final RenderBox box = context.findRenderObject() as RenderBox;
+    widget.onRendeEnd(widget.index, box.localToGlobal(Offset.zero), context.size);
   }
 
   @override

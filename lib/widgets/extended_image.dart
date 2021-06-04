@@ -1,4 +1,3 @@
-import 'package:flustars/flustars.dart' hide ScreenUtil;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:extended_image/extended_image.dart';

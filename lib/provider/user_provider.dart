@@ -122,7 +122,7 @@ class UserProvider with ChangeNotifier {
         await loadFavoriteGoods({"userId": user.id, "pageId": pageId})
             .then((res) {
           Result result = ResultUtils.format(res);
-          if (result != null && result.code == 200) {
+          if (result.code == 200) {
             FavoritesAllData favoritesAllData =
                 FavoritesAllData.fromJson(json.decode(result.data.toString()));
             this.pageInfo = favoritesAllData.pageInfo;

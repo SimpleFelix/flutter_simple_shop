@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TitleWidget extends StatelessWidget {
-  int? size; // 字体大小
-  Color? color; // 字体颜色
-  String? title; //  文本值
-  FontWeight? fontWeight; // 粗体
-  EdgeInsets? padding;
+  final int? size; // 字体大小
+  final Color? color; // 字体颜色
+  final String? title; //  文本值
+  final FontWeight? fontWeight; // 粗体
+  final EdgeInsets? padding;
 
   TitleWidget({this.size, this.color, required this.title, this.fontWeight,this.padding});
 

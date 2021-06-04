@@ -5,12 +5,12 @@ import '../constant/color.dart';
 
 // 券后价小部件
 class CouponPriceWidget extends StatelessWidget {
-  String? actualPrice; //  券后价
-  double? originalPrice; //  商品原价
-  double? couponPriceFontSize; // 券后价文本大小
-  double? originalPriceFontSize; // 商品原价文本大小
-  double? interval; // 券后价和原价之间的间隔距离
-  bool? showDiscount; // 是否显示折扣
+  final String? actualPrice; //  券后价
+  final double? originalPrice; //  商品原价
+  final double? couponPriceFontSize; // 券后价文本大小
+  final double? originalPriceFontSize; // 商品原价文本大小
+  final double? interval; // 券后价和原价之间的间隔距离
+  final bool? showDiscount; // 是否显示折扣
 
   CouponPriceWidget(
       {required this.actualPrice,
@@ -24,10 +24,7 @@ class CouponPriceWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (couponPriceFontSize == null) {
-      couponPriceFontSize = 80.0;
-    }
-    couponPriceSymbolFontSize = couponPriceFontSize! * 0.75;
+    couponPriceSymbolFontSize = (couponPriceFontSize ?? 80.0) * 0.75;
     return Container(
       child: Row(
         children: <Widget>[
@@ -36,8 +33,7 @@ class CouponPriceWidget extends StatelessWidget {
             child: Text("券后",
                 style: TextStyle(
                     color: Colors.black38,
-                    fontSize:
-                        ScreenUtil().setSp(couponPriceSymbolFontSize * 0.6))),
+                    fontSize: ScreenUtil().setSp(couponPriceSymbolFontSize * 0.6))),
           ),
           Container(
             child: Text(
@@ -51,8 +47,7 @@ class CouponPriceWidget extends StatelessWidget {
             child: Text(
               actualPrice.toString(),
               style: TextStyle(
-                  color: Colors.pinkAccent,
-                  fontSize: ScreenUtil().setSp(couponPriceFontSize!)),
+                  color: Colors.pinkAccent, fontSize: ScreenUtil().setSp(couponPriceFontSize!)),
             ),
           ),
           Container(
@@ -82,8 +77,7 @@ class CouponPriceWidget extends StatelessWidget {
       backgroundColor: primaryColor,
       padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),
       margin: EdgeInsets.only(left: 10),
-      text:
-          "${discount.toStringAsFixed(discount.truncateToDouble() == discount ? 0 : 1)}折",
+      text: "${discount.toStringAsFixed(discount.truncateToDouble() == discount ? 0 : 1)}折",
     );
   }
 }

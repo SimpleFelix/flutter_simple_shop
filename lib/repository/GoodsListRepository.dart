@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:demo1/modals/Result.dart';
 import 'package:demo1/util/result_obj_util.dart';
-import 'package:flutter/material.dart';
 import 'package:demo1/modals/goods_list_modal.dart';
 import 'package:loading_more_list/loading_more_list.dart';
 import '../util/request_service.dart';

@@ -72,7 +72,7 @@ class ShopInfoWidget extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(right: 10.0),
                   child: Container(
-                    child: RaisedButton(
+                    child: ElevatedButton(
                       child: Text("全部商品"),
                       onPressed: (){},
                     ),

@@ -4,9 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class UpDownBtnWidget extends StatelessWidget {
 
-  bool? isCur;
-  String? upText;
-  String? downText;
+  final bool? isCur;
+  final String? upText;
+  final String? downText;
   UpDownBtnWidget({this.isCur,this.downText,this.upText});
 
   @override

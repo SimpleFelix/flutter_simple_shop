@@ -9,14 +9,12 @@ import 'package:demo1/network/http_request.dart';
 import 'package:demo1/pages/detail_page/hdk/model/hdk_detail.dart';
 import 'package:demo1/util/api.dart';
 import 'package:demo1/util/image_util.dart';
-import 'package:demo1/util/request.dart';
 import 'package:demo1/util/request_service.dart';
 import 'package:demo1/util/result_obj_util.dart';
 import 'package:demo1/util/system_toast.dart';
 import 'package:demo1/widgets/RoundUnderlineTabIndicator.dart';
 import 'package:demo1/widgets/extended_image.dart';
 import 'package:demo1/widgets/my_drawable_start_text.dart';
-import 'package:dio/dio.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:fbutton_nullsafety/fbutton_nullsafety.dart';
 import 'package:flutter/cupertino.dart';
@@ -394,7 +392,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
 
   // 店铺信息
   Widget buildSliverToBoxAdapterShop({isSliver = true}) {
-    Widget widget = ContainerWarp(Container(
+    Widget widget = containerWarp(Container(
       padding: EdgeInsets.symmetric(vertical: ScreenUtil().setHeight(20)),
       child: Row(
         children: <Widget>[
@@ -495,7 +493,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
 
   // 第六行,推荐语
   Widget buildSliverToBoxAdapterSix({isSliver = true}) {
-    Widget widget = ContainerWarp(
+    Widget widget = containerWarp(
         Container(
           alignment: Alignment.topLeft,
           child: FSuper(
@@ -529,7 +527,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
 
   // 第五行,领券
   Widget buildSliverToBoxAdapterFive({isSliver = true}) {
-    Widget widget = ContainerWarp(
+    Widget widget = containerWarp(
         InkWell(
           onTap: () async {
             await getPrivilegeLink({"goodsId": info!.itemid})
@@ -653,7 +651,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
 
   // 第四行,满减
   Widget buildSliverToBoxAdapterFour({isSliver = true}) {
-    Widget widget = ContainerWarp(Container(
+    Widget widget = containerWarp(Container(
       child: Row(
         children: <Widget>[
           Container(
@@ -697,7 +695,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
 
   // 第三行,标题
   Widget buildSliverToBoxAdapterThree({isSliver = true}) {
-    Widget widget = ContainerWarp(
+    Widget widget = containerWarp(
         Container(
           width: ScreenUtil().setWidth(1440),
           child: DrawableStartText(
@@ -721,7 +719,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
 
   // 第二行,原价+销量
   Widget buildSliverToBoxAdapterTwo({isSliver = true}) {
-    Widget widget = ContainerWarp(
+    Widget widget = containerWarp(
         Container(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -752,7 +750,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
 
   // 第一行,券后价+返佣
   Widget buildSliverToBoxAdapterOne({isSliver = true}) {
-    Widget widget = ContainerWarp(
+    Widget widget = containerWarp(
       Container(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -797,7 +795,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
     );
   }
 
-  Widget ContainerWarp(Widget child, {double height: 0}) {
+  Widget containerWarp(Widget child, {double height: 0}) {
     return Container(
       child: child,
       margin: EdgeInsets.symmetric(

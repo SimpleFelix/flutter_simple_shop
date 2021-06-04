@@ -118,12 +118,11 @@ class _LoginPageState extends State<LoginPage> {
       child: SizedBox(
         height: 45.0,
         width: 270.0,
-        child: RaisedButton(
+        child: ElevatedButton(
           child: Text(
             'Login',
             style: Theme.of(context).primaryTextTheme.headline5,
           ),
-          color: Colors.black,
           onPressed: () {
             if (_formKey.currentState!.validate()) {
               ///只有输入的内容符合要求通过才会到达此处
@@ -132,7 +131,6 @@ class _LoginPageState extends State<LoginPage> {
               print('email:$_email , assword:$_password');
             }
           },
-          shape: StadiumBorder(side: BorderSide()),
         ),
       ),
     );

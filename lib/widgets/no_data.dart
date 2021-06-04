@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class NoDataWidget extends StatelessWidget {
-  String? title;
+  final String? title;
   NoDataWidget({this.title});
   @override
   Widget build(BuildContext context) {

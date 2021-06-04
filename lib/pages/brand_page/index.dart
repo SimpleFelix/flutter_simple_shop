@@ -1,8 +1,8 @@
 import 'package:after_layout/after_layout.dart';
+import 'package:dd_taoke_sdk/model/category.dart';
 import 'package:demo1/pages/brand_page/components/item.dart';
 import 'package:demo1/pages/brand_page/provider/brand_provider.dart';
 import 'package:demo1/pages/index_page/component/category_component.dart';
-import 'package:demo1/pages/index_page/model/category_model.dart';
 import 'package:demo1/provider/index_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
@@ -65,7 +65,7 @@ class _BrandListPageState extends State<BrandListPage> with AfterLayoutMixin<Bra
   }
 
   /// 菜单被选择
-  void _categoryOnSelect(int index, MainCategory? item) async {
+  void _categoryOnSelect(int index, Category? item) async {
     _categoryController.toIndex(index);
     _brandProvider!.setCid("${item!.cid}");
     _easyRefreshController.callRefresh();
@@ -73,7 +73,7 @@ class _BrandListPageState extends State<BrandListPage> with AfterLayoutMixin<Bra
 
   @override
   void afterFirstLayout(BuildContext context) async {
-    int? cid = Provider.of<IndexProvider>(context, listen: false).mainCategorys[0].cid; // 默认获取下标0的分类
+    int? cid = context.read<IndexProvider>().categorys[0].cid; // 默认获取下标0的分类
     _brandProvider!.setCid("$cid");
     await _refresh();
   }

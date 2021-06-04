@@ -32,7 +32,7 @@ class IndexGoodsRepository extends LoadingMoreBase<GoodsItem> {
         .then((res) {
       if (res != null) {
         Result result = ResultUtils.format(res);
-        if (result != null && result.code == 200 && result.data != null) {
+        if (result.code == 200 && result.data != null) {
           GoodsList goodsList = GoodsList.fromJson(json.decode(result.data!));
           if (goodsList.code == 0) {
             List<GoodsItem> newList = goodsList.data!.list!;

@@ -5,11 +5,11 @@ import './pull_to_refresh_widget.dart';
 
 class RefreshAndLoadMore extends StatelessWidget {
 
-  dynamic refreshFun;
-  dynamic loadMoreFun;
-  RefreshController? controller;
-  dynamic listViewCntroller;
-  List<Widget>? children;
+  final dynamic refreshFun;
+  final dynamic loadMoreFun;
+  final RefreshController? controller;
+  final dynamic listViewCntroller;
+  final List<Widget>? children;
 
   RefreshAndLoadMore({this.refreshFun, this.loadMoreFun, this.children,this.controller,this.listViewCntroller});
 

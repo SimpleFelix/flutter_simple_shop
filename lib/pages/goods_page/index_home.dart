@@ -396,7 +396,7 @@ class _GoodsListPageState extends State<GoodsListPage>
       child = GestureDetector(
           onTap: () {
             // refreshNotification;
-            info?.pullToRefreshNotificationState?.show();
+            info?.pullToRefreshNotificationState.show();
           },
           child: Container(
             color: Colors.transparent,

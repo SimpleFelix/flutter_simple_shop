@@ -10,7 +10,7 @@ import '../../../repository/order_respository.dart';
 
 class MyOrderHomePage extends StatefulWidget {
 
-  String? stype; // 审核类型
+  final  String? stype; // 审核类型
 
   MyOrderHomePage({this.stype});
 

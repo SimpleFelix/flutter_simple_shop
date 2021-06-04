@@ -139,13 +139,13 @@ class _IndexState extends State<FavoriteIndexHome> {
                                                           title: Text('提示'),
                                                           content: Text(('确定删除吗')),
                                                           actions: <Widget>[
-                                                            new FlatButton(
+                                                            new TextButton(
                                                               child: new Text("取消"),
                                                               onPressed: () {
                                                                 Navigator.pop(context);
                                                               },
                                                             ),
-                                                            new FlatButton(
+                                                            new TextButton(
                                                               child: new Text("确定"),
                                                               onPressed: () async {
                                                                 userProvider.editFavoriteIds

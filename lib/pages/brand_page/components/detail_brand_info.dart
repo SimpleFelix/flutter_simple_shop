@@ -1,5 +1,4 @@
 import 'package:demo1/pages/brand_page/models/brand_detail_model.dart';
-import 'package:demo1/util/extended_util.dart';
 import 'package:demo1/util/image_util.dart';
 import 'package:demo1/util/number_cover.dart';
 import 'package:demo1/widgets/tag_widget.dart';

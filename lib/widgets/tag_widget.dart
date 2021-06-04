@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TagWidget extends StatelessWidget {
-  String? title;
-  Color? bg;
-  Color? textColor;
-  bool? noBorder;
+  final String? title;
+  final Color? bg;
+  final Color? textColor;
+  final bool? noBorder;
 
   TagWidget({this.title, this.bg, this.textColor, this.noBorder});
 

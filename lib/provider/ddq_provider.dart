@@ -24,7 +24,7 @@ class DdqProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  timeChange(DateTime? time, int? state) async {
+  Future<void> timeChange(DateTime? time, int? state) async {
     this.ddqTime = time;
     this.goodsList = [];
     this.status = state;
