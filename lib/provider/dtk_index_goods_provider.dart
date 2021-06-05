@@ -6,7 +6,7 @@ import '../modals/goods_list_modal.dart';
 import '../util/result_obj_util.dart';
 import 'dart:convert';
 
-class DtkIndexGoodsModal with ChangeNotifier {
+class DtkIndexGoodsModal extends ChangeNotifier {
   List<Datum>? goods = [];
 
   int page = 1; // 默认加载商品第一页数据

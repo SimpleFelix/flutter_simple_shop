@@ -51,3 +51,43 @@ class ExtendedImageWidget extends StatelessWidget {
     return image;
   }
 }
+
+
+/// 简单的图片
+/// 需要直系父亲组件声明宽高
+class SimpleImage extends StatelessWidget {
+  final String url;
+
+  const SimpleImage({Key? key, required this.url}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Container(
+          width: double.infinity,
+          height: double.infinity,
+          decoration: BoxDecoration(
+            color: Colors.grey[200],
+            borderRadius: BorderRadius.circular(8),
+          ),
+        ),
+        Positioned(
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          child: ExtendedImage.network(
+            MImageUtils.magesProcessor(url),
+            width: double.infinity,
+            height: double.infinity,
+            loadStateChanged: loadingState,
+            cache: true,
+            shape: BoxShape.rectangle,
+            borderRadius: BorderRadius.circular(8),
+          ),
+        ),
+      ],
+    );
+  }
+}

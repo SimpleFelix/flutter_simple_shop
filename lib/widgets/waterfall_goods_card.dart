@@ -32,7 +32,6 @@ class WaterfallGoodsCard extends StatelessWidget {
             ),
             child: Column(
               children: <Widget>[
-
                 _image(),
 
                 SizedBox(height: Sc.ScreenUtil().setHeight(20)),
@@ -43,36 +42,35 @@ class WaterfallGoodsCard extends StatelessWidget {
                 SizedBox(height: Sc.ScreenUtil().setHeight(20)),
                 // 购买理由
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal:  Sc.ScreenUtil().setWidth(40)),
+                  padding: EdgeInsets.symmetric(horizontal: Sc.ScreenUtil().setWidth(40)),
                   child: Text(
                     product.desc!,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: Sc.ScreenUtil().setSp(45)
-                    ),
+                    style: TextStyle(color: Colors.grey, fontSize: Sc.ScreenUtil().setSp(45)),
                   ),
                 ),
 
-                SizedBox(height: Sc.ScreenUtil().setHeight(20)),
+                SizedBox(height: 12),
 
+                /// 领券标签
                 Container(
                   alignment: Alignment.centerLeft,
-                  padding: EdgeInsets.symmetric(horizontal:  Sc.ScreenUtil().setWidth(40)),
+                  padding: EdgeInsets.symmetric(horizontal: 6),
                   child: FSuper(
                     lightOrientation: FLightOrientation.LeftBottom,
-                    text: '领 ${NumUtil.getNumByValueDouble(product.couponPrice,0)} 元券',
+                    text: '领 ${NumUtil.getNumByValueDouble(product.couponPrice, 0)} 元券',
                     padding: EdgeInsets.symmetric(horizontal: Sc.ScreenUtil().setWidth(40)),
                     strokeColor: Colors.pink,
-                    strokeWidth: 0.3,
+                    corner: FCorner.all(10),
+                    style: TextStyle(color: Colors.pink),
                   ),
                 ),
 
                 SizedBox(height: Sc.ScreenUtil().setHeight(20)),
 
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal:  Sc.ScreenUtil().setWidth(40)),
+                  padding: EdgeInsets.symmetric(horizontal: Sc.ScreenUtil().setWidth(40)),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     verticalDirection: VerticalDirection.up,
@@ -112,9 +110,7 @@ class WaterfallGoodsCard extends StatelessWidget {
           Container(
             child: Text(
               "两小时销量$twoHoursSales,月销${product.monthSales}",
-              style: TextStyle(
-                  fontSize: Sc.ScreenUtil().setSp(35),
-                  color: Colors.pinkAccent),
+              style: TextStyle(fontSize: Sc.ScreenUtil().setSp(35), color: Colors.pinkAccent),
             ),
           )
         ],
@@ -122,11 +118,10 @@ class WaterfallGoodsCard extends StatelessWidget {
     );
   }
 
-
   // 标题
   Widget _title(String dtitle) {
     return Container(
-        padding: EdgeInsets.symmetric(horizontal:  Sc.ScreenUtil().setWidth(40)),
+        padding: EdgeInsets.symmetric(horizontal: Sc.ScreenUtil().setWidth(40)),
         child: Stack(
           children: <Widget>[
             Container(
@@ -134,10 +129,9 @@ class WaterfallGoodsCard extends StatelessWidget {
               child: Text(
                 dtitle,
                 style: TextStyle(
-                  color: Colors.black,
+                    color: Colors.black,
                     fontWeight: FontWeight.w600,
-                    fontSize: Sc.ScreenUtil().setSp(45)
-                ),
+                    fontSize: Sc.ScreenUtil().setSp(45)),
 //                maxLines: 1,
 //                overflow: TextOverflow.ellipsis,
                 textAlign: TextAlign.start,
@@ -150,12 +144,13 @@ class WaterfallGoodsCard extends StatelessWidget {
   // 商品卡片主图
   Widget _image() {
     String img = product.mainPic!;
-    return ExtendedImageWidget(
-      src: img,
-      height: 645,
-      width: 645,
-      knowSize: false,
-      radius: BorderRadius.only(topLeft: Radius.circular(10.0),topRight: Radius.circular(10.0)),
+    return LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints constraints) {
+        return SizedBox(
+            width: constraints.maxWidth,
+            height: constraints.maxWidth,
+            child: SimpleImage(url: img));
+      },
     );
   }
 
@@ -164,12 +159,11 @@ class WaterfallGoodsCard extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(left: 5.0),
       padding: EdgeInsets.only(left: 5.0, right: 5.0),
-      decoration: BoxDecoration(
-          color: bgColor, borderRadius: BorderRadius.all(Radius.circular(2.0))),
+      decoration:
+          BoxDecoration(color: bgColor, borderRadius: BorderRadius.all(Radius.circular(2.0))),
       child: Text(
         text,
-        style:
-            TextStyle(fontSize: Sc.ScreenUtil().setSp(40), color: Colors.white),
+        style: TextStyle(fontSize: Sc.ScreenUtil().setSp(40), color: Colors.white),
       ),
     );
   }
@@ -180,13 +174,11 @@ class WaterfallGoodsCard extends StatelessWidget {
 
     if (activityType == 3) {
       icon = Image.asset("assets/icons/jhs.png",
-          height: Sc.ScreenUtil().setHeight(60),
-          width: Sc.ScreenUtil().setWidth(60));
+          height: Sc.ScreenUtil().setHeight(60), width: Sc.ScreenUtil().setWidth(60));
     }
     if (activityType == 2) {
       icon = Image.asset("assets/icons/qg.png",
-          height: Sc.ScreenUtil().setHeight(60),
-          width: Sc.ScreenUtil().setWidth(60));
+          height: Sc.ScreenUtil().setHeight(60), width: Sc.ScreenUtil().setWidth(60));
     }
     return Container(margin: EdgeInsets.only(left: 5.0), child: icon);
   }
@@ -197,8 +189,7 @@ class WaterfallGoodsCard extends StatelessWidget {
         ? Container(
             margin: EdgeInsets.only(left: 5.0),
             child: Image.asset("assets/icons/new.png",
-                height: Sc.ScreenUtil().setHeight(60),
-                width: Sc.ScreenUtil().setWidth(60)),
+                height: Sc.ScreenUtil().setHeight(60), width: Sc.ScreenUtil().setWidth(60)),
           )
         : Text("");
   }

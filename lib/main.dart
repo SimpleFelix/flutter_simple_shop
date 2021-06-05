@@ -33,8 +33,6 @@ class _MyAppState extends State<MyApp> {
         builder: (context, userProvider, _) => GetMaterialApp(
           debugShowCheckedModeBanner: false,
           title: '典典小卖部',
-          //自定义主题
-          // 声明路由
           onGenerateRoute: Application.router.generator,
           home: App(),
         ),

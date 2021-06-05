@@ -77,16 +77,4 @@ class _CategoryIndexPageState extends State<CategoryIndexPage> {
 //      categoryProvider.loadDtkCategoryDatas(context);
     }
   }
-
-  Widget _buildTitle() {
-    return Container(
-      height: ScreenUtil().setHeight(150),
-      alignment: Alignment.centerLeft,
-      child: Text(
-        this.categoryProvider!.categorys[current].cname!,
-        style: TextStyle(
-            fontWeight: FontWeight.w500, fontSize: ScreenUtil().setSp(60), color: Colors.black),
-      ),
-    );
-  }
 }

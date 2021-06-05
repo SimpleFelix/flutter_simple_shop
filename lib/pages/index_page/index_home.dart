@@ -27,6 +27,7 @@ import 'component/category_item_layout.dart';
 import 'component/topic_carousel.dart';
 import 'grid_menu_list.dart';
 
+/// 首页
 class IndexHome extends StatefulWidget {
   final ScrollController? mController;
 
@@ -36,11 +37,10 @@ class IndexHome extends StatefulWidget {
   _IndexHomeState createState() => _IndexHomeState();
 }
 
-class _IndexHomeState extends State<IndexHome> with TickerProviderStateMixin, AfterLayoutMixin<IndexHome> {
+class _IndexHomeState extends State<IndexHome>
+    with TickerProviderStateMixin, AfterLayoutMixin<IndexHome> {
 //   状态管理
-  DtkIndexGoodsModal? _dtkIndexGoodsModal;
-  CategoryProvider? _categoryProvider;
-  IndexProvider? _indexProvider;
+  late IndexProvider _indexProvider = context.watch<IndexProvider>();
   List<Category> categorys = [];
   GlobalKey _titleKey = GlobalKey();
 
@@ -90,7 +90,9 @@ class _IndexHomeState extends State<IndexHome> with TickerProviderStateMixin, Af
   Widget _buildGoodsList() {
     return LoadingMoreSliverList(SliverListConfig<Product>(
       extendedListDelegate: SliverWaterfallFlowDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2, crossAxisSpacing: ScreenUtil().setHeight(30), mainAxisSpacing: ScreenUtil().setWidth(30)),
+          crossAxisCount: 2,
+          crossAxisSpacing: ScreenUtil().setHeight(30),
+          mainAxisSpacing: ScreenUtil().setWidth(30)),
       itemBuilder: (context, item, index) {
         return WaterfallGoodsCard(item);
       },
@@ -103,27 +105,16 @@ class _IndexHomeState extends State<IndexHome> with TickerProviderStateMixin, Af
     ));
   }
 
-  @override
-  void didChangeDependencies() async {
-    super.didChangeDependencies();
-    if (this._dtkIndexGoodsModal == null) this._dtkIndexGoodsModal = Provider.of<DtkIndexGoodsModal>(context);
-    if (this._categoryProvider == null) this._categoryProvider = Provider.of<CategoryProvider>(context);
-    if (this._indexProvider == null) this._indexProvider = Provider.of<IndexProvider>(context);
-  }
-
   /// 初始化数据
   /// 从上往下顺序加载
   Future<void> _initDatas() async {
-    await _indexProvider!.fetchCategorys(); // 超级菜单
-    await _indexProvider!.fetchTopics(); // 专辑列表
-    await _indexProvider!.fetchStores(); // 商店列表
     setState(() {
       carouselISLoaded = true;
     });
-    await _dtkIndexGoodsModal!.getGoodsList(1); // 首页商品列表
-    await _categoryProvider!.loadDtkCategoryDatas(context); // 分类数据
+    await context.read<DtkIndexGoodsModal>().getGoodsList(1); // 首页商品列表
+    await context.read<CategoryProvider>().loadDtkCategoryDatas(context); // 分类数据
     setState(() {
-      this.categorys = _categoryProvider!.categorys;
+      this.categorys = context.read<CategoryProvider>().categorys;
       tabController = TabController(length: this.categorys.length + 1, vsync: this);
       setState(() {
         categortListIsLoaded = true;
@@ -143,7 +134,11 @@ class _IndexHomeState extends State<IndexHome> with TickerProviderStateMixin, Af
               extendItems: [
                 InsetCustomItem(
                     index: 0,
-                    child: CategoryItemDefaultLayout(name: "首页", index: 0, onRendeEnd: (int? index, Offset offset, Size? size) {  },),
+                    child: CategoryItemDefaultLayout(
+                      name: "首页",
+                      index: 0,
+                      onRendeEnd: (int? index, Offset offset, Size? size) {},
+                    ),
                     onTap: () {
                       print("我点击了首页");
                     }),
@@ -159,13 +154,12 @@ class _IndexHomeState extends State<IndexHome> with TickerProviderStateMixin, Af
                     })
               ],
               onSelect: (int index, Category? item) {
-                if(item!=null){
+                if (item != null) {
                   print("选中了:${item.cname},index是:$index");
                 }
-
               },
             ),
-          ], color: _indexProvider!.topBackground),
+          ], color: _indexProvider.topBackground),
           floating: true,
           pinned: true,
         ),
@@ -208,7 +202,13 @@ class _IndexHomeState extends State<IndexHome> with TickerProviderStateMixin, Af
                 decoration: BoxDecoration(
                     color: _titleIsInTop ? Colors.white : Color.fromRGBO(235, 235, 235, 1),
                     boxShadow: _titleIsInTop
-                        ? [BoxShadow(color: Colors.grey[200]!, blurRadius: 1.0, spreadRadius: 1.0, offset: Offset(1, 1))]
+                        ? [
+                            BoxShadow(
+                                color: Colors.grey[200]!,
+                                blurRadius: 1.0,
+                                spreadRadius: 1.0,
+                                offset: Offset(1, 1))
+                          ]
                         : []),
                 child: CustomSelectToolbar(items: [
                   SelectMenu(title: "佛系推荐", subTitle: '发现好物'),
@@ -232,7 +232,7 @@ class _IndexHomeState extends State<IndexHome> with TickerProviderStateMixin, Af
             child: AnimatedContainer(
               duration: Duration(milliseconds: 1000),
               height: ScreenUtil().setHeight(carouselHeight + 50),
-              color: _indexProvider!.topBackground,
+              color: _indexProvider.topBackground,
             )),
         Column(
           children: <Widget>[
@@ -258,23 +258,21 @@ class _IndexHomeState extends State<IndexHome> with TickerProviderStateMixin, Af
       backgroundColor: Colors.transparent,
       elevation: 0,
       title: Container(
-        height: 140.h,
         child: TextField(
           textAlignVertical: TextAlignVertical.center,
           textAlign: TextAlign.left,
           decoration: InputDecoration(
-              hintText: '输入商品名或者宝贝标题搜索',
-              border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0), borderSide: BorderSide.none),
-              alignLabelWithHint: true,
-              filled: true,
-              fillColor: Colors.white,
-              suffixIcon: Icon(
-                Icons.search,
-                color: Colors.grey,
-              ),
-              hintStyle: TextStyle(height: 1.5),
-              contentPadding: EdgeInsets.only(top: 30.h, left: 40.w)),
-          style: TextStyle(height: 1, color: Colors.black),
+            hintText: '输入商品名或者宝贝标题搜索',
+            border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20.0), borderSide: BorderSide.none),
+            alignLabelWithHint: true,
+            filled: true,
+            fillColor: Colors.white,
+            suffixIcon: Icon(
+              Icons.search,
+              color: Colors.grey,
+            ),
+          ),
         ),
       ),
       actions: <Widget>[
