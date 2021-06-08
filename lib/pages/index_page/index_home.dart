@@ -4,6 +4,7 @@ import 'package:after_layout/after_layout.dart';
 import 'package:dd_taoke_sdk/model/category.dart';
 import 'package:dd_taoke_sdk/model/product.dart';
 import 'package:demo1/pages/index_page/store/component_index.dart';
+import 'package:demo1/pages/search/view.dart';
 import 'package:demo1/provider/category_provider.dart';
 import 'package:demo1/provider/index_provider.dart';
 import 'package:demo1/repository/IndexGoodsRepository.dart';
@@ -16,6 +17,7 @@ import 'package:demo1/widgets/pullto_refresh_header.dart';
 import 'package:demo1/widgets/waterfall_goods_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:loading_more_list/loading_more_list.dart';
 import 'package:provider/provider.dart';
 import 'package:pull_to_refresh_notification/pull_to_refresh_notification.dart';
@@ -264,7 +266,7 @@ class _IndexHomeState extends State<IndexHome>
               onPressed: () {
                 final searchKeyWorld = _searchEditController.text;
                 if (searchKeyWorld.isNotEmpty) {
-
+                    Get.to(()=>SearchPage(initSearchKeyWord: searchKeyWorld,));
                 }
               },
               icon: Icon(Icons.search)),
