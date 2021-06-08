@@ -6,3 +6,6 @@ var boxShaow = BoxShadow(
     blurRadius: 3.0, //阴影模糊程度
     spreadRadius: 1 //阴影扩散程度
 );
+
+/// 首页顶部分类的高度
+const kHomeCateTabHeight = 25.0;

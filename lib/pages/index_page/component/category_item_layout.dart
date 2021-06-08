@@ -27,7 +27,6 @@ class _CategoryItemDefaultLayoutState extends State<CategoryItemDefaultLayout> {
     });
 
     CategoryNotificationStreamUtil.instance.changeStream!.listen((event) {
-      print("$event");
       _notificationWidgetInfoTo();
     });
 
@@ -44,7 +43,7 @@ class _CategoryItemDefaultLayoutState extends State<CategoryItemDefaultLayout> {
     return Container(
       margin: EdgeInsets.only(right: 50.w, left: widget.index == 0 ? 25.w : 0),
       padding: EdgeInsets.symmetric(horizontal: 25.w),
-      alignment: Alignment.topCenter,
+      alignment: Alignment.centerLeft,
       child: widget.index == widget.current
           ? Text(
               widget.name!,

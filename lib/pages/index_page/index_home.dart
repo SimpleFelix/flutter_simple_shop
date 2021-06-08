@@ -52,6 +52,8 @@ class _IndexHomeState extends State<IndexHome>
 
   TabController? tabController;
 
+  final TextEditingController _searchEditController = TextEditingController();
+
   bool carouselISLoaded = false; // 轮播图资源是否准备完毕
   bool categortListIsLoaded = false; // 分类数据是否准备好
   Color? bgColor;
@@ -142,16 +144,6 @@ class _IndexHomeState extends State<IndexHome>
                     onTap: () {
                       print("我点击了首页");
                     }),
-                InsetCustomItem(
-                    index: 1,
-                    child: Image.network(
-                      "https://img.alicdn.com/imgextra/i3/2053469401/O1CN0155SHle2JJi3TPPkS3_!!2053469401.png",
-                      fit: BoxFit.contain,
-                      width: 250.w,
-                    ),
-                    onTap: () {
-                      print("双十二预售");
-                    })
               ],
               onSelect: (int index, Category? item) {
                 if (item != null) {
@@ -257,22 +249,26 @@ class _IndexHomeState extends State<IndexHome>
     return AppBar(
       backgroundColor: Colors.transparent,
       elevation: 0,
-      title: Container(
-        child: TextField(
-          textAlignVertical: TextAlignVertical.center,
-          textAlign: TextAlign.left,
-          decoration: InputDecoration(
-            hintText: '输入商品名或者宝贝标题搜索',
-            border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(50.0), borderSide: BorderSide.none),
-            alignLabelWithHint: true,
-            filled: true,
-            fillColor: Colors.white,
-            suffixIcon: Icon(
-              Icons.search,
-              color: Colors.grey,
-            ),
-          ),
+      title: TextField(
+        controller: _searchEditController,
+        textAlignVertical: TextAlignVertical.center,
+        textAlign: TextAlign.left,
+        decoration: InputDecoration(
+          hintText: '输入商品名或者宝贝标题搜索',
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(50.0), borderSide: BorderSide.none),
+          alignLabelWithHint: true,
+          filled: true,
+          fillColor: Colors.white,
+          suffixIcon: IconButton(
+              onPressed: () {
+                final searchKeyWorld = _searchEditController.text;
+                if (searchKeyWorld.isNotEmpty) {
+
+                }
+              },
+              icon: Icon(Icons.search)),
+          contentPadding: const EdgeInsets.symmetric(vertical: 5, horizontal: 12),
         ),
       ),
       actions: <Widget>[

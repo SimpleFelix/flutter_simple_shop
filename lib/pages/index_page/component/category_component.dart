@@ -1,4 +1,5 @@
 import 'package:dd_taoke_sdk/model/category.dart';
+import 'package:demo1/constant/style.dart';
 import 'package:demo1/pages/index_page/component/category_notification_stream.dart';
 import 'package:demo1/provider/index_provider.dart';
 import 'package:flutter/material.dart';
@@ -69,7 +70,8 @@ class _CategoryComponentState extends State<CategoryComponent> {
     return Stack(
       children: [
         Container(
-          height: 100.h,
+          alignment: Alignment.center,
+          height: kHomeCateTabHeight,
           child: NotificationListener(
             onNotification: (dynamic notification){
               CategoryNotificationStreamUtil().notifiy(notification);
@@ -77,6 +79,7 @@ class _CategoryComponentState extends State<CategoryComponent> {
             },
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
+              physics: BouncingScrollPhysics(),
               child: ListView.builder(
                 itemBuilder: (context, index) {
                   InsetCustomItem? insetCustomItem = _indexIsExtendWidget(index);

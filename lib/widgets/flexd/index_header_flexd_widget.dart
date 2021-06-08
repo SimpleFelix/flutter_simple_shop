@@ -1,7 +1,7 @@
 import 'dart:ui';
 
+import 'package:demo1/constant/style.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 // 首页滑动置顶一
 class IndexFlexdHeaderWidget extends SliverPersistentHeaderDelegate {
@@ -15,17 +15,19 @@ class IndexFlexdHeaderWidget extends SliverPersistentHeaderDelegate {
     return AnimatedContainer(
       duration: Duration(milliseconds: 1000),
       color: color,
-      child: Column(
-        children: child!,
+      child: SingleChildScrollView(
+        child: Column(
+          children: child!,
+        ),
       ),
     );
   }
 
   @override
-  double get maxExtent => 330.h + MediaQueryData.fromWindow(window).padding.top;
+  double get maxExtent => kToolbarHeight + kHomeCateTabHeight + MediaQueryData.fromWindow(window).padding.top;
 
   @override
-  double get minExtent => 330.h + MediaQueryData.fromWindow(window).padding.top;
+  double get minExtent => kToolbarHeight + kHomeCateTabHeight + MediaQueryData.fromWindow(window).padding.top;
 
   @override
   bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) {
