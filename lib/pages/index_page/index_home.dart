@@ -264,7 +264,7 @@ class _IndexHomeState extends State<IndexHome>
           decoration: InputDecoration(
             hintText: '输入商品名或者宝贝标题搜索',
             border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(20.0), borderSide: BorderSide.none),
+                borderRadius: BorderRadius.circular(50.0), borderSide: BorderSide.none),
             alignLabelWithHint: true,
             filled: true,
             fillColor: Colors.white,
