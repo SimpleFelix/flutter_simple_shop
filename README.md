@@ -11,7 +11,7 @@
 ![fork](https://badgen.net/github/forks/mdddj/flutter_simple_shop)
 
 
-## 使用Getx版本重构版本
+## Getx版本
 
 https://github.com/mdddj/simple_shop_v2 
 
