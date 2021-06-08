@@ -4,7 +4,7 @@
 
 ![logo](https://static.saintic.com/picbed/huang/2020/12/14/1607875349615.png)
 
-[![qq群 667186542](https://badgen.net/badge/QQ%E7%BE%A4/1102781545/pink)](https://jq.qq.com/?_wv=1027&k=Z0AHodXB)
+[![qq群 667186542](https://badgen.net/badge/QQ%E7%BE%A4/667186542/pink)](https://jq.qq.com/?_wv=1027&k=Z0AHodXB)
 ![典典的小卖部](https://badgen.net/badge/%E5%85%B8%E5%85%B8%E7%9A%84%E5%B0%8F%E5%8D%96%E9%83%A8/v2.0.0+1/red)
 ![start](https://badgen.net/github/stars/mdddj/flutter_simple_shop)
 ![fork](https://badgen.net/github/forks/mdddj/flutter_simple_shop)
