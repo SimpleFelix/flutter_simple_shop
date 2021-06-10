@@ -11,7 +11,7 @@ class ShopInfoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('店铺logo:${goodsInfo.shopLogo}');
+    print('${goodsInfo.goodsId}店铺logo:${goodsInfo.shopLogo}');
     return Container(
         padding: EdgeInsets.only(left: 10.0, right: 10.0),
         child: Column(
