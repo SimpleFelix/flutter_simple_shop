@@ -15,25 +15,6 @@ class GoodsDetailProvider with ChangeNotifier {
   int isHaveFav = 0; // 是否已经收藏,0 - 没有,1 - 有
   bool have = false; // 商品是否有效
 
-  // 获取商品详情信息
-  getGoodsDetailInfo(String? goods_id) async {
-    await getGoodsInfo({'id': goods_id}).then((res) {
-      Result resultObj = ResultUtils.format(res);
-      if (resultObj.code == 200) {
-        var dtkCode = json.decode(resultObj.data.toString())["code"];
-        if (dtkCode == 0) {
-          var _goodInfo =
-              GoodsInfo.fromJson(json.decode(resultObj.data.toString()));
-          goodInfo = _goodInfo.data;
-          have = true;
-          notifyListeners();
-        } else {
-          var dtkMsg = json.decode(resultObj.data.toString())["msg"];
-        }
-      } else {
-      }
-    });
-  }
 
   setNullInfo() {
     goodInfo = null;

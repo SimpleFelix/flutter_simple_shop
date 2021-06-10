@@ -6,6 +6,6 @@ import '../../pages/detail_page/index_home.dart';
 var goodsDetailHandle = new Handler(
   handlerFunc: (BuildContext? context,Map<String,List<String>> params){
     String? goodsId = params["goods_id"]?.first;
-    return DetailIndex(goods_id:goodsId);
+    return DetailIndex(goodsId:goodsId!);
   }
 );

@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:ui';
 
 import 'package:common_utils/common_utils.dart';
+import 'package:dd_taoke_sdk/dd_taoke_sdk.dart';
 import 'package:demo1/modals/Result.dart';
 import 'package:demo1/modals/couponData.dart';
 import 'package:demo1/modals/shop_info.dart';
@@ -27,12 +28,13 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
+import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HaoDanKuDetailItem extends StatefulWidget {
-final   String? goodsId;
+final   String goodsId;
 
-  HaoDanKuDetailItem({this.goodsId});
+  HaoDanKuDetailItem({required this.goodsId});
 
   @override
   _HaoDanKuDetailItemState createState() => _HaoDanKuDetailItemState();
@@ -996,33 +998,37 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
   }
 
   Future<String> initDatas() async {
-    await getHaodankuDetailInfo(widget.goodsId).then((res) {
-      Result result = Result.fromJson(json.decode(res.toString()));
-      if (result.code == 200) {
-        HdkGoodsDetailModel hdkGoodsDetailModel =
-            HdkGoodsDetailModel.fromJson(json.decode(result.data!));
-        setState(() {
-          images = hdkGoodsDetailModel.images;
-          info = hdkGoodsDetailModel.info;
-          videos = hdkGoodsDetailModel.video;
-        });
-      }else{
-        SystemToast.show(result.msg!);
-      }
-    });
-    await HttpRequest.req(Api.API_GET_SHOP_INFO, data: {"shopName": info!.sellernick},method: HttpRequest.POST)
-        .then((res) {
-      Result result = ResultUtils.format(res);
-      if (result.code == 200) {
-        ShopInfo shopInfo =
-            ShopInfo.fromJson(json.decode(result.data.toString()));
-        setState(() {
-          _shopInfo = shopInfo;
-        });
-      } else {
-        SystemToast.show(result.msg!);
-      }
-    });
+
+
+
+
+    // await getHaodankuDetailInfo(widget.goodsId).then((res) {
+    //   Result result = Result.fromJson(json.decode(res.toString()));
+    //   if (result.code == 200) {
+    //     HdkGoodsDetailModel hdkGoodsDetailModel =
+    //         HdkGoodsDetailModel.fromJson(json.decode(result.data!));
+    //     setState(() {
+    //       images = hdkGoodsDetailModel.images;
+    //       info = hdkGoodsDetailModel.info;
+    //       videos = hdkGoodsDetailModel.video;
+    //     });
+    //   }else{
+    //     SystemToast.show(result.msg!);
+    //   }
+    // });
+    // await HttpRequest.req(Api.API_GET_SHOP_INFO, data: {"shopName": info!.sellernick},method: HttpRequest.POST)
+    //     .then((res) {
+    //   Result result = ResultUtils.format(res);
+    //   if (result.code == 200) {
+    //     ShopInfo shopInfo =
+    //         ShopInfo.fromJson(json.decode(result.data.toString()));
+    //     setState(() {
+    //       _shopInfo = shopInfo;
+    //     });
+    //   } else {
+    //     SystemToast.show(result.msg!);
+    //   }
+    // });
 
     return "success";
   }

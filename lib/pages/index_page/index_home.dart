@@ -65,27 +65,21 @@ class _IndexHomeState extends State<IndexHome>
   void initState() {
     super.initState();
     tabController = TabController(length: 1, vsync: this);
-    this._initAliBC();
-  }
-
-  void _initAliBC() async {
-    // var result =
-    //     await FlutterAlibc.initAlibc(version: "1.0.0", appName: "典典的小卖部");
-    // print("阿里百川初始化:${result.errorCode}");
   }
 
   @override
   Widget build(BuildContext context) {
     return Consumer2<DtkIndexGoodsModal, CategoryProvider>(
-      builder: (content, digm, categoryProvider, _) => PullToRefreshNotification(
-          pullBackOnRefresh: false,
-          maxDragOffset: 80.0,
-          armedDragUpCancel: false,
-          onRefresh: () async {
-            await indexGoodsRepository.refresh(true);
-            return true;
-          },
-          child: _buildIndexBody()),
+      builder: (content, digm, categoryProvider, _) =>
+          PullToRefreshNotification(
+              pullBackOnRefresh: false,
+              maxDragOffset: 80.0,
+              armedDragUpCancel: false,
+              onRefresh: () async {
+                await indexGoodsRepository.refresh(true);
+                return true;
+              },
+              child: _buildIndexBody()),
       // child: IndexLoadingSkeletonPage(),)
     );
   }
@@ -101,7 +95,8 @@ class _IndexHomeState extends State<IndexHome>
         return WaterfallGoodsCard(item);
       },
       sourceList: indexGoodsRepository,
-      padding: EdgeInsets.only(left: ScreenUtil().setWidth(50), right: ScreenUtil().setWidth(50)),
+      padding: EdgeInsets.only(
+          left: ScreenUtil().setWidth(50), right: ScreenUtil().setWidth(50)),
 //      lastChildLayoutType: LastChildLayoutType.foot,
       indicatorBuilder: (context, state) {
         return LoadingMoreListCostumIndicator(state, isSliver: true);
@@ -116,10 +111,13 @@ class _IndexHomeState extends State<IndexHome>
       carouselISLoaded = true;
     });
     await context.read<DtkIndexGoodsModal>().getGoodsList(1); // 首页商品列表
-    await context.read<CategoryProvider>().loadDtkCategoryDatas(context); // 分类数据
+    await context
+        .read<CategoryProvider>()
+        .loadDtkCategoryDatas(context); // 分类数据
     setState(() {
       this.categorys = context.read<CategoryProvider>().categorys;
-      tabController = TabController(length: this.categorys.length + 1, vsync: this);
+      tabController =
+          TabController(length: this.categorys.length + 1, vsync: this);
       setState(() {
         categortListIsLoaded = true;
       });
@@ -194,7 +192,9 @@ class _IndexHomeState extends State<IndexHome>
                 key: _titleKey,
                 duration: Duration(milliseconds: 300),
                 decoration: BoxDecoration(
-                    color: _titleIsInTop ? Colors.white : Color.fromRGBO(235, 235, 235, 1),
+                    color: _titleIsInTop
+                        ? Colors.white
+                        : Color.fromRGBO(235, 235, 235, 1),
                     boxShadow: _titleIsInTop
                         ? [
                             BoxShadow(
@@ -258,7 +258,8 @@ class _IndexHomeState extends State<IndexHome>
         decoration: InputDecoration(
           hintText: '输入商品名或者宝贝标题搜索',
           border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(50.0), borderSide: BorderSide.none),
+              borderRadius: BorderRadius.circular(50.0),
+              borderSide: BorderSide.none),
           alignLabelWithHint: true,
           filled: true,
           fillColor: Colors.white,
@@ -266,11 +267,14 @@ class _IndexHomeState extends State<IndexHome>
               onPressed: () {
                 final searchKeyWorld = _searchEditController.text;
                 if (searchKeyWorld.isNotEmpty) {
-                    Get.to(()=>SearchPage(initSearchKeyWord: searchKeyWorld,));
+                  Get.to(() => SearchPage(
+                        initSearchKeyWord: searchKeyWorld,
+                      ));
                 }
               },
               icon: Icon(Icons.search)),
-          contentPadding: const EdgeInsets.symmetric(vertical: 5, horizontal: 12),
+          contentPadding:
+              const EdgeInsets.symmetric(vertical: 5, horizontal: 12),
         ),
       ),
       actions: <Widget>[
@@ -303,14 +307,16 @@ class _IndexHomeState extends State<IndexHome>
 
   //获取title的位置信息
   double _titleLocationHandler() {
-    RenderBox renderBox = _titleKey.currentContext!.findRenderObject() as RenderBox;
+    RenderBox renderBox =
+        _titleKey.currentContext!.findRenderObject() as RenderBox;
     Offset offset = renderBox.localToGlobal(Offset(0, 0));
     return offset.dy;
   }
 
   // 监听主滑动距离
   void _addMainScrollListening() {
-    double topAppbarHei = 330.h + MediaQueryData.fromWindow(window).padding.top; // 顶部搜索框和选项卡高度
+    double topAppbarHei =
+        330.h + MediaQueryData.fromWindow(window).padding.top; // 顶部搜索框和选项卡高度
     _mainScrollController.addListener(() {
       double titleTopHei = _titleLocationHandler();
       if (titleTopHei <= topAppbarHei) {
