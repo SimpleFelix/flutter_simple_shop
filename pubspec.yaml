@@ -37,7 +37,7 @@ dependencies:
   extended_text_field: ^8.0.0
   extended_text: ^7.0.0
   html: ^0.15.0
-  image_picker: ^0.8.0+1
+  image_picker: ^0.8.0+3
   extended_tabs: ^2.2.0
   after_layout: ^1.1.0
   palette_generator: ^0.3.0
@@ -45,6 +45,8 @@ dependencies:
   encrypt: ^5.0.0
   dd_taoke_sdk: ^1.0.3
   fcontrol_nullsafety: ^2.0.0
+  flutter_hooks: ^0.17.0
+  hooks_riverpod: ^0.14.0+4
 
 dev_dependencies:
   flutter_test:
