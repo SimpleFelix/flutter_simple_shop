@@ -25,7 +25,7 @@ class ShopInfoWidget extends StatelessWidget {
                     MImageUtils.magesProcessor(goodsInfo.shopLogo!),
                     width: 180.w,
                     height: 180.h,
-                  ) : Image.asset('assets/images/ava.png',width: 180.w,height: 180.h,),
+                  ) : Image.asset('assets/images/ava.jpg',width: 180.w,height: 180.h,),
                 ),
                 Expanded(
                   child: Column(

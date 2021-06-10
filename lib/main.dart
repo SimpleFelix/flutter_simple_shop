@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:dd_taoke_sdk/network/util.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
+import 'package:window_size/window_size.dart';
 import './app.dart';
 import './provider/providers.dart';
 import 'package:fluro/fluro.dart';
@@ -14,6 +17,10 @@ void main() {
   FluroRouter router = FluroRouter();
   Routes.configureRoutes(router);
   Application.router = router;
+  WidgetsFlutterBinding.ensureInitialized();
+  if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
+    setWindowTitle('典典的小卖部 桌面客户端  v2.0.0');
+  }
   runApp(MyApp());
 }
 
