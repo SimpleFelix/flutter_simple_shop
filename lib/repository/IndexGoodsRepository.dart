@@ -1,13 +1,8 @@
-import 'dart:convert';
 
 import 'package:dd_taoke_sdk/dd_taoke_sdk.dart';
 import 'package:dd_taoke_sdk/model/product.dart';
 import 'package:dd_taoke_sdk/params/product_list_param.dart';
-import 'package:demo1/modals/Result.dart';
-import 'package:demo1/util/result_obj_util.dart';
-import 'package:demo1/modals/goods_list_modal.dart';
 import 'package:loading_more_list/loading_more_list.dart';
-import '../util/request_service.dart';
 
 /// 首页商品列表
 class IndexGoodsRepository extends LoadingMoreBase<Product> {

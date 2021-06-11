@@ -1,4 +1,3 @@
-import 'package:demo1/pages/index_page/model/store_list_model.dart';
 import 'package:demo1/pages/index_page/store/goods_card.dart';
 import 'package:demo1/pages/index_page/store/store_card.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

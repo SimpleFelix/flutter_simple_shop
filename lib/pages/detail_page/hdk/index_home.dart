@@ -2,13 +2,10 @@ import 'dart:convert';
 import 'dart:ui';
 
 import 'package:common_utils/common_utils.dart';
-import 'package:dd_taoke_sdk/dd_taoke_sdk.dart';
 import 'package:demo1/modals/Result.dart';
 import 'package:demo1/modals/couponData.dart';
 import 'package:demo1/modals/shop_info.dart';
-import 'package:demo1/network/http_request.dart';
 import 'package:demo1/pages/detail_page/hdk/model/hdk_detail.dart';
-import 'package:demo1/util/api.dart';
 import 'package:demo1/util/image_util.dart';
 import 'package:demo1/util/request_service.dart';
 import 'package:demo1/util/result_obj_util.dart';
@@ -28,7 +25,6 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
-import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HaoDanKuDetailItem extends StatefulWidget {
