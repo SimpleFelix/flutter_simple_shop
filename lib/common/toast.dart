@@ -1,18 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 void showToast(
-    String text, {
-      gravity: ToastGravity.CENTER,
-      toastLength: Toast.LENGTH_SHORT,
-    }) {
-  Fluttertoast.showToast(
-    msg: text,
-    toastLength: Toast.LENGTH_SHORT,
-    gravity: ToastGravity.BOTTOM,
-    backgroundColor: Colors.grey[600], // 灰色背景
-    fontSize: 16.0,
-  );
+    String text) {
+
+  print('显示一个简单弹窗');
 }
 
 void showLoading(context, [String? text]) {
