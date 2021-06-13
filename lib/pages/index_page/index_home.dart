@@ -255,6 +255,12 @@ class _IndexHomeState extends State<IndexHome>
         controller: _searchEditController,
         textAlignVertical: TextAlignVertical.center,
         textAlign: TextAlign.left,
+        onTap: () {
+          Get.to(() => SearchPage(
+                initSearchKeyWord: '',
+              ));
+        },
+        readOnly: true,
         decoration: InputDecoration(
           hintText: '输入商品名或者宝贝标题搜索',
           border: OutlineInputBorder(
@@ -263,16 +269,7 @@ class _IndexHomeState extends State<IndexHome>
           alignLabelWithHint: true,
           filled: true,
           fillColor: Colors.white,
-          suffixIcon: IconButton(
-              onPressed: () {
-                final searchKeyWorld = _searchEditController.text;
-                if (searchKeyWorld.isNotEmpty) {
-                  Get.to(() => SearchPage(
-                        initSearchKeyWord: searchKeyWorld,
-                      ));
-                }
-              },
-              icon: Icon(Icons.search)),
+          suffixIcon: IconButton(onPressed: null, icon: Icon(Icons.search)),
           contentPadding:
               const EdgeInsets.symmetric(vertical: 5, horizontal: 12),
         ),

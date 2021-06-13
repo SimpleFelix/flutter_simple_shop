@@ -13,7 +13,7 @@ import './fluro/Routes.dart';
 
 void main() {
   /// 初始化sdk能力
-  DdTaokeUtil.instance.init('http://localhost', '80');
+  DdTaokeUtil.instance.init('http://itbug.shop', '80');
   FluroRouter router = FluroRouter();
   Routes.configureRoutes(router);
   Application.router = router;

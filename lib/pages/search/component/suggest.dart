@@ -12,12 +12,24 @@ class Suggest extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Obx(() {
-        final suggs = SearchLogic.instance.suggest;
-        return Wrap(
-          children: suggs.map(_renderItem).toList(),
-        );
-      }),
+      margin: EdgeInsets.only(top: 12),
+      padding: EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: Colors.white
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('热搜榜',style: TextStyle(fontSize: 16),),
+          SizedBox(height: 12,),
+          Obx(() {
+            final suggs = SearchLogic.instance.suggest;
+            return Wrap(
+              children: suggs.map(_renderItem).toList(),
+            );
+          }),
+        ],
+      ),
     );
   }
 

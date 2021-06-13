@@ -4,6 +4,7 @@ import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:get/get.dart';
 
 import 'component/helper_show.dart';
+import 'component/key_worlds.dart';
 import 'component/suggest.dart';
 import 'logic.dart';
 
@@ -30,6 +31,10 @@ class _SearchPageState extends State<SearchPage> {
       body: EasyRefresh.custom(slivers: [
         SliverToBoxAdapter(
           child: HelperComp(),
+        ),
+
+        SliverToBoxAdapter(
+          child: SearchKeyWorlds(),
         ),
         SliverToBoxAdapter(
           child: Suggest(),
