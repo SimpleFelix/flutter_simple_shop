@@ -1,5 +1,7 @@
 import 'package:demo1/constant/style.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 /// 组件工具类
 abstract class WidgetUtilService {
@@ -12,6 +14,9 @@ abstract class WidgetUtilService {
 }
 
 class WidgetUtils extends WidgetUtilService {
+
+  double get kBodyHeight => Get.height - Get.mediaQuery.padding.top - kToolbarHeight;
+
   @override
   Widget marginTop({double? height}) {
     return SizedBox(

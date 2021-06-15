@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:extended_text_field/extended_text_field.dart';
 import 'AtText.dart';
-import 'ImageText.dart';
-import 'GoodsText.dart';
+import 'image_render.dart';
+import 'product_render.dart';
 
 class MySpecialTextSpanBuilder extends SpecialTextSpanBuilder {
 
   final bool showAtBackground;
-  final Function? goodsCardOnTapCallBack;
+  final SpecialTextGestureTapCallback? goodsCardOnTapCallBack;
   MySpecialTextSpanBuilder(
-      {this.showAtBackground: false,this.goodsCardOnTapCallBack});
+      {this.showAtBackground = false,this.goodsCardOnTapCallBack});
 
   @override
-  TextSpan build(String data, {TextStyle? textStyle, onTap}) {
+  TextSpan build(String data, {TextStyle? textStyle,SpecialTextGestureTapCallback? onTap}) {
     var textSpan = super.build(data, textStyle: textStyle, onTap: onTap);
     return textSpan;
   }
@@ -20,7 +20,7 @@ class MySpecialTextSpanBuilder extends SpecialTextSpanBuilder {
   @override
   SpecialText? createSpecialText(String flag,
       {TextStyle? textStyle, SpecialTextGestureTapCallback? onTap, int? index}) {
-    if (flag == "") return null;
+    if (flag == '') return null;
 
     ///index is end index of start flag, so text start index should be index-(flag.length-1)
     if (isStart(flag, AtText.flag)) {
@@ -32,7 +32,7 @@ class MySpecialTextSpanBuilder extends SpecialTextSpanBuilder {
       return ImageText(textStyle!,
           start: index! - (ImageText.flag.length - 1), onTap: onTap);
     }else if(isStart(flag, GoodsText.flag)){
-      return GoodsText(textStyle!,start: index!-(GoodsText.flag.length-1),onTap: goodsCardOnTapCallBack as void Function(dynamic)?);
+      return GoodsText(textStyle!,start: index!-(GoodsText.flag.length-1),onTap: goodsCardOnTapCallBack);
     }
     return null;
   }
