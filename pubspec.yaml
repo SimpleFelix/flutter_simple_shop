@@ -40,17 +40,23 @@ dependencies:
   extended_tabs: ^2.2.0
   after_layout: ^1.1.0
   palette_generator: ^0.3.0
-  crypto: ^3.0.1
-  encrypt: ^5.0.0
-  dd_taoke_sdk: ^1.0.5
-  fcontrol_nullsafety: ^2.0.0
-  flutter_hooks: ^0.17.0
-  hooks_riverpod: ^0.14.0+4
-#  window_size:
-#    git:
-#      url: git://github.com/google/flutter-desktop-embedding.git
-#      path: plugins/window_size
-#      ref: 7812516a5c1fc8ef379e244106953a2b534432b9
+  crypto: ^3.0.1  # 加密插件
+  encrypt: ^5.0.0 # 加密插件
+  dd_taoke_sdk: ^1.0.5  # 淘客api
+  fcontrol_nullsafety: ^2.0.0 # 飞猪fcontrol 空安全版本
+  flutter_hooks: ^0.17.0  #provider 重写版
+  hooks_riverpod: ^0.14.0+4  #provider 重写版
+  get_it: ^7.1.3  # 单列类处理
+
+
+  # windows 组件
+  window_size:
+    git:
+      url: git://github.com/google/flutter-desktop-embedding.git  # 修改窗口标题
+      path: plugins/window_size
+      ref: 7812516a5c1fc8ef379e244106953a2b534432b9
+  filepicker_windows: ^2.0.0  # 文件选择器
+  win32: ^2.1.5   # windows 开放api
 
 dev_dependencies:
   flutter_test:

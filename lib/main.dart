@@ -1,8 +1,10 @@
-import 'dart:io';
 
 import 'package:dd_taoke_sdk/network/util.dart';
+import 'package:demo1/common/utils.dart';
+import 'package:demo1/common/widget_util.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
 // import 'package:window_size/window_size.dart';
 import './app.dart';
@@ -18,6 +20,8 @@ void main() {
   Routes.configureRoutes(router);
   Application.router = router;
   WidgetsFlutterBinding.ensureInitialized();
+  GetIt.instance.registerSingleton<Utils>(Utils());
+  GetIt.instance.registerSingleton<WidgetUtils>(WidgetUtils());
   /// 构建web程序需要注释这个,会报错
   // if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
   //   setWindowTitle('典典的小卖部 桌面客户端  v2.0.0');
