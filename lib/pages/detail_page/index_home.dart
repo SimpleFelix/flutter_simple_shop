@@ -1,22 +1,22 @@
 import 'package:common_utils/common_utils.dart';
 import 'package:dd_taoke_sdk/dd_taoke_sdk.dart';
 import 'package:dd_taoke_sdk/model/detail_base_data.dart';
-import 'package:demo1/constant/color.dart';
 import 'package:fcontrol_nullsafety/fdefine.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-//小部件
-import './swiper_widget.dart';
-import '../../widgets/coupon_price.dart';
-import '../../widgets/title_widget.dart';
-import '../../widgets/icon_block_widget.dart';
+import './action_buttons.dart';
 import './detail_imgs_widget.dart';
 import './shop_info_widget.dart';
-import './action_buttons.dart';
+//小部件
+import './swiper_widget.dart';
+import '../../constant/color.dart';
+import '../../widgets/coupon_price.dart';
+import '../../widgets/icon_block_widget.dart';
 import '../../widgets/no_data.dart';
+import '../../widgets/title_widget.dart';
 
 class DetailIndex extends StatefulWidget {
   final String goodsId;
@@ -98,17 +98,17 @@ class _DetailIndexState extends State<DetailIndex> {
                               children: <Widget>[
                                 Container(
                                   child: Text(
-                                      "月销:${detail!.info!.monthSales}",
+                                      '月销:${detail!.info!.monthSales}',
                                       style: TextStyle(color: Colors.grey)),
                                 ),
                                 Container(
                                   child: Text(
-                                      "两小时销量:${detail!.info!.twoHoursSales}",
+                                      '两小时销量:${detail!.info!.twoHoursSales}',
                                       style: TextStyle(color: Colors.grey)),
                                 ),
                                 Container(
                                   child: Text(
-                                      "当天销量:${detail!.info!.dailySales}",
+                                      '当天销量:${detail!.info!.dailySales}',
                                       style: TextStyle(color: Colors.grey)),
                                 ),
                               ],
@@ -127,13 +127,13 @@ class _DetailIndexState extends State<DetailIndex> {
                                 Expanded(
                                   child: Row(
                                     children: <Widget>[
-                                      Image.asset("assets/icons/youhuiquan.png",
+                                      Image.asset('assets/icons/youhuiquan.png',
                                           width: ScreenUtil().setWidth(78),
                                           height: ScreenUtil().setHeight(78)),
                                       Container(
                                         child: Text(
-                                            "该商品可领取满${detail!.info!.couponConditions}"
-                                            "减${NumUtil.getNumByValueDouble(detail!.info!.couponPrice, 0).toString()}红包"),
+                                            '该商品可领取满${detail!.info!.couponConditions}'
+                                            '减${NumUtil.getNumByValueDouble(detail!.info!.couponPrice, 0).toString()}红包'),
                                       ),
                                       Icon(Icons.help_outline,
                                           color: Colors.black26,
@@ -145,7 +145,7 @@ class _DetailIndexState extends State<DetailIndex> {
                                 Padding(
                                   padding: EdgeInsets.only(right: 20),
                                   child: Text(
-                                    "券金额:${NumUtil.getNumByValueDouble(detail!.info!.couponPrice, 0).toString()}",
+                                    '券金额:${NumUtil.getNumByValueDouble(detail!.info!.couponPrice, 0).toString()}',
                                     style: TextStyle(color: primaryColor),
                                   ),
                                 )
@@ -165,13 +165,13 @@ class _DetailIndexState extends State<DetailIndex> {
                             child: Row(
                               children: <Widget>[
                                 Container(
-                                  child: Text(
-                                    "活动剩余",
-                                    style: TextStyle(color: Colors.grey),
-                                  ),
                                   width: ScreenUtil().setWidth(300),
                                   alignment: Alignment.centerLeft,
                                   padding: EdgeInsets.only(right: 10),
+                                  child: Text(
+                                    '活动剩余',
+                                    style: TextStyle(color: Colors.grey),
+                                  ),
                                 ),
                                 Expanded(
                                   child: Container(
@@ -195,19 +195,19 @@ class _DetailIndexState extends State<DetailIndex> {
                             child: Row(
                               children: <Widget>[
                                 Container(
-                                  child: Text(
-                                    "优惠券",
-                                    style: TextStyle(color: Colors.grey),
-                                  ),
                                   width: ScreenUtil().setWidth(300),
                                   alignment: Alignment.centerLeft,
                                   padding: EdgeInsets.only(right: 10),
+                                  child: Text(
+                                    '优惠券',
+                                    style: TextStyle(color: Colors.grey),
+                                  ),
                                 ),
                                 Expanded(
                                   child: Container(
                                     alignment: Alignment.centerLeft,
                                     child: Text(
-                                      "立即领取",
+                                      '立即领取',
                                       style: TextStyle(
                                           color: primaryColor,
                                           fontWeight: FontWeight.w600),
@@ -239,13 +239,13 @@ class _DetailIndexState extends State<DetailIndex> {
                             child: Row(
                               children: <Widget>[
                                 Container(
-                                  child: Text(
-                                    "促销活动",
-                                    style: TextStyle(color: Colors.grey),
-                                  ),
                                   width: ScreenUtil().setWidth(300),
                                   alignment: Alignment.centerLeft,
                                   padding: EdgeInsets.only(right: 10),
+                                  child: Text(
+                                    '促销活动',
+                                    style: TextStyle(color: Colors.grey),
+                                  ),
                                 ),
                                 Expanded(
                                   child: Container(
@@ -272,13 +272,13 @@ class _DetailIndexState extends State<DetailIndex> {
                             child: Row(
                               children: <Widget>[
                                 Container(
-                                  child: Text(
-                                    "服务",
-                                    style: TextStyle(color: Colors.grey),
-                                  ),
                                   width: ScreenUtil().setWidth(300),
                                   alignment: Alignment.centerLeft,
                                   padding: EdgeInsets.only(right: 10),
+                                  child: Text(
+                                    '服务',
+                                    style: TextStyle(color: Colors.grey),
+                                  ),
                                 ),
                                 Expanded(
                                   child: Container(
@@ -332,11 +332,11 @@ class _DetailIndexState extends State<DetailIndex> {
   void _gotoGetCouperLink() async {
     if (detail != null) {
       var url = detail!.couponInfo!.couponClickUrl!;
-      var tburl = "taobao://${url.substring(8)}";
+      var tburl = 'taobao://${url.substring(8)}';
       if (await canLaunch(tburl)) {
         await launch(tburl);
       } else {
-        launch(url);
+        await launch(url);
       }
     }
   }
@@ -356,7 +356,7 @@ class _DetailIndexState extends State<DetailIndex> {
 
   //商品是否赠送运费险
   Widget _haveYunfeixian() {
-    int? yfx = detail!.info!.yunfeixian;
+    var yfx = detail!.info!.yunfeixian;
     if (yfx == 1) {
       return FSuper(
         lightOrientation: FLightOrientation.LeftBottom,
@@ -372,29 +372,29 @@ class _DetailIndexState extends State<DetailIndex> {
 
   // 判断商品参加啥活动
   String _activityTypeStr() {
-    int? activityType = detail!.info!.activityType;
-    String str = "该商品正在参加满减活动";
+    var activityType = detail!.info!.activityType;
+    var str = '该商品正在参加满减活动';
     if (activityType == 2) {
-      str = "该商品正在参加淘抢购活动";
+      str = '该商品正在参加淘抢购活动';
     }
     if (activityType == 3) {
-      str = "该商品正在参加聚划算活动";
+      str = '该商品正在参加聚划算活动';
     }
     return str;
   }
 
   // 计算有效期
   String _calcHowLong() {
-    DateTime now = DateTime.now();
+    var now = DateTime.now();
     final endTime = detail!.info!.couponEndTime!;
     var difference = DateUtil.getDateTime(endTime)!.difference(now);
     var str =
-        "${difference.inDays}天${difference.inHours % 24}小时${difference.inMinutes % 60}分";
+        '${difference.inDays}天${difference.inHours % 24}小时${difference.inMinutes % 60}分';
     return str;
   }
 
   Widget _imgSwiper(String? images) {
-    if (images != null && images != "") {
+    if (images != null && images != '') {
       return SwiperWidget(
           images: images);
     }
@@ -404,7 +404,7 @@ class _DetailIndexState extends State<DetailIndex> {
   // appBar
   AppBar _appBarWidget() {
     return AppBar(
-      title: Text("详情"),
+      title: Text('详情'),
       leading: BackButton(
         onPressed: () {
           Navigator.pop(context);

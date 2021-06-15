@@ -25,17 +25,17 @@ class MainCategory {
   List<Subcategory>? subcategories;
 
   factory MainCategory.fromJson(Map<String, dynamic> json) => MainCategory(
-    cid: json["cid"],
-    cname: json["cname"],
-    cpic: json["cpic"],
-    subcategories: List<Subcategory>.from(json["subcategories"].map((x) => Subcategory.fromJson(x))),
+    cid: json['cid'],
+    cname: json['cname'],
+    cpic: json['cpic'],
+    subcategories: List<Subcategory>.from(json['subcategories'].map((x) => Subcategory.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
-    "cid": cid,
-    "cname": cname,
-    "cpic": cpic,
-    "subcategories": List<dynamic>.from(subcategories!.map((x) => x.toJson())),
+    'cid': cid,
+    'cname': cname,
+    'cpic': cpic,
+    'subcategories': List<dynamic>.from(subcategories!.map((x) => x.toJson())),
   };
 }
 
@@ -51,14 +51,14 @@ class Subcategory {
   String? scpic;
 
   factory Subcategory.fromJson(Map<String, dynamic> json) => Subcategory(
-    subcid: json["subcid"],
-    subcname: json["subcname"],
-    scpic: json["scpic"],
+    subcid: json['subcid'],
+    subcname: json['subcname'],
+    scpic: json['scpic'],
   );
 
   Map<String, dynamic> toJson() => {
-    "subcid": subcid,
-    "subcname": subcname,
-    "scpic": scpic,
+    'subcid': subcid,
+    'subcname': subcname,
+    'scpic': scpic,
   };
 }

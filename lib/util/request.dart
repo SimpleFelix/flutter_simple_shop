@@ -2,18 +2,18 @@ import 'dart:convert';
 import 'package:demo1/util/system_toast.dart';
 import 'package:dio/dio.dart';
 
-final String BASE_URL = "http://itbug.shop:8081/api/"; // 网络请求
-final String LOCALHOST_RUL = "http://192.168.43.44:8081/api/"; // 本地请求
-final String LOCALHOST_RUL2 = "http://192.168.43.185:8081/api/"; // 本地请求2
-final String NET = "http://itbug.free.idcfengye.com/api/"; // 隧道
-final String t = "http://192.168.0.105:8081/api/"; //
+final String BASE_URL = 'http://itbug.shop:8081/api/'; // 网络请求
+final String LOCALHOST_RUL = 'http://192.168.43.44:8081/api/'; // 本地请求
+final String LOCALHOST_RUL2 = 'http://192.168.43.185:8081/api/'; // 本地请求2
+final String NET = 'http://itbug.free.idcfengye.com/api/'; // 隧道
+final String t = 'http://192.168.0.105:8081/api/'; //
 
 Future get(apiName, {dynamic data}) {
-  return request(apiName, data: data, method: "GET");
+  return request(apiName, data: data, method: 'GET');
 }
 
 Future post(apiName, {dynamic data}) {
-  return request(apiName, data: data, method: "POST");
+  return request(apiName, data: data, method: 'POST');
 }
 
 
@@ -50,7 +50,7 @@ Future request(apiName, {dynamic data, String? method}) async {
       print('加载失败');
     }
   } on DioError catch (e) {
-    print("错误:${e.error}");
+    print('错误:${e.error}');
     SystemToast.show(e.error.toString());
   }
 }

@@ -110,7 +110,7 @@ class UserProvider with ChangeNotifier {
         if(pageId==1){
           this.resetFavoriteData();
         }
-        await loadFavoriteGoods({"userId": user.id, "pageId": pageId})
+        await loadFavoriteGoods({'userId': user.id, 'pageId': pageId})
             .then((res) {
           Result result = ResultUtils.format(res);
           if (result.code == 200) {
@@ -125,7 +125,7 @@ class UserProvider with ChangeNotifier {
 
             notifyListeners();
           } else {
-            print("获取收藏商品失败");
+            print('获取收藏商品失败');
           }
         });
       }

@@ -20,15 +20,15 @@ class CarouselRes {
     });
 
     factory CarouselRes.fromJson(Map<String, dynamic> json) => CarouselRes(
-        code: json["code"],
-        msg: json["msg"],
-        data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
+        code: json['code'],
+        msg: json['msg'],
+        data: List<Datum>.from(json['data'].map((x) => Datum.fromJson(x))),
     );
 
     Map<String, dynamic> toJson() => {
-        "code": code,
-        "msg": msg,
-        "data": List<dynamic>.from(data!.map((x) => x.toJson())),
+        'code': code,
+        'msg': msg,
+        'data': List<dynamic>.from(data!.map((x) => x.toJson())),
     };
 }
 
@@ -54,24 +54,24 @@ class Datum {
     });
 
     factory Datum.fromJson(Map<String, dynamic> json) => Datum(
-        id: json["id"],
-        name: json["name"],
-        url: json["url"],
-        type: json["type"],
-        view: json["view"],
-        clickCount: json["clickCount"],
-        remark: json["remark"],
-        src: json["src"],
+        id: json['id'],
+        name: json['name'],
+        url: json['url'],
+        type: json['type'],
+        view: json['view'],
+        clickCount: json['clickCount'],
+        remark: json['remark'],
+        src: json['src'],
     );
 
     Map<String, dynamic> toJson() => {
-        "id": id,
-        "name": name,
-        "url": url,
-        "type": type,
-        "view": view,
-        "clickCount": clickCount,
-        "remark": remark,
-        "src": src,
+        'id': id,
+        'name': name,
+        'url': url,
+        'type': type,
+        'view': view,
+        'clickCount': clickCount,
+        'remark': remark,
+        'src': src,
     };
 }

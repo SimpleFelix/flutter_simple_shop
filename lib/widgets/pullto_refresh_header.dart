@@ -8,7 +8,7 @@ import 'package:pull_to_refresh_notification/pull_to_refresh_notification.dart';
   Widget buildPulltoRefreshHeader(PullToRefreshScrollNotificationInfo? info) {
     //print(info?.mode);
     //print(info?.dragOffset);
-    //    print("------------");
+    //    print('------------');
     var offset = info?.dragOffset ?? 0.0;
     var mode = info?.mode;
     Widget? refreshWiget = Container();
@@ -36,23 +36,23 @@ import 'package:pull_to_refresh_notification/pull_to_refresh_notification.dart';
               padding: EdgeInsets.only(left: 5.0),
               alignment: Alignment.center,
               child: Text(
-                "刷新失败,点击重试",
+                '刷新失败,点击重试',
                 style: TextStyle(fontSize: 12.0, inherit: false),
               ),
             ),
           ));
     } else {
-      String modeStr = "下拉刷新";
+      String modeStr = '下拉刷新';
       if (mode != null && mode == RefreshIndicatorMode.armed) {
-        modeStr = "松手刷新";
+        modeStr = '松手刷新';
       } else if (mode != null && mode == RefreshIndicatorMode.snap) {
-        modeStr = "请求数据中";
+        modeStr = '请求数据中';
       } else if (mode != null && mode == RefreshIndicatorMode.canceled) {
-        modeStr = "操作取消";
+        modeStr = '操作取消';
       } else if (mode != null && mode == RefreshIndicatorMode.done) {
-        modeStr = "刷新成功";
+        modeStr = '刷新成功';
       } else if (mode != null && mode == RefreshIndicatorMode.refresh) {
-        modeStr = "正在刷新";
+        modeStr = '正在刷新';
       }
       child = Container(
         color: Colors.transparent,
@@ -63,13 +63,13 @@ import 'package:pull_to_refresh_notification/pull_to_refresh_notification.dart';
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Image.asset("assets/images/loading.gif"),
+            Image.asset('assets/images/loading.gif'),
             Container(
               padding: EdgeInsets.only(left: 5.0),
               color: Colors.transparent,
               alignment: Alignment.center,
               child: Text(
-                "$modeStr",
+                '$modeStr',
                 style: TextStyle(
                     fontSize: ScreenUtil().setSp(50),
                     inherit: false,

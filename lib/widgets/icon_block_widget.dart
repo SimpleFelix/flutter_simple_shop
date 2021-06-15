@@ -18,7 +18,7 @@ class IconBlockWidget extends StatelessWidget {
         children: <Widget>[
           // 图标
           Positioned(
-            child: Image.asset("assets/icons/dagou.png"),
+            child: Image.asset('assets/icons/dagou.png'),
             right: -40,
             top: -25,
           ),
@@ -31,14 +31,14 @@ class IconBlockWidget extends StatelessWidget {
                 Row(
                   children: <Widget>[
                     Image.asset(
-                      "assets/icons/tuijian.png",
+                      'assets/icons/tuijian.png',
                       width: ScreenUtil().setWidth(55),
                       height: ScreenUtil().setHeight(55),
                     ),
                     Container(
                       margin: EdgeInsets.only(left: 4.0),
                       child: Text(
-                        "推荐理由",
+                        '推荐理由',
                         style: TextStyle(
                             fontWeight: FontWeight.w700,
                             fontStyle: FontStyle.italic),

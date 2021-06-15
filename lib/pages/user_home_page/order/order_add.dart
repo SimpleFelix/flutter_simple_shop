@@ -27,7 +27,7 @@ class _OrderAddState extends State<OrderAddIndexPage> {
       backgroundColor: Colors.white,
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: Text("订单绑定"),
+        title: Text('订单绑定'),
         centerTitle: true,
       ),
       body: Container(
@@ -38,7 +38,7 @@ class _OrderAddState extends State<OrderAddIndexPage> {
             Container(
               child: Center(
                   child: SvgPicture.asset(
-                      "assets/svg/undraw_shopping_app_flsj.svg",
+                      'assets/svg/undraw_shopping_app_flsj.svg',
                       height: ScreenUtil().setHeight(svgSize),
                       width: ScreenUtil().setWidth(svgSize))),
             ),
@@ -48,7 +48,7 @@ class _OrderAddState extends State<OrderAddIndexPage> {
               child: TextField(
                 controller: textEditingController,
                 autofocus: false,
-                decoration: InputDecoration(hintText: "输入订单编号"),
+                decoration: InputDecoration(hintText: '输入订单编号'),
               ),
             ),
             buildPlaceHolderSizedBox(),
@@ -56,24 +56,24 @@ class _OrderAddState extends State<OrderAddIndexPage> {
               child: FButton(
                 width: ScreenUtil().setWidth(500),
                 height: ScreenUtil().setHeight(150),
-                text: "绑定",
+                text: '绑定',
                 color: Colors.pinkAccent,
                 onPressed: () async {
 
                   // 获取文本框订单编号
                   String orderNumber = textEditingController.value.text;
                   if(orderNumber.length!=19){
-                    SystemToast.show("订单编号格式不正确");
+                    SystemToast.show('订单编号格式不正确');
                     return null;
                   }
                   await UserUtil.loadUserInfo().then((user) async {
                     if (user != null) {
-                      await addOrder({"userId": user.id, "orderNumber": orderNumber})
+                      await addOrder({'userId': user.id, 'orderNumber': orderNumber})
                           .then((res) {
                             Result result = ResultUtils.format(res);
                             if(result.code==200){
-                              SystemToast.show("绑定成功");
-                              print("order:${result.data}");
+                              SystemToast.show('绑定成功');
+                              print('order:${result.data}');
                             }else{
                               SystemToast.show(result.msg!);
                             }
@@ -103,7 +103,7 @@ class _OrderAddState extends State<OrderAddIndexPage> {
                 textAlign: TextAlign.left,
                 spans: [
                   TextSpan(
-                    text: "\n只有通过本站链接购买的订单才能审核通过并获得奖励,否则绑定失败.(多次绑定失败将封号处理)",
+                    text: '\n只有通过本站链接购买的订单才能审核通过并获得奖励,否则绑定失败.(多次绑定失败将封号处理)',
                     style: TextStyle(color: Colors.black26)
                   )
                 ],
@@ -123,7 +123,7 @@ class _OrderAddState extends State<OrderAddIndexPage> {
             Container(
               width: MediaQuery.of(context).size.width,
               color: Colors.white,
-              child: Image.asset("assets/images/order_help.jpg"),
+              child: Image.asset('assets/images/order_help.jpg'),
             )
           ],
         ),

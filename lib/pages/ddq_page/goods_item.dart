@@ -69,14 +69,14 @@ class GoodsItem extends StatelessWidget {
                             child: RichText(
                               text: TextSpan(children: <TextSpan>[
                                 TextSpan(
-                                    text: "￥",
+                                    text: '￥',
                                     style: TextStyle(
                                         color: state != 2
                                             ? Colors.pinkAccent
                                             : Colors.green,
                                         fontSize: ScreenUtil().setSp(40))),
                                 TextSpan(
-                                    text: "${goodsItem.actualPrice}",
+                                    text: '${goodsItem.actualPrice}',
                                     style: TextStyle(
                                         color: state != 2
                                             ? Colors.pinkAccent
@@ -84,14 +84,14 @@ class GoodsItem extends StatelessWidget {
                                         fontSize: ScreenUtil().setSp(70),
                                         fontWeight: FontWeight.w600)),
                                 TextSpan(
-                                    text: "  券后价    ",
+                                    text: '  券后价    ',
                                     style: TextStyle(
                                         color: state != 2
                                             ? Colors.pinkAccent
                                             : Colors.green,
                                         fontSize: ScreenUtil().setSp(40))),
                                 TextSpan(
-                                    text: "原价${goodsItem.originalPrice}",
+                                    text: '原价${goodsItem.originalPrice}',
                                     style: TextStyle(
                                         color: Colors.black38,
                                         decoration: TextDecoration.lineThrough,
@@ -121,13 +121,13 @@ class GoodsItem extends StatelessWidget {
                             child: RichText(
                               text: TextSpan(children: [
                                 TextSpan(
-                                  text: state != 2 ? "已抢" : "月销",
+                                  text: state != 2 ? '已抢' : '月销',
                                   style: TextStyle(
                                       fontSize: ScreenUtil().setSp(45),
                                       color: Color.fromRGBO(137, 60, 17, 1.0)),
                                 ),
                                 TextSpan(
-                                  text: " ${goodsItem.monthSales} ",
+                                  text: ' ${goodsItem.monthSales} ',
                                   style: TextStyle(
                                       fontSize: ScreenUtil().setSp(65),
                                       color: state != 2
@@ -135,7 +135,7 @@ class GoodsItem extends StatelessWidget {
                                           : Colors.green),
                                 ),
                                 TextSpan(
-                                  text: "件",
+                                  text: '件',
                                   style: TextStyle(
                                       fontSize: ScreenUtil().setSp(45),
                                       color: Color.fromRGBO(137, 60, 17, 1.0)),
@@ -148,7 +148,7 @@ class GoodsItem extends StatelessWidget {
                                   right: -3.3,
                                   top: 0,
                                   child: Image.asset(
-                                    "assets/images/lijigoumai.png",
+                                    'assets/images/lijigoumai.png',
                                     width: ScreenUtil().setWidth(350),
                                     height: ScreenUtil().setHeight(140),
                                     fit: BoxFit.cover,
@@ -163,7 +163,7 @@ class GoodsItem extends StatelessWidget {
                                 width: ScreenUtil().setWidth(280),
                                 height: ScreenUtil().setHeight(120),
                                 child: Text(
-                                  state != 2 ? "立即抢购" : "即将开始",
+                                  state != 2 ? '立即抢购' : '即将开始',
                                   style: TextStyle(
                                       fontSize: ScreenUtil().setSp(40),
                                       color: state != 2

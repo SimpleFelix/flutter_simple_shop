@@ -22,17 +22,17 @@ class DtkCategory {
   });
 
   factory DtkCategory.fromJson(Map<String, dynamic> json) => DtkCategory(
-    time: json["time"],
-    code: json["code"],
-    msg: json["msg"],
-    data: List<CategoryItem>.from(json["data"].map((x) => CategoryItem.fromJson(x))),
+    time: json['time'],
+    code: json['code'],
+    msg: json['msg'],
+    data: List<CategoryItem>.from(json['data'].map((x) => CategoryItem.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
-    "time": time,
-    "code": code,
-    "msg": msg,
-    "data": List<dynamic>.from(data!.map((x) => x.toJson())),
+    'time': time,
+    'code': code,
+    'msg': msg,
+    'data': List<dynamic>.from(data!.map((x) => x.toJson())),
   };
 }
 
@@ -50,17 +50,17 @@ class CategoryItem {
   });
 
   factory CategoryItem.fromJson(Map<String, dynamic> json) => CategoryItem(
-    cid: json["cid"],
-    cname: json["cname"],
-    cpic: json["cpic"],
-    subcategories: List<Subcategory>.from(json["subcategories"].map((x) => Subcategory.fromJson(x))),
+    cid: json['cid'],
+    cname: json['cname'],
+    cpic: json['cpic'],
+    subcategories: List<Subcategory>.from(json['subcategories'].map((x) => Subcategory.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
-    "cid": cid,
-    "cname": cname,
-    "cpic": cpic,
-    "subcategories": List<dynamic>.from(subcategories!.map((x) => x.toJson())),
+    'cid': cid,
+    'cname': cname,
+    'cpic': cpic,
+    'subcategories': List<dynamic>.from(subcategories!.map((x) => x.toJson())),
   };
 }
 
@@ -76,14 +76,14 @@ class Subcategory {
   });
 
   factory Subcategory.fromJson(Map<String, dynamic> json) => Subcategory(
-    subcid: json["subcid"],
-    subcname: json["subcname"],
-    scpic: json["scpic"],
+    subcid: json['subcid'],
+    subcname: json['subcname'],
+    scpic: json['scpic'],
   );
 
   Map<String, dynamic> toJson() => {
-    "subcid": subcid,
-    "subcname": subcname,
-    "scpic": scpic,
+    'subcid': subcid,
+    'subcname': subcname,
+    'scpic': scpic,
   };
 }

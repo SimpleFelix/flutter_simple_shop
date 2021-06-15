@@ -35,11 +35,11 @@ class StoreComponentIndex extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            Text("品牌特卖", style: Theme.of(context).textTheme.subtitle2),
-            Text("今日上新774款", style: Theme.of(context).textTheme.bodyText2!.copyWith(color: Colors.grey,fontSize: 52.sp)),
+            Text('品牌特卖', style: Theme.of(context).textTheme.subtitle2),
+            Text('今日上新774款', style: Theme.of(context).textTheme.bodyText2!.copyWith(color: Colors.grey,fontSize: 52.sp)),
           ],
         )),
-        Flexible(child: Container(child: Text("特步5折特卖 >", style: Theme.of(context).textTheme.bodyText2!.copyWith(color: Colors.pinkAccent)), alignment: Alignment.centerRight)),
+        Flexible(child: Container(child: Text('特步5折特卖 >', style: Theme.of(context).textTheme.bodyText2!.copyWith(color: Colors.pinkAccent)), alignment: Alignment.centerRight)),
       ]),
     );
   }

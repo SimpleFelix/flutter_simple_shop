@@ -1,11 +1,12 @@
 import 'dart:convert';
 
-import 'package:demo1/modals/Result.dart';
-import 'package:demo1/modals/order_list_model.dart';
-import 'package:demo1/util/request_service.dart';
-import 'package:demo1/util/result_obj_util.dart';
-import 'package:demo1/util/user_utils.dart';
 import 'package:loading_more_list/loading_more_list.dart';
+
+import '../modals/Result.dart';
+import '../modals/order_list_model.dart';
+import '../util/request_service.dart';
+import '../util/result_obj_util.dart';
+import '../util/user_utils.dart';
 
 
 class OrderRespository extends LoadingMoreBase<OrderAuditObject>{
@@ -15,7 +16,7 @@ class OrderRespository extends LoadingMoreBase<OrderAuditObject>{
   bool forceRefresh = false;
 
   String stype; // 类别ID
-  OrderRespository({this.stype:"-1"});
+  OrderRespository({this.stype ='-1'});
   
   @override
   // TODO: implement hasMore
@@ -28,7 +29,7 @@ class OrderRespository extends LoadingMoreBase<OrderAuditObject>{
     
     await UserUtil.loadUserInfo().then((user) async {
       if(user!=null){
-        await findOrderList({"userId":user.id,"pageId":pageIndex,"stype":stype}).then((res){
+        await findOrderList({'userId':user.id,'pageId':pageIndex,'stype':stype}).then((res){
           Result result = ResultUtils.format(res);
           if(result.code==200){
 
@@ -48,13 +49,13 @@ class OrderRespository extends LoadingMoreBase<OrderAuditObject>{
             pageIndex++;
 
             isSuccess = true;
-            print("加载数据成功");
+            print('加载数据成功');
           }else{
             print(result.msg);
           }
         });
       }else{
-        print("请先登录");
+        print('请先登录');
       }
     });
     

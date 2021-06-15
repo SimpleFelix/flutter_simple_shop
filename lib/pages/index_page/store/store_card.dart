@@ -60,21 +60,21 @@ class StoreItemCard extends StatelessWidget {
             ],
           ),
           _buildBrandFeatures(),
-          Text("近期销量${storeInfo.sales}件"),
+          Text('近期销量${storeInfo.sales}件'),
         ],
       ),
     );
   }
 
   Widget _buildBrandFeatures() {
-    return Container(child: Text("${storeInfo.brandFeatures}", style: TextStyle(fontSize: 50.sp, color: Colors.black87)),margin: EdgeInsets.only(top: 30.h),);
+    return Container(child: Text('${storeInfo.brandFeatures}', style: TextStyle(fontSize: 50.sp, color: Colors.black87)),margin: EdgeInsets.only(top: 30.h),);
   }
 
   /// 打折的组件
   Container _buildMaxDiscount() {
     return Container(
       child: Text(
-        "最高优惠${storeInfo.maxDiscount}折",
+        '最高优惠${storeInfo.maxDiscount}折',
         style: TextStyle(fontSize: 50.sp, color: Colors.white),
       ),
       decoration: BoxDecoration(

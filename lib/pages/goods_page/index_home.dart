@@ -1,19 +1,20 @@
 import 'package:dd_taoke_sdk/model/category.dart';
 import 'package:dd_taoke_sdk/model/product.dart';
-import 'package:demo1/provider/category_provider.dart';
-import 'package:demo1/widgets/loading_more_list_indicator.dart';
-import 'package:demo1/widgets/waterfall_goods_card.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:loading_more_list/loading_more_list.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pull_to_refresh_notification/pull_to_refresh_notification.dart';
-import '../../util/fluro_convert_util.dart';
+
 import './sort_widget.dart';
-import '../../widgets/StickyTabBarDelegate.dart';
-import '../../widgets/RoundUnderlineTabIndicator.dart';
+import '../../provider/category_provider.dart';
 import '../../repository/GoodsListRepository.dart';
+import '../../util/fluro_convert_util.dart';
+import '../../widgets/RoundUnderlineTabIndicator.dart';
+import '../../widgets/StickyTabBarDelegate.dart';
+import '../../widgets/loading_more_list_indicator.dart';
+import '../../widgets/waterfall_goods_card.dart';
 
 ///
 
@@ -28,7 +29,7 @@ class GoodsListPage extends StatefulWidget {
   final String? title;
   final  String? showCates; // 是否显示分类选择
   GoodsListPage(
-      {this.subcid, this.cids, this.brand, this.title, this.showCates = "0"});
+      {this.subcid, this.cids, this.brand, this.title, this.showCates = '0'});
 
   @override
   _GoodsListPageState createState() => _GoodsListPageState();
@@ -53,7 +54,7 @@ class _GoodsListPageState extends State<GoodsListPage>
 
   @override
   Widget build(BuildContext context) {
-    String t = FluroConvertUtils.fluroCnParamsDecode(widget.title!);
+    var t = FluroConvertUtils.fluroCnParamsDecode(widget.title!);
     return Consumer<CategoryProvider>(builder: (context, categoryProvider, _) {
       return WillPopScope(
         onWillPop: () async {
@@ -124,22 +125,22 @@ class _GoodsListPageState extends State<GoodsListPage>
                         tabs: <Widget>[
                           SortWidget(
                             onTap: () => sortOnChange(0),
-                            title: "人气",
+                            title: '人气',
                             current: current == 0,
                           ),
                           SortWidget(
                             onTap: () => sortOnChange(1),
-                            title: "最新",
+                            title: '最新',
                             current: current == 1,
                           ),
                           SortWidget(
                             onTap: () => sortOnChange(2),
-                            title: "销量",
+                            title: '销量',
                             current: current == 2,
                           ),
                           SortWidget(
                               onTap: () => sortOnChange(3),
-                              title: "价格",
+                              title: '价格',
                               current: current == 3,
                               icon: _bulidPriceIconWidget()),
                         ]),
@@ -175,12 +176,12 @@ class _GoodsListPageState extends State<GoodsListPage>
         if (subcategory.subcid != int.parse(currentSubCategory!)) {
           setState(() {
             currentSubCategory = subcategory.subcid.toString();
-            currentMainCategory = "";
+            currentMainCategory = '';
             this.goodsListRepository = GoodsListRepository(
-                cids: "",
-                g_sort: "0",
+                cids: '',
+                g_sort: '0',
                 subcid: subcategory.subcid.toString(),
-                brand: "");
+                brand: '');
           });
           this.goodsListRepository.refresh(true);
           _tabController!.animateTo(0);
@@ -215,7 +216,7 @@ class _GoodsListPageState extends State<GoodsListPage>
     List<Tab> tabs = categorys!.map((item) {
       return Tab(text: item.cname);
     }).toList();
-    tabs.insert(0, Tab(text: "首页"));
+    tabs.insert(0, Tab(text: '首页'));
     return SliverPersistentHeader(
       pinned: true,
       delegate: StickyTabBarDelegate(
@@ -225,12 +226,12 @@ class _GoodsListPageState extends State<GoodsListPage>
           if (index != 0) {
             setState(() {
               currentMainCategory = categorys![index - 1].cid.toString();
-              currentSubCategory = "";
+              currentSubCategory = '';
               this.goodsListRepository = GoodsListRepository(
                   cids: categorys![index - 1].cid.toString(),
-                  g_sort: "0",
-                  subcid: "",
-                  brand: "");
+                  g_sort: '0',
+                  subcid: '',
+                  brand: '');
             });
             changeSubCategory(index - 1);
             _tabController!.animateTo(0);
@@ -257,10 +258,10 @@ class _GoodsListPageState extends State<GoodsListPage>
   @override
   void initState() {
     goodsListRepository = GoodsListRepository(
-        cids: widget.subcid!=""  ? "" : widget.cids,
+        cids: widget.subcid!=''  ? '' : widget.cids,
         brand: widget.brand,
         subcid: widget.subcid,
-        g_sort: "0");
+        g_sort: '0');
     _tabController = TabController(vsync: this, length: 4);
     categorysTabBarController = TabController(vsync: this, length: 1);
     setState(() {
@@ -283,7 +284,7 @@ class _GoodsListPageState extends State<GoodsListPage>
             vsync: this,
             initialIndex: getInitCategoryTabIndex());
       });
-      if (widget.cids != "") {
+      if (widget.cids != '') {
         changeSubCategory(getInitCategoryTabIndex() - 1);
       }
     }
@@ -309,12 +310,12 @@ class _GoodsListPageState extends State<GoodsListPage>
 
   // 价格排序图标改变 (从高到低/从低到高)
   _bulidPriceIconWidget() {
-    String iconShow = "assets/icons/px.png";
+    String iconShow = 'assets/icons/px.png';
     if (current == 3) {
-      iconShow = "assets/icons/pxx.png";
+      iconShow = 'assets/icons/pxx.png';
     }
     if (current == 4) {
-      iconShow = "assets/icons/pxs.png";
+      iconShow = 'assets/icons/pxs.png';
     }
     return Image.asset(
       iconShow,
@@ -331,7 +332,7 @@ class _GoodsListPageState extends State<GoodsListPage>
           cids: currentMainCategory,
           brand: widget.brand,
           subcid: currentSubCategory,
-          g_sort: "$index");
+          g_sort: '$index');
       this.goodsListRepository.refresh(true);
       setState(() {
         priceSortType = 0;
@@ -344,7 +345,7 @@ class _GoodsListPageState extends State<GoodsListPage>
           cids: currentMainCategory,
           brand: widget.brand,
           subcid: currentSubCategory,
-          g_sort: "4");
+          g_sort: '4');
       this.goodsListRepository.refresh(true);
       setState(() {
         priceSortType = 1;
@@ -358,7 +359,7 @@ class _GoodsListPageState extends State<GoodsListPage>
           cids: currentMainCategory,
           brand: widget.brand,
           subcid: currentSubCategory,
-          g_sort: "$index");
+          g_sort: '$index');
       this.goodsListRepository.refresh(true);
     }
   }
@@ -380,7 +381,7 @@ class _GoodsListPageState extends State<GoodsListPage>
   Widget buildPulltoRefreshHeader(PullToRefreshScrollNotificationInfo? info) {
     //print(info?.mode);
     //print(info?.dragOffset);
-    //    print("------------");
+    //    print('------------');
     var offset = info?.dragOffset ?? 0.0;
     var mode = info?.mode;
     // Widget refreshWiget = Container();
@@ -408,23 +409,23 @@ class _GoodsListPageState extends State<GoodsListPage>
               padding: EdgeInsets.only(left: 5.0),
               alignment: Alignment.center,
               child: Text(
-                "刷新失败,点击重试",
+                '刷新失败,点击重试',
                 style: TextStyle(fontSize: 12.0, inherit: false),
               ),
             ),
           ));
     } else {
-      String modeStr = "下拉刷新";
+      String modeStr = '下拉刷新';
       if (mode != null && mode == RefreshIndicatorMode.armed) {
-        modeStr = "松手刷新";
+        modeStr = '松手刷新';
       } else if (mode != null && mode == RefreshIndicatorMode.snap) {
-        modeStr = "请求数据中";
+        modeStr = '请求数据中';
       } else if (mode != null && mode == RefreshIndicatorMode.canceled) {
-        modeStr = "操作取消";
+        modeStr = '操作取消';
       } else if (mode != null && mode == RefreshIndicatorMode.done) {
-        modeStr = "刷新成功";
+        modeStr = '刷新成功';
       } else if (mode != null && mode == RefreshIndicatorMode.refresh) {
-        modeStr = "正在刷新";
+        modeStr = '正在刷新';
       }
       child = Container(
         color: Colors.transparent,
@@ -435,13 +436,13 @@ class _GoodsListPageState extends State<GoodsListPage>
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Image.asset("assets/images/loading.gif"),
+            Image.asset('assets/images/loading.gif'),
             Container(
               padding: EdgeInsets.only(left: 5.0),
               color: Colors.transparent,
               alignment: Alignment.center,
               child: Text(
-                "$modeStr",
+                '$modeStr',
                 style: TextStyle(
                     fontSize: ScreenUtil().setSp(50),
                     inherit: false,

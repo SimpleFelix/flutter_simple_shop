@@ -34,7 +34,7 @@ class _DdqIndexHomeState extends State<DdqIndexHome> {
                       minHeight: ScreenUtil().setHeight(150),
                       child: Container(
                         child: Center(
-                          child: Text("我是有底线的~~"),
+                          child: Text('我是有底线的~~'),
                         ),
                       )),
                 )
@@ -58,16 +58,16 @@ class _DdqIndexHomeState extends State<DdqIndexHome> {
 //    for (var timeItem in times) {
 //      //上层文字
 //      String upText =
-//          "${timeItem.ddqTime.hour.toString().padLeft(2, "0")}:${timeItem.ddqTime.minute.toString().padLeft(2, "0")}";
+//          '${timeItem.ddqTime.hour.toString().padLeft(2, '0')}:${timeItem.ddqTime.minute.toString().padLeft(2, '0')}';
 //
 //      //下层文字
 //      int state = timeItem.status;
-//      String downText = "已开抢";
+//      String downText = '已开抢';
 //      if (state == 1) {
-//        downText = "正在疯抢";
+//        downText = '正在疯抢';
 //      }
 //      if (state == 2) {
-//        downText = "未开始";
+//        downText = '未开始';
 //      }
 //
 //      //选中
@@ -90,7 +90,7 @@ class _DdqIndexHomeState extends State<DdqIndexHome> {
       automaticallyImplyLeading: false,
       flexibleSpace: FlexibleSpaceBar(
         collapseMode: CollapseMode.none,
-        background: Image.asset("assets/images/ddq.jpg", fit: BoxFit.cover),
+        background: Image.asset('assets/images/ddq.jpg', fit: BoxFit.cover),
       ),
     );
   }

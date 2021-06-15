@@ -26,20 +26,20 @@ class ShopInfo {
   String? shopUrl;
 
   factory ShopInfo.fromJson(Map<String, dynamic> json) => ShopInfo(
-    sellerNick: json["seller_nick"],
-    pictUrl: json["pict_url"],
-    shopTitle: json["shop_title"],
-    shopType: json["shop_type"],
-    userId: json["user_id"],
-    shopUrl: json["shop_url"],
+    sellerNick: json['seller_nick'],
+    pictUrl: json['pict_url'],
+    shopTitle: json['shop_title'],
+    shopType: json['shop_type'],
+    userId: json['user_id'],
+    shopUrl: json['shop_url'],
   );
 
   Map<String, dynamic> toJson() => {
-    "seller_nick": sellerNick,
-    "pict_url": pictUrl,
-    "shop_title": shopTitle,
-    "shop_type": shopType,
-    "user_id": userId,
-    "shop_url": shopUrl,
+    'seller_nick': sellerNick,
+    'pict_url': pictUrl,
+    'shop_title': shopTitle,
+    'shop_type': shopType,
+    'user_id': userId,
+    'shop_url': shopUrl,
   };
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -12,16 +13,16 @@ class _LoginPageState extends State<LoginPage> {
   Color? _eyeColor;
   List _loginMethod = [
     {
-      "title": "facebook",
-      "icon": Icons.face,
+      'title': 'facebook',
+      'icon': Icons.face,
     },
     {
-      "title": "google",
-      "icon": Icons.face,
+      'title': 'google',
+      'icon': Icons.face,
     },
     {
-      "title": "twitter",
-      "icon": Icons.face,
+      'title': 'twitter',
+      'icon': Icons.face,
     },
   ];
 
@@ -91,9 +92,9 @@ class _LoginPageState extends State<LoginPage> {
               onPressed: () {
                 //TODO : 第三方登录方法
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  content: new Text("${item['title']}登录"),
+                  content: new Text('${item['title']}登录'),
                   action: new SnackBarAction(
-                    label: "取消",
+                    label: '取消',
                     onPressed: () {},
                   ),
                 ));
@@ -188,9 +189,7 @@ class _LoginPageState extends State<LoginPage> {
         labelText: 'Emall Address',
       ),
       validator: (String? value) {
-        var emailReg = RegExp(
-            r"[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?");
-        if (!emailReg.hasMatch(value!)) {
+        if (value==null || !GetUtils.isEmail(value)) {
           return '请输入正确的邮箱地址';
         }
         return value;

@@ -41,7 +41,7 @@ class ActionButtons extends StatelessWidget {
                     lightOrientation: FLightOrientation.LeftBottom,
                     height: ScreenUtil().setHeight(250),
 //                    width: ScreenUtil().setWidth(180),
-                    text: "首页",
+                    text: '首页',
                     textAlignment: Alignment.bottomCenter,
                     child1Alignment: Alignment.topCenter,
                     child1: Icon(
@@ -53,7 +53,7 @@ class ActionButtons extends StatelessWidget {
                     lightOrientation: FLightOrientation.LeftBottom,
                     height: ScreenUtil().setHeight(250),
 //                    width: ScreenUtil().setWidth(180),
-                    text: "分享",
+                    text: '分享',
                     textAlignment: Alignment.bottomCenter,
                     child1Alignment: Alignment.topCenter,
                     child1: Icon(
@@ -68,7 +68,7 @@ class ActionButtons extends StatelessWidget {
                       lightOrientation: FLightOrientation.LeftBottom,
                       height: ScreenUtil().setHeight(250),
 //                    width: ScreenUtil().setWidth(180),
-                      text: "收藏",
+                      text: '收藏',
                       textAlignment: Alignment.bottomCenter,
                       child1Alignment: Alignment.topCenter,
                       child1: Icon(
@@ -96,7 +96,7 @@ class ActionButtons extends StatelessWidget {
                 children: <Widget>[
                   Container(
                     child: Text(
-                      "复制口令",
+                      '复制口令',
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
@@ -107,7 +107,7 @@ class ActionButtons extends StatelessWidget {
                     onTap: getCallBack as void Function()?,
                     child: Container(
                       child: Text(
-                        "领券购买",
+                        '领券购买',
                         style: TextStyle(color: Colors.white),
                       ),
                     ),

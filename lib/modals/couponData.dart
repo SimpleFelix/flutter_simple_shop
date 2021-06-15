@@ -22,17 +22,17 @@ class CouponInfo {
   });
 
   factory CouponInfo.fromJson(Map<String, dynamic> json) => CouponInfo(
-    time: json["time"],
-    code: json["code"],
-    msg: json["msg"],
-    data: CouponData.fromJson(json["data"]),
+    time: json['time'],
+    code: json['code'],
+    msg: json['msg'],
+    data: CouponData.fromJson(json['data']),
   );
 
   Map<String, dynamic> toJson() => {
-    "time": time,
-    "code": code,
-    "msg": msg,
-    "data": data!.toJson(),
+    'time': time,
+    'code': code,
+    'msg': msg,
+    'data': data!.toJson(),
   };
 }
 
@@ -64,30 +64,30 @@ class CouponData {
   });
 
   factory CouponData.fromJson(Map<String, dynamic> json) => CouponData(
-    couponClickUrl: json["couponClickUrl"],
-    couponEndTime: json["couponEndTime"],
-    couponInfo: json["couponInfo"],
-    couponStartTime:json["couponStartTime"],
-    itemId: json["itemId"],
-    couponTotalCount: json["couponTotalCount"],
-    couponRemainCount: json["couponRemainCount"],
-    itemUrl: json["itemUrl"],
-    tpwd: json["tpwd"],
-    maxCommissionRate: json["maxCommissionRate"],
-    shortUrl: json["shortUrl"],
+    couponClickUrl: json['couponClickUrl'],
+    couponEndTime: json['couponEndTime'],
+    couponInfo: json['couponInfo'],
+    couponStartTime:json['couponStartTime'],
+    itemId: json['itemId'],
+    couponTotalCount: json['couponTotalCount'],
+    couponRemainCount: json['couponRemainCount'],
+    itemUrl: json['itemUrl'],
+    tpwd: json['tpwd'],
+    maxCommissionRate: json['maxCommissionRate'],
+    shortUrl: json['shortUrl'],
   );
 
   Map<String, dynamic> toJson() => {
-    "couponClickUrl": couponClickUrl,
-    "couponEndTime": couponEndTime,
-    "couponInfo": couponInfo,
-    "couponStartTime": couponStartTime,
-    "itemId": itemId,
-    "couponTotalCount": couponTotalCount,
-    "couponRemainCount": couponRemainCount,
-    "itemUrl": itemUrl,
-    "tpwd": tpwd,
-    "maxCommissionRate": maxCommissionRate,
-    "shortUrl": shortUrl,
+    'couponClickUrl': couponClickUrl,
+    'couponEndTime': couponEndTime,
+    'couponInfo': couponInfo,
+    'couponStartTime': couponStartTime,
+    'itemId': itemId,
+    'couponTotalCount': couponTotalCount,
+    'couponRemainCount': couponRemainCount,
+    'itemUrl': itemUrl,
+    'tpwd': tpwd,
+    'maxCommissionRate': maxCommissionRate,
+    'shortUrl': shortUrl,
   };
 }

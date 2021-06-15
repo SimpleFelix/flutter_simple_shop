@@ -75,23 +75,23 @@ class GoodsItemWidget extends StatelessWidget {
                               child: RichText(
                                 text: TextSpan(children: <TextSpan>[
                                   TextSpan(
-                                      text: "￥",
+                                      text: '￥',
                                       style: TextStyle(
                                           color: Colors.pinkAccent,
                                           fontSize: ScreenUtil().setSp(40))),
                                   TextSpan(
-                                      text: "${goodsItem.actualPrice}",
+                                      text: '${goodsItem.actualPrice}',
                                       style: TextStyle(
                                           color: Colors.pinkAccent,
                                           fontSize: ScreenUtil().setSp(70),
                                           fontWeight: FontWeight.w600)),
                                   TextSpan(
-                                      text: "  券后价    ",
+                                      text: '  券后价    ',
                                       style: TextStyle(
                                           color: Colors.pinkAccent,
                                           fontSize: ScreenUtil().setSp(40))),
                                   TextSpan(
-                                      text: "原价${goodsItem.originalPrice}",
+                                      text: '原价${goodsItem.originalPrice}',
                                       style: TextStyle(
                                           color: Colors.black38,
                                           decoration: TextDecoration.lineThrough,
@@ -119,19 +119,19 @@ class GoodsItemWidget extends StatelessWidget {
                               child: RichText(
                                 text: TextSpan(children: [
                                   TextSpan(
-                                    text: "已售",
+                                    text: '已售',
                                     style: TextStyle(
                                         fontSize: ScreenUtil().setSp(45),
                                         color: Color.fromRGBO(137, 60, 17, 1.0)),
                                   ),
                                   TextSpan(
-                                    text: " ${goodsItem.monthSales} ",
+                                    text: ' ${goodsItem.monthSales} ',
                                     style: TextStyle(
                                         fontSize: ScreenUtil().setSp(65),
                                         color: Color.fromRGBO(255, 91, 0, 1.0)),
                                   ),
                                   TextSpan(
-                                    text: "件",
+                                    text: '件',
                                     style: TextStyle(
                                         fontSize: ScreenUtil().setSp(45),
                                         color: Color.fromRGBO(137, 60, 17, 1.0)),
@@ -143,7 +143,7 @@ class GoodsItemWidget extends StatelessWidget {
                               right: -3.3,
                               top: 0,
                               child: Image.asset(
-                                "assets/images/lijigoumai.png",
+                                'assets/images/lijigoumai.png',
                                 width: ScreenUtil().setWidth(350),
                                 height: ScreenUtil().setHeight(140),
                                 fit: BoxFit.cover,
@@ -157,7 +157,7 @@ class GoodsItemWidget extends StatelessWidget {
                                   width: ScreenUtil().setWidth(280),
                                   height: ScreenUtil().setHeight(120),
                                   child: Text(
-                                    "立即购买",
+                                    '立即购买',
                                     style: TextStyle(
                                         fontSize: ScreenUtil().setSp(40),
                                         color: Colors.white),

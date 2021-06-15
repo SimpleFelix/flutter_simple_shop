@@ -42,7 +42,7 @@ class _DDQWidgetState extends State<DDQWidget> {
 
   /// 标题version2
   Widget _buildWidgetTitle({String? title, required double height}) {
-    String showTitle = title ?? "限时抢购";
+    String showTitle = title ?? '限时抢购';
     return Container(
       height: ScreenUtil().setHeight(height),
       child: Row(
@@ -139,7 +139,7 @@ class _DDQWidgetState extends State<DDQWidget> {
                       SizedBox(width: ScreenUtil().setWidth(20)),
                       Expanded(
                         child: Text(
-                          "￥$orginPrice",
+                          '￥$orginPrice',
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(

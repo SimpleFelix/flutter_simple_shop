@@ -23,20 +23,20 @@ class MainTopic {
   List<String>? topBanner;
 
   factory MainTopic.fromJson(Map<String, dynamic> json) => MainTopic(
-    topicId: json["topicId"],
-    topicName: json["topicName"],
-    startTime: DateTime.parse(json["startTime"]),
-    endTime: DateTime.parse(json["endTime"]),
-    banner: List<String>.from(json["banner"].map((x) => x)),
-    topBanner: List<String>.from(json["topBanner"].map((x) => x)),
+    topicId: json['topicId'],
+    topicName: json['topicName'],
+    startTime: DateTime.parse(json['startTime']),
+    endTime: DateTime.parse(json['endTime']),
+    banner: List<String>.from(json['banner'].map((x) => x)),
+    topBanner: List<String>.from(json['topBanner'].map((x) => x)),
   );
 
   Map<String, dynamic> toJson() => {
-    "topicId": topicId,
-    "topicName": topicName,
-    "startTime": startTime!.toIso8601String(),
-    "endTime": endTime!.toIso8601String(),
-    "banner": List<dynamic>.from(banner!.map((x) => x)),
-    "topBanner": List<dynamic>.from(topBanner!.map((x) => x)),
+    'topicId': topicId,
+    'topicName': topicName,
+    'startTime': startTime!.toIso8601String(),
+    'endTime': endTime!.toIso8601String(),
+    'banner': List<dynamic>.from(banner!.map((x) => x)),
+    'topBanner': List<dynamic>.from(topBanner!.map((x) => x)),
   };
 }

@@ -29,8 +29,8 @@ class DrawableStartTextState extends State<DrawableStartText>{
   double? _textHeight;
   GlobalKey rowKey=GlobalKey();
   GlobalKey imageKey=GlobalKey();
-  String _topText="";
-  String? _bottomText="";
+  String _topText='';
+  String? _bottomText='';
   late Image _image;
   bool _isOneShow = true; // 一行是否能显示完
 

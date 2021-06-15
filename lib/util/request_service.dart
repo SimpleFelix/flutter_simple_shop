@@ -57,22 +57,22 @@ Future getDtkDdqGoods(data){
 
 //用户登录
 Future userLogin(data){
-  return post(Api.API_USER+"/login",data: data);
+  return post(Api.API_USER+'/login',data: data);
 }
 
 // 添加商品收藏
 Future addGoodsFavorite(data){
-  return post(Api.API_FAVORITE+"/add",data: data);
+  return post(Api.API_FAVORITE+'/add',data: data);
 }
 
 // 判断用户是否收藏该商品
 Future haveGoodsFavorite(data){
-  return post(Api.API_FAVORITE+"/have",data: data);
+  return post(Api.API_FAVORITE+'/have',data: data);
 }
 
 // 用户移除某个商品收藏
 Future removeGoodsFavorite(data){
-  return post(Api.API_FAVORITE+"/remove",data: data);
+  return post(Api.API_FAVORITE+'/remove',data: data);
 }
 
 // 获取用户收藏商品列表
@@ -82,17 +82,17 @@ Future loadFavoriteGoods(data){
 
 // 订单绑定接口
 Future addOrder(data){
-  return post(Api.API_ORDER+"/add",data: data);
+  return post(Api.API_ORDER+'/add',data: data);
 }
 
 // 获取订单列表
 Future findOrderList(data){
-  return post(Api.API_ORDER+"/list",data: data);
+  return post(Api.API_ORDER+'/list',data: data);
 }
 
 // 获取好订单详情接口,需要传入一个商品id:goods_id
 Future getHaodankuDetailInfo(String? goods_id){
-  return post(Api.API_HDK_DETAIL,data: {"goods_id":goods_id});
+  return post(Api.API_HDK_DETAIL,data: {'goods_id':goods_id});
 }
 
 // 首页网格菜单
@@ -102,7 +102,7 @@ Future getIndexGridSpecial(){
 
 // 获取商店信息
 Future<ShopInfo?> getShopInfo(String shopName) async {
-  await post(Api.API_GET_SHOP_INFO,data:{"shopName":shopName}).then((res){
+  await post(Api.API_GET_SHOP_INFO,data:{'shopName':shopName}).then((res){
     Result result = ResultUtils.format(res);
     if(result.code==200){
       ShopInfo shopInfo = ShopInfo.fromJson(json.decode(result.data.toString()));

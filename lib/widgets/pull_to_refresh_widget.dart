@@ -8,19 +8,19 @@ class PullToRefreshWidgetFoot extends StatelessWidget {
       builder: (BuildContext context,LoadStatus? mode){
         Widget body ;
         if(mode==LoadStatus.idle){
-          body =  Image.asset("assets/images/loading.gif");
+          body =  Image.asset('assets/images/loading.gif');
         }
         else if(mode==LoadStatus.loading){
-          body =  Image.asset("assets/images/loading.gif");
+          body =  Image.asset('assets/images/loading.gif');
         }
         else if(mode == LoadStatus.failed){
-          body = Text("加载失败！点击重试！");
+          body = Text('加载失败！点击重试！');
         }
         else if(mode == LoadStatus.canLoading){
-          body = Text("松手,加载更多!");
+          body = Text('松手,加载更多!');
         }
         else{
-          body = Text("没有更多数据了!");
+          body = Text('没有更多数据了!');
         }
         return Container(
           height: 55.0,

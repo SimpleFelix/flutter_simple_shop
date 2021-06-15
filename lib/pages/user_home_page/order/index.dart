@@ -17,13 +17,13 @@ class OrderIndex extends StatelessWidget {
       children: [
         InkWell(
           onTap: () {
-            NavigatorUtil.gotoOrderAllIndexPage(context, "-1"); // -1表示全部显示
+            NavigatorUtil.gotoOrderAllIndexPage(context, '-1'); // -1表示全部显示
           },
-          child: SvgTitle(title: "全部订单", svgPath: "assets/svg/order.svg"),
+          child: SvgTitle(title: '全部订单', svgPath: 'assets/svg/order.svg'),
         ),
-        SvgTitle(title: "已通过", svgPath: "assets/svg/order2.svg"),
-        SvgTitle(title: "等待审核", svgPath: "assets/svg/order3.svg"),
-        SvgTitle(title: "无效订单", svgPath: "assets/svg/order4.svg"),
+        SvgTitle(title: '已通过', svgPath: 'assets/svg/order2.svg'),
+        SvgTitle(title: '等待审核', svgPath: 'assets/svg/order3.svg'),
+        SvgTitle(title: '无效订单', svgPath: 'assets/svg/order4.svg'),
       ],
     );
   }

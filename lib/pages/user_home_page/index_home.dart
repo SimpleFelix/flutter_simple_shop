@@ -36,22 +36,22 @@ class _IndexHomeState extends State<UserIndexHome> {
               child: Column(
                 children: <Widget>[
                   ListItem(
-                    title: "订单绑定",
+                    title: '订单绑定',
                     onTap: () async {
                       await UserUtil.loadUserInfo().then((user) {
                         if (user != null) {
                           NavigatorUtil.gotoOrderAddIndexPage(context);
                         } else {
-                          SystemToast.show("请先登录");
+                          SystemToast.show('请先登录');
                         }
                       });
                     },
                     isCard: true,
                   ),
                   ListItem(
-                    title: "帮助反馈",
+                    title: '帮助反馈',
                     onTap: () {
-                      print("前往帮助反馈页面");
+                      print('前往帮助反馈页面');
                     },
                     isCard: true,
                   ),

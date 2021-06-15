@@ -25,16 +25,16 @@ class DdqTimesWidget extends StatelessWidget {
     for (var timeItem in times) {
       //上层文字
       String upText =
-          "${timeItem.ddqTime!.hour.toString().padLeft(2, "0")}:${timeItem.ddqTime!.minute.toString().padLeft(2, "0")}";
+          '${timeItem.ddqTime!.hour.toString().padLeft(2, '0')}:${timeItem.ddqTime!.minute.toString().padLeft(2, '0')}';
 
       //下层文字
       int? state = timeItem.status;
-      String downText = "已开抢";
+      String downText = '已开抢';
       if (state == 1) {
-        downText = "正在疯抢";
+        downText = '正在疯抢';
       }
       if (state == 2) {
-        downText = "未开始";
+        downText = '未开始';
       }
 
       //选中

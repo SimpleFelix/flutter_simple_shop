@@ -31,14 +31,14 @@ class CouponPriceWidget extends StatelessWidget {
         children: <Widget>[
           Container(
             margin: EdgeInsets.only(right: 3.0),
-            child: Text("券后",
+            child: Text('券后',
                 style: TextStyle(
                     color: Colors.black38,
                     fontSize: ScreenUtil().setSp(couponPriceSymbolFontSize * 0.6))),
           ),
           Container(
             child: Text(
-              "¥",
+              '¥',
               style: TextStyle(
                   fontSize: ScreenUtil().setSp(couponPriceSymbolFontSize),
                   color: Colors.pinkAccent),
@@ -55,7 +55,7 @@ class CouponPriceWidget extends StatelessWidget {
           Container(
             margin: EdgeInsets.only(left: interval ?? 10.0),
             child: Text(
-              "¥$originalPrice",
+              '¥$originalPrice',
               style: TextStyle(
                   decoration: TextDecoration.lineThrough,
                   color: Colors.black38,
@@ -73,14 +73,14 @@ class CouponPriceWidget extends StatelessWidget {
   Widget _buildDiscount() {
     double discountDouble = double.parse(actualPrice!) / originalPrice!;
     String numStr = discountDouble.toStringAsFixed(2);
-    numStr = numStr.substring(0, numStr.lastIndexOf(".") + 2);
+    numStr = numStr.substring(0, numStr.lastIndexOf('.') + 2);
     double discount = double.parse(numStr) * 10;
     return FSuper(
       lightOrientation: FLightOrientation.LeftBottom,
       backgroundColor: primaryColor,
       padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),
       margin: EdgeInsets.only(left: 10),
-      text: "${discount.toStringAsFixed(discount.truncateToDouble() == discount ? 0 : 1)}折",
+      text: '${discount.toStringAsFixed(discount.truncateToDouble() == discount ? 0 : 1)}折',
     );
   }
 }

@@ -17,8 +17,8 @@ class UserLoginPage extends StatefulWidget {
 
 class _UserLoginPageState extends State<UserLoginPage> {
   bool isAgree = false; // 是否同意协议
-  String username = ""; // 用户名
-  String password = ""; // 密码
+  String username = ''; // 用户名
+  String password = ''; // 密码
   bool loading = false; // 是否登录中
 
   @override
@@ -32,7 +32,7 @@ class _UserLoginPageState extends State<UserLoginPage> {
           Padding(
             padding: EdgeInsets.only(right: 20.0),
             child: Center(
-              child: Text("注册账号",
+              child: Text('注册账号',
                   style: TextStyle(
                       color: Colors.white, fontWeight: FontWeight.w500)),
             ),
@@ -56,7 +56,7 @@ class _UserLoginPageState extends State<UserLoginPage> {
                             color: Colors.white,
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10.0))),
-                        child: Image.asset("assets/images/logo.png")),
+                        child: Image.asset('assets/images/logo.png')),
                   ),
                 ),
 
@@ -75,7 +75,7 @@ class _UserLoginPageState extends State<UserLoginPage> {
                         decoration: InputDecoration(
                           filled: true,
                           fillColor: Colors.white,
-                          hintText: "手机号/邮箱",
+                          hintText: '手机号/邮箱',
                           contentPadding:
                               EdgeInsets.symmetric(horizontal: 10.0),
                           border: UnderlineInputBorder(
@@ -97,7 +97,7 @@ class _UserLoginPageState extends State<UserLoginPage> {
                         decoration: InputDecoration(
                           filled: true,
                           fillColor: Colors.white,
-                          hintText: "密码",
+                          hintText: '密码',
                           contentPadding:
                               EdgeInsets.symmetric(horizontal: 10.0),
                           border: UnderlineInputBorder(
@@ -144,8 +144,8 @@ class _UserLoginPageState extends State<UserLoginPage> {
                       },
                       child: Image.asset(
                         isAgree
-                            ? "assets/icons/select.png"
-                            : "assets/icons/select_no.png",
+                            ? 'assets/icons/select.png'
+                            : 'assets/icons/select_no.png',
                         height: ScreenUtil().setHeight(58),
                         width: ScreenUtil().setWidth(58),
                       ),
@@ -154,15 +154,15 @@ class _UserLoginPageState extends State<UserLoginPage> {
                       padding: const EdgeInsets.only(left: 5.0),
                       child: FSuper(
                         lightOrientation: FLightOrientation.LeftBottom,
-                        text: "我已阅读并同意",
+                        text: '我已阅读并同意',
                         spans: [
                           TextSpan(
-                              text: "用户协议",
+                              text: '用户协议',
                               style: TextStyle(
                                   decoration: TextDecoration.underline)),
-                          TextSpan(text: "和", style: TextStyle()),
+                          TextSpan(text: '和', style: TextStyle()),
                           TextSpan(
-                              text: "隐私政策",
+                              text: '隐私政策',
                               style: TextStyle(
                                   decoration: TextDecoration.underline)),
                         ],

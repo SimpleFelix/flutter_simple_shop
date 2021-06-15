@@ -30,10 +30,10 @@ class IndexGridViewMenu extends StatelessWidget {
           children: [
             Expanded(child: Container(
               child: ExtendedImage.network(
-                "${model!.iconUrl}"
+                '${model!.iconUrl}'
               ),
             )),
-            Text("${model!.title}",style: TextStyle(fontSize: 50.sp))
+            Text('${model!.title}',style: TextStyle(fontSize: 50.sp))
           ],
         ),
       ),

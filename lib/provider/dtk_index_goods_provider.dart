@@ -39,7 +39,7 @@ class DtkIndexGoodsModal extends ChangeNotifier {
         goods = obj.data;
         notifyListeners();
       } else {
-        print("获取数据榜单失败");
+        print('获取数据榜单失败');
       }
     });
   }

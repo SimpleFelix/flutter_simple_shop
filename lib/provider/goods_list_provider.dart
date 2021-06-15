@@ -13,13 +13,13 @@ class GoodsListProvider extends BaseProvider {
   List<int> desc = [0, 1, 2, 5, 6];
   int currentIndex = 0; // 默认综合排序
   int page = 1; //默认第几页
-  String brand = "";//品牌id,默认0
+  String brand = '';//品牌id,默认0
 
-  String cids = "";
-  String subcid = "";
+  String cids = '';
+  String subcid = '';
 
   Future<void> LoadList() async {
-    await getGoodsListFuture({"pageId":page,"sort":desc[currentIndex],"brand":brand,"cids":cids,"subcid":subcid,"pageSize":10}).then((res) {
+    await getGoodsListFuture({'pageId':page,'sort':desc[currentIndex],'brand':brand,'cids':cids,'subcid':subcid,'pageSize':10}).then((res) {
       Result result = ResultUtils.format(res);
       if(result.data!=null && result.code==200){
         GoodsList _goods = GoodsList.fromJson(json.decode(result.data.toString()));
@@ -31,10 +31,10 @@ class GoodsListProvider extends BaseProvider {
           }
           notifyListeners();
         }else{
-          print("获取商品列表失败---------------------GoodsListProvider-");
+          print('获取商品列表失败---------------------GoodsListProvider-');
         }
       }else{
-        print("获取商品列表失败---------------------GoodsListProvider-");
+        print('获取商品列表失败---------------------GoodsListProvider-');
       }
 //      changeLoadingState(false);
     });
@@ -58,10 +58,10 @@ class GoodsListProvider extends BaseProvider {
   pop(){
     goods = [];
     page = 1;
-    cids = "";
-    subcid = "";
+    cids = '';
+    subcid = '';
     currentIndex = 0; // 默认综合排序
-    brand = "";
+    brand = '';
   }
 
   sort(curr){

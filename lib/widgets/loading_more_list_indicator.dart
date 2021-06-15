@@ -45,7 +45,7 @@ class LoadingMoreListCostumIndicator extends StatelessWidget {
               width: 15.0,
               child: getIndicator(context),
             ),
-            Text(text ?? "加载中...")
+            Text(text ?? '加载中...')
           ],
         );
         widget = _setbackground(false, widget, 35.0);
@@ -61,7 +61,7 @@ class LoadingMoreListCostumIndicator extends StatelessWidget {
               width: 15.0,
               child: getIndicator(context),
             ),
-            Text(text ?? "加载中...")
+            Text(text ?? '加载中...')
           ],
         );
         widget = _setbackground(true, widget, double.infinity);
@@ -81,7 +81,7 @@ class LoadingMoreListCostumIndicator extends StatelessWidget {
         break;
       case IndicatorStatus.error:
         widget = Text(
-          text ?? "加载失败,请重试.",
+          text ?? '加载失败,请重试.',
         );
         widget = _setbackground(false, widget, 35.0);
         if (tryAgain != null) {
@@ -95,7 +95,7 @@ class LoadingMoreListCostumIndicator extends StatelessWidget {
         break;
       case IndicatorStatus.fullScreenError:
         widget = Text(
-          text ?? "加载失败,请重试.",
+          text ?? '加载失败,请重试.',
         );
         widget = _setbackground(true, widget, double.infinity);
         if (tryAgain != null) {
@@ -121,12 +121,12 @@ class LoadingMoreListCostumIndicator extends StatelessWidget {
         }
         break;
       case IndicatorStatus.noMoreLoad:
-        widget = Text(text ?? "没有更多了.");
+        widget = Text(text ?? '没有更多了.');
         widget = _setbackground(false, widget, 35.0);
         break;
       case IndicatorStatus.empty:
         widget = EmptyWidget(
-          text ?? "空空如也.",
+          text ?? '空空如也.',
           emptyWidget: emptyWidget,
         );
         widget = _setbackground(true, widget, double.infinity);

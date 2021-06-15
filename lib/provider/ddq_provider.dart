@@ -11,11 +11,11 @@ class DdqProvider extends ChangeNotifier {
   int? status;
 
   //时间段
-  String dateTime = "";
+  String dateTime = '';
 
   /// 加载数据
   Future<void> loadData() async {
-    var data = dateTime == "" ? {} : {"roundTime": dateTime.substring(0, dateTime.length - 4)};
+    var data = dateTime == '' ? {} : {'roundTime': dateTime.substring(0, dateTime.length - 4)};
     final result = await DdTaokeSdk.instance.getDdq();
     if (result != null) {
       goodsList.addAll(result.goodsList ?? []);

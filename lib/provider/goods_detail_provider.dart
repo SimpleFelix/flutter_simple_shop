@@ -28,15 +28,15 @@ class GoodsDetailProvider with ChangeNotifier {
     // 判断用户是否登录
     await UserUtil.loadUserInfo().then((user) async {
       if (user != null) {
-        await addGoodsFavorite({"goods": goodInfo, "userId": user.id})
+        await addGoodsFavorite({'goods': goodInfo, 'userId': user.id})
             .then((res) {
           Result result = ResultUtils.format(res);
           if (result.code == 200 && int.parse(result.data!) == 1) {
-            print("收藏成功!");
+            print('收藏成功!');
             isHaveFav = 1;
             notifyListeners();
           } else if (result.code == 200 && int.parse(result.data!) == 2) {
-            print("已收藏");
+            print('已收藏');
           }
         });
       } else {
@@ -55,15 +55,15 @@ class GoodsDetailProvider with ChangeNotifier {
     // 判断用户是否已经登录
     await UserUtil.loadUserInfo().then((user) async {
       if (user != null) {
-        await removeGoodsFavorite({"goodsId": _goodsId, "userId": user.id})
+        await removeGoodsFavorite({'goodsId': _goodsId, 'userId': user.id})
             .then((res) {
           Result result = ResultUtils.format(res);
           if (result.code == 200 && int.parse(result.data!) == 1) {
             isHaveFav = 0;
             notifyListeners();
-            print("取消收藏成功!");
+            print('取消收藏成功!');
           } else {
-            print("取消收藏失败!");
+            print('取消收藏失败!');
           }
         });
       }
@@ -77,7 +77,7 @@ class GoodsDetailProvider with ChangeNotifier {
     await UserUtil.loadUserInfo().then((user) async {
       if (user != null) {
         if (goodInfo != null) {
-        await haveGoodsFavorite({'goodsId': goodInfo!.id, "userId": user.id})
+        await haveGoodsFavorite({'goodsId': goodInfo!.id, 'userId': user.id})
               .then((res) {
             Result result = ResultUtils.format(res);
             if (result.code == 200) {
@@ -102,12 +102,12 @@ class GoodsDetailProvider with ChangeNotifier {
             CouponInfo.fromJson(json.decode(resultObj.data.toString()));
         if (couponInfo.code == 0) {
           // 加载成功
-          print("加载成功:${couponInfo.msg.toString()}");
+          print('加载成功:${couponInfo.msg.toString()}');
           couponData = couponInfo.data;
           notifyListeners();
         }
       } else {
-        print("加载优惠券信息失败");
+        print('加载优惠券信息失败');
       }
     });
   }

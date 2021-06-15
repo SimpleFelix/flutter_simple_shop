@@ -13,12 +13,12 @@ class RequestUtil{
     Map<String, String?> newParams = RequestParamsUtils.keySort(params);
     String paramsToken = RequestParamsUtils.generateToken(newParams);
     String data = AesUtil.encryptAESCbc128WithPadding7(base64Encode(utf8.encode(json.encode(newParams))));
-    print("-----------------------------------------参数&MD5-------------------------------------");
+    print('-----------------------------------------参数&MD5-------------------------------------');
     params.keys.forEach((element) {
-      print("$element = ${params[element]}");
+      print('$element = ${params[element]}');
     });
     print(paramsToken);
-    print("---------------------------------------------------------------------------------");
+    print('---------------------------------------------------------------------------------');
     return ServerEncryptionData(paramsToken, data);
   }
 }

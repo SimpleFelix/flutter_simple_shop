@@ -137,17 +137,17 @@ class _IndexHomeState extends State<IndexHome>
                 InsetCustomItem(
                     index: 0,
                     child: CategoryItemDefaultLayout(
-                      name: "首页",
+                      name: '首页',
                       index: 0,
                       onRendeEnd: (int? index, Offset offset, Size? size) {},
                     ),
                     onTap: () {
-                      print("我点击了首页");
+                      print('我点击了首页');
                     }),
               ],
               onSelect: (int index, Category? item) {
                 if (item != null) {
-                  print("选中了:${item.cname},index是:$index");
+                  print('选中了:${item.cname},index是:$index');
                 }
               },
             ),
@@ -205,8 +205,8 @@ class _IndexHomeState extends State<IndexHome>
                           ]
                         : []),
                 child: CustomSelectToolbar(items: [
-                  SelectMenu(title: "佛系推荐", subTitle: '发现好物'),
-                  SelectMenu(title: "精选", subTitle: '猜你喜欢'),
+                  SelectMenu(title: '佛系推荐', subTitle: '发现好物'),
+                  SelectMenu(title: '精选', subTitle: '猜你喜欢'),
                 ], select: 0, hideSubTitle: _titleIsInTop),
               )),
         ),
@@ -292,7 +292,7 @@ class _IndexHomeState extends State<IndexHome>
                 ),
               ),
               Text(
-                "消息",
+                '消息',
                 style: TextStyle(fontSize: ScreenUtil().setSp(45)),
               )
             ],

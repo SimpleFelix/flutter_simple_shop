@@ -3,7 +3,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class AtText extends SpecialText {
-  static const String flag = "@";
+  static const String flag = '@';
   final int? start;
 
   /// whether show background for @somebody
@@ -13,7 +13,7 @@ class AtText extends SpecialText {
       {this.showAtBackground: false, this.start})
       : super(
     flag,
-    " ",
+    ' ',
     textStyle,
   );
 

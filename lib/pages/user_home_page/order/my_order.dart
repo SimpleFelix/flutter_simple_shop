@@ -26,7 +26,7 @@ class _MyOrderHomePageState extends State<MyOrderHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("全部订单"),
+        title: Text('全部订单'),
         centerTitle: true,
       ),
       body: PullToRefreshNotification(
@@ -46,16 +46,16 @@ class _MyOrderHomePageState extends State<MyOrderHomePage> {
                   SliverListConfig<OrderAuditObject>(
 
                     itemBuilder: (c,item,index){
-                      String createTimeStr = DateUtil.formatDateMs(int.parse(item.createTime!),format: "yyyy-MM-dd HH:mm:ss");
-                      String stateTip = "等待审核";
+                      String createTimeStr = DateUtil.formatDateMs(int.parse(item.createTime!),format: 'yyyy-MM-dd HH:mm:ss');
+                      String stateTip = '等待审核';
                       Color stateTipColor = Colors.black;
                       Icon stateIcon = Icon(Icons.info_outline,color: stateTipColor,);
                       if(item.stype==1){
-                        stateTip = "审核通过";
+                        stateTip = '审核通过';
                         stateTipColor = Colors.green;
                         Icon stateIcon = Icon(Icons.check,color: stateTipColor,);
                       }else if(item.stype==2){
-                        stateTip = "审核失效";
+                        stateTip = '审核失效';
                         stateTipColor = Colors.deepOrange;
                         Icon stateIcon = Icon(Icons.clear,color: stateTipColor,);
                       }
@@ -71,17 +71,17 @@ class _MyOrderHomePageState extends State<MyOrderHomePage> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
-                                Text("订单编号:${item.orderid}"),
+                                Text('订单编号:${item.orderid}'),
                                 Row(
                                   children: <Widget>[
                                     stateIcon,
                                     SizedBox(width: ScreenUtil().setWidth(20),),
-                                    Text("$stateTip",style: TextStyle(color: stateTipColor),),
+                                    Text('$stateTip',style: TextStyle(color: stateTipColor),),
                                   ],
                                 )
                               ],
                             ),
-                            Text("提交时间:$createTimeStr"),
+                            Text('提交时间:$createTimeStr'),
                           ],
                         ),
                       );

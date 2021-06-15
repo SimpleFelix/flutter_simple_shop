@@ -41,7 +41,7 @@ class BrandDetail extends StatelessWidget {
 
   Widget _buildData(){
     return Container(
-      child: Text("${Numeral(brandDetailModel!.fansNum!)}粉丝   ${Numeral(brandDetailModel!.sales!)}近期销量",style: TextStyle(
+      child: Text('${Numeral(brandDetailModel!.fansNum!)}粉丝   ${Numeral(brandDetailModel!.sales!)}近期销量',style: TextStyle(
         color: Colors.white.withOpacity(.8),
         fontSize: 45.sp
       ),),
@@ -66,7 +66,7 @@ class BrandDetail extends StatelessWidget {
 
   Widget _buildTag() {
     return TagWidget2(
-      tag: "${brandDetailModel!.brandFeatures}",
+      tag: '${brandDetailModel!.brandFeatures}',
     );
   }
 
@@ -92,7 +92,7 @@ class BrandDetail extends StatelessWidget {
   void showInfo(BuildContext context){
     showDialog(context: context,builder: (context){
       return AlertDialog(
-        title: Text("关于品牌"),
+        title: Text('关于品牌'),
         content: Text(brandDetailModel!.brandDesc!),
       );
     });

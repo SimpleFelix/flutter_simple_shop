@@ -63,17 +63,17 @@ class BrandItemCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "${storeInfo.brandName}",
+                          '${storeInfo.brandName}',
                           style: TextStyle(fontSize: 55.sp, color: Colors.black, fontWeight: FontWeight.bold),
                         ),
                         Text(
-                          "已售${Numeral(storeInfo.sales!)}件 >",
+                          '已售${Numeral(storeInfo.sales!)}件 >',
                           style: TextStyle(fontSize: 48.sp, color: Colors.grey[500]),
                         )
                       ],
                     ),
                     Text(
-                      "单品低至${storeInfo.maxDiscount}折  |  领券最高减${storeInfo.maxDiscountAmount}",
+                      '单品低至${storeInfo.maxDiscount}折  |  领券最高减${storeInfo.maxDiscountAmount}',
                       style: TextStyle(fontSize: 48.sp, color: Colors.redAccent),
                     )
                   ],

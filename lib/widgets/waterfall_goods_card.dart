@@ -87,7 +87,7 @@ class WaterfallGoodsCard extends StatelessWidget {
 //                  margin: EdgeInsets.only(top: 5.0),
 //                  child: Row(
 //                    children: <Widget>[
-//                      _tag("可领${product.couponPrice}元优惠券", Colors.pinkAccent),
+//                      _tag('可领${product.couponPrice}元优惠券', Colors.pinkAccent),
 //                      _iconByActivityType(product.activityType),
 //                    ],
 //                  ),
@@ -103,13 +103,13 @@ class WaterfallGoodsCard extends StatelessWidget {
       child: Row(
         children: <Widget>[
           Image.asset(
-            "assets/icons/hot.png",
+            'assets/icons/hot.png',
             height: Sc.ScreenUtil().setHeight(40),
             width: Sc.ScreenUtil().setWidth(40),
           ),
           Container(
             child: Text(
-              "两小时销量$twoHoursSales,月销${product.monthSales}",
+              '两小时销量$twoHoursSales,月销${product.monthSales}',
               style: TextStyle(fontSize: Sc.ScreenUtil().setSp(35), color: Colors.pinkAccent),
             ),
           )
@@ -170,14 +170,14 @@ class WaterfallGoodsCard extends StatelessWidget {
 
   // 活动类型，1-无活动，2-淘抢购，3-聚划算
   Widget _iconByActivityType(int activityType) {
-    Widget icon = Text(""); // 默认无活动
+    Widget icon = Text(''); // 默认无活动
 
     if (activityType == 3) {
-      icon = Image.asset("assets/icons/jhs.png",
+      icon = Image.asset('assets/icons/jhs.png',
           height: Sc.ScreenUtil().setHeight(60), width: Sc.ScreenUtil().setWidth(60));
     }
     if (activityType == 2) {
-      icon = Image.asset("assets/icons/qg.png",
+      icon = Image.asset('assets/icons/qg.png',
           height: Sc.ScreenUtil().setHeight(60), width: Sc.ScreenUtil().setWidth(60));
     }
     return Container(margin: EdgeInsets.only(left: 5.0), child: icon);
@@ -188,9 +188,9 @@ class WaterfallGoodsCard extends StatelessWidget {
     return newRankingGoods == 1
         ? Container(
             margin: EdgeInsets.only(left: 5.0),
-            child: Image.asset("assets/icons/new.png",
+            child: Image.asset('assets/icons/new.png',
                 height: Sc.ScreenUtil().setHeight(60), width: Sc.ScreenUtil().setWidth(60)),
           )
-        : Text("");
+        : Text('');
   }
 }

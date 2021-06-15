@@ -118,7 +118,7 @@ class _CategoryComponentState extends State<CategoryComponent> {
     final Offset? offset = _valueNotifier.value!.position![_current];
     final size = _valueNotifier.value!.size![_current];
     if(offset!=null&&size!=null) {
-      print("组件大小:$size, 组件位置:$offset");
+      print('组件大小:$size, 组件位置:$offset');
       final widgetWidth = size.width-50.w;
       return AnimatedPositioned(
           bottom: 0,

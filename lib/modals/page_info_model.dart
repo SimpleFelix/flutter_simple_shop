@@ -17,21 +17,21 @@ class Pageable {
   bool? paged;
 
   factory Pageable.fromJson(Map<String, dynamic> json) => Pageable(
-    sort: PageableSort.fromJson(json["sort"]),
-    offset: json["offset"],
-    pageNumber: json["pageNumber"],
-    pageSize: json["pageSize"],
-    unpaged: json["unpaged"],
-    paged: json["paged"],
+    sort: PageableSort.fromJson(json['sort']),
+    offset: json['offset'],
+    pageNumber: json['pageNumber'],
+    pageSize: json['pageSize'],
+    unpaged: json['unpaged'],
+    paged: json['paged'],
   );
 
   Map<String, dynamic> toJson() => {
-    "sort": sort!.toJson(),
-    "offset": offset,
-    "pageNumber": pageNumber,
-    "pageSize": pageSize,
-    "unpaged": unpaged,
-    "paged": paged,
+    'sort': sort!.toJson(),
+    'offset': offset,
+    'pageNumber': pageNumber,
+    'pageSize': pageSize,
+    'unpaged': unpaged,
+    'paged': paged,
   };
 }
 
@@ -43,11 +43,11 @@ class PageableSort {
   String? ref;
 
   factory PageableSort.fromJson(Map<String, dynamic> json) => PageableSort(
-    ref: json["\u0024ref"],
+    ref: json['\u0024ref'],
   );
 
   Map<String, dynamic> toJson() => {
-    "\u0024ref": ref,
+    '\u0024ref': ref,
   };
 }
 
@@ -63,14 +63,14 @@ class OrderAllDataSort {
   bool? empty;
 
   factory OrderAllDataSort.fromJson(Map<String, dynamic> json) => OrderAllDataSort(
-    sorted: json["sorted"],
-    unsorted: json["unsorted"],
-    empty: json["empty"],
+    sorted: json['sorted'],
+    unsorted: json['unsorted'],
+    empty: json['empty'],
   );
 
   Map<String, dynamic> toJson() => {
-    "sorted": sorted,
-    "unsorted": unsorted,
-    "empty": empty,
+    'sorted': sorted,
+    'unsorted': unsorted,
+    'empty': empty,
   };
 }

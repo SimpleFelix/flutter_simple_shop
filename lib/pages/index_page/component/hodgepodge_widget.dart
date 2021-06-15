@@ -363,11 +363,11 @@ class _HodgepodgeWidgetState extends State<HodgepodgeWidget> {
       lightOrientation: FLightOrientation.LeftBottom,
       spans: [
         TextSpan(
-          text: "¥ ",
+          text: '¥ ',
           style: TextStyle(fontSize: ScreenUtil().setSp(40), color: Colors.red)
         ),
         TextSpan(
-          text: "$price",
+          text: '$price',
           style: TextStyle(fontSize: ScreenUtil().setSp(50), color: Colors.red)
         )
       ],
@@ -380,7 +380,7 @@ class _HodgepodgeWidgetState extends State<HodgepodgeWidget> {
   Container buildBottomContainer(String title, String tag,{String? tagTextColor}) {
 
     Color tagColor = Colors.grey;
-    if(tagTextColor!=null && tagTextColor !=""){
+    if(tagTextColor!=null && tagTextColor !=''){
       tagColor = getColor(tagTextColor);
     }
     return Container(
@@ -433,15 +433,15 @@ class _HodgepodgeWidgetState extends State<HodgepodgeWidget> {
         fontWeight: FontWeight.bold);
 
     Color tagColor = Colors.grey;
-    if(tagTextColor!=null && tagTextColor !=""){
+    if(tagTextColor!=null && tagTextColor !=''){
      tagColor = getColor(tagTextColor);
     }
     return FSuper(
       lightOrientation: FLightOrientation.LeftBottom,
       spans: [
-        TextSpan(text: titleText + "  ", style: titleTextStyle),
+        TextSpan(text: titleText + '  ', style: titleTextStyle),
         TextSpan(
-            text: tag ?? "",
+            text: tag ?? '',
             style: TextStyle(
               color: tagColor,
               fontSize: ScreenUtil().setSp(35),
@@ -462,12 +462,12 @@ class _HodgepodgeWidgetState extends State<HodgepodgeWidget> {
             dataModel = indexGridSpecialDataModel;
           });
         } catch (e, stack) {
-          print("报错信息:$e,$stack");
+          print('报错信息:$e,$stack');
         }
       } else {
         SystemToast.show(result.msg!);
       }
     });
-    return "success";
+    return 'success';
   }
 }
