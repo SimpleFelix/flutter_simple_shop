@@ -1,25 +1,26 @@
 
 import 'package:dd_taoke_sdk/network/util.dart';
-import 'package:demo1/common/utils.dart';
-import 'package:demo1/common/widget_util.dart';
+import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_stetho/flutter_stetho.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
+
 // import 'package:window_size/window_size.dart';
 import './app.dart';
+import './fluro/application.dart';
+import './fluro/routes.dart';
 import './provider/providers.dart';
-import 'package:fluro/fluro.dart';
-import './fluro/Application.dart';
-import './fluro/Routes.dart';
 import 'common/service.dart';
-import 'fluro/NavigatorUtil.dart';
+import 'common/utils.dart';
+import 'common/widget_util.dart';
+import 'fluro/navigator_util.dart';
 
 void main() async {
   /// 初始化sdk能力
   DdTaokeUtil.instance.init('http://itbug.shop', '80');
-  FluroRouter router = FluroRouter();
+  var router = FluroRouter();
   Routes.configureRoutes(router);
   Application.router = router;
   WidgetsFlutterBinding.ensureInitialized();

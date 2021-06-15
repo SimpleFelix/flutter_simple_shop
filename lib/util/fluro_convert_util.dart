@@ -13,7 +13,7 @@ class FluroConvertUtils {
 
     ///字符串解码
     jsonDecode(encodeCn).forEach(list.add);
-    String value = Utf8Decoder().convert(list);
+    var value = Utf8Decoder().convert(list);
     return value;
   }
 

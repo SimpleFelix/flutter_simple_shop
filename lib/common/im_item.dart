@@ -38,13 +38,13 @@ class ImItem extends StatelessWidget {
           children: <Widget>[
             //图标获取图片
             Container(
+              margin: const EdgeInsets.only(left: 22.0,right: 20.0),
               child: imagePath!=null?Image.asset(imagePath!,width: 32.0,height: 32.0,):
               SizedBox(
                 height: 32.0,
                 width: 32.0,
                 child: icon,
               ),
-              margin: const EdgeInsets.only(left: 22.0,right: 20.0),
             ),
             //标题
             Text(

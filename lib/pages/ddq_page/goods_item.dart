@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../widgets/tag_widget.dart';
-import '../../fluro/NavigatorUtil.dart';
+import '../../fluro/navigator_util.dart';
 
 // 9.9商品卡片布局
 class GoodsItem extends StatelessWidget {

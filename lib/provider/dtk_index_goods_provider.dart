@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../util/request_service.dart';
-import '../modals/RankData.dart';
+import '../modals/rank_data.dart';
 import '../modals/Result.dart';
 import '../modals/goods_list_modal.dart';
 import '../util/result_obj_util.dart';

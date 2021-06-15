@@ -1,7 +1,7 @@
 import 'package:dd_taoke_sdk/model/category.dart';
 import 'package:demo1/widgets/extended_image.dart';
 import 'package:flutter/material.dart';
-import '../../fluro/NavigatorUtil.dart';
+import '../../fluro/navigator_util.dart';
 
 class RightWidgetItme extends StatelessWidget {
   final Subcategory item;

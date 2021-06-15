@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 
-void showToast(
-    String text) {
-
+void showToast(String text) {
   print('显示一个简单弹窗');
 }
 
-void showLoading(context, [String? text]) {
-  text = text ?? "Loading...";
+void showLoading(BuildContext context, [String? text]) {
+  text = text ?? 'Loading...';
   showDialog(
       barrierDismissible: false,
       context: context,
@@ -53,26 +51,27 @@ void showLoading(context, [String? text]) {
       });
 }
 
-void showConfirmDialog(BuildContext context,String content, Function confirmCallback) {
+void showConfirmDialog(
+    BuildContext context, String content, Function confirmCallback) {
   showDialog(
       context: context,
       builder: (context) {
-        return new AlertDialog(
-          title: new Text("提示"),
-          content: new Text(content),
+        return AlertDialog(
+          title: Text('提示'),
+          content: Text(content),
           actions: <Widget>[
-            new TextButton(
+            TextButton(
               onPressed: () {
                 confirmCallback();
                 Navigator.of(context).pop();
               },
-              child: new Text("确认"),
+              child: Text('确认'),
             ),
-            new TextButton(
+            TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: new Text("取消"),
+              child: Text('取消'),
             ),
           ],
         );

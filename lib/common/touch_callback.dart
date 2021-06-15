@@ -15,8 +15,8 @@ class TouchCallBack extends StatefulWidget {
     Key? key,
     required this.child,
     required this.onParessed,
-    this.isfeed: true,
-    this.background: const Color(0xffd8d8d8),
+    this.isfeed = true,
+    this.background = const Color(0xffd8d8d8),
   }) : super(key: key);
   @override
   _TouchCallBackState createState() => _TouchCallBackState();
@@ -28,11 +28,6 @@ class _TouchCallBackState extends State<TouchCallBack> {
   Widget build(BuildContext context) {
     return GestureDetector(
       //使用Container容器包裹
-      child: Container(
-        color: color,
-        child: widget.child,
-      ),
-      //onTap回调
       onTap: widget.onParessed,
       onPanDown: (d){
         if(widget.isfeed==false)return;
@@ -45,6 +40,11 @@ class _TouchCallBackState extends State<TouchCallBack> {
           color = Colors.transparent;
         });
       },
+      //使用Container容器包裹
+      child: Container(
+        color: color,
+        child: widget.child,
+      ),
     );
   }
 }

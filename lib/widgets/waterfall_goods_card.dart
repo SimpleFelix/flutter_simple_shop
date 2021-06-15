@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart' as Sc;
 import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
-import '../fluro/NavigatorUtil.dart';
+import '../fluro/navigator_util.dart';
 
 // 小部件
 import '../widgets/coupon_price.dart';

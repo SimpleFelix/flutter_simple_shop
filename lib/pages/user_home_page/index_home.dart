@@ -1,5 +1,5 @@
 import 'package:demo1/common/utils.dart';
-import 'package:demo1/fluro/NavigatorUtil.dart';
+import 'package:demo1/fluro/navigator_util.dart';
 import 'package:demo1/pages/user_home_page/order/index.dart';
 import 'package:demo1/pages/user_home_page/widgets/list_item.dart';
 import 'package:demo1/provider/user_provider.dart';

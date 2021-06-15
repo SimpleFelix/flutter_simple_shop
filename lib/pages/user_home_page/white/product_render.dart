@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
 
-import '../../../modals/GoodsInfo.dart';
+import '../../../modals/goods_info.dart';
 
 // 商品特殊组件显示
 

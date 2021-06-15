@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:demo1/fluro/NavigatorUtil.dart';
+import 'package:demo1/fluro/navigator_util.dart';
 import 'package:demo1/modals/Result.dart';
 import 'package:demo1/pages/detail_page/hdk/model/index_grid_apecial_data_model.dart';
 import 'package:demo1/util/public.dart';

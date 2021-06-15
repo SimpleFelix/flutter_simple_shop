@@ -5,7 +5,7 @@ import 'package:demo1/util/system_toast.dart';
 import 'package:flutter/material.dart';
 import '../util/request_service.dart';
 import '../modals/Result.dart';
-import '../modals/GoodsInfo.dart';
+import '../modals/goods_info.dart';
 import '../util/result_obj_util.dart';
 import '../util/user_utils.dart';
 

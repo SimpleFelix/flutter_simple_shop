@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../fluro/NavigatorUtil.dart';
+import '../../fluro/navigator_util.dart';
 import '../../provider/ddq_provider.dart';
 import './index_layout.dart';
 

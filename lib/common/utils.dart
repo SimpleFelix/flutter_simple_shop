@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../fluro/NavigatorUtil.dart';
+import '../fluro/navigator_util.dart';
 import 'service.dart';
 import 'widget_util.dart';
 

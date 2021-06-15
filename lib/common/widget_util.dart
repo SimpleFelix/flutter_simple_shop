@@ -1,7 +1,8 @@
-import 'package:demo1/constant/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../constant/style.dart';
 
 /// 组件工具类
 abstract class WidgetUtilService {

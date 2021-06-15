@@ -20,14 +20,14 @@ class Result {
   });
 
   factory Result.fromJson(Map<String, dynamic> json) => Result(
-    code: json["code"],
-    msg: json["msg"],
-    data: json["data"],
+    code: json['code'],
+    msg: json['msg'],
+    data: json['data'],
   );
 
   Map<String, dynamic> toJson() => {
-    "code": code,
-    "msg": msg,
-    "data": data,
+    'code': code,
+    'msg': msg,
+    'data': data,
   };
 }

@@ -1,15 +1,15 @@
-import 'package:demo1/provider/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
-import './personal/personal.dart';
-import './modals/IndexData.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import './pages/index_page/index_home.dart';
+import 'package:provider/provider.dart';
+
 import './pages/category_page/index_home.dart';
-import './pages/jiujiu_page/index_home.dart';
 import './pages/favorite_page/index_home.dart';
+import './pages/index_page/index_home.dart';
+import './pages/jiujiu_page/index_home.dart';
 import './pages/user_home_page/index_home.dart';
+import './personal/personal.dart';
+import 'provider/user_provider.dart';
 
 class App extends StatefulWidget {
   @override
@@ -18,9 +18,8 @@ class App extends StatefulWidget {
 
 class _AppState extends State<App> {
   UserProvider? userProvider;
-  static ScrollController mController = new ScrollController();
-  static ScrollController jiujiuController =
-      new ScrollController(); // 9.9包邮页面滑动控制器
+  static ScrollController mController = ScrollController();
+  static ScrollController jiujiuController = ScrollController(); // 9.9包邮页面滑动控制器
 
   bool showToTopBtn = false; //是否显示“返回到顶部”按钮
 
@@ -33,16 +32,13 @@ class _AppState extends State<App> {
   //我的页面
   Personal? me;
 
-  // 数据列表
-  List<Dtolist> dtoList = [];
-
   //是否加载中
   bool isLoading = false;
 
   bool isShowAppBar = true;
 
   // 页面列表
-  List<Widget> _pages = [
+  final List<Widget> _pages = [
     IndexHome(mController: mController),
     JiujiuIndexHome(scrollController: jiujiuController),
     CategoryIndexPage(),
@@ -51,7 +47,7 @@ class _AppState extends State<App> {
   ];
 
   Widget loadingWidget() {
-    return new Center(
+    return Center(
       child: SpinKitCircle(
         color: Colors.blue,
         size: 30.0,
@@ -102,7 +98,10 @@ class _AppState extends State<App> {
     );
 
     // 这里写是否显示或者影藏appbar(4--代表用户点击了我的页面)
-    if(_currentIndex==4 || _currentIndex==3 || _currentIndex==0 || _currentIndex==1){
+    if (_currentIndex == 4 ||
+        _currentIndex == 3 ||
+        _currentIndex == 0 ||
+        _currentIndex == 1) {
       widget = null;
     }
 
@@ -146,16 +145,18 @@ class _AppState extends State<App> {
         BoxConstraints(
             maxWidth: MediaQuery.of(context).size.width,
             maxHeight: MediaQuery.of(context).size.height),
-        designSize: Size(1440,2940),
+        designSize: Size(1440, 2940),
         orientation: Orientation.portrait);
     return Scaffold(
       appBar: _buildAppBar() as PreferredSizeWidget?,
       // 滚动到顶部按钮
-      floatingActionButton: !showToTopBtn || _currentIndex == 2 || _currentIndex == 3 || _currentIndex==0
-      || _currentIndex==4
+      floatingActionButton: !showToTopBtn ||
+              _currentIndex == 2 ||
+              _currentIndex == 3 ||
+              _currentIndex == 0 ||
+              _currentIndex == 4
           ? null
           : FloatingActionButton(
-              child: Icon(Icons.arrow_upward, color: Colors.white),
               onPressed: () {
                 //返回到顶部时执行动画
                 if (_currentIndex == 0) {
@@ -168,8 +169,9 @@ class _AppState extends State<App> {
                       duration: Duration(milliseconds: 200),
                       curve: Curves.ease);
                 }
-              }),
-      bottomNavigationBar: new BottomNavigationBar(
+              },
+              child: Icon(Icons.arrow_upward, color: Colors.white)),
+      bottomNavigationBar:  BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           //当前页面索引
           currentIndex: _currentIndex,
@@ -180,8 +182,8 @@ class _AppState extends State<App> {
             });
           }),
           items: [
-            new BottomNavigationBarItem(
-                label: "首页",
+             BottomNavigationBarItem(
+                label: '首页',
                 icon: _currentIndex == 0
                     ? Image.asset(
                         'assets/nav/home.png',
@@ -193,8 +195,8 @@ class _AppState extends State<App> {
                         height: 32.0,
                         width: 32.0,
                       )),
-            new BottomNavigationBarItem(
-                label: "9.9包邮",
+             BottomNavigationBarItem(
+                label: '9.9包邮',
                 icon: _currentIndex == 1
                     ? Image.asset(
                         'assets/nav/jiujiu.png',
@@ -206,8 +208,8 @@ class _AppState extends State<App> {
                         height: 32.0,
                         width: 32.0,
                       )),
-            new BottomNavigationBarItem(
-                label: "分类",
+             BottomNavigationBarItem(
+                label: '分类',
                 icon: _currentIndex == 2
                     ? Image.asset(
                         'assets/nav/fenlei.png',
@@ -219,8 +221,8 @@ class _AppState extends State<App> {
                         height: 32.0,
                         width: 32.0,
                       )),
-            new BottomNavigationBarItem(
-              label: "收藏",
+             BottomNavigationBarItem(
+                label: '收藏',
                 icon: _currentIndex == 3
                     ? Image.asset(
                         'assets/nav/shoucang.png',
@@ -232,8 +234,8 @@ class _AppState extends State<App> {
                         height: 32.0,
                         width: 32.0,
                       )),
-            new BottomNavigationBarItem(
-              label: "我的",
+             BottomNavigationBarItem(
+                label: '我的',
                 icon: _currentIndex == 4
                     ? Image.asset(
                         'assets/nav/my.png',
@@ -252,10 +254,11 @@ class _AppState extends State<App> {
       ),
     );
   }
+
   @override
   void didChangeDependencies() {
-    UserProvider userProvider = Provider.of<UserProvider>(context);
-    if(this.userProvider!=userProvider){
+    var userProvider = Provider.of<UserProvider>(context);
+    if (this.userProvider != userProvider) {
       this.userProvider = userProvider;
       userProvider.loadUserInfo();
     }
