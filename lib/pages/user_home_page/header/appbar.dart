@@ -20,7 +20,7 @@ class UserHomeAppBar extends StatelessWidget implements PreferredSizeWidget {
               Icons.settings,
               color: Colors.black,
             )),
-        Utils.widgetUtils.marginRight()
+        utils.widgetUtils.marginRight()
       ],
     );
   }

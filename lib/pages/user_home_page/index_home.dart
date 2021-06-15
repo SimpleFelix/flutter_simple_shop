@@ -29,9 +29,9 @@ class _IndexHomeState extends State<UserIndexHome> {
         child: Column(
           children: <Widget>[
             _buildHeaderWidget(),
-            Utils.widgetUtils.marginTop(),
+            utils.widgetUtils.marginTop(),
             OrderIndex(),
-            Utils.widgetUtils.marginTop(),
+            utils.widgetUtils.marginTop(),
             Container(
               child: Column(
                 children: <Widget>[

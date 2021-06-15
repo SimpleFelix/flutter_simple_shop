@@ -1,9 +1,11 @@
-import 'package:fbutton_nullsafety/fbutton_nullsafety.dart';
+import 'package:demo1/common/utils.dart';
+import 'package:demo1/constant/style.dart';
 import 'package:fcontrol_nullsafety/fdefine.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import '../../../provider/user_provider.dart';
 
@@ -17,13 +19,11 @@ class _UserLoginPageState extends State<UserLoginPage> {
   bool isAgree = false; // 是否同意协议
   String username = ""; // 用户名
   String password = ""; // 密码
-  bool loading = false;// 是否登录中
-  UserProvider? userProvider;// 用户状态管理
+  bool loading = false; // 是否登录中
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.pinkAccent,
       appBar: AppBar(
         backgroundColor: Colors.pinkAccent,
         elevation: 0,
@@ -66,7 +66,7 @@ class _UserLoginPageState extends State<UserLoginPage> {
                 //表单
 
                 Container(
-                  width: ScreenUtil().setWidth(1300),
+                  padding: EdgeInsets.symmetric(horizontal: kDefaultPadding),
                   decoration: BoxDecoration(color: Colors.white),
                   child: Column(
                     children: <Widget>[
@@ -85,7 +85,7 @@ class _UserLoginPageState extends State<UserLoginPage> {
                             borderSide: BorderSide(color: Colors.black12),
                           ),
                         ),
-                        onChanged: (val){
+                        onChanged: (val) {
                           setState(() {
                             username = val;
                           });
@@ -107,7 +107,7 @@ class _UserLoginPageState extends State<UserLoginPage> {
                             borderSide: BorderSide(color: Colors.black12),
                           ),
                         ),
-                        onChanged: (val){
+                        onChanged: (val) {
                           setState(() {
                             password = val;
                           });
@@ -119,29 +119,11 @@ class _UserLoginPageState extends State<UserLoginPage> {
 
                 // 间隔
                 SizedBox(height: 40),
-                FButton(
-                  width: ScreenUtil().setWidth(1300),
-                  text: "登录",
-                  color: Colors.pink,
-                  loading: loading,
-                  onPressed: () async{
-                    bool isLoginSuccess = await this.userProvider!.login(username, password);
-                    if(isLoginSuccess){
-                      Navigator.pop(context);
-                    }
-                    setState(() {
-                      loading = false;
-                    });
-                  },
-                  clickEffect: true,
-                  loadingSize: 15,
-                  imageMargin: 6,
-                  loadingStrokeWidth: 2,
-                  clickLoading: true,
-                  loadingColor: Colors.white,
-                  loadingText: "正在登录...",
-                  imageAlignment: ImageAlignment.left, highlightColor: Colors.grey.shade100,
-                )
+                Container(
+                    width: Get.width,
+                    padding: EdgeInsets.symmetric(horizontal: kDefaultPadding),
+                    child:
+                        ElevatedButton(onPressed: _submit, child: Text('登录')))
               ],
             ),
           ),
@@ -196,12 +178,19 @@ class _UserLoginPageState extends State<UserLoginPage> {
     );
   }
 
-  @override
-  void didChangeDependencies() {
-    UserProvider userProvider =  Provider.of<UserProvider>(context);
-    if(this.userProvider!=userProvider){
-      this.userProvider = userProvider;
+  /// 登录
+  Future<void> _submit() async {
+    if(username.isEmpty || password.isEmpty){
+      utils.showMessage('请输入用户名或者密码');
+      return;
     }
-    super.didChangeDependencies();
+    bool isLoginSuccess =
+        await context.read<UserProvider>().login(username, password);
+    if (isLoginSuccess) {
+      Navigator.pop(context);
+    }
+    setState(() {
+      loading = false;
+    });
   }
 }

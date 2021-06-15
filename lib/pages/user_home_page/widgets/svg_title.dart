@@ -27,7 +27,7 @@ class SvgTitle extends StatelessWidget {
               height: 25,
               color: Colors.black,
             ),
-            Utils.widgetUtils.marginTop(height: 5),
+            utils.widgetUtils.marginTop(height: 5),
             Text(
               title!,
               style: TextStyle(fontSize: ScreenUtil().setSp(50)),

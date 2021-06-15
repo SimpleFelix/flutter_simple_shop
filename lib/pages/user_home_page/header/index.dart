@@ -1,5 +1,6 @@
 import 'package:demo1/common/utils.dart';
 import 'package:demo1/constant/style.dart';
+import 'package:demo1/fluro/NavigatorUtil.dart';
 import 'package:demo1/modals/user_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -22,11 +23,16 @@ class HeaderIndex extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Utils.widgetUtils.marginTop(),
-          Text(
-            '登录/注册',
-            style: TextStyle(
-                fontSize: 25, color: Colors.black, fontWeight: FontWeight.bold),
+          utils.widgetUtils.marginTop(),
+          GestureDetector(
+            onTap: () => NavigatorUtil.gotoUserLoginPage(context),
+            child: Text(
+              '登录/注册',
+              style: TextStyle(
+                  fontSize: 25,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold),
+            ),
           )
         ],
       ),

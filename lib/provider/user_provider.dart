@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'package:dd_taoke_sdk/dd_taoke_sdk.dart';
+import 'package:demo1/common/utils.dart';
 import 'package:flutter/material.dart';
 import '../util/request_service.dart';
 import '../util/user_utils.dart';
@@ -78,21 +80,10 @@ class UserProvider with ChangeNotifier {
   // 用户登入
   Future<bool> login(String username, String password) async {
     bool isSuccess = false;
-    await userLogin({"username": username, "password": password}).then((res) {
-      Result result = ResultUtils.format(res);
-      if (result.code == 200) {
-        UserData userData =
-            UserData.fromJson(json.decode(result.data.toString()));
-        this.user = userData.user;
-        this.setUserInfo(result.data!);
-        SystemToast.show("登录成功");
-        isSuccess = true;
-        notifyListeners();
-      } else {
-        SystemToast.show("登录失败");
-        isSuccess = false;
-      }
-    });
+    notifyListeners();
+
+    utils.api.login(username, password);
+
     return isSuccess;
   }
 

@@ -42,12 +42,18 @@ dependencies:
   palette_generator: ^0.3.0
   crypto: ^3.0.1  # 加密插件
   encrypt: ^5.0.0 # 加密插件
-  dd_taoke_sdk: ^1.0.5  # 淘客api
+  dd_taoke_sdk: ^1.0.8  # 淘客api
   fcontrol_nullsafety: ^2.0.0 # 飞猪fcontrol 空安全版本
   flutter_hooks: ^0.17.0  #provider 重写版
   hooks_riverpod: ^0.14.0+4  #provider 重写版
   get_it: ^7.1.3  # 单列类处理
 
+
+  # 浏览器监听网络请求
+  flutter_stetho:
+    git:
+      url: git://github.com/irdevp/flutter_stetho.git
+      ref: master
 
   # windows 组件
   window_size:
