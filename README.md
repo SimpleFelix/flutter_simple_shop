@@ -6,16 +6,18 @@
 
 [![qq群 667186542](https://badgen.net/badge/QQ%E7%BE%A4/667186542/pink)](https://jq.qq.com/?_wv=1027&k=Z0AHodXB)
 ![典典的小卖部](https://badgen.net/badge/%E5%85%B8%E5%85%B8%E7%9A%84%E5%B0%8F%E5%8D%96%E9%83%A8/v2.1.0/red)
-![Flutter](https://badgen.net/badge/flutter/v2.2.1/red)
+![Flutter](https://badgen.net/badge/flutter/v2.2.2/red)
 ![start](https://badgen.net/github/stars/mdddj/flutter_simple_shop)
 ![fork](https://badgen.net/github/forks/mdddj/flutter_simple_shop)
 
+#### Getx重构版本: https://github.com/mdddj/simple_shop_v2
+#### web管理后台: https://github.com/mdddj/ddxmb-admin
+#### web预览地址: https://itbug.shop
+#### 接口文档:https://github.com/mdddj/flutter_dd_dataoke_sdk
 
-## Getx版本
 
-https://github.com/mdddj/simple_shop_v2 
 
-## 关于
+## 关于本项目
 
 这是我入门flutter写的项目,一边学一边写,肯定有很多不合理的地方,还望各位大佬勿喷!谢谢
 有问题也可以提交iss,或者加flutter学习群提问,看到都会回复的,群号667186542

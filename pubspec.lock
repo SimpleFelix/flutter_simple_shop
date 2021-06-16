@@ -105,7 +105,7 @@ packages:
       name: dd_taoke_sdk
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.0.8"
+    version: "1.1.3"
   decimal:
     dependency: transitive
     description:
@@ -218,13 +218,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "6.1.1"
-  filepicker_windows:
-    dependency: "direct main"
-    description:
-      name: filepicker_windows
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "2.0.0"
   fluro:
     dependency: "direct main"
     description:
@@ -286,15 +279,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "5.0.0"
-  flutter_stetho:
-    dependency: "direct main"
-    description:
-      path: "."
-      ref: master
-      resolved-ref: "1e43f4ababbb6fdf193948efaa516556436f3c0b"
-      url: "git://github.com/irdevp/flutter_stetho.git"
-    source: git
-    version: "0.6.0"
   flutter_svg:
     dependency: "direct main"
     description:
@@ -369,7 +353,7 @@ packages:
     source: hosted
     version: "0.15.0"
   http:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: http
       url: "https://pub.flutter-io.cn"
@@ -780,21 +764,12 @@ packages:
     source: hosted
     version: "3.0.1"
   win32:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: win32
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.1.5"
-  window_size:
-    dependency: "direct main"
-    description:
-      path: "plugins/window_size"
-      ref: "7812516a5c1fc8ef379e244106953a2b534432b9"
-      resolved-ref: "7812516a5c1fc8ef379e244106953a2b534432b9"
-      url: "git://github.com/google/flutter-desktop-embedding.git"
-    source: git
-    version: "0.1.0"
   xdg_directories:
     dependency: transitive
     description:

@@ -1,5 +1,3 @@
-import 'package:demo1/common/utils.dart';
-import 'package:demo1/constant/style.dart';
 import 'package:fcontrol_nullsafety/fdefine.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +5,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
+
+import '../../../common/utils.dart';
+import '../../../constant/style.dart';
 import '../../../provider/user_provider.dart';
 
 // 用户登入页面
@@ -25,9 +26,9 @@ class _UserLoginPageState extends State<UserLoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.pinkAccent,
+        backgroundColor: Colors.white,
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: IconThemeData(color: Colors.black),
         actions: <Widget>[
           Padding(
             padding: EdgeInsets.only(right: 20.0),
@@ -180,11 +181,11 @@ class _UserLoginPageState extends State<UserLoginPage> {
 
   /// 登录
   Future<void> _submit() async {
-    if(username.isEmpty || password.isEmpty){
+    if (username.isEmpty || password.isEmpty) {
       utils.showMessage('请输入用户名或者密码');
       return;
     }
-    bool isLoginSuccess =
+    var isLoginSuccess =
         await context.read<UserProvider>().login(username, password);
     if (isLoginSuccess) {
       Navigator.pop(context);

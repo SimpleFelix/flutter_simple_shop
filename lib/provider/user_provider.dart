@@ -79,10 +79,10 @@ class UserProvider with ChangeNotifier {
 
   // 用户登入
   Future<bool> login(String username, String password) async {
-    bool isSuccess = false;
+    var isSuccess = false;
     notifyListeners();
 
-    utils.api.login(username, password);
+    await utils.api.login(username, password);
 
     return isSuccess;
   }

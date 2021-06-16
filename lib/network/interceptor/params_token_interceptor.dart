@@ -11,6 +11,7 @@ class ParamsTokenInterceptor extends Interceptor{
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     options.headers[HttpRequest.PARAMS_HEADER_KEY] = token;
+    options.headers['Accept'] = 'application/json';
     super.onRequest(options, handler);
   }
 }
