@@ -1,16 +1,17 @@
-import 'package:demo1/common/utils.dart';
-import 'package:demo1/fluro/navigator_util.dart';
-import 'package:demo1/pages/user_home_page/order/index.dart';
-import 'package:demo1/pages/user_home_page/widgets/list_item.dart';
-import 'package:demo1/provider/user_provider.dart';
-import 'package:demo1/util/system_toast.dart';
-import 'package:demo1/util/user_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
+
+import '../../common/utils.dart';
+import '../../fluro/navigator_util.dart';
+import '../../provider/user_provider.dart';
+import '../../util/system_toast.dart';
+import '../../util/user_utils.dart';
 import 'header/appbar.dart';
 import 'header/index.dart';
+import 'order/index.dart';
+import 'widgets/list_item.dart';
 
 /// 用户主页布局
 class UserIndexHome extends StatefulWidget {
@@ -100,15 +101,14 @@ class _IndexHomeState extends State<UserIndexHome> {
 
   Widget _buildHeaderWidget() {
 
-    return HeaderIndex(userProvider!.user);
+    return HeaderIndex();
   }
 
   @override
   void didChangeDependencies() {
-    UserProvider userProvider = Provider.of<UserProvider>(context);
+    var userProvider = Provider.of<UserProvider>(context);
     if (this.userProvider != userProvider) {
       this.userProvider = userProvider;
-      this.userProvider!.loadUserInfo();
     }
     super.didChangeDependencies();
   }

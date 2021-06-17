@@ -1,10 +1,11 @@
+import 'package:demo1/provider/riverpod/user_riverpod.dart';
 import 'package:fcontrol_nullsafety/fdefine.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
 import 'package:get/get.dart';
-import 'package:provider/provider.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../common/utils.dart';
 import '../../../constant/style.dart';
@@ -186,9 +187,9 @@ class _UserLoginPageState extends State<UserLoginPage> {
       return;
     }
     var isLoginSuccess =
-        await context.read<UserProvider>().login(username, password);
+        await context.read(userModel).login(username, password);
     if (isLoginSuccess) {
-      Navigator.pop(context);
+      Get.back();
     }
     setState(() {
       loading = false;

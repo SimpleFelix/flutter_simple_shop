@@ -260,7 +260,6 @@ class _AppState extends State<App> {
     var userProvider = Provider.of<UserProvider>(context);
     if (this.userProvider != userProvider) {
       this.userProvider = userProvider;
-      userProvider.loadUserInfo();
     }
     super.didChangeDependencies();
   }

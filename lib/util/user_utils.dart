@@ -1,30 +1,30 @@
 import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
-import '../modals/user_model.dart';
-import '../modals/user_data.dart';
+
+import '../modals/user.dart';
 
 class UserUtil{
 
   static Future<SharedPreferences> refs = SharedPreferences.getInstance();
 
   static Future<User?> loadUserInfo() async {
-    SharedPreferences _refs = await refs;
-    String? userInfoJsonStr = _refs.getString('userInfo');
+    var _refs = await refs;
+    var userInfoJsonStr = _refs.getString('userInfo');
     if (userInfoJsonStr == null) {
       return null;
     }
-    UserData userData = UserData.fromJson(json.decode(userInfoJsonStr));
-    return userData.user;
+    final userData = User.fromJson(json.decode(userInfoJsonStr));
+    return userData;
   }
 
   static Future<void> setUserInfo(String json) async {
-    SharedPreferences _refs = await refs;
-    _refs.setString('userInfo', json);
+    var _refs = await refs;
+    await _refs.setString('userInfo', json);
   }
 
   static Future<void> removeUserInfoData() async {
-    SharedPreferences _refs = await refs;
-    _refs.remove('userInfo');
+    var _refs = await refs;
+    await _refs.remove('userInfo');
   }
 }

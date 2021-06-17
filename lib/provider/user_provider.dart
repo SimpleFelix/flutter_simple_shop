@@ -1,18 +1,13 @@
 import 'dart:convert';
-import 'package:dd_taoke_sdk/dd_taoke_sdk.dart';
-import 'package:demo1/common/utils.dart';
+
 import 'package:flutter/material.dart';
-import '../util/request_service.dart';
-import '../util/user_utils.dart';
-import '../util/result_obj_util.dart';
-import '../util/system_toast.dart';
 import '../modals/Result.dart';
-import '../modals/user_data.dart';
-import '../modals/user_model.dart';
 import '../modals/favorites_model.dart';
+import '../util/request_service.dart';
+import '../util/result_obj_util.dart';
+import '../util/user_utils.dart';
 
 class UserProvider with ChangeNotifier {
-  User? user; // 用户信息,包含token
 
   //------------- 用户收藏商品信息
   PageInfo? pageInfo; // 用户收藏商品信息
@@ -77,15 +72,6 @@ class UserProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  // 用户登入
-  Future<bool> login(String username, String password) async {
-    var isSuccess = false;
-    notifyListeners();
-
-    await utils.api.login(username, password);
-
-    return isSuccess;
-  }
 
   // 重置收藏属性值
   void resetFavoriteData() {
@@ -132,16 +118,6 @@ class UserProvider with ChangeNotifier {
     });
   }
 
-  // 存储在本地的用户信息加载到状态管理上面
-  Future<User?> loadUserInfo() async {
-    await UserUtil.loadUserInfo().then((user) {
-      if (user != null) {
-        this.user = user;
-        notifyListeners();
-      }
-    });
-    return null;
-  }
 
   // 将用户信息存储到本地
   void setUserInfo(String json) async {
@@ -151,7 +127,6 @@ class UserProvider with ChangeNotifier {
   // 将本地保存的用户信息删除
   void removeUserInfoData() async {
     await UserUtil.removeUserInfoData();
-    this.user = null;
     notifyListeners();
   }
 }
