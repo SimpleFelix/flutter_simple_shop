@@ -3,11 +3,12 @@ import 'package:dd_taoke_sdk/model/brand_list_model.dart';
 import 'package:dd_taoke_sdk/model/carousel_model.dart';
 import 'package:dd_taoke_sdk/model/category.dart';
 import 'package:dd_taoke_sdk/params/brand_param.dart';
-import 'package:demo1/util/color_util.dart';
 import 'package:flutter/material.dart';
 
+import '../util/color_util.dart';
+
 /// 首页状态管理
-class IndexProvider with ChangeNotifier {
+class IndexProvider extends ChangeNotifier {
   Color topBackground = Colors.pinkAccent;
   List<Category> categorys = [];
 
@@ -16,7 +17,9 @@ class IndexProvider with ChangeNotifier {
 
   /// 轮播图展示列表
   BrandListResult? storeData; // 首页显示的品牌
-  Map<int?, Color> brandBgColorMap = Map(); // 背景颜色
+  Map<int?, Color> brandBgColorMap = {}; // 背景颜色
+
+  Map<String, Color> carouselsColor = <String,Color>{}; // 轮播图的背景颜色
 
   IndexProvider() {
     init();
@@ -41,6 +44,7 @@ class IndexProvider with ChangeNotifier {
   Future<void> fetchTopics() async {
     final result = await DdTaokeSdk.instance.getCarousel();
     carousel.addAll(result);
+    await getCarouselColors();
     notifyListeners();
   }
 
@@ -48,14 +52,14 @@ class IndexProvider with ChangeNotifier {
   Future<void> fetchStores() async {
     final result = await DdTaokeSdk.instance.getBrandList(
         param: BrandListParam(cid: categorys[0].cid.toString(), pageId: '1', pageSize: '1'));
-    this.storeData = result;
-    this.getBrandBgColors();
+    storeData = result;
+    await getBrandBgColors();
     notifyListeners();
   }
 
   /// 改变顶部背景颜色
   Future<void> changeToColor(String netImageUrl) async {
-    this.topBackground = await ColorUtil.getImageMainColor(netImageUrl);
+    topBackground = carouselsColor[netImageUrl] ?? Colors.grey.shade200;
     notifyListeners();
   }
 
@@ -64,11 +68,20 @@ class IndexProvider with ChangeNotifier {
     if (storeData != null) {
       if (storeData!.lists!.isNotEmpty) {
         for (final info in storeData!.lists!) {
-          Color color = await ColorUtil.getImageMainColor(info.brandLogo!);
+          var color = await ColorUtil.getImageMainColor(info.brandLogo!);
           brandBgColorMap[info.brandId] = color;
         }
         notifyListeners();
       }
     }
+  }
+
+  /// 获取首页轮播图的背景颜色
+  Future<void> getCarouselColors() async {
+    await Future.forEach<Carousel>(carousel, (element) async {
+      var color = await ColorUtil.getImageMainColor(element.topicImage!);
+      carouselsColor[element.topicImage!] = color;
+    });
+
   }
 }

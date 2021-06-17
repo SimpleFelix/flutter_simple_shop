@@ -1,9 +1,10 @@
 import 'package:dd_taoke_sdk/model/brand_list_model.dart';
-import 'package:demo1/provider/index_provider.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+
+import '../../../provider/index_provider.dart';
 
 class StoreItemCard extends StatelessWidget {
   final ListElement storeInfo;
@@ -21,7 +22,7 @@ class StoreItemCard extends StatelessWidget {
   }
 
   Widget _buildInfo(BuildContext context) {
-    Color? bgColor = Provider.of<IndexProvider>(context).brandBgColorMap[storeInfo.brandId];
+    var bgColor = Provider.of<IndexProvider>(context).brandBgColorMap[storeInfo.brandId];
     bgColor = bgColor ?? Colors.grey[200];
     return Container(
       height: 350.h,
@@ -41,11 +42,11 @@ class StoreItemCard extends StatelessWidget {
               Row(
                 children: [
                   Container(
-                    child: _buildLogo(),
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.all(Radius.circular(20.sp)),
                     ),
+                    child: _buildLogo(),
                   ),
                   SizedBox(width: 30.w),
                   Text(
@@ -67,21 +68,21 @@ class StoreItemCard extends StatelessWidget {
   }
 
   Widget _buildBrandFeatures() {
-    return Container(child: Text('${storeInfo.brandFeatures}', style: TextStyle(fontSize: 50.sp, color: Colors.black87)),margin: EdgeInsets.only(top: 30.h),);
+    return Container(margin: EdgeInsets.only(top: 30.h),child: Text('${storeInfo.brandFeatures}', style: TextStyle(fontSize: 50.sp, color: Colors.black87)),);
   }
 
   /// 打折的组件
   Container _buildMaxDiscount() {
     return Container(
-      child: Text(
-        '最高优惠${storeInfo.maxDiscount}折',
-        style: TextStyle(fontSize: 50.sp, color: Colors.white),
-      ),
       decoration: BoxDecoration(
         color: Colors.pinkAccent,
         borderRadius: BorderRadius.all(Radius.circular(30.sp)),
       ),
       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
+      child: Text(
+        '最高优惠${storeInfo.maxDiscount}折',
+        style: TextStyle(fontSize: 50.sp, color: Colors.white),
+      ),
     );
   }
 

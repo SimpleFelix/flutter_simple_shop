@@ -37,7 +37,7 @@ class IndexTopicComponentCarousel extends StatelessWidget {
           );
         },
         itemCount: carousel.length,
-        pagination: new SwiperPagination(),
+        pagination: SwiperPagination(),
         // viewportFraction: 0.8,
         // scale: 0.9,
       ),

@@ -1,12 +1,12 @@
 import 'package:dd_taoke_sdk/model/category.dart';
-import 'package:demo1/constant/style.dart';
-import 'package:demo1/pages/index_page/component/category_notification_stream.dart';
-import 'package:demo1/provider/index_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
+import '../../../constant/style.dart';
+import '../../../provider/index_provider.dart';
 import 'category_item_layout.dart';
+import 'category_notification_stream.dart';
 
 /// 通用分类插件
 class CategoryComponent extends StatefulWidget {
@@ -66,12 +66,13 @@ class _CategoryComponentState extends State<CategoryComponent> {
   @override
   Widget build(BuildContext context) {
     final categorys = context.watch<IndexProvider>().categorys;
-    int extendItemsLength = widget.extendItems == null ? 0 : widget.extendItems!.length;
+    var extendItemsLength = widget.extendItems == null ? 0 : widget.extendItems!.length;
     return Stack(
       children: [
         Container(
-          alignment: Alignment.center,
+          alignment: Alignment.topCenter,
           height: kHomeCateTabHeight,
+          margin: EdgeInsets.only(bottom: 5),
           child: NotificationListener(
             onNotification: (dynamic notification){
               CategoryNotificationStreamUtil().notifiy(notification);
@@ -82,12 +83,15 @@ class _CategoryComponentState extends State<CategoryComponent> {
               physics: BouncingScrollPhysics(),
               child: ListView.builder(
                 itemBuilder: (context, index) {
-                  InsetCustomItem? insetCustomItem = _indexIsExtendWidget(index);
+                  var insetCustomItem = _indexIsExtendWidget(index);
                   if (insetCustomItem != null) {
                     return GestureDetector(child: insetCustomItem.child, onTap: insetCustomItem.onTap as void Function()?);
                   } else {
                     final mainCategory = categorys[index - _getCountWhereInCategoryIndex(index)];
                     return GestureDetector(
+                      onTap: () {
+                        _onTap(mainCategory.cname, categorys);
+                      },
                       child: CategoryItemDefaultLayout(
                         name: mainCategory.cname,
                         index: index,
@@ -95,9 +99,6 @@ class _CategoryComponentState extends State<CategoryComponent> {
                         current: _current,
                         onRendeEnd: _changePosition,
                       ),
-                      onTap: () {
-                        _onTap(mainCategory.cname, categorys);
-                      },
                     );
                   }
                 },
@@ -115,7 +116,7 @@ class _CategoryComponentState extends State<CategoryComponent> {
   }
 
   Widget _buildPoint() {
-    final Offset? offset = _valueNotifier.value!.position![_current];
+    final offset = _valueNotifier.value!.position![_current];
     final size = _valueNotifier.value!.size![_current];
     if(offset!=null&&size!=null) {
       print('组件大小:$size, 组件位置:$offset');
@@ -123,6 +124,7 @@ class _CategoryComponentState extends State<CategoryComponent> {
       return AnimatedPositioned(
           bottom: 0,
           left: offset.dx,
+          duration: Duration(milliseconds: 700),
           child: Container(
             width: widgetWidth,
             height: 1.5,
@@ -132,8 +134,7 @@ class _CategoryComponentState extends State<CategoryComponent> {
                   .primaryColor,
               borderRadius: BorderRadius.all(Radius.circular(15)),
             ),
-          ),
-          duration: Duration(milliseconds: 700));
+          ));
     }
     return Positioned(child: Container());
   }
@@ -154,9 +155,9 @@ class _CategoryComponentState extends State<CategoryComponent> {
 
   /// 获取index前面有几个扩展的index
   int _getCountWhereInCategoryIndex(int index) {
-    int count = 0;
+    var count = 0;
     if (widget.extendItems != null && widget.extendItems!.isNotEmpty) {
-      for (InsetCustomItem item in widget.extendItems!) {
+      for (var item in widget.extendItems!) {
         if (item.index! < index) {
           count++;
         } else {
@@ -170,10 +171,10 @@ class _CategoryComponentState extends State<CategoryComponent> {
   /// 菜单被点击事件
   /// 不包含扩展项目
   void _onTap(String? name, List<Category> categorys) {
-    int _index = -1;
+    var _index = -1;
     Category? _item;
 
-    for (int i = 0; i < categorys.length; i++) {
+    for (var i = 0; i < categorys.length; i++) {
       if (categorys[i].cname == name) {
         _index = i;
         _item = categorys[i];
@@ -187,7 +188,7 @@ class _CategoryComponentState extends State<CategoryComponent> {
   InsetCustomItem? _indexIsExtendWidget(int index) {
     InsetCustomItem? insetCustomItem;
     if (widget.extendItems != null) {
-      for (int i = 0; i < widget.extendItems!.length; i++) {
+      for (var i = 0; i < widget.extendItems!.length; i++) {
         if (index == widget.extendItems![i].index) {
           insetCustomItem = widget.extendItems![i];
           break;
@@ -228,8 +229,8 @@ class CategoryController {
   }
 
   /// 绑定状态
-  bindState(_CategoryComponentState _categoryComponentState) {
-    this._state = _categoryComponentState;
+  void bindState(_CategoryComponentState _categoryComponentState) {
+    _state = _categoryComponentState;
   }
 }
 

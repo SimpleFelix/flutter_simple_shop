@@ -8,7 +8,7 @@ BoxShadow boxShaow = BoxShadow(
 );
 
 /// 首页顶部分类的高度
-const kHomeCateTabHeight = 25.0;
+const kHomeCateTabHeight = 35.0;
 
 // 默认边距
 const kDefaultPadding = 12.0;

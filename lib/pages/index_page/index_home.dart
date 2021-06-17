@@ -263,6 +263,7 @@ class _IndexHomeState extends State<IndexHome>
         },
         readOnly: true,
         decoration: InputDecoration(
+          isDense: true,
           hintText: '输入商品名或者宝贝标题搜索',
           border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(50.0),

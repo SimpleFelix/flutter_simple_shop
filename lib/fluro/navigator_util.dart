@@ -1,4 +1,6 @@
+import 'package:demo1/pages/search/view.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import './routes.dart';
 import './application.dart';
@@ -59,5 +61,15 @@ class NavigatorUtil {
   // 前往好单库商品详情页面
   static void gotoHaodankuGoodsDetailPage(BuildContext context,String? goodsId){
     Application.router.navigateTo(context, '${Routes.hdkDetail}${'?goods_id=$goodsId'}');
+  }
+
+  /// 跳转到搜索页面
+  ///
+  /// [worlds] 初始化搜索关键字
+
+  void toSearchPage({String? worlds}){
+    Get.to(() => SearchPage(
+      initSearchKeyWord: worlds??'',
+    ));
   }
 }
