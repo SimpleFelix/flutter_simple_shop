@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 
 import '../../../provider/index_provider.dart';
 
+// 品牌特卖
 class StoreItemCard extends StatelessWidget {
   final ListElement storeInfo;
 

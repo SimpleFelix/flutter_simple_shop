@@ -195,16 +195,7 @@ class _IndexHomeState extends State<IndexHome>
                 decoration: BoxDecoration(
                     color: _titleIsInTop
                         ? Colors.white
-                        : Color.fromRGBO(235, 235, 235, 1),
-                    boxShadow: _titleIsInTop
-                        ? [
-                            BoxShadow(
-                                color: Colors.grey[200]!,
-                                blurRadius: 1.0,
-                                spreadRadius: 1.0,
-                                offset: Offset(1, 1))
-                          ]
-                        : []),
+                        : Colors.white),
                 child: CustomSelectToolbar(items: [
                   SelectMenu(title: '佛系推荐', subTitle: '发现好物'),
                   SelectMenu(title: '精选', subTitle: '猜你喜欢'),

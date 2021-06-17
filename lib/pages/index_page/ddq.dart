@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:dd_taoke_sdk/model/product.dart';
+import 'package:demo1/pages/index_page/component/component_title.dart';
 import 'package:demo1/widgets/extended_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +29,7 @@ class _DDQWidgetState extends State<DDQWidget> {
           padding: EdgeInsets.symmetric(horizontal: 50.w, vertical: 25.h),
           child: Column(
             children: <Widget>[
-              _buildWidgetTitle(height: 100),
+              ComponentTitle(title: '限时抢购', height: 100,onTap: ()=>NavigatorUtil.goTODdqPage(context),),
               SizedBox(
                 height: ScreenUtil().setHeight(50),
               ),
@@ -40,34 +41,6 @@ class _DDQWidgetState extends State<DDQWidget> {
     );
   }
 
-  /// 标题version2
-  Widget _buildWidgetTitle({String? title, required double height}) {
-    String showTitle = title ?? '限时抢购';
-    return Container(
-      height: ScreenUtil().setHeight(height),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Container(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              showTitle,
-              style: TextStyle(color: Colors.black, fontSize: ScreenUtil().setSp(70)),
-            ),
-          ),
-          InkWell(
-            onTap: () {
-              NavigatorUtil.goTODdqPage(context);
-            },
-            child: Icon(
-              Icons.chevron_right,
-              color: Colors.grey,
-            ),
-          )
-        ],
-      ),
-    );
-  }
 
   /// 商品列表version2
   Widget _buildWidgetGoosList() {
