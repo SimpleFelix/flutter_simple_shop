@@ -31,6 +31,7 @@ dependencies:
   loading_more_list: ^4.0.0
   extended_list: ^3.0.0
   pull_to_refresh_notification: ^2.0.1
+  carousel_slider: ^4.0.0-nullsafety.0
   shimmer: ^2.0.0
   flutter_svg: ^0.22.0
   extended_text_field: ^8.0.0

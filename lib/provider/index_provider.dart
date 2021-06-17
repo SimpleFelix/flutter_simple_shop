@@ -58,7 +58,7 @@ class IndexProvider extends ChangeNotifier {
   }
 
   /// 改变顶部背景颜色
-  Future<void> changeToColor(String netImageUrl) async {
+  void changeToColor(String netImageUrl) {
     topBackground = carouselsColor[netImageUrl] ?? Colors.grey.shade200;
     notifyListeners();
   }
