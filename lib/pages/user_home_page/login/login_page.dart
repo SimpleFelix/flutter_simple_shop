@@ -1,4 +1,3 @@
-import 'package:demo1/provider/riverpod/user_riverpod.dart';
 import 'package:fcontrol_nullsafety/fdefine.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +8,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../common/utils.dart';
 import '../../../constant/style.dart';
-import '../../../provider/user_provider.dart';
+import '../../../provider/riverpod/user_riverpod.dart';
 
 // 用户登入页面
 class UserLoginPage extends StatefulWidget {
@@ -22,6 +21,15 @@ class _UserLoginPageState extends State<UserLoginPage> {
   String username = ''; // 用户名
   String password = ''; // 密码
   bool loading = false; // 是否登录中
+
+
+  @override
+  void initState() {
+    super.initState();
+    Future.microtask(() {
+      utils.widgetUtils.showSimpleDialog('测试账号:admin,密码:123456\n\n后端采用springboot security 鉴权');
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -3,20 +3,23 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../constant/style.dart';
+import 'widgets/simple_dialog.dart';
 
 /// 组件工具类
 abstract class WidgetUtilService {
-
   /// 垂直边距
   Widget marginTop({double? height});
 
   /// 横向边距
   Widget marginRight({double? width});
+
+  /// 显示一个简单的弹窗提示
+  Future<void> showSimpleDialog(String message,{String? title});
 }
 
 class WidgetUtils extends WidgetUtilService {
-
-  double get kBodyHeight => Get.height - Get.mediaQuery.padding.top - kToolbarHeight;
+  double get kBodyHeight =>
+      Get.height - Get.mediaQuery.padding.top - kToolbarHeight;
 
   @override
   Widget marginTop({double? height}) {
@@ -30,5 +33,13 @@ class WidgetUtils extends WidgetUtilService {
     return SizedBox(
       width: width ?? kDefaultPadding,
     );
+  }
+
+  @override
+  Future<void> showSimpleDialog(String message,{String? title}) async {
+    await Get.dialog(MySimpleDialog(
+      message: message,
+      title: title,
+    ));
   }
 }

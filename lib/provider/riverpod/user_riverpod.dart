@@ -25,6 +25,7 @@ class UserModel extends ChangeNotifier {
   void loginSuccess(User user) {
     _user = user;
     notifyListeners();
+    utils.showMessage('欢迎回来,${user.nickName}');
   }
 
   // token处理

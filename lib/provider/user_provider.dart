@@ -94,15 +94,15 @@ class UserProvider with ChangeNotifier {
     await UserUtil.loadUserInfo().then((user) async {
       if (user != null) {
         if(pageId==1){
-          this.resetFavoriteData();
+          resetFavoriteData();
         }
         await loadFavoriteGoods({'userId': user.id, 'pageId': pageId})
             .then((res) {
-          Result result = ResultUtils.format(res);
+          var result = ResultUtils.format(res);
           if (result.code == 200) {
-            FavoritesAllData favoritesAllData =
+            var favoritesAllData =
                 FavoritesAllData.fromJson(json.decode(result.data.toString()));
-            this.pageInfo = favoritesAllData.pageInfo;
+            pageInfo = favoritesAllData.pageInfo;
             if (pageId == 1) {
               goods = favoritesAllData.goods;
             } else {
