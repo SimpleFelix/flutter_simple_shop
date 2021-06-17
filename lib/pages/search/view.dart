@@ -1,11 +1,14 @@
-import 'package:demo1/widgets/appbar_search.dart';
+import 'package:demo1/provider/riverpod/search_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:get/get.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../widgets/appbar_search.dart';
 import 'component/helper_show.dart';
 import 'component/key_worlds.dart';
 import 'component/suggest.dart';
+import 'list.dart';
 import 'logic.dart';
 
 /// 搜索页面
@@ -27,12 +30,15 @@ class _SearchPageState extends State<SearchPage> {
       appBar: SAppBarSearch(
         value: widget.initSearchKeyWord,
         bgColor: Colors.white,
+        onSearch: (String value) {
+          context.read(searchRiverpod).loadData(worlds: value);
+          Get.to(() => SearchListIndex(value: value));
+        },
       ),
       body: EasyRefresh.custom(slivers: [
         SliverToBoxAdapter(
           child: HelperComp(),
         ),
-
         SliverToBoxAdapter(
           child: SearchKeyWorlds(),
         ),

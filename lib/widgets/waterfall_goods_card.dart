@@ -3,7 +3,6 @@ import 'package:fcontrol_nullsafety/fdefine.dart';
 import 'package:flustars/flustars.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart' as Sc;
 import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
 import '../fluro/navigator_util.dart';
 
@@ -25,7 +24,7 @@ class WaterfallGoodsCard extends StatelessWidget {
         },
         child: Container(
             //width: Sc.ScreenUtil().setWidth(640), // (1440-150) / 2
-            padding: EdgeInsets.only(bottom: Sc.ScreenUtil().setHeight(50)),
+            padding: EdgeInsets.only(bottom: 12),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.all(Radius.circular(10.0)),
@@ -34,20 +33,23 @@ class WaterfallGoodsCard extends StatelessWidget {
               children: <Widget>[
                 _image(),
 
-                SizedBox(height: Sc.ScreenUtil().setHeight(20)),
+                SizedBox(height:12),
 
                 // 标题
                 _title(product.dtitle!),
 
-                SizedBox(height: Sc.ScreenUtil().setHeight(20)),
+                SizedBox(height:12),
                 // 购买理由
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: Sc.ScreenUtil().setWidth(40)),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: 12),
                   child: Text(
                     product.desc!,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(color: Colors.grey, fontSize: Sc.ScreenUtil().setSp(45)),
+                    style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 12),
                   ),
                 ),
 
@@ -59,18 +61,21 @@ class WaterfallGoodsCard extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: 6),
                   child: FSuper(
                     lightOrientation: FLightOrientation.LeftBottom,
-                    text: '领 ${NumUtil.getNumByValueDouble(product.couponPrice, 0)} 元券',
-                    padding: EdgeInsets.symmetric(horizontal: Sc.ScreenUtil().setWidth(40)),
+                    text:
+                        '领 ${NumUtil.getNumByValueDouble(product.couponPrice, 0)} 元券',
+                    padding: EdgeInsets.symmetric(
+                        horizontal: 12),
                     strokeColor: Colors.pink,
                     corner: FCorner.all(10),
                     style: TextStyle(color: Colors.pink),
                   ),
                 ),
 
-                SizedBox(height: Sc.ScreenUtil().setHeight(20)),
+                SizedBox(height: 12),
 
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: Sc.ScreenUtil().setWidth(40)),
+                  padding: EdgeInsets.symmetric(
+                      horizontal:12),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     verticalDirection: VerticalDirection.up,
@@ -104,13 +109,15 @@ class WaterfallGoodsCard extends StatelessWidget {
         children: <Widget>[
           Image.asset(
             'assets/icons/hot.png',
-            height: Sc.ScreenUtil().setHeight(40),
-            width: Sc.ScreenUtil().setWidth(40),
+            height: 22,
+            width: 22,
           ),
           Container(
             child: Text(
               '两小时销量$twoHoursSales,月销${product.monthSales}',
-              style: TextStyle(fontSize: Sc.ScreenUtil().setSp(35), color: Colors.pinkAccent),
+              style: TextStyle(
+                  fontSize: 12,
+                  color: Colors.pinkAccent),
             ),
           )
         ],
@@ -121,7 +128,7 @@ class WaterfallGoodsCard extends StatelessWidget {
   // 标题
   Widget _title(String dtitle) {
     return Container(
-        padding: EdgeInsets.symmetric(horizontal: Sc.ScreenUtil().setWidth(40)),
+        padding: EdgeInsets.symmetric(horizontal: 12),
         child: Stack(
           children: <Widget>[
             Container(
@@ -131,7 +138,7 @@ class WaterfallGoodsCard extends StatelessWidget {
                 style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.w600,
-                    fontSize: Sc.ScreenUtil().setSp(45)),
+                    fontSize: 15),
 //                maxLines: 1,
 //                overflow: TextOverflow.ellipsis,
                 textAlign: TextAlign.start,
@@ -143,7 +150,7 @@ class WaterfallGoodsCard extends StatelessWidget {
 
   // 商品卡片主图
   Widget _image() {
-    String img = product.mainPic!;
+    var img = product.mainPic!;
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
         return SizedBox(
@@ -159,11 +166,12 @@ class WaterfallGoodsCard extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(left: 5.0),
       padding: EdgeInsets.only(left: 5.0, right: 5.0),
-      decoration:
-          BoxDecoration(color: bgColor, borderRadius: BorderRadius.all(Radius.circular(2.0))),
+      decoration: BoxDecoration(
+          color: bgColor, borderRadius: BorderRadius.all(Radius.circular(2.0))),
       child: Text(
         text,
-        style: TextStyle(fontSize: Sc.ScreenUtil().setSp(40), color: Colors.white),
+        style:
+            TextStyle(fontSize: 15, color: Colors.white),
       ),
     );
   }
@@ -174,11 +182,13 @@ class WaterfallGoodsCard extends StatelessWidget {
 
     if (activityType == 3) {
       icon = Image.asset('assets/icons/jhs.png',
-          height: Sc.ScreenUtil().setHeight(60), width: Sc.ScreenUtil().setWidth(60));
+          height: 16,
+          width: 16);
     }
     if (activityType == 2) {
       icon = Image.asset('assets/icons/qg.png',
-          height: Sc.ScreenUtil().setHeight(60), width: Sc.ScreenUtil().setWidth(60));
+          height: 16,
+          width: 16);
     }
     return Container(margin: EdgeInsets.only(left: 5.0), child: icon);
   }
@@ -189,7 +199,8 @@ class WaterfallGoodsCard extends StatelessWidget {
         ? Container(
             margin: EdgeInsets.only(left: 5.0),
             child: Image.asset('assets/icons/new.png',
-                height: Sc.ScreenUtil().setHeight(60), width: Sc.ScreenUtil().setWidth(60)),
+                height: 16,
+                width: 16),
           )
         : Text('');
   }

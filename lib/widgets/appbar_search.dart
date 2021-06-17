@@ -54,7 +54,7 @@ class SAppBarSearch extends StatefulWidget implements PreferredSizeWidget {
   final ValueChanged? onChanged;
 
   // 点击键盘搜索
-  final ValueChanged? onSearch;
+  final ValueChanged<String>? onSearch;
 
   // appbar背景颜色
   final Color? bgColor;
@@ -124,7 +124,7 @@ class _SAppBarSearchState extends State<SAppBarSearch> {
   }
 
   List<Widget> _actions() {
-    List<Widget> list = [];
+    var list = <Widget>[];
     if (isFocus || !isTextEmpty) {
       list.add(GestureDetector(
         onTap: _onCancelInput,
@@ -145,12 +145,12 @@ class _SAppBarSearchState extends State<SAppBarSearch> {
 
   @override
   Widget build(BuildContext context) {
-    final ScaffoldState scaffold = Scaffold.of(context);
-    final ModalRoute<Object?>? parentRoute = ModalRoute.of(context);
-    final bool canPop = parentRoute?.canPop ?? false;
-    final bool hasDrawer = scaffold.hasDrawer;
-    double left = !canPop && !hasDrawer && widget.leading == null ? 15 : 0;
-    double right = isActionEmpty && !isFocus && isTextEmpty ? 15 : 0;
+    final scaffold = Scaffold.of(context);
+    final parentRoute = ModalRoute.of(context);
+    final canPop = parentRoute?.canPop ?? false;
+    final hasDrawer = scaffold.hasDrawer;
+    var left = !canPop && !hasDrawer && widget.leading == null ? 15.0 : 0.0;
+    var right = isActionEmpty && !isFocus && isTextEmpty ? 15.0 : 0.0;
     return AppBar(
       backgroundColor: widget.bgColor??Get.theme.primaryColor,
       titleSpacing: 0,

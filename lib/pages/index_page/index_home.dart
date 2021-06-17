@@ -3,31 +3,32 @@ import 'dart:ui';
 import 'package:after_layout/after_layout.dart';
 import 'package:dd_taoke_sdk/model/category.dart';
 import 'package:dd_taoke_sdk/model/product.dart';
-import 'package:demo1/pages/index_page/store/component_index.dart';
-import 'package:demo1/pages/search/view.dart';
-import 'package:demo1/provider/category_provider.dart';
-import 'package:demo1/provider/index_provider.dart';
-import 'package:demo1/repository/IndexGoodsRepository.dart';
-import 'package:demo1/widgets/component/custom_select_toolbar.dart';
-import 'package:demo1/widgets/flexd/index_header_flexd_widget.dart';
-import 'package:demo1/widgets/flexd/index_main_goods_mini_title_bar.dart';
-import 'package:demo1/widgets/loading_more_list_indicator.dart';
-import 'package:demo1/widgets/my_clipper.dart';
-import 'package:demo1/widgets/pullto_refresh_header.dart';
-import 'package:demo1/widgets/waterfall_goods_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart' hide NestedScrollView;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:loading_more_list/loading_more_list.dart';
 import 'package:provider/provider.dart';
 import 'package:pull_to_refresh_notification/pull_to_refresh_notification.dart';
-import 'package:flutter/widgets.dart' hide NestedScrollView;
-import '../../provider/dtk_index_goods_provider.dart';
+
 import './ddq.dart';
+import '../../provider/category_provider.dart';
+import '../../provider/dtk_index_goods_provider.dart';
+import '../../provider/index_provider.dart';
+import '../../repository/IndexGoodsRepository.dart';
+import '../../widgets/component/custom_select_toolbar.dart';
+import '../../widgets/flexd/index_header_flexd_widget.dart';
+import '../../widgets/flexd/index_main_goods_mini_title_bar.dart';
+import '../../widgets/loading_more_list_indicator.dart';
+import '../../widgets/my_clipper.dart';
+import '../../widgets/pullto_refresh_header.dart';
+import '../../widgets/waterfall_goods_card.dart';
+import '../search/view.dart';
 import 'component/category_component.dart';
 import 'component/category_item_layout.dart';
 import 'component/topic_carousel.dart';
 import 'grid_menu_list.dart';
+import 'store/component_index.dart';
 
 /// 首页
 class IndexHome extends StatefulWidget {
@@ -42,15 +43,15 @@ class IndexHome extends StatefulWidget {
 class _IndexHomeState extends State<IndexHome>
     with TickerProviderStateMixin, AfterLayoutMixin<IndexHome> {
 //   状态管理
-  late IndexProvider _indexProvider = context.watch<IndexProvider>();
+  late final IndexProvider _indexProvider = context.watch<IndexProvider>();
   List<Category> categorys = [];
-  GlobalKey _titleKey = GlobalKey();
+  final GlobalKey _titleKey = GlobalKey();
 
   bool _titleIsInTop = false;
 
   //dddd
   IndexGoodsRepository indexGoodsRepository = IndexGoodsRepository();
-  ScrollController _mainScrollController = ScrollController();
+  final ScrollController _mainScrollController = ScrollController();
 
   TabController? tabController;
 
@@ -115,9 +116,9 @@ class _IndexHomeState extends State<IndexHome>
         .read<CategoryProvider>()
         .loadDtkCategoryDatas(context); // 分类数据
     setState(() {
-      this.categorys = context.read<CategoryProvider>().categorys;
+      categorys = context.read<CategoryProvider>().categorys;
       tabController =
-          TabController(length: this.categorys.length + 1, vsync: this);
+          TabController(length: categorys.length + 1, vsync: this);
       setState(() {
         categortListIsLoaded = true;
       });
@@ -304,18 +305,18 @@ class _IndexHomeState extends State<IndexHome>
 
   //获取title的位置信息
   double _titleLocationHandler() {
-    RenderBox renderBox =
+    var renderBox =
         _titleKey.currentContext!.findRenderObject() as RenderBox;
-    Offset offset = renderBox.localToGlobal(Offset(0, 0));
+    var offset = renderBox.localToGlobal(Offset(0, 0));
     return offset.dy;
   }
 
   // 监听主滑动距离
   void _addMainScrollListening() {
-    double topAppbarHei =
+    var topAppbarHei =
         330.h + MediaQueryData.fromWindow(window).padding.top; // 顶部搜索框和选项卡高度
     _mainScrollController.addListener(() {
-      double titleTopHei = _titleLocationHandler();
+      var titleTopHei = _titleLocationHandler();
       if (titleTopHei <= topAppbarHei) {
         if (!_titleIsInTop) {
           setState(() {
