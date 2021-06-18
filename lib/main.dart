@@ -24,6 +24,9 @@ void main() async {
   /// 初始化sdk能力
   DdTaokeUtil.instance.init('https://itbug.shop', '443'); //  远程服务器
   // DdTaokeUtil.instance.init('https://192.168.199.78', ''); // 本地测试
+
+
+
   var router = FluroRouter();
   Routes.configureRoutes(router);
   Application.router = router;

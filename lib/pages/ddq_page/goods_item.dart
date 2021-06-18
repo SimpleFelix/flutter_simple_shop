@@ -17,19 +17,16 @@ class GoodsItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(bottom: 10.0),
+      padding: EdgeInsets.symmetric(horizontal: 12),
       color: Colors.white,
-      width: ScreenUtil().setWidth(1440),
-      height: ScreenUtil().setHeight(550),
       child: Row(
         children: <Widget>[
           // 商品图片
-          Container(
-              height: 500,
-              padding: EdgeInsets.all(10.0),
-              child: ExtendedImageWidget(
-                src: goodsItem.mainPic!,
-                width: 450,
-                height: 450,
+          SizedBox(
+              height: 120,
+              width: 120,
+              child: SimpleImage(
+                url: goodsItem.mainPic!,
               )),
           Expanded(
               child: InkWell(

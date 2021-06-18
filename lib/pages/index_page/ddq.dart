@@ -1,14 +1,15 @@
 import 'dart:ui';
-import 'package:dd_taoke_sdk/model/product.dart';
-import 'package:demo1/pages/index_page/component/component_title.dart';
-import 'package:demo1/widgets/extended_image.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
+
+import './index_layout.dart';
 import '../../fluro/navigator_util.dart';
 import '../../provider/ddq_provider.dart';
-import './index_layout.dart';
+import '../../widgets/extended_image.dart';
+import 'component/component_title.dart';
 
 // 钉钉抢
 class DDQWidget extends StatefulWidget {
@@ -29,7 +30,11 @@ class _DDQWidgetState extends State<DDQWidget> {
           padding: EdgeInsets.symmetric(horizontal: 50.w, vertical: 25.h),
           child: Column(
             children: <Widget>[
-              ComponentTitle(title: '限时抢购', height: 100,onTap: ()=>NavigatorUtil.goTODdqPage(context),),
+              ComponentTitle(
+                title: '限时抢购',
+                height: 100,
+                onTap: NavigatorUtil.goTODdqPage,
+              ),
               SizedBox(
                 height: ScreenUtil().setHeight(50),
               ),
@@ -41,23 +46,34 @@ class _DDQWidgetState extends State<DDQWidget> {
     );
   }
 
-
   /// 商品列表version2
   Widget _buildWidgetGoosList() {
-    List<Product> list = ddqProvider!.goodsList;
+    var list = ddqProvider!.goodsList;
     if (list.length >= 3) {
       return Container(
         child: Flex(
           direction: Axis.horizontal,
           children: <Widget>[
-            _mimiGoodsCard(list[0].mainPic, list[0].actualPrice.toString(),
-                list[0].originalPrice.toString(), list[0].monthSales.toString(), list[0].dtitle!),
+            _mimiGoodsCard(
+                list[0].mainPic,
+                list[0].actualPrice.toString(),
+                list[0].originalPrice.toString(),
+                list[0].monthSales.toString(),
+                list[0].dtitle!),
             SizedBox(width: ScreenUtil().setWidth(50)),
-            _mimiGoodsCard(list[1].mainPic, list[1].actualPrice.toString(),
-                list[1].originalPrice.toString(), list[1].monthSales.toString(), list[1].dtitle!),
+            _mimiGoodsCard(
+                list[1].mainPic,
+                list[1].actualPrice.toString(),
+                list[1].originalPrice.toString(),
+                list[1].monthSales.toString(),
+                list[1].dtitle!),
             SizedBox(width: ScreenUtil().setWidth(50)),
-            _mimiGoodsCard(list[2].mainPic, list[2].actualPrice.toString(),
-                list[2].originalPrice.toString(), list[2].monthSales.toString(), list[2].dtitle!),
+            _mimiGoodsCard(
+                list[2].mainPic,
+                list[2].actualPrice.toString(),
+                list[2].originalPrice.toString(),
+                list[2].monthSales.toString(),
+                list[2].dtitle!),
           ],
         ),
       );
@@ -68,7 +84,8 @@ class _DDQWidgetState extends State<DDQWidget> {
   }
 
   // 商品卡片布局
-  Widget _mimiGoodsCard(String? src, String price, String orginPrice, String xl, String title) {
+  Widget _mimiGoodsCard(
+      String? src, String price, String orginPrice, String xl, String title) {
     return Flexible(
       flex: 1,
       child: LayoutBuilder(
@@ -84,13 +101,15 @@ class _DDQWidgetState extends State<DDQWidget> {
                     width: constraints.maxWidth,
                     height: constraints.maxWidth,
                     child: SimpleImage(url: src!)),
-                SizedBox(height:12),
+                SizedBox(height: 12),
                 Container(
                   alignment: Alignment.topLeft,
                   child: Text(
                     title,
                     style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.w400, fontSize: 40.sp),
+                        color: Colors.black,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 40.sp),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.left,
@@ -105,7 +124,9 @@ class _DDQWidgetState extends State<DDQWidget> {
                       Container(
                         child: Text(
                           '￥$price',
-                          style: TextStyle(color: Colors.red, fontSize: ScreenUtil().setSp(50)),
+                          style: TextStyle(
+                              color: Colors.red,
+                              fontSize: ScreenUtil().setSp(50)),
                         ),
                         alignment: Alignment.centerLeft,
                       ),

@@ -1,3 +1,4 @@
+import 'package:demo1/pages/ddq_page/index_home.dart';
 import 'package:demo1/pages/search/view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -35,8 +36,8 @@ class NavigatorUtil {
   }
 
   //跳转到钉钉抢页面
-  static void goTODdqPage(BuildContext context) {
-    Application.router.navigateTo(context, Routes.ddq);
+  static void goTODdqPage() {
+    Get.to(()=>DdqIndexHome());
   }
 
   // 跳转到登入页面
