@@ -38,7 +38,6 @@ class _DdqIndexHomeState extends State<DdqIndexHome> {
               slivers: <Widget>[
                 _buildSliverAppBar(),
                 _buildTimesList(),
-                _buildSpace(),
                 _buildList(),
                 SliverPersistentHeader(
                   delegate: SliverAppBarDelegate(
@@ -98,7 +97,7 @@ class _DdqIndexHomeState extends State<DdqIndexHome> {
         child: Image.asset(
           'assets/images/ddq.png',
           width: Get.width,
-          height: 200+kToolbarHeight,
+          height: 170 + kToolbarHeight,
           fit: BoxFit.cover,
         ));
   }
@@ -106,7 +105,7 @@ class _DdqIndexHomeState extends State<DdqIndexHome> {
   Widget _buildSliverAppBar() {
     return SliverAppBar(
       automaticallyImplyLeading: false,
-      expandedHeight: 200,
+      expandedHeight: 170,
       elevation: 0,
       backgroundColor: Colors.transparent,
       pinned: true,
@@ -123,12 +122,10 @@ class _DdqIndexHomeState extends State<DdqIndexHome> {
         pinned: true,
         floating: true,
         delegate: SliverAppBarDelegate(
-            minHeight: ScreenUtil().setHeight(220),
-            maxHeight: ScreenUtil().setHeight(220),
+            minHeight: 60,
+            maxHeight: 60,
             child: Container(
-              padding: EdgeInsets.symmetric(
-                  vertical: ScreenUtil().setHeight(30),
-                  horizontal: ScreenUtil().setWidth(30)),
+              alignment: Alignment.center,
               decoration: BoxDecoration(
                   color: Colors.white,
                   border: Border(
@@ -140,14 +137,6 @@ class _DdqIndexHomeState extends State<DdqIndexHome> {
             )));
   }
 
-  Widget _buildSpace() {
-    return SliverPersistentHeader(
-      delegate: SliverAppBarDelegate(
-          minHeight: ScreenUtil().setHeight(30),
-          maxHeight: ScreenUtil().setHeight(30),
-          child: Container()),
-    );
-  }
 
   Widget _buildList() {
     return SliverList(

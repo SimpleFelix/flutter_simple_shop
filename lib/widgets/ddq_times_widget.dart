@@ -20,16 +20,16 @@ class DdqTimesWidget extends StatelessWidget {
   }
 
   List<Widget> _buildTimes() {
-    List<Widget> list = [];
-    List<RoundsList> times = timesList!;
+    var list = <Widget>[];
+    var times = timesList!;
     for (var timeItem in times) {
       //上层文字
-      String upText =
+      var upText =
           '${timeItem.ddqTime!.hour.toString().padLeft(2, '0')}:${timeItem.ddqTime!.minute.toString().padLeft(2, '0')}';
 
       //下层文字
-      int? state = timeItem.status;
-      String downText = '已开抢';
+      var state = timeItem.status;
+      var downText = '已开抢';
       if (state == 1) {
         downText = '正在疯抢';
       }
@@ -38,11 +38,11 @@ class DdqTimesWidget extends StatelessWidget {
       }
 
       //选中
-      bool isCur = this.ddqProvider!.ddqTime == timeItem.ddqTime;
+      var isCur = ddqProvider!.ddqTime == timeItem.ddqTime;
 
       list.add(InkWell(
         onTap: () {
-          this.ddqProvider!.timeChange(timeItem.ddqTime, timeItem.status);
+          ddqProvider!.timeChange(timeItem.ddqTime, timeItem.status);
         },
         child:
         UpDownBtnWidget(upText: upText, downText: downText, isCur: isCur),

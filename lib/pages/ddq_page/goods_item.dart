@@ -16,8 +16,7 @@ class GoodsItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 10.0),
-      padding: EdgeInsets.symmetric(horizontal: 12),
+      padding: EdgeInsets.symmetric(horizontal: 12,vertical: 12),
       color: Colors.white,
       child: Row(
         children: <Widget>[
