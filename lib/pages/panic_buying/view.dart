@@ -1,5 +1,7 @@
 import 'package:demo1/pages/panic_buying/components/appbar.dart';
+import 'package:demo1/pages/panic_buying/components/daojishi.dart';
 import 'package:demo1/pages/panic_buying/repository.dart';
+import 'package:demo1/widgets/component/dao_ji_shi.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -37,7 +39,8 @@ class _PanicBuyingPageState extends State<PanicBuyingPage> {
           CustomScrollView(
             slivers: [
               AppbarWithPanicBuying(),
-              SliverToBoxAdapter(child: CategorysWithPanicBuying(),)
+              SliverToBoxAdapter(child: CategorysWithPanicBuying(),),
+              SliverToBoxAdapter(child: DaojishiComp(),)
             ],
           ),
         ],
