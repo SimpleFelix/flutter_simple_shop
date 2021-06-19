@@ -188,7 +188,7 @@ class _IndexHomeState extends State<IndexHome>
         SliverPersistentHeader(
           pinned: true,
           delegate: IndexMainGoodsMiniTitleBar(
-              height: 220.h,
+              height: 60,
               child: AnimatedContainer(
                 key: _titleKey,
                 duration: Duration(milliseconds: 300),

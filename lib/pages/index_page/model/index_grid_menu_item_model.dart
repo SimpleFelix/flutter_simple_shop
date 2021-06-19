@@ -10,9 +10,10 @@ class IndexGridMenuItemModel {
   IndexGridMenuItemModelClickModel clickType; // 响应事件类型
   Map<String,String>? params;
   Widget? widget; // 跳转到的页面
+  VoidCallback? onTap; // 点击事件
 
   IndexGridMenuItemModel(
-      this.title, this.iconUrl, this.clickType, {this.params,this.widget}); // 参数
+      this.title, this.iconUrl, this.clickType, {this.params,this.widget,this.onTap}); // 参数
 
 }
 

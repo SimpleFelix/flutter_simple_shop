@@ -52,7 +52,7 @@ dependencies:
   flutter_login: ^2.0.0
   shelf_proxy: ^1.0.0
   responsive_builder: ^0.4.1
-
+  bubble_tab_indicator: ^0.1.6
 
   # 浏览器监听网络请求
 #  flutter_stetho:

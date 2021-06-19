@@ -1,0 +1,47 @@
+import 'package:demo1/pages/panic_buying/repository.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'components/categorys.dart';
+
+///
+/// @Author 梁典典
+/// @Github 开源地址 https://github.com/mdddj/flutter_simple_shop
+/// @Description 功能描述  排行榜页面
+/// @Date 创建时间 2021年6月19日 14:38:39
+///
+class PanicBuyingPage extends StatefulWidget {
+  const PanicBuyingPage({Key? key}) : super(key: key);
+
+  @override
+  _PanicBuyingPageState createState() => _PanicBuyingPageState();
+}
+
+class _PanicBuyingPageState extends State<PanicBuyingPage> {
+
+  @override
+  void initState() {
+    super.initState();
+    Future.microtask(()async{
+      await context.read(panicBuyingRiverpod).init();
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          SliverToBoxAdapter(child: CategorysWithPanicBuying(),)
+        ],
+      ),
+    );
+  }
+}
+
+
+
+
+
+
+void toPanicBuyPage() => Get.to(() => PanicBuyingPage());

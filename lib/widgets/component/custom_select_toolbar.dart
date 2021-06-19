@@ -16,9 +16,10 @@ class CustomSelectToolbar extends StatefulWidget {
 
 class _CustomSelectToolbarState extends State<CustomSelectToolbar>
     with AfterLayoutMixin<CustomSelectToolbar> {
+
   @override
   Widget build(BuildContext context) {
-    bool? hide = widget.hideSubTitle;
+    var hide = widget.hideSubTitle;
     return Stack(
       children: [
         Container(
@@ -131,9 +132,9 @@ class _CustomSelectToolbarState extends State<CustomSelectToolbar>
   }
 
   int getIndexNumber(SelectMenu selectMenu) {
-    int index = 0;
-    for (int i = 0; i <= widget.items!.length; i++) {
-      SelectMenu item = widget.items![i];
+    var index = 0;
+    for (var i = 0; i <= widget.items!.length; i++) {
+      var item = widget.items![i];
       if (item.subTitle == selectMenu.subTitle &&
           item.title == selectMenu.title) {
         index = i;
@@ -147,7 +148,7 @@ class _CustomSelectToolbarState extends State<CustomSelectToolbar>
 
   // 计算每个item的宽度
   double getItemWidgetWidth() {
-    double ww = MediaQuery.of(context).size.width - 100.w;
+    var ww = MediaQuery.of(context).size.width - 100.w;
     if (widget.items!.isNotEmpty) {
       switch (getItemSize()) {
         case 1:

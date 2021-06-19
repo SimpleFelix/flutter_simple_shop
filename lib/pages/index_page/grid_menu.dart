@@ -9,17 +9,17 @@ import 'package:get/get.dart';
 /// v2.0
 class IndexGridViewMenu extends StatelessWidget {
 
-  final IndexGridMenuItemModel? model;
+  final IndexGridMenuItemModel model;
 
-  const IndexGridViewMenu({Key? key, this.model}) : super(key: key);
+  const IndexGridViewMenu({Key? key, required this.model}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-        switch(model!.clickType){
+        switch(model.clickType){
           case IndexGridMenuItemModelClickModel.INNER_VIEW:
-            Get.to(model!.widget);
+            model.onTap?.call();
             break;
           default:
             break;
@@ -30,10 +30,10 @@ class IndexGridViewMenu extends StatelessWidget {
           children: [
             Expanded(child: Container(
               child: ExtendedImage.network(
-                '${model!.iconUrl}'
+                '${model.iconUrl}'
               ),
             )),
-            Text('${model!.title}',style: TextStyle(fontSize: 50.sp))
+            Text('${model.title}',style: TextStyle(fontSize: 50.sp))
           ],
         ),
       ),
