@@ -17,12 +17,14 @@ class CategorysWithPanicBuying extends ConsumerWidget {
         isScrollable: true,
         indicator: BubbleTabIndicator(
           indicatorHeight: 25.0,
-          indicatorColor: Colors.blueAccent,
+          indicatorColor: Colors.white,
           tabBarIndicatorSize: TabBarIndicatorSize.tab,
           // indicatorRadius: 1,
           // insets: EdgeInsets.all(1),
           // padding: EdgeInsets.all(10)
         ),
+        unselectedLabelColor: Colors.white.withOpacity(.67),
+        labelColor: Colors.red,
       ),
     );
   }

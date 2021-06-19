@@ -1,3 +1,4 @@
+import 'package:demo1/pages/panic_buying/components/appbar.dart';
 import 'package:demo1/pages/panic_buying/repository.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -30,9 +31,15 @@ class _PanicBuyingPageState extends State<PanicBuyingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(child: CategorysWithPanicBuying(),)
+      body: Stack(
+        children: [
+          Image.asset('assets/images/top_bg.png'),
+          CustomScrollView(
+            slivers: [
+              AppbarWithPanicBuying(),
+              SliverToBoxAdapter(child: CategorysWithPanicBuying(),)
+            ],
+          ),
         ],
       ),
     );
