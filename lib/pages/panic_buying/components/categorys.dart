@@ -5,15 +5,24 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../repository.dart';
 
 class CategorysWithPanicBuying extends ConsumerWidget {
+
+  final List<Tab>? insets;
+
+  CategorysWithPanicBuying({this.insets});
+
   @override
   Widget build(BuildContext context, ScopedReader watch) {
     final isLoading = watch(panicBuyingRiverpod).initLoading;
     final cates = watch(panicBuyingRiverpod).cates;
     if (isLoading) return Container();
+   var _insets =  insets ??[];
     return DefaultTabController(
-      length: cates.length,
+      length: cates.length+_insets.length,
       child: TabBar(
-        tabs: cates.map(_renderItem).toList(),
+        tabs: [
+          ..._insets,
+          ...cates.map(_renderItem).toList()
+        ],
         isScrollable: true,
         indicator: BubbleTabIndicator(
           indicatorHeight: 25.0,

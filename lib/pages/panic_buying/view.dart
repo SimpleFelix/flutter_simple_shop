@@ -1,11 +1,12 @@
 import 'package:demo1/pages/panic_buying/components/appbar.dart';
 import 'package:demo1/pages/panic_buying/components/daojishi.dart';
+import 'package:demo1/pages/panic_buying/components/tops_list.dart';
 import 'package:demo1/pages/panic_buying/repository.dart';
-import 'package:demo1/widgets/component/dao_ji_shi.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'components/categorys.dart';
+import 'components/list.dart';
 
 ///
 /// @Author 梁典典
@@ -21,11 +22,10 @@ class PanicBuyingPage extends StatefulWidget {
 }
 
 class _PanicBuyingPageState extends State<PanicBuyingPage> {
-
   @override
   void initState() {
     super.initState();
-    Future.microtask(()async{
+    Future.microtask(() async {
       await context.read(panicBuyingRiverpod).init();
     });
   }
@@ -39,8 +39,23 @@ class _PanicBuyingPageState extends State<PanicBuyingPage> {
           CustomScrollView(
             slivers: [
               AppbarWithPanicBuying(),
-              SliverToBoxAdapter(child: CategorysWithPanicBuying(),),
-              SliverToBoxAdapter(child: DaojishiComp(),)
+              SliverToBoxAdapter(
+                child: CategorysWithPanicBuying(
+                  insets: [
+                    Tab(
+                      text: '实时榜',
+                    ),
+                    Tab(
+                      text: '全天榜',
+                    ),
+                  ],
+                ),
+              ),
+              SliverToBoxAdapter(
+                child: DaojishiComp(),
+              ),
+              TopsProducts(),
+              ProductListWithPanic()
             ],
           ),
         ],
@@ -48,10 +63,5 @@ class _PanicBuyingPageState extends State<PanicBuyingPage> {
     );
   }
 }
-
-
-
-
-
 
 void toPanicBuyPage() => Get.to(() => PanicBuyingPage());

@@ -30,7 +30,7 @@ class _DdqIndexHomeState extends State<DdqIndexHome> {
         children: [
           _bg(),
           Positioned(
-            top: kToolbarHeight,
+            top: kToolbarHeight + Get.mediaQuery.padding.top,
             left: 0,
             right: 0,
             bottom: 0,
@@ -68,7 +68,7 @@ class _DdqIndexHomeState extends State<DdqIndexHome> {
   Widget _title() {
     return Positioned(
         left: 0,
-        top: 22,
+        top: 22+ Get.mediaQuery.padding.top,
         right: 0,
         child: Container(
             alignment: Alignment.center,
@@ -82,7 +82,7 @@ class _DdqIndexHomeState extends State<DdqIndexHome> {
   Widget _backBtn() {
     return Positioned(
         left: 12,
-        top: 12,
+        top: 12 + Get.mediaQuery.padding.top,
         child: BackButton(
           color: Colors.white,
         ));
@@ -105,13 +105,13 @@ class _DdqIndexHomeState extends State<DdqIndexHome> {
   Widget _buildSliverAppBar() {
     return SliverAppBar(
       automaticallyImplyLeading: false,
-      expandedHeight: 170,
+      expandedHeight: 170 ,
       elevation: 0,
       backgroundColor: Colors.transparent,
       pinned: true,
       flexibleSpace: FlexibleSpaceBar(
         background: _renderBgImage(),
-        collapseMode: CollapseMode.none,
+        collapseMode: CollapseMode.parallax,
       ),
     );
   }
