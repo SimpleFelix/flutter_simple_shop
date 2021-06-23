@@ -1,6 +1,7 @@
 import 'package:demo1/pages/panic_buying/components/appbar.dart';
 import 'package:demo1/pages/panic_buying/components/daojishi.dart';
 import 'package:demo1/pages/panic_buying/components/tops_list.dart';
+import 'package:demo1/pages/panic_buying/components/view_status.dart';
 import 'package:demo1/pages/panic_buying/repository.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -50,6 +51,9 @@ class _PanicBuyingPageState extends State<PanicBuyingPage> {
                     ),
                   ],
                 ),
+              ),
+              SliverToBoxAdapter(
+                child: ViewStatusWithPanicBuy(),
               ),
               SliverToBoxAdapter(
                 child: DaojishiComp(),

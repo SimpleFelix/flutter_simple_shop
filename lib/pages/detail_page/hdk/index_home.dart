@@ -2,6 +2,9 @@ import 'dart:convert';
 import 'dart:ui';
 
 import 'package:common_utils/common_utils.dart';
+import 'package:date_format/date_format.dart';
+import 'package:dd_taoke_sdk/dd_taoke_sdk.dart';
+import 'package:dd_taoke_sdk/model/product.dart';
 import 'package:demo1/modals/Result.dart';
 import 'package:demo1/modals/couponData.dart';
 import 'package:demo1/modals/shop_info.dart';
@@ -28,7 +31,7 @@ import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HaoDanKuDetailItem extends StatefulWidget {
-final   String goodsId;
+  final String goodsId;
 
   HaoDanKuDetailItem({required this.goodsId});
 
@@ -38,8 +41,8 @@ final   String goodsId;
 
 class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
     with TickerProviderStateMixin {
-  List<String>? images = []; // 商品详情图
-  Info? info;
+  List<String> images = []; // 商品详情图
+  late Product info;
   List<Video>? videos = [];
   ShopInfo? _shopInfo;
   var futureBuildData;
@@ -132,11 +135,11 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
         statusBarColor: Colors.grey,
+
         ///这是设置状态栏的图标和字体的颜色
         ///Brightness.light  一般都是显示为白色
         ///Brightness.dark 一般都是显示为黑色
-        statusBarIconBrightness: Brightness.light
-    ));
+        statusBarIconBrightness: Brightness.light));
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: null,
@@ -165,8 +168,8 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
           });
           addScrollListener();
         }
-        return null;
-      } as bool Function(LayoutChangedNotification)?,
+        return true;
+      } ,
       child: Stack(
         children: <Widget>[
           NestedScrollView(
@@ -247,8 +250,8 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
                                 ),
                                 Text(
                                   '首页',
-                                  style:
-                                      TextStyle(fontSize: ScreenUtil().setSp(40)),
+                                  style: TextStyle(
+                                      fontSize: ScreenUtil().setSp(40)),
                                 )
                               ],
                             ),
@@ -262,8 +265,8 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
                                 ),
                                 Text(
                                   '分享',
-                                  style:
-                                      TextStyle(fontSize: ScreenUtil().setSp(40)),
+                                  style: TextStyle(
+                                      fontSize: ScreenUtil().setSp(40)),
                                 )
                               ],
                             ),
@@ -277,8 +280,8 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
                                 ),
                                 Text(
                                   '收藏',
-                                  style:
-                                      TextStyle(fontSize: ScreenUtil().setSp(40)),
+                                  style: TextStyle(
+                                      fontSize: ScreenUtil().setSp(40)),
                                 )
                               ],
                             ),
@@ -295,6 +298,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
                           height: ScreenUtil().setHeight(150),
                           width: ScreenUtil().setWidth(335),
                           text: '复制口令',
+                          corner: FCorner.all(50),
                           textAlignment: Alignment.center,
                           padding: EdgeInsets.symmetric(
                               horizontal: ScreenUtil().setWidth(50)),
@@ -303,22 +307,21 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
                             Color(0xfffcad2c),
                           ]),
                           onClick: () async {
-                            await getPrivilegeLink({'goodsId': info!.itemid})
-                                .then((res) async {
-                              Result resultObj = ResultUtils.format(res);
-                              if (resultObj.code == 200) {
-                                CouponInfo couponInfo = CouponInfo.fromJson(
-                                    json.decode(resultObj.data.toString()));
-                                if (couponInfo.code == 0) {
-                                  String? tkl =
-                                      couponInfo.data!.tpwd;
-                                  Clipboard.setData(ClipboardData(text: tkl));
-                                  SystemToast.show('复制成功,打开手淘即可领取');
-                                }
-                              } else {
-                                print('复制失败:${resultObj.msg}');
-                              }
-                            });
+                            // await getPrivilegeLink({'goodsId': info!.itemid})
+                            //     .then((res) async {
+                            //   Result resultObj = ResultUtils.format(res);
+                            //   if (resultObj.code == 200) {
+                            //     CouponInfo couponInfo = CouponInfo.fromJson(
+                            //         json.decode(resultObj.data.toString()));
+                            //     if (couponInfo.code == 0) {
+                            //       String? tkl = couponInfo.data!.tpwd;
+                            //       Clipboard.setData(ClipboardData(text: tkl));
+                            //       SystemToast.show('复制成功,打开手淘即可领取');
+                            //     }
+                            //   } else {
+                            //     print('复制失败:${resultObj.msg}');
+                            //   }
+                            // });
                           },
                         ),
                         FSuper(
@@ -326,6 +329,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
                           height: ScreenUtil().setHeight(150),
                           width: ScreenUtil().setWidth(335),
                           text: '立即领券',
+                          corner: FCorner.all(50),
                           textAlignment: Alignment.center,
                           padding: EdgeInsets.symmetric(
                               horizontal: ScreenUtil().setWidth(50)),
@@ -334,27 +338,27 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
                             Color(0xfffcad2c),
                           ]),
                           onClick: () async {
-                            await getPrivilegeLink({'goodsId': info!.itemid})
-                                .then((res) async {
-                              Result resultObj = ResultUtils.format(res);
-                              if (resultObj.code == 200) {
-                                CouponInfo couponInfo = CouponInfo.fromJson(
-                                    json.decode(resultObj.data.toString()));
-                                if (couponInfo.code == 0) {
-                                  String couponClickUrl =
-                                      couponInfo.data!.couponClickUrl!;
-                                  String url =
-                                      'taobao://${couponClickUrl.substring(8)}';
-                                  if (await canLaunch(url)) {
-                                    await launch(url);
-                                  } else {
-                                    launch(couponInfo.data!.couponClickUrl!);
-                                  }
-                                }
-                              } else {
-                                print('领取失败:${resultObj.msg}');
-                              }
-                            });
+                            // await getPrivilegeLink({'goodsId': info!.itemid})
+                            //     .then((res) async {
+                            //   Result resultObj = ResultUtils.format(res);
+                            //   if (resultObj.code == 200) {
+                            //     CouponInfo couponInfo = CouponInfo.fromJson(
+                            //         json.decode(resultObj.data.toString()));
+                            //     if (couponInfo.code == 0) {
+                            //       String couponClickUrl =
+                            //           couponInfo.data!.couponClickUrl!;
+                            //       String url =
+                            //           'taobao://${couponClickUrl.substring(8)}';
+                            //       if (await canLaunch(url)) {
+                            //         await launch(url);
+                            //       } else {
+                            //         launch(couponInfo.data!.couponClickUrl!);
+                            //       }
+                            //     }
+                            //   } else {
+                            //     print('领取失败:${resultObj.msg}');
+                            //   }
+                            // });
                           },
                         ),
                       ],
@@ -402,11 +406,12 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
             child: Row(
               children: <Widget>[
                 CircleAvatar(
-                  backgroundImage:
-                      (_shopInfo != null && _shopInfo!.pictUrl != null
+                  backgroundImage: (_shopInfo != null &&
+                              _shopInfo!.pictUrl != null
                           ? NetworkImage(
                               MImageUtils.magesProcessor(_shopInfo!.pictUrl!))
-                          : AssetImage('assets/images/ava.png')) as ImageProvider<Object>?,
+                          : AssetImage('assets/images/ava.png'))
+                      as ImageProvider<Object>?,
                 ),
                 SizedBox(
                   width: ScreenUtil().setWidth(30),
@@ -431,7 +436,8 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
                   onPressed: () {},
                   clickEffect: true,
                   strokeColor: Color.fromRGBO(254, 55, 56, 1),
-                  strokeWidth: 1, highlightColor: Colors.grey.shade100,
+                  strokeWidth: 1,
+                  highlightColor: Colors.grey.shade100,
                 ),
                 SizedBox(
                   width: ScreenUtil().setWidth(20),
@@ -442,7 +448,8 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
                   padding: EdgeInsets.all(ScreenUtil().setWidth(15)),
                   onPressed: () {},
                   clickEffect: true,
-                  strokeWidth: 1, highlightColor:  Colors.grey.shade100,
+                  strokeWidth: 1,
+                  highlightColor: Colors.grey.shade100,
                 ),
               ],
             ),
@@ -494,7 +501,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
 
   // 第六行,推荐语
   Widget buildSliverToBoxAdapterSix({isSliver = true}) {
-    Widget widget = containerWarp(
+    var widget = containerWarp(
         Container(
           alignment: Alignment.topLeft,
           child: FSuper(
@@ -505,14 +512,14 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
                   text: '推荐理由: ',
                   style: TextStyle(fontWeight: FontWeight.bold)),
               TextSpan(
-                  text: '${info!.itemdesc}',
+                  text: '${info.desc}',
                   style: TextStyle(color: Colors.grey)),
               TextSpan(
                   text: '复制文案',
                   style: TextStyle(color: Colors.pinkAccent),
                   recognizer: TapGestureRecognizer()
                     ..onTap = () {
-                      Clipboard.setData(ClipboardData(text: info!.itemdesc));
+                      Clipboard.setData(ClipboardData(text: info.desc));
                       SystemToast.show('复制成功');
                     })
             ],
@@ -529,30 +536,27 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
 
   // 第五行,领券
   Widget buildSliverToBoxAdapterFive({isSliver = true}) {
-    Widget widget = containerWarp(
+    var widget = containerWarp(
         InkWell(
           onTap: () async {
-            await getPrivilegeLink({'goodsId': info!.itemid})
-                .then((res) async {
-              Result resultObj = ResultUtils.format(res);
-              if (resultObj.code == 200) {
-                CouponInfo couponInfo = CouponInfo.fromJson(
-                    json.decode(resultObj.data.toString()));
-                if (couponInfo.code == 0) {
-                  String couponClickUrl =
-                      couponInfo.data!.couponClickUrl!;
-                  String url =
-                      'taobao://${couponClickUrl.substring(8)}';
-                  if (await canLaunch(url)) {
-                    await launch(url);
-                  } else {
-                    launch(couponInfo.data!.couponClickUrl!);
-                  }
-                }
-              } else {
-                print('领取失败:${resultObj.msg}');
-              }
-            });
+            // await getPrivilegeLink({'goodsId': info!.itemid}).then((res) async {
+            //   Result resultObj = ResultUtils.format(res);
+            //   if (resultObj.code == 200) {
+            //     CouponInfo couponInfo =
+            //         CouponInfo.fromJson(json.decode(resultObj.data.toString()));
+            //     if (couponInfo.code == 0) {
+            //       String couponClickUrl = couponInfo.data!.couponClickUrl!;
+            //       String url = 'taobao://${couponClickUrl.substring(8)}';
+            //       if (await canLaunch(url)) {
+            //         await launch(url);
+            //       } else {
+            //         launch(couponInfo.data!.couponClickUrl!);
+            //       }
+            //     }
+            //   } else {
+            //     print('领取失败:${resultObj.msg}');
+            //   }
+            // });
           },
           child: Container(
             width: ScreenUtil().setWidth(1440),
@@ -581,7 +585,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
                         children: <Widget>[
                           Container(
                             child: Text(
-                              '${info!.couponmoney}元优惠券',
+                              '${info.couponPrice}元优惠券',
                               style: TextStyle(
                                   color: Color.fromRGBO(145, 77, 9, 1.0),
                                   fontSize: ScreenUtil().setSp(60),
@@ -593,7 +597,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
                           ),
                           Container(
                             child: Text(
-                              '使用日期:${getTimeStr(info!.couponstarttime!)} - ${getTimeStr(info!.couponendtime!)}',
+                              '使用日期:${getTimeStr(info.couponStartTime??'')} - ${getTimeStr(info.couponEndTime??'已过期')}',
                               style: TextStyle(
                                   color: Color.fromRGBO(145, 77, 9, 1.0),
                                   fontWeight: FontWeight.w400),
@@ -634,7 +638,8 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
                     child: Text(
                       '立即领券 >',
                       style: TextStyle(
-                          color: Colors.white, fontSize: ScreenUtil().setSp(50)),
+                          color: Colors.white,
+                          fontSize: ScreenUtil().setSp(50)),
                     ),
                   ),
                 )
@@ -653,7 +658,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
 
   // 第四行,满减
   Widget buildSliverToBoxAdapterFour({isSliver = true}) {
-    Widget widget = containerWarp(Container(
+    var widget = containerWarp(Container(
       child: Row(
         children: <Widget>[
           Container(
@@ -669,21 +674,23 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
               children: <Widget>[
                 FSuper(
                   lightOrientation: FLightOrientation.LeftBottom,
-                  text: '满减',
+                  text: '满${info.couponConditions}减${info.couponPrice}',
                   backgroundColor: Colors.red,
                   textAlign: TextAlign.center,
                   textAlignment: Alignment.center,
+                  style: TextStyle(color: Colors.white),
+                  corner: FCorner.all(4),
                   padding: EdgeInsets.symmetric(
                       horizontal: ScreenUtil().setWidth(20),
                       vertical: ScreenUtil().setHeight(5)),
                 ),
-                Text(
-                  ' ${info!.couponexplain == '' ? '活动已过期' : info!.couponexplain}',
-                  style: TextStyle(
-                      color: Colors.red,
-                      fontSize: ScreenUtil().setSp(45),
-                      fontWeight: FontWeight.bold),
-                )
+                // Text(
+                //   ' 活动已过期',
+                //   style: TextStyle(
+                //       color: Colors.red,
+                //       fontSize: ScreenUtil().setSp(45),
+                //       fontWeight: FontWeight.bold),
+                // )
               ],
             ),
           )
@@ -702,11 +709,11 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
         Container(
           width: ScreenUtil().setWidth(1440),
           child: DrawableStartText(
-            lettersCountOfAfterImage: info!.itemshorttitle!.length,
-            assetImage: info!.shoptype == 'B'
+            lettersCountOfAfterImage: info.dtitle!.length,
+            assetImage: info.shopType == 1
                 ? 'assets/icons/tianmao2.png'
                 : 'assets/icons/taobao2.png',
-            text: ' ${info!.itemtitle}',
+            text: ' ${info.title}',
             textStyle: TextStyle(
                 fontSize: ScreenUtil().setSp(50), fontWeight: FontWeight.w400),
           ),
@@ -731,7 +738,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
                 lightOrientation: FLightOrientation.LeftBottom,
                 spans: <TextSpan>[
                   TextSpan(
-                      text: '原价 ${info!.itemprice}',
+                      text: '原价 ${info.originalPrice}',
                       style: TextStyle(
                           color: Colors.grey,
                           decoration: TextDecoration.lineThrough))
@@ -739,7 +746,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
               ),
               FSuper(
                 lightOrientation: FLightOrientation.LeftBottom,
-                text: '已售 ${info!.itemsale}',
+                text: '已售 ${info.monthSales}',
               )
             ],
           ),
@@ -755,7 +762,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
 
   // 第一行,券后价+返佣
   Widget buildSliverToBoxAdapterOne({isSliver = true}) {
-    Widget widget = containerWarp(
+    var widget = containerWarp(
       Container(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -766,29 +773,29 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
               text: '券后价 ¥',
               spans: [
                 TextSpan(
-                  text: '${info!.itemendprice} ',
+                  text: '${info.actualPrice} ',
                   style: TextStyle(
                       color: Colors.red,
                       fontSize: ScreenUtil().setSp(100),
                       fontWeight: FontWeight.w800),
                 ),
                 TextSpan(
-                  text: '${info!.discount}折',
+                  text: '${info.discounts}折',
                   style: TextStyle(fontSize: ScreenUtil().setSp(50)),
                 ),
               ],
             ),
 
             // 预计可得
-            FSuper(
-              lightOrientation: FLightOrientation.LeftBottom,
-              text: '预计收益 ¥${info!.tkmoney}',
-              backgroundColor: Colors.pinkAccent.withOpacity(0.1),
-              shadowBlur: 4,
-              padding: EdgeInsets.symmetric(
-                  horizontal: ScreenUtil().setWidth(10),
-                  vertical: ScreenUtil().setHeight(5)),
-            ),
+            // FSuper(
+            //   lightOrientation: FLightOrientation.LeftBottom,
+            //   text: '预计收益 ¥0',
+            //   backgroundColor: Colors.pinkAccent.withOpacity(0.1),
+            //   shadowBlur: 4,
+            //   padding: EdgeInsets.symmetric(
+            //       horizontal: ScreenUtil().setWidth(10),
+            //       vertical: ScreenUtil().setHeight(5)),
+            // ),
           ],
         ),
       ),
@@ -948,8 +955,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
     return SingleChildScrollView(
       key: _detailImagesGlogbalKey,
       child: Column(
-          children: images!
-              .map((item) => ExtendedImage.network(
+          children: images.map((item) => ExtendedImage.network(
                     MImageUtils.magesProcessor(item),
                     fit: BoxFit.fill,
                     cache: true,
@@ -958,15 +964,12 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
     );
   }
 
-  String getTimeStr(String timeMs) {
-    if (timeMs.isNotEmpty) {
-      return DateUtil.formatDateMs(int.parse(timeMs),format: DateFormats.y_mo_d);
-    }
-    return '未知';
+  String getTimeStr(String time) {
+    return DateUtil.formatDateStr(time,format: DateFormats.y_mo_d);
   }
 
   List<String> getImages() {
-    String str = info!.taobaoImage!;
+    var str = info.imgs??'';
     return str.split(',');
   }
 
@@ -994,38 +997,14 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
   }
 
   Future<String> initDatas() async {
-
-
-
-
-    // await getHaodankuDetailInfo(widget.goodsId).then((res) {
-    //   Result result = Result.fromJson(json.decode(res.toString()));
-    //   if (result.code == 200) {
-    //     HdkGoodsDetailModel hdkGoodsDetailModel =
-    //         HdkGoodsDetailModel.fromJson(json.decode(result.data!));
-    //     setState(() {
-    //       images = hdkGoodsDetailModel.images;
-    //       info = hdkGoodsDetailModel.info;
-    //       videos = hdkGoodsDetailModel.video;
-    //     });
-    //   }else{
-    //     SystemToast.show(result.msg!);
-    //   }
-    // });
-    // await HttpRequest.req(Api.API_GET_SHOP_INFO, data: {'shopName': info!.sellernick},method: HttpRequest.POST)
-    //     .then((res) {
-    //   Result result = ResultUtils.format(res);
-    //   if (result.code == 200) {
-    //     ShopInfo shopInfo =
-    //         ShopInfo.fromJson(json.decode(result.data.toString()));
-    //     setState(() {
-    //       _shopInfo = shopInfo;
-    //     });
-    //   } else {
-    //     SystemToast.show(result.msg!);
-    //   }
-    // });
-
+    final result = await DdTaokeSdk.instance.getDetailBaseData(productId: widget.goodsId);
+    if(result!=null ){
+      if(mounted){
+        setState(() {
+          info = result.info!;
+        });
+      }
+    }
     return 'success';
   }
 

@@ -1,4 +1,5 @@
 import 'package:demo1/pages/ddq_page/index_home.dart';
+import 'package:demo1/pages/detail_page/hdk/index_home.dart';
 import 'package:demo1/pages/search/view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,9 +16,14 @@ class NavigatorUtil {
   }
 
   // 跳转商品详情页方法
-  static void gotoGoodsDetailPage(BuildContext context, String goodsId) {
-    Application.router
-        .navigateTo(context, '${Routes.goodsDetail}?goods_id=$goodsId');
+  static void gotoGoodsDetailPage(BuildContext context, String goodsId,{bool newViewPage=false}) {
+    if(newViewPage){
+      Get.to(()=>HaoDanKuDetailItem(goodsId: goodsId,));
+    }else{
+      Application.router
+          .navigateTo(context, '${Routes.goodsDetail}?goods_id=$goodsId');
+    }
+
   }
 
 //  跳转到错误页面

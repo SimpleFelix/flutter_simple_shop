@@ -38,11 +38,12 @@ class ProductListWithPanic extends ConsumerWidget {
         left: 2,
         child: Badge(
           shape: BadgeShape.circle,
-          badgeColor: Colors.deepPurple,
+          badgeColor: Colors.pink,
           borderRadius: BorderRadius.circular(8),
           badgeContent: Text('${index+4}', style: TextStyle(color: Colors.white)),
         ),
       ),
+      margin: EdgeInsets.zero,
     );
   }
 }

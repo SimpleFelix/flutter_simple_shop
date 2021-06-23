@@ -15,13 +15,14 @@ class GoodsItemWidget extends StatelessWidget {
   final Product goodsItem;
   final Widget? shopWidget;
   final Widget? imageWidget;
+  final EdgeInsets? margin;
 
-  GoodsItemWidget({required this.goodsItem, this.shopWidget, this.imageWidget});
+  GoodsItemWidget({required this.goodsItem, this.shopWidget, this.imageWidget, this.margin});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 10.0),
+      margin:margin ?? EdgeInsets.only(bottom: 10.0),
       color: Colors.white,
       width: Get.width,
       child: Row(
@@ -45,7 +46,7 @@ class GoodsItemWidget extends StatelessWidget {
               child: InkWell(
             onTap: () {
               NavigatorUtil.gotoGoodsDetailPage(
-                  context, goodsItem.id.toString());
+                  context, goodsItem.id.toString(),newViewPage: true);
             },
             child: Container(
               padding: EdgeInsets.all(10.0),

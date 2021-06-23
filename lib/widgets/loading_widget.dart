@@ -1,5 +1,6 @@
-import 'package:demo1/util/extended_util.dart';
 import 'package:flutter/material.dart';
+
+import '../util/extended_util.dart';
 
 class LoadingWidget extends StatelessWidget {
   @override
