@@ -1,4 +1,4 @@
-import 'package:demo1/widgets/component/dao_ji_shi.dart';
+import '../../../widgets/component/dao_ji_shi.dart';
 import 'package:flutter/material.dart';
 
 // 倒计时组件
