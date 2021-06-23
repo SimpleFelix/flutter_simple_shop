@@ -21,26 +21,37 @@ import 'common/widget_util.dart';
 import 'fluro/navigator_util.dart';
 
 void main() async {
-  /// 初始化sdk能力
+
+
+  /// 初始化sdk
   DdTaokeUtil.instance.init('https://itbug.shop', '443'); //  远程服务器
-  // DdTaokeUtil.instance.init('https://192.168.199.78', ''); // 本地测试
 
 
-
+  /// 路由配置
+  /// [已弃用]
   var router = FluroRouter();
   Routes.configureRoutes(router);
   Application.router = router;
+
+
   WidgetsFlutterBinding.ensureInitialized();
-  // await Stetho.initialize();
+
+  /// 初始化单例工具类
   GetIt.instance.registerSingleton<Utils>(Utils());
   GetIt.instance.registerSingleton<WidgetUtils>(WidgetUtils());
   GetIt.instance.registerSingleton<NavigatorUtil>(NavigatorUtil());
   GetIt.instance.registerSingleton<Api>(Api());
+
+  /// https 请求处理
   HttpOverrides.global = MyHttpOverrides();
+
+
   /// 构建web程序需要注释这个,会报错
   // if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
   //   setWindowTitle('典典的小卖部 桌面客户端  v2.0.0');
   // }
+
+  /// 启动app
   runApp(ProviderScope(child: MyApp()));
 }
 
@@ -58,6 +69,13 @@ class _MyAppState extends State<MyApp> {
         debugShowCheckedModeBanner: false,
         title: '典典小卖部',
         onGenerateRoute: Application.router.generator,
+        theme: ThemeData(
+          primaryColor: Colors.pink,
+          bottomNavigationBarTheme: BottomNavigationBarThemeData(
+            selectedLabelStyle: TextStyle(color: Colors.pink),
+            selectedItemColor: Colors.pink
+          )
+        ),
         home: App(),
       ),
     );
