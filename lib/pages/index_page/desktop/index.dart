@@ -1,6 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'components/appbar.dart';
+import 'components/title.dart';
 
 /// 首页
 /// 桌面版本
@@ -9,8 +10,19 @@ class IndexHomeV2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: IndexAppbarWithDesktop(),
-    );
+    return CupertinoPageScaffold(
+        child: ListView.builder(
+      itemBuilder: itemBuilder,
+      itemCount: 1,
+    ));
+  }
+
+  Widget itemBuilder(BuildContext context, int index) {
+    switch (index) {
+      case 0:
+        return AppTitle(text: '典典的小卖部');
+      default:
+        return Container();
+    }
   }
 }

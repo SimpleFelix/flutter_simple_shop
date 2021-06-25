@@ -17,21 +17,23 @@ class StoreGoodsItemLayout extends StatelessWidget {
         color: Colors.grey[100]!.withOpacity(.8),
         borderRadius: BorderRadius.all(Radius.circular(10)),
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Stack(
-            children: [
-              Image.network(MImageUtils.magesProcessor(storeGoods.mainPic!)),
-              Positioned(
-                child: _buildDiscountLayout(),
-                bottom: 0,
-                right: 0,
-              )
-            ],
-          ),
-          PriceLayout(original: "${storeGoods.actualPrice}", discounts: "${storeGoods.originalPrice}")
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Stack(
+              children: [
+                Image.network(MImageUtils.magesProcessor(storeGoods.mainPic!)),
+                Positioned(
+                  bottom: 0,
+                  right: 0,
+                  child: _buildDiscountLayout(),
+                )
+              ],
+            ),
+            PriceLayout(original: '${storeGoods.actualPrice}', discounts: '${storeGoods.originalPrice}')
+          ],
+        ),
       ),
     );
   }

@@ -76,15 +76,9 @@ class WaterfallGoodsCard extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.symmetric(
                       horizontal:12),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    verticalDirection: VerticalDirection.up,
-                    children: <Widget>[
-                      CouponPriceWidget(
-                          actualPrice: product.actualPrice.toString(),
-                          originalPrice: product.originalPrice),
-                    ],
-                  ),
+                  child:  CouponPriceWidget(
+                      actualPrice: product.actualPrice.toString(),
+                      originalPrice: product.originalPrice),
                 ),
 //                _hot(product.twoHoursSales),
                 // 图标或者标签显示

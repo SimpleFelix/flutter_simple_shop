@@ -1,3 +1,4 @@
+import 'package:demo1/widgets/component/custom_loading.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,6 +16,8 @@ abstract class WidgetUtilService {
 
   /// 显示一个简单的弹窗提示
   Future<void> showSimpleDialog(String message,{String? title});
+
+  Widget loading(double width,double height,{double? radius});
 }
 
 class WidgetUtils extends WidgetUtilService {
@@ -41,5 +44,10 @@ class WidgetUtils extends WidgetUtilService {
       message: message,
       title: title,
     ));
+  }
+
+  @override
+  Widget loading(double width, double height,{double? radius}) {
+    return Skeleton(width: width,height: height,cornerRadius: radius??4,);
   }
 }

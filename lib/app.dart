@@ -41,6 +41,7 @@ class _AppState extends State<App> {
   // 页面列表
   final List<Widget> _pages = [
     IndexHome(),
+    // IndexHomeV2(),
     JiujiuIndexHome(scrollController: jiujiuController),
     CategoryIndexPage(),
     FavoriteIndexHome(),

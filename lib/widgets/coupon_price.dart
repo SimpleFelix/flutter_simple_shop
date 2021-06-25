@@ -13,53 +13,35 @@ class CouponPriceWidget extends StatelessWidget {
   final double? interval; // 券后价和原价之间的间隔距离
   final bool? showDiscount; // 是否显示折扣
 
-  CouponPriceWidget(
-      {required this.actualPrice,
-      required this.originalPrice,
-      this.couponPriceFontSize,
-      this.originalPriceFontSize,
-      this.interval,
-      this.showDiscount});
-
-  late double couponPriceSymbolFontSize; // 券后价 人民币符号 字体大小
+  CouponPriceWidget({required this.actualPrice, required this.originalPrice, this.couponPriceFontSize, this.originalPriceFontSize, this.interval, this.showDiscount});
 
   @override
   Widget build(BuildContext context) {
-    couponPriceSymbolFontSize = (couponPriceFontSize ?? 80.0) * 0.75;
+    var couponPriceSymbolFontSize = (couponPriceFontSize ?? 80.0) * 0.75;
     return Container(
       child: Row(
         children: <Widget>[
           Container(
             margin: EdgeInsets.only(right: 3.0),
-            child: Text('券后',
-                style: TextStyle(
-                    color: Colors.black38,
-                    fontSize: ScreenUtil().setSp(couponPriceSymbolFontSize * 0.6))),
+            child: Text('券后', style: TextStyle(color: Colors.black38, fontSize: ScreenUtil().setSp(couponPriceSymbolFontSize * 0.6))),
           ),
           Container(
             child: Text(
               '¥',
-              style: TextStyle(
-                  fontSize: ScreenUtil().setSp(couponPriceSymbolFontSize),
-                  color: Colors.pinkAccent),
+              style: TextStyle(fontSize: ScreenUtil().setSp(couponPriceSymbolFontSize), color: Colors.pinkAccent),
             ),
           ),
           Container(
             child: Text(
               actualPrice.toString(),
-              style: TextStyle(
-                  color: Colors.pinkAccent,
-                  fontSize: ScreenUtil().setSp(couponPriceFontSize ?? 80)),
+              style: TextStyle(color: Colors.pinkAccent, fontSize: ScreenUtil().setSp(couponPriceFontSize ?? 80)),
             ),
           ),
           Container(
             margin: EdgeInsets.only(left: interval ?? 10.0),
             child: Text(
               '¥$originalPrice',
-              style: TextStyle(
-                  decoration: TextDecoration.lineThrough,
-                  color: Colors.black38,
-                  fontSize: ScreenUtil().setSp(originalPriceFontSize ?? 50)),
+              style: TextStyle(decoration: TextDecoration.lineThrough, color: Colors.black38, fontSize: ScreenUtil().setSp(originalPriceFontSize ?? 50)),
             ),
           ),
           //多少折
@@ -71,10 +53,10 @@ class CouponPriceWidget extends StatelessWidget {
 
   //计算多少折扣
   Widget _buildDiscount() {
-    double discountDouble = double.parse(actualPrice!) / originalPrice!;
-    String numStr = discountDouble.toStringAsFixed(2);
+    var discountDouble = double.parse(actualPrice!) / originalPrice!;
+    var numStr = discountDouble.toStringAsFixed(2);
     numStr = numStr.substring(0, numStr.lastIndexOf('.') + 2);
-    double discount = double.parse(numStr) * 10;
+    var discount = double.parse(numStr) * 10;
     return FSuper(
       lightOrientation: FLightOrientation.LeftBottom,
       backgroundColor: primaryColor,

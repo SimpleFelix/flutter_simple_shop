@@ -1,11 +1,11 @@
 import 'package:dd_taoke_sdk/model/brand_list_model.dart';
-import 'package:demo1/pages/index_page/store/goods_item_layout.dart';
-import 'package:demo1/util/image_util.dart';
-import 'package:demo1/util/number_cover.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import '../../../util/image_util.dart';
+import '../../../util/number_cover.dart';
+import '../../index_page/store/goods_item_layout.dart';
 import '../brand_detail.dart';
 
 /// 品牌布局
@@ -18,7 +18,7 @@ class BrandItemCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () async{
-       Get.to(BrandDetailPage(brandId: storeInfo.brandId.toString()));
+       await Get.to(BrandDetailPage(brandId: storeInfo.brandId.toString()));
       },
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 30.w, vertical: 30.h),
@@ -89,26 +89,26 @@ class BrandItemCard extends StatelessWidget {
   Widget _buildGoodsGrid() {
     return GridView.count(
       crossAxisCount: 3,
+      childAspectRatio: .8,
+      shrinkWrap: true,
+      crossAxisSpacing: 30.w,
+      physics: NeverScrollableScrollPhysics(),
       children: [
         StoreGoodsItemLayout(storeGoods: storeInfo.goodsList![0]),
         StoreGoodsItemLayout(storeGoods: storeInfo.goodsList![1]),
         StoreGoodsItemLayout(storeGoods: storeInfo.goodsList![2]),
       ],
-      childAspectRatio: .8,
-      shrinkWrap: true,
-      crossAxisSpacing: 30.w,
-      physics: NeverScrollableScrollPhysics(),
     );
   }
 
   Widget _buildHeaderFlexCore(Widget widget, int flex) {
     return Flexible(
+      flex: flex,
       child: Container(
         width: double.infinity,
         margin: EdgeInsets.all(5),
         child: widget,
       ),
-      flex: flex,
     );
   }
 }
