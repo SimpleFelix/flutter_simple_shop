@@ -21,7 +21,7 @@ import 'fluro/navigator_util.dart';
 
 void main() async {
   /// 初始化sdk
-  DdTaokeUtil.instance.init('https://localhost', '443'); //  远程服务器
+  DdTaokeUtil.instance.init('https://itbug.shop', '443'); //  远程服务器
 
   /// 路由配置
   /// [已弃用]
