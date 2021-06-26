@@ -3,10 +3,11 @@ import 'package:fcontrol_nullsafety/fdefine.dart';
 import 'package:flustars/flustars.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../fluro/navigator_util.dart';
+import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
 
+import '../common/widgets/hot.dart';
+import '../fluro/navigator_util.dart';
 import '../widgets/coupon_price.dart';
 import 'extended_image.dart';
 
@@ -80,35 +81,9 @@ class WaterfallGoodsCard extends StatelessWidget {
                       actualPrice: product.actualPrice.toString(),
                       originalPrice: product.originalPrice),
                 ),
-               _hot(product.twoHoursSales??0),
+                Hot(text: '两小时销量${product.twoHoursSales??0},月销${product.monthSales}')
               ],
             )));
-  }
-
-  // 两小时销量
-  Widget _hot(int twoHoursSales) {
-    return Container(
-      margin: EdgeInsets.only(top: 2.0, left: 5.0),
-      alignment: Alignment.centerLeft,
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          Image.asset(
-            'assets/icons/hot.png',
-            height: 22,
-            width: 22,
-          ),
-          Container(
-            child: Text(
-              '两小时销量$twoHoursSales,月销${product.monthSales}',
-              style: TextStyle(
-                  fontSize: 12,
-                  color: Colors.black),
-            ),
-          )
-        ],
-      ),
-    );
   }
 
   // 标题

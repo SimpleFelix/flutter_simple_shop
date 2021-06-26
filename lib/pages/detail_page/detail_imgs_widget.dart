@@ -53,6 +53,7 @@ class DetailImagesWidget extends StatelessWidget {
       List imagesArr = _getImageList();
       for (var item in imagesArr as Iterable<DetailImage>) {
         var src = _getUrl(item.img!);
+
         imagesWidget.add(ExtendedImage.network(
           src,
           fit: BoxFit.fill,

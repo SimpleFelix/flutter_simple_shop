@@ -26,7 +26,7 @@ class _SearchKeyWorldsState extends State<SearchKeyWorlds> {
         children: [
           Text('搜索发现',style: TextStyle(fontSize: 16),),
           SizedBox(height: 12,),
-          Wrap(children: _keyWorlds.map(_item).toList(),spacing: 5,runSpacing: 5,),
+          Wrap(spacing: 5,runSpacing: 5,children: _keyWorlds.map(_item).toList(),),
         ],
       ),
     );

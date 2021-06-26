@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dd_taoke_sdk/model/hot_search_worlds_result.dart';
+import 'package:demo1/common/widgets/hot.dart';
 import 'package:demo1/pages/search/logic.dart';
 import 'package:demo1/widgets/extended_image.dart';
 import 'package:flutter/material.dart';
@@ -14,14 +15,17 @@ class Suggest extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(top: 12),
       padding: EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: Colors.white
-      ),
+      decoration: BoxDecoration(color: Colors.white),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('热搜榜',style: TextStyle(fontSize: 16),),
-          SizedBox(height: 12,),
+          Text(
+            '热搜榜',
+            style: TextStyle(fontSize: 16),
+          ),
+          SizedBox(
+            height: 12,
+          ),
           Obx(() {
             final suggs = SearchLogic.instance.suggest;
             return Wrap(
@@ -68,7 +72,7 @@ class Suggest extends StatelessWidget {
                 SizedBox(
                   height: 5,
                 ),
-                Text(item.hotValue.toString()),
+                Hot(text: '热度 ${item.hotValue}')
               ],
             ),
           ))

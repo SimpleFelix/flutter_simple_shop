@@ -114,10 +114,12 @@ class DrawableStartTextState extends State<DrawableStartText> {
               height: _textHeight,
               fit: BoxFit.fitHeight,
             ),
-            Text(
-              _topText,
-              style: widget.textStyle,
-              maxLines: 1,
+            Expanded(
+              child: Text(
+                _topText,
+                style: widget.textStyle,
+                maxLines: 1,
+              ),
             ),
           ],
         ),

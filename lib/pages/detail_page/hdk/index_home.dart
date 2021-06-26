@@ -4,8 +4,6 @@ import 'package:common_utils/common_utils.dart';
 import 'package:dd_taoke_sdk/dd_taoke_sdk.dart';
 import 'package:dd_taoke_sdk/model/coupon_link_result.dart';
 import 'package:dd_taoke_sdk/model/product.dart';
-import 'package:demo1/common/utils.dart';
-import 'package:demo1/pages/detail_page/detail_imgs_widget.dart';
 import 'package:fbutton_nullsafety/fbutton_nullsafety.dart';
 import 'package:fcontrol_nullsafety/fdefine.dart';
 import 'package:flutter/cupertino.dart';
@@ -17,13 +15,15 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
+import 'package:get/get.dart';
 
+import '../../../common/utils.dart';
 import '../../../modals/shop_info.dart';
 import '../../../util/image_util.dart';
-import '../../../util/system_toast.dart';
 import '../../../widgets/RoundUnderlineTabIndicator.dart';
 import '../../../widgets/extended_image.dart';
 import '../../../widgets/my_drawable_start_text.dart';
+import '../detail_imgs_widget.dart';
 import 'model/hdk_detail.dart';
 
 class HaoDanKuDetailItem extends StatefulWidget {
@@ -451,8 +451,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
                   style: TextStyle(color: Colors.pinkAccent),
                   recognizer: TapGestureRecognizer()
                     ..onTap = () {
-                      Clipboard.setData(ClipboardData(text: info.desc));
-                      SystemToast.show('复制成功');
+                      utils.copy(info.desc);
                     })
             ],
           ),
@@ -476,7 +475,6 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
             }
           },
           child: Container(
-            width: ScreenUtil().setWidth(1440),
             height: ScreenUtil().setHeight(300),
             padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(30), vertical: ScreenUtil().setHeight(20)),
             decoration: BoxDecoration(color: Color.fromRGBO(252, 54, 74, 1.0), borderRadius: BorderRadius.all(Radius.circular(5))),
@@ -485,7 +483,6 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
                 Stack(
                   children: <Widget>[
                     Container(
-                      width: ScreenUtil().setWidth(900),
                       height: ScreenUtil().setHeight(260),
                       padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(20), vertical: ScreenUtil().setHeight(30)),
                       decoration: BoxDecoration(color: Color.fromRGBO(255, 237, 199, 1.0), borderRadius: BorderRadius.all(Radius.circular(5))),
@@ -709,10 +706,10 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
       loop: true,
       itemBuilder: (BuildContext context, int index) {
         return ExtendedImageWidget(
-          width: 1440,
-          height: 1440,
+          width: Get.width,
+          height: Get.width,
           src: getImages()[index],
-          fit: BoxFit.fitWidth,
+          fit: BoxFit.fill,
           knowSize: true,
         );
       },
