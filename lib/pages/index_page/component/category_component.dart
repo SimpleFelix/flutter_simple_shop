@@ -85,7 +85,7 @@ class _CategoryComponentState extends State<CategoryComponent> {
                 itemBuilder: (context, index) {
                   var insetCustomItem = _indexIsExtendWidget(index);
                   if (insetCustomItem != null) {
-                    return GestureDetector(child: insetCustomItem.child, onTap: insetCustomItem.onTap as void Function()?);
+                    return GestureDetector(onTap: insetCustomItem.onTap, child: insetCustomItem.child);
                   } else {
                     final mainCategory = categorys[index - _getCountWhereInCategoryIndex(index)];
                     return GestureDetector(
@@ -204,7 +204,7 @@ class InsetCustomItem {
   Widget? child;
 
   /// 点击事件
-  Function? onTap;
+  VoidCallback? onTap;
 
   /// 插入位置
   int? index;

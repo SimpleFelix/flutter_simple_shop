@@ -19,8 +19,6 @@ class IndexProvider extends ChangeNotifier {
   BrandListResult? storeData; // 首页显示的品牌
   Map<int?, Color> brandBgColorMap = {}; // 背景颜色
 
-  Map<String, Color> carouselsColor = <String, Color>{}; // 轮播图的背景颜色
-
   int currIndex = 1;
 
   void setCurrIndex(int value) {
@@ -51,7 +49,6 @@ class IndexProvider extends ChangeNotifier {
   Future<void> fetchTopics() async {
     final result = await DdTaokeSdk.instance.getCarousel();
     carousel.addAll(result);
-    await getCarouselColors();
     notifyListeners();
   }
 
@@ -60,12 +57,6 @@ class IndexProvider extends ChangeNotifier {
     final result = await DdTaokeSdk.instance.getBrandList(param: BrandListParam(cid: categorys[0].cid.toString(), pageId: '1', pageSize: '1'));
     storeData = result;
     await getBrandBgColors();
-    notifyListeners();
-  }
-
-  /// 改变顶部背景颜色
-  void changeToColor(String netImageUrl) {
-    topBackground = carouselsColor[netImageUrl] ?? Colors.grey.shade200;
     notifyListeners();
   }
 
@@ -82,11 +73,4 @@ class IndexProvider extends ChangeNotifier {
     }
   }
 
-  /// 获取首页轮播图的背景颜色
-  Future<void> getCarouselColors() async {
-    await Future.forEach<Carousel>(carousel, (element) async {
-      var color = await ColorUtil.getImageMainColor(element.topicImage!);
-      carouselsColor[element.topicImage!] = color;
-    });
-  }
 }

@@ -1,6 +1,7 @@
 import 'package:demo1/config/app_config.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:loading_more_list/loading_more_list.dart';
 import 'grid_menu.dart';
 import 'model/index_grid_menu_item_model.dart';
 
@@ -17,7 +18,7 @@ class GridMenuList extends StatefulWidget {
 
 class _GridMenuListState extends State<GridMenuList> {
   final int rowCount = 5;
-  late List<IndexGridMenuItemModel> _items;
+  late List<IndexGridMenuItemModel> _items = [];
 
   @override
   void initState() {
@@ -25,7 +26,7 @@ class _GridMenuListState extends State<GridMenuList> {
     _getList();
   }
 
-  void _getList(){
+  void _getList() {
     setState(() {
       _items = indexGridMenus;
     });
@@ -33,17 +34,17 @@ class _GridMenuListState extends State<GridMenuList> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: GridView.count(
-          padding: EdgeInsets.zero,
-          crossAxisCount: rowCount,
-          shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
-          children: _items
-              .map((e) => IndexGridViewMenu(
-                    model: e,
-                  ))
-              .toList()),
+    return SliverWaterfallFlow.count(
+      crossAxisCount: 5,
+      children: renderItems(),
     );
+  }
+
+  List<Widget> renderItems() {
+    return _items
+        .map((e) => IndexGridViewMenu(
+              model: e,
+            ))
+        .toList();
   }
 }

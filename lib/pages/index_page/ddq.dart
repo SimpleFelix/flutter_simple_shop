@@ -104,6 +104,7 @@ class _DDQWidgetState extends State<DDQWidget> {
                 SizedBox(height: 12),
                 Container(
                   alignment: Alignment.topLeft,
+                  margin: EdgeInsets.only(left: 12),
                   child: Text(
                     title,
                     style: TextStyle(
@@ -117,18 +118,19 @@ class _DDQWidgetState extends State<DDQWidget> {
                 ),
                 SizedBox(height: 12),
                 Container(
+                  margin: EdgeInsets.only(left: 12),
                   child: Row(
                     verticalDirection: VerticalDirection.up,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       Container(
+                        alignment: Alignment.centerLeft,
                         child: Text(
                           '￥$price',
                           style: TextStyle(
                               color: Colors.red,
                               fontSize: ScreenUtil().setSp(50)),
                         ),
-                        alignment: Alignment.centerLeft,
                       ),
                       SizedBox(width: ScreenUtil().setWidth(20)),
                       Expanded(
@@ -155,7 +157,7 @@ class _DDQWidgetState extends State<DDQWidget> {
 
   @override
   void didChangeDependencies() async {
-    DdqProvider ddqProvider = Provider.of<DdqProvider>(context);
+    var ddqProvider = Provider.of<DdqProvider>(context);
     if (this.ddqProvider != ddqProvider) {
       this.ddqProvider = ddqProvider;
       await Future.delayed(Duration(seconds: 1), () {

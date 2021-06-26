@@ -80,10 +80,6 @@ class IndexTopicComponentCarousel extends StatelessWidget {
       options: CarouselOptions(
           height: 500.h,
           autoPlay: true,
-          onPageChanged: (index, re) {
-            final item = carousel[index];
-            context.read<IndexProvider>().changeToColor(item.topicImage!);
-          },
           enlargeCenterPage: true),
       items: carousel.map(renderItem).toList(),
     );

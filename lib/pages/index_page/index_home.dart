@@ -155,9 +155,7 @@ class _IndexHomeState extends State<IndexHome> with TickerProviderStateMixin, Af
         PullToRefreshContainer(buildPulltoRefreshHeader),
 
         // 网格菜单
-        SliverToBoxAdapter(
-          child: GridMenuList(),
-        ),
+
 
         //钉钉抢
         SliverToBoxAdapter(

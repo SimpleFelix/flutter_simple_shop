@@ -1,8 +1,8 @@
-import 'package:demo1/pages/index_page/model/index_grid_menu_item_model.dart';
 import 'package:extended_image/extended_image.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'model/index_grid_menu_item_model.dart';
 
 /// 2020年11月17日 22:36:07
 /// 首页的网格菜单
@@ -25,18 +25,20 @@ class IndexGridViewMenu extends StatelessWidget {
             break;
         }
       },
-      child: Container(
-        child: Column(
+      child: LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
+        return Column(
           children: [
             Expanded(child: Container(
               child: ExtendedImage.network(
-                '${model.iconUrl}'
+                  '${model.iconUrl}',
+                width: constraints.maxWidth,
+                height: constraints.maxWidth,
               ),
             )),
             Text('${model.title}',style: TextStyle(fontSize: 50.sp))
           ],
-        ),
-      ),
+        );
+      },),
     );
   }
 }
