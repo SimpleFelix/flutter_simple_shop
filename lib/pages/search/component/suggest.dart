@@ -1,11 +1,15 @@
 import 'dart:convert';
-
+import 'package:badges/badges.dart';
+import 'package:demo1/provider/riverpod/search_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:dd_taoke_sdk/model/hot_search_worlds_result.dart';
 import 'package:demo1/common/widgets/hot.dart';
 import 'package:demo1/pages/search/logic.dart';
 import 'package:demo1/widgets/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../list.dart';
 
 class Suggest extends StatelessWidget {
   const Suggest({Key? key}) : super(key: key);
@@ -38,45 +42,69 @@ class Suggest extends StatelessWidget {
   }
 
   Widget _renderItem(HotSearchWorlds item) {
-    print(jsonEncode(item));
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-      margin: EdgeInsets.only(bottom: 12),
-      decoration: BoxDecoration(color: Colors.white),
-      child: Row(
-        children: [
-          SizedBox(
-            width: 30,
-            height: 58,
-            child: Container(
-              alignment: Alignment.center,
-              child: Text('${item.rankNum!}'),
-            ),
-          ),
-          SizedBox(
-            width: 58,
-            height: 58,
-            child: SimpleImage(url: item.pic!),
-          ),
-          SizedBox(
-            width: 12,
-          ),
-          Expanded(
+    return InkWell(
+      onTap: () {
+        Get.context!.read(searchRiverpod).loadData(worlds: item.words);
+        Get.to(() => SearchListIndex(value: item.words ?? ''));
+      },
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+        margin: EdgeInsets.only(bottom: 12),
+        decoration: BoxDecoration(color: Colors.white),
+        child: Row(
+          children: [
+            SizedBox(
+              width: 30,
+              height: 58,
               child: Container(
-            constraints: BoxConstraints(minHeight: 58),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(item.theme!),
-                SizedBox(
-                  height: 5,
-                ),
-                Hot(text: '热度 ${item.hotValue}')
-              ],
+                alignment: Alignment.center,
+                child: Text('${item.rankNum!}'),
+              ),
             ),
-          ))
-        ],
+            SizedBox(
+              width: 58,
+              height: 58,
+              child: SimpleImage(url: item.pic!),
+            ),
+            SizedBox(
+              width: 12,
+            ),
+            Expanded(
+                child: Container(
+              constraints: BoxConstraints(minHeight: 58),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Row(
+                    children: [
+                      if (item.label!.isNotEmpty)
+                        Badge(
+                          badgeContent: Text(
+                            item.label!,
+                            style: TextStyle(color: Colors.pink, fontSize: 12, fontWeight: FontWeight.bold),
+                          ),
+                          badgeColor: Colors.white,
+                        ),
+                      if (item.label!.isNotEmpty)
+                        SizedBox(
+                          width: 5,
+                        ),
+                      Text(
+                        item.theme!,
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Hot(text: ' ${item.hotValue}')
+                ],
+              ),
+            ))
+          ],
+        ),
       ),
     );
   }
