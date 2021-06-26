@@ -8,9 +8,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 import '../../../common/utils.dart';
-import 'my_special_text_span_builder.dart';
 import 'components/more_action_bottomsheet.dart';
 import 'components/search_goods.dart';
+import 'my_special_text_span_builder.dart';
 
 // 发布页面
 class WhiteIndex extends StatefulWidget {

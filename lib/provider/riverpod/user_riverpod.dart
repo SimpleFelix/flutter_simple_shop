@@ -9,13 +9,12 @@ final userModel = ChangeNotifierProvider((ref) => UserModel());
 
 // 用户信息
 class UserModel extends ChangeNotifier {
-  User? _user;
+  User? user;
   String? _token;
 
   /// 是否已经登录
   bool isLogin = false;
 
-  User? get user => _user;
 
   // 用户登录的方法处理
   Future<bool> login(String username, String password) async {
@@ -35,9 +34,10 @@ class UserModel extends ChangeNotifier {
     final token = SpUtil.getString('token');
     print('获取到本地存储的用户token:$token');
     if (token != null) {
-     final user = await utils.api.getUser(token);
-     if(user!=null){
-       _user = user;
+     final _user = await utils.api.getUser(token);
+     if(_user!=null){
+       print('登录成功:${_user.nickName}');
+       user = _user;
        _token = _token;
        isLogin = true;
        notifyListeners();

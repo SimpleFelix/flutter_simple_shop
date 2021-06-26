@@ -45,10 +45,12 @@ class Api extends ApiService {
   @override
   Future<User?> getUser(String token) async {
     final result = await request.get('/api/auth/current', data: {'token': token},onStart: AppController.find.addAuthDetail,isTaokeApi: false);
-    print('获取到用户信息:$result');
+
     try{
       return User.fromJson(jsonDecode(result));
-    }catch(_){
+    }catch(e,s){
+      print(e);
+      print(s);
       return null;
     }
   }
