@@ -639,6 +639,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.0"
+  notus_format:
+    dependency: transitive
+    description:
+      name: notus_format
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.0.3"
   package_config:
     dependency: transitive
     description:
@@ -793,6 +800,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.0.1"
+  quill_format:
+    dependency: transitive
+    description:
+      name: quill_format
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.0.2"
   rational:
     dependency: transitive
     description:
@@ -1071,6 +1085,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "3.1.0"
+  zefyrka:
+    dependency: "direct main"
+    description:
+      name: zefyrka
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.0.5+1"
 sdks:
   dart: ">=2.13.0 <3.0.0"
   flutter: ">=2.2.0"

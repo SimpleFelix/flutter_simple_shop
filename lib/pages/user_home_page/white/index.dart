@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:demo1/pages/user_home_page/white/views/markdown_preview.dart';
 import 'package:extended_text_field/extended_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart' as su;
@@ -157,6 +158,15 @@ class _WhiteIndexState extends State<WhiteIndex> {
           }),
           buildSvgPictureIcon('assets/svg/gengduo.svg', 80, onTap: () {
             MoreActions.show([
+              ListTile(
+                title: Text('预览正文内容'),
+                onTap: (){
+                  Get.back();
+                  final data = _textEditingController.text;
+                  Get.to(()=>MarkDownPreview(data: data));
+                },
+                leading: Icon(Icons.preview),
+              ),
               ListTile(
                 title: Text('添加标题'),
                 onTap: () {},
