@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:sp_util/sp_util.dart';
 
 import '../../common/utils.dart';
 import '../../modals/user.dart';
@@ -11,26 +12,36 @@ class UserModel extends ChangeNotifier {
   User? _user;
   String? _token;
 
-  User? get user=> _user;
+  /// 是否已经登录
+  bool isLogin = false;
+
+  User? get user => _user;
 
   // 用户登录的方法处理
   Future<bool> login(String username, String password) async {
-    return await utils.api.login(username, password,
-        userHandle: loginSuccess,
-        tokenHandle: tokenHandle,
-        loginFail: utils.showMessage);
-  }
-
-  // 用户登录成功
-  void loginSuccess(User user) {
-    _user = user;
-    notifyListeners();
-    utils.showMessage('欢迎回来,${user.nickName}');
+    return await utils.api.login(username, password, tokenHandle: tokenHandle, loginFail: utils.showMessage);
   }
 
   // token处理
   void tokenHandle(String token) {
     _token = token;
+    SpUtil.putString('token', token);
+    appStartWithUserModel();
     notifyListeners();
+  }
+
+  // app启动的时候获取token,判断是否失败,
+  Future<void> appStartWithUserModel() async {
+    final token = SpUtil.getString('token');
+    print('获取到本地存储的用户token:$token');
+    if (token != null) {
+     final user = await utils.api.getUser(token);
+     if(user!=null){
+       _user = user;
+       _token = _token;
+       isLogin = true;
+       notifyListeners();
+     }
+    }
   }
 }

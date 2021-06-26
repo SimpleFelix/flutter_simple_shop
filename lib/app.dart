@@ -9,7 +9,6 @@ import './pages/index_page/index_home.dart';
 import './pages/jiujiu_page/index_home.dart';
 import './pages/user_home_page/index_home.dart';
 import './personal/personal.dart';
-import 'pages/index_page/desktop/index.dart';
 import 'provider/user_provider.dart';
 
 class App extends StatefulWidget {

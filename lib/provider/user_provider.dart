@@ -7,7 +7,7 @@ import '../util/request_service.dart';
 import '../util/result_obj_util.dart';
 import '../util/user_utils.dart';
 
-class UserProvider with ChangeNotifier {
+class UserProvider extends ChangeNotifier {
 
   //------------- 用户收藏商品信息
   PageInfo? pageInfo; // 用户收藏商品信息

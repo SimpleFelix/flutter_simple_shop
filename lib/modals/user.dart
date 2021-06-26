@@ -27,7 +27,7 @@ T? asT<T extends Object?>(dynamic value, [T? defaultValue]) {
   }
   try {
     if (value != null) {
-      final valueS = value.toString();
+      final String valueS = value.toString();
       if ('' is T) {
         return valueS as T;
       } else if (0 is T) {
@@ -56,53 +56,71 @@ class User {
     required this.id,
     required this.loginNumber,
     required this.nickName,
-    this.email,
+    required this.email,
     required this.picture,
-     this.phone,
+    required this.phone,
     required this.password,
-    this.loginTime,
-    this.type,
-    required this.enabled,
-    this.authorities,
-    required this.accountNonLocked,
-    required this.credentialsNonExpired,
-    required this.accountNonExpired,
-    this.username,
+    required this.loginTime,
+    required this.type,
+    required this.roles,
+    required this.resourcesCategories,
+    required this.status,
+    required this.salt,
   });
 
-  factory User.fromJson(Map<String, dynamic> jsonRes) => User(
-    id: asT<int>(jsonRes['id'])!,
-    loginNumber: asT<String>(jsonRes['loginNumber'])!,
-    nickName: asT<String>(jsonRes['nickName'])!,
-    email: asT<Object?>(jsonRes['email']),
-    picture: asT<String>(jsonRes['picture'])!,
-    phone: asT<String?>(jsonRes['phone']),
-    password: asT<String>(jsonRes['password'])!,
-    loginTime: asT<Object?>(jsonRes['loginTime']),
-    type: asT<int?>(jsonRes['type']),
-    enabled: asT<bool>(jsonRes['enabled'])!,
-    authorities: asT<Object?>(jsonRes['authorities']),
-    accountNonLocked: asT<bool>(jsonRes['accountNonLocked'])!,
-    credentialsNonExpired: asT<bool>(jsonRes['credentialsNonExpired'])!,
-    accountNonExpired: asT<bool>(jsonRes['accountNonExpired'])!,
-    username: asT<String?>(jsonRes['username']),
-  );
+  factory User.fromJson(Map<String, dynamic> jsonRes) {
+    final List<Roles>? roles = jsonRes['roles'] is List ? <Roles>[] : null;
+    if (roles != null) {
+      for (final dynamic item in jsonRes['roles']!) {
+        if (item != null) {
+          tryCatch(() {
+            roles.add(Roles.fromJson(asT<Map<String, dynamic>>(item)!));
+          });
+        }
+      }
+    }
+
+    final List<Object>? resourcesCategories =
+    jsonRes['resourcesCategories'] is List ? <Object>[] : null;
+    if (resourcesCategories != null) {
+      for (final dynamic item in jsonRes['resourcesCategories']!) {
+        if (item != null) {
+          tryCatch(() {
+            resourcesCategories.add(asT<Object>(item)!);
+          });
+        }
+      }
+    }
+    return User(
+      id: asT<int>(jsonRes['id'])!,
+      loginNumber: asT<String>(jsonRes['loginNumber'])!,
+      nickName: asT<String>(jsonRes['nickName'])!,
+      email: asT<Object>(jsonRes['email'])!,
+      picture: asT<String>(jsonRes['picture'])!,
+      phone: asT<Object>(jsonRes['phone'])!,
+      password: asT<String>(jsonRes['password'])!,
+      loginTime: asT<Object>(jsonRes['loginTime'])!,
+      type: asT<int>(jsonRes['type'])!,
+      roles: roles!,
+      resourcesCategories: resourcesCategories!,
+      status: asT<int>(jsonRes['status'])!,
+      salt: asT<String>(jsonRes['salt'])!,
+    );
+  }
 
   int id;
   String loginNumber;
   String nickName;
-  Object? email;
+  Object email;
   String picture;
-  String? phone;
+  Object phone;
   String password;
-  Object? loginTime;
-  int? type;
-  bool enabled;
-  Object? authorities;
-  bool accountNonLocked;
-  bool credentialsNonExpired;
-  bool accountNonExpired;
-  String? username;
+  Object loginTime;
+  int type;
+  List<Roles> roles;
+  List<Object> resourcesCategories;
+  int status;
+  String salt;
 
   @override
   String toString() {
@@ -119,14 +137,56 @@ class User {
     'password': password,
     'loginTime': loginTime,
     'type': type,
-    'enabled': enabled,
-    'authorities': authorities,
-    'accountNonLocked': accountNonLocked,
-    'credentialsNonExpired': credentialsNonExpired,
-    'accountNonExpired': accountNonExpired,
-    'username': username,
+    'roles': roles,
+    'resourcesCategories': resourcesCategories,
+    'status': status,
+    'salt': salt,
   };
 
   User clone() =>
       User.fromJson(asT<Map<String, dynamic>>(jsonDecode(jsonEncode(this)))!);
+}
+
+class Roles {
+  Roles({
+    required this.id,
+    required this.name,
+    required this.description,
+    required this.createDate,
+    required this.status,
+    required this.roleSort,
+  });
+
+  factory Roles.fromJson(Map<String, dynamic> jsonRes) => Roles(
+    id: asT<int>(jsonRes['id'])!,
+    name: asT<String>(jsonRes['name'])!,
+    description: asT<String>(jsonRes['description'])!,
+    createDate: asT<int>(jsonRes['createDate'])!,
+    status: asT<int>(jsonRes['status'])!,
+    roleSort: asT<int>(jsonRes['roleSort'])!,
+  );
+
+  int id;
+  String name;
+  String description;
+  int createDate;
+  int status;
+  int roleSort;
+
+  @override
+  String toString() {
+    return jsonEncode(this);
+  }
+
+  Map<String, dynamic> toJson() => <String, dynamic>{
+    'id': id,
+    'name': name,
+    'description': description,
+    'createDate': createDate,
+    'status': status,
+    'roleSort': roleSort,
+  };
+
+  Roles clone() =>
+      Roles.fromJson(asT<Map<String, dynamic>>(jsonDecode(jsonEncode(this)))!);
 }

@@ -3,14 +3,12 @@ import 'dart:io';
 import 'package:dd_taoke_sdk/network/util.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
-
-// import 'package:flutter_stetho/flutter_stetho.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:provider/provider.dart';
+import 'package:sp_util/sp_util.dart';
 
-// import 'package:window_size/window_size.dart';
 import './app.dart';
 import './fluro/application.dart';
 import './fluro/routes.dart';
@@ -18,14 +16,12 @@ import './provider/providers.dart';
 import 'common/service.dart';
 import 'common/utils.dart';
 import 'common/widget_util.dart';
+import 'controller/app_controller.dart';
 import 'fluro/navigator_util.dart';
 
 void main() async {
-
-
   /// 初始化sdk
   DdTaokeUtil.instance.init('https://localhost', '443'); //  远程服务器
-
 
   /// 路由配置
   /// [已弃用]
@@ -33,6 +29,8 @@ void main() async {
   Routes.configureRoutes(router);
   Application.router = router;
 
+  /// 本地缓存工具类
+  await SpUtil.getInstance();
 
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -45,6 +43,7 @@ void main() async {
   /// https 请求处理
   HttpOverrides.global = MyHttpOverrides();
 
+  /// getx 控制器
 
   /// 构建web程序需要注释这个,会报错
   // if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
@@ -69,13 +68,10 @@ class _MyAppState extends State<MyApp> {
         debugShowCheckedModeBanner: false,
         title: '典典小卖部',
         onGenerateRoute: Application.router.generator,
-        theme: ThemeData(
-          primaryColor: Colors.pink,
-          bottomNavigationBarTheme: BottomNavigationBarThemeData(
-            selectedLabelStyle: TextStyle(color: Colors.pink),
-            selectedItemColor: Colors.pink
-          )
-        ),
+        theme: ThemeData(primaryColor: Colors.pink, bottomNavigationBarTheme: BottomNavigationBarThemeData(selectedLabelStyle: TextStyle(color: Colors.pink), selectedItemColor: Colors.pink)),
+        onReady: () {
+          Get.put(AppController());
+        },
         home: App(),
       ),
     );
@@ -89,8 +85,6 @@ class _MyAppState extends State<MyApp> {
 class MyHttpOverrides extends HttpOverrides {
   @override
   HttpClient createHttpClient(SecurityContext? context) {
-    return super.createHttpClient(context)
-      ..badCertificateCallback =
-          (X509Certificate cert, String host, int port) => true;
+    return super.createHttpClient(context)..badCertificateCallback = (X509Certificate cert, String host, int port) => true;
   }
 }
