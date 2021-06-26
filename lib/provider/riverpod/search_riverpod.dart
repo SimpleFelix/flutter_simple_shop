@@ -11,6 +11,7 @@ class SearchState extends ChangeNotifier {
   int page = 1;
   int pageSize = 20;
   String searchKeyWorlds = '';
+  bool initLoading = false;
 
   List<Product> products = []; // 产品列表
 
@@ -20,12 +21,24 @@ class SearchState extends ChangeNotifier {
     if (worlds != null) {
       searchKeyWorlds = worlds;
       products.clear();
-      notifyListeners();
       page = 1;
+      initLoading = true;
+      notifyListeners();
     }
     final result = await DdTaokeSdk.instance.superSearch(param: SuperSearchParam(keyWords: searchKeyWorlds, pageSize: '$pageSize', type: '$type', pageId: '$page'));
     if (result != null) {
       products.addAll(result.list ?? []);
+      page++;
+      initLoading = false;
+      notifyListeners();
+    }
+  }
+
+  /// 加载下一页
+  Future<void> nextPage() async {
+    final result = await DdTaokeSdk.instance.superSearch(param: SuperSearchParam(keyWords: searchKeyWorlds, pageSize: '$pageSize', type: '$type', pageId: '$page'));
+    if(result!=null){
+      products.addAll(result.list??[]);
       page++;
       notifyListeners();
     }

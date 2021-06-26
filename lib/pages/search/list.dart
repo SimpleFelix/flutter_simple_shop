@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyrefresh/easy_refresh.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../provider/riverpod/search_riverpod.dart';
 import '../../widgets/appbar_search.dart';
 import 'component/product_list.dart';
 
@@ -16,7 +19,15 @@ class SearchListIndex extends StatelessWidget {
         value: value,
         bgColor: Colors.white,
       ),
-      body: SearchProductList(),
+      body: EasyRefresh.custom(
+        slivers: [
+          SliverToBoxAdapter(
+            child: SearchProductList(),
+          )
+        ],
+        onLoad: context.read(searchRiverpod).nextPage,
+        footer: MaterialFooter(),
+      ),
     );
   }
 }

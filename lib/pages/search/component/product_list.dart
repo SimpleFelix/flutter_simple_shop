@@ -24,7 +24,8 @@ class SearchProductList extends HookWidget {
           child: WaterfallGoodsCard(item),
         );
       },
-      itemCount: products.length,
+      itemCount: products.length,physics: NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
     );
   }
 }
