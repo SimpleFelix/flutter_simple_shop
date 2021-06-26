@@ -7,8 +7,9 @@ import '../../widgets/detail_simple_bborder_button.dart';
 
 class DetailImagesWidget extends StatelessWidget {
   final String? images;
+  final bool hideTitle;
 
-  DetailImagesWidget({this.images});
+  DetailImagesWidget({this.images, this.hideTitle = false});
 
   @override
   Widget build(BuildContext context) {
@@ -20,17 +21,15 @@ class DetailImagesWidget extends StatelessWidget {
         shrinkWrap: true,
         children: <Widget>[
           // 文字
-          Container(
-            padding: EdgeInsets.only(top: 5.0),
-            child: Flex(
-              direction: Axis.horizontal,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                DetailSimpleBorderButton(text: '详情', isCurrent: true),
-                DetailSimpleBorderButton(text: '推荐', isCurrent: false)
-              ],
+          if (!hideTitle)
+            Container(
+              padding: EdgeInsets.only(top: 5.0),
+              child: Flex(
+                direction: Axis.horizontal,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[DetailSimpleBorderButton(text: '详情', isCurrent: true), DetailSimpleBorderButton(text: '推荐', isCurrent: false)],
+              ),
             ),
-          ),
           images != null
               ? Column(
                   children: _bulidImagesList(),
@@ -68,7 +67,7 @@ class DetailImagesWidget extends StatelessWidget {
     return detailImageFromJson(images!);
   }
 
-  String _getUrl(String src){
+  String _getUrl(String src) {
     var hasHttpHead = src.contains('https:');
     if (!hasHttpHead) {
       src = 'https:$src';
