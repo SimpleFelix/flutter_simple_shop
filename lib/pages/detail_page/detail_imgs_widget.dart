@@ -1,7 +1,8 @@
-import 'package:demo1/modals/goods_detail_image.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../modals/goods_detail_image.dart';
 import '../../widgets/detail_simple_bborder_button.dart';
 
 class DetailImagesWidget extends StatelessWidget {
@@ -25,8 +26,8 @@ class DetailImagesWidget extends StatelessWidget {
               direction: Axis.horizontal,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                DetailSimpleBorderButton(text: "详情", isCurrent: true),
-                DetailSimpleBorderButton(text: "推荐", isCurrent: false)
+                DetailSimpleBorderButton(text: '详情', isCurrent: true),
+                DetailSimpleBorderButton(text: '推荐', isCurrent: false)
               ],
             ),
           ),
@@ -37,7 +38,7 @@ class DetailImagesWidget extends StatelessWidget {
               : Container(
                   margin: EdgeInsets.only(top: 10.0),
                   child: Center(
-                    child: Text("暂无图文"),
+                    child: Text('暂无图文'),
                   )),
           Container(
             height: ScreenUtil().setHeight(200),
@@ -48,18 +49,15 @@ class DetailImagesWidget extends StatelessWidget {
   }
 
   List<Widget> _bulidImagesList() {
-    List<Widget> imagesWidget = [];
-    if (images != "" && images != null) {
+    var imagesWidget = <Widget>[];
+    if (images != '' && images != null) {
       List imagesArr = _getImageList();
-      for (DetailImage item in imagesArr as Iterable<DetailImage>) {
-        String src = _getUrl(item.img!);
+      for (var item in imagesArr as Iterable<DetailImage>) {
+        var src = _getUrl(item.img!);
         imagesWidget.add(ExtendedImage.network(
           src,
           fit: BoxFit.fill,
           cache: true,
-          border: Border.all(color: Colors.red, width: 1.0),
-          borderRadius: BorderRadius.all(Radius.circular(30.0)),
-          //cancelToken: cancellationToken,
         ));
       }
     }
@@ -71,9 +69,9 @@ class DetailImagesWidget extends StatelessWidget {
   }
 
   String _getUrl(String src){
-    bool hasHttpHead = src.contains("https:");
+    var hasHttpHead = src.contains('https:');
     if (!hasHttpHead) {
-      src = "https:$src";
+      src = 'https:$src';
       return src;
     }
     return src;

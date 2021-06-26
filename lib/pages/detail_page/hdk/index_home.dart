@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:common_utils/common_utils.dart';
 import 'package:dd_taoke_sdk/dd_taoke_sdk.dart';
 import 'package:dd_taoke_sdk/model/product.dart';
+import 'package:demo1/pages/detail_page/detail_imgs_widget.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:fbutton_nullsafety/fbutton_nullsafety.dart';
 import 'package:fcontrol_nullsafety/fdefine.dart';
@@ -35,7 +36,6 @@ class HaoDanKuDetailItem extends StatefulWidget {
 
 class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
     with TickerProviderStateMixin {
-  List<String> images = []; // 商品详情图
   late Product info;
   List<Video>? videos = [];
   ShopInfo? _shopInfo;
@@ -947,13 +947,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
   SingleChildScrollView buildImagesWidget() {
     return SingleChildScrollView(
       key: _detailImagesGlogbalKey,
-      child: Column(
-          children: images.map((item) => ExtendedImage.network(
-                    MImageUtils.magesProcessor(item),
-                    fit: BoxFit.fill,
-                    cache: true,
-                  ))
-              .toList()),
+      child: DetailImagesWidget(images: info.detailPics,),
     );
   }
 
