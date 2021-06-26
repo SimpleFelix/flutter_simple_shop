@@ -22,4 +22,6 @@ class AppController extends GetxController {
     dio.interceptors.add(AuthInterceptor());
   }
 
+
+
 }
