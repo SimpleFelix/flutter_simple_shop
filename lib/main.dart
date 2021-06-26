@@ -30,7 +30,9 @@ void main() async {
   Application.router = router;
 
   /// 本地缓存工具类
-  await SpUtil.getInstance();
+  try{
+    await SpUtil.getInstance();
+  }catch(e){}
 
   WidgetsFlutterBinding.ensureInitialized();
 

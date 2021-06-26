@@ -4,6 +4,7 @@ import 'package:common_utils/common_utils.dart';
 import 'package:dd_taoke_sdk/dd_taoke_sdk.dart';
 import 'package:dd_taoke_sdk/model/coupon_link_result.dart';
 import 'package:dd_taoke_sdk/model/product.dart';
+import 'package:demo1/widgets/loading_widget.dart';
 import 'package:fbutton_nullsafety/fbutton_nullsafety.dart';
 import 'package:fcontrol_nullsafety/fdefine.dart';
 import 'package:flutter/cupertino.dart';
@@ -139,9 +140,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
           if (snapshot.hasData) {
             return buildCustomScrollViewShop();
           }
-          return Center(
-            child: CircularProgressIndicator(),
-          );
+          return LoadingWidget();
         },
       ),
     );

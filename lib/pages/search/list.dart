@@ -1,3 +1,4 @@
+import 'package:demo1/pages/search/component/initloading_status.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -18,9 +19,11 @@ class SearchListIndex extends StatelessWidget {
       appBar: SAppBarSearch(
         value: value,
         bgColor: Colors.white,
+        onSearch: (String value)=> context.read(searchRiverpod).loadData(worlds: value),
       ),
       body: EasyRefresh.custom(
         slivers: [
+          SearchInitLoadingStatus(),
           SliverToBoxAdapter(
             child: SearchProductList(),
           )

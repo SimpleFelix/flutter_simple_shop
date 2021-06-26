@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class Hot extends StatelessWidget {
   final String text;
@@ -13,18 +14,14 @@ class Hot extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Image.asset(
-              'assets/icons/hot.png',
-              height: 22,
-              width: 22,
-            ),
+            SvgPicture.asset('assets/svg/hot.svg',width: 22,height: 22),
             Expanded(
               child: Container(
                 child: Text(
                   '$text',
                   style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.black),
+                      fontSize: 10,
+                      color: Colors.grey.shade400),
                 ),
               ),
             )

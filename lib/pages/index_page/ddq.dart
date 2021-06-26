@@ -92,9 +92,6 @@ class _DDQWidgetState extends State<DDQWidget> {
         builder: (BuildContext context, BoxConstraints constraints) {
           return Container(
             width: double.infinity,
-            decoration: BoxDecoration(
-              color: Colors.white,
-            ),
             child: Column(
               children: <Widget>[
                 SizedBox(
@@ -104,7 +101,6 @@ class _DDQWidgetState extends State<DDQWidget> {
                 SizedBox(height: 12),
                 Container(
                   alignment: Alignment.topLeft,
-                  margin: EdgeInsets.only(left: 12),
                   child: Text(
                     title,
                     style: TextStyle(
@@ -116,9 +112,8 @@ class _DDQWidgetState extends State<DDQWidget> {
                     textAlign: TextAlign.left,
                   ),
                 ),
-                SizedBox(height: 12),
+                SizedBox(height: 6),
                 Container(
-                  margin: EdgeInsets.only(left: 12),
                   child: Row(
                     verticalDirection: VerticalDirection.up,
                     mainAxisAlignment: MainAxisAlignment.start,

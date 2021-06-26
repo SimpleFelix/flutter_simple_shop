@@ -56,58 +56,6 @@ class _AppState extends State<App> {
     );
   }
 
-  Widget? _buildAppBar() {
-    Widget? widget = AppBar(
-      leading: Icon(Icons.message),
-      title: Container(
-        height: ScreenUtil().setHeight(120),
-        alignment: Alignment.center,
-        child: TextField(
-          textAlignVertical: TextAlignVertical.center,
-          textAlign: TextAlign.left,
-          decoration: InputDecoration(
-            hintText: '请输入淘宝复制的标题',
-            border: InputBorder.none,
-            alignLabelWithHint: true,
-            filled: true,
-            fillColor: Colors.black12,
-            suffixIcon: Icon(
-              Icons.search,
-              color: Colors.grey,
-            ),
-            hintStyle: TextStyle(
-              height: 1,
-            ),
-          ),
-          style: TextStyle(height: 1, color: Colors.black),
-        ),
-      ),
-      actions: <Widget>[
-        Padding(
-          padding: EdgeInsets.only(left: 5.0, right: 10.0),
-          child: GestureDetector(
-            onTap: () {
-              //跳转到搜索页面
-              Navigator.pushNamed(context, 'search');
-            },
-            child: Icon(
-              Icons.category,
-            ),
-          ),
-        )
-      ],
-    );
-
-    // 这里写是否显示或者影藏appbar(4--代表用户点击了我的页面)
-    if (_currentIndex == 4 ||
-        _currentIndex == 3 ||
-        _currentIndex == 0 ||
-        _currentIndex == 1) {
-      widget = null;
-    }
-
-    return widget;
-  }
 
   @override
   void initState() {
@@ -149,7 +97,6 @@ class _AppState extends State<App> {
         designSize: Size(1440, 2940),
         orientation: Orientation.portrait);
     return Scaffold(
-      appBar: _buildAppBar() as PreferredSizeWidget?,
       // 滚动到顶部按钮
       floatingActionButton: !showToTopBtn ||
               _currentIndex == 2 ||

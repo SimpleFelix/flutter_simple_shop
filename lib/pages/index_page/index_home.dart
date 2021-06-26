@@ -25,8 +25,6 @@ import '../search/view.dart';
 import 'component/category_component.dart';
 import 'component/category_item_layout.dart';
 import 'component/topic_carousel.dart';
-import 'grid_menu_list.dart';
-import 'store/component_index.dart';
 
 /// 首页
 class IndexHome extends StatefulWidget {
@@ -38,7 +36,8 @@ class IndexHome extends StatefulWidget {
   _IndexHomeState createState() => _IndexHomeState();
 }
 
-class _IndexHomeState extends State<IndexHome> with TickerProviderStateMixin, AfterLayoutMixin<IndexHome> {
+class _IndexHomeState extends State<IndexHome>
+    with TickerProviderStateMixin, AfterLayoutMixin<IndexHome> {
 //   状态管理
   late final IndexProvider _indexProvider = context.watch<IndexProvider>();
   List<Category> categorys = [];
@@ -68,15 +67,16 @@ class _IndexHomeState extends State<IndexHome> with TickerProviderStateMixin, Af
   @override
   Widget build(BuildContext context) {
     return Consumer2<DtkIndexGoodsModal, CategoryProvider>(
-      builder: (content, digm, categoryProvider, _) => PullToRefreshNotification(
-          pullBackOnRefresh: false,
-          maxDragOffset: 80.0,
-          armedDragUpCancel: false,
-          onRefresh: () async {
-            await indexGoodsRepository.refresh(true);
-            return true;
-          },
-          child: _buildIndexBody()),
+      builder: (content, digm, categoryProvider, _) =>
+          PullToRefreshNotification(
+              pullBackOnRefresh: false,
+              maxDragOffset: 80.0,
+              armedDragUpCancel: false,
+              onRefresh: () async {
+                await indexGoodsRepository.refresh(true);
+                return true;
+              },
+              child: _buildIndexBody()),
       // child: IndexLoadingSkeletonPage(),)
     );
   }
@@ -84,12 +84,21 @@ class _IndexHomeState extends State<IndexHome> with TickerProviderStateMixin, Af
   // 首页商品列表
   Widget _buildGoodsList() {
     return LoadingMoreSliverList(SliverListConfig<Product>(
-      extendedListDelegate: SliverWaterfallFlowDelegateWithFixedCrossAxisCount(crossAxisCount: 2, crossAxisSpacing: ScreenUtil().setHeight(30), mainAxisSpacing: ScreenUtil().setWidth(30)),
+      extendedListDelegate: SliverWaterfallFlowDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: ScreenUtil().setHeight(30),
+          mainAxisSpacing: ScreenUtil().setWidth(30)),
       itemBuilder: (context, item, index) {
-        return WaterfallGoodsCard(item);
+        return PhysicalModel(
+          color: Colors.grey.shade50,
+          elevation: 3,
+          borderRadius: BorderRadius.circular(8),
+          child: WaterfallGoodsCard(item),
+        );
       },
       sourceList: indexGoodsRepository,
-      padding: EdgeInsets.only(left: ScreenUtil().setWidth(50), right: ScreenUtil().setWidth(50)),
+      padding: EdgeInsets.only(
+          left: ScreenUtil().setWidth(50), right: ScreenUtil().setWidth(50)),
 //      lastChildLayoutType: LastChildLayoutType.foot,
       indicatorBuilder: (context, state) {
         return LoadingMoreListCostumIndicator(state, isSliver: true);
@@ -104,7 +113,9 @@ class _IndexHomeState extends State<IndexHome> with TickerProviderStateMixin, Af
       carouselISLoaded = true;
     });
     await context.read<DtkIndexGoodsModal>().getGoodsList(1); // 首页商品列表
-    await context.read<CategoryProvider>().loadDtkCategoryDatas(context); // 分类数据
+    await context
+        .read<CategoryProvider>()
+        .loadDtkCategoryDatas(context); // 分类数据
     setState(() {
       categorys = context.read<CategoryProvider>().categorys;
       tabController = TabController(length: categorys.length + 1, vsync: this);
@@ -156,7 +167,6 @@ class _IndexHomeState extends State<IndexHome> with TickerProviderStateMixin, Af
 
         // 网格菜单
 
-
         //钉钉抢
         SliverToBoxAdapter(
           child: DDQWidget(),
@@ -191,12 +201,14 @@ class _IndexHomeState extends State<IndexHome> with TickerProviderStateMixin, Af
         // ),
         SliverToBoxAdapter(
           child: Container(
-            margin: EdgeInsets.symmetric(horizontal: 15,vertical: 20),
-            child: Text('随便看看',style: TextStyle(
-              fontSize: 65.sp,
-              color: Colors.black,
-              fontWeight: FontWeight.bold
-            ),),
+            margin: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+            child: Text(
+              '随便看看',
+              style: TextStyle(
+                  fontSize: 65.sp,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold),
+            ),
           ),
         ),
 
@@ -253,12 +265,15 @@ class _IndexHomeState extends State<IndexHome> with TickerProviderStateMixin, Af
         decoration: InputDecoration(
           isDense: true,
           hintText: '输入商品名或者宝贝标题搜索',
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(50.0), borderSide: BorderSide.none),
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(50.0),
+              borderSide: BorderSide.none),
           alignLabelWithHint: true,
           filled: true,
           fillColor: Colors.white,
           suffixIcon: IconButton(onPressed: null, icon: Icon(Icons.search)),
-          contentPadding: const EdgeInsets.symmetric(vertical: 5, horizontal: 12),
+          contentPadding:
+              const EdgeInsets.symmetric(vertical: 5, horizontal: 12),
         ),
       ),
       actions: <Widget>[
@@ -301,7 +316,8 @@ class _IndexHomeState extends State<IndexHome> with TickerProviderStateMixin, Af
 
   // 监听主滑动距离
   void _addMainScrollListening() {
-    var topAppbarHei = 330.h + MediaQueryData.fromWindow(window).padding.top; // 顶部搜索框和选项卡高度
+    var topAppbarHei =
+        330.h + MediaQueryData.fromWindow(window).padding.top; // 顶部搜索框和选项卡高度
     _mainScrollController.addListener(() {
       var titleTopHei = _titleLocationHandler();
       if (titleTopHei <= topAppbarHei) {

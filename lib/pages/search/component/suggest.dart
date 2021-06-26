@@ -77,7 +77,12 @@ class Suggest extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      Text(
+                        item.theme!,
+                        style: TextStyle(color: Colors.black),
+                      ),
                       if (item.label!.isNotEmpty)
                         Badge(
                           badgeContent: Text(
@@ -86,20 +91,12 @@ class Suggest extends StatelessWidget {
                           ),
                           badgeColor: Colors.white,
                         ),
-                      if (item.label!.isNotEmpty)
-                        SizedBox(
-                          width: 5,
-                        ),
-                      Text(
-                        item.theme!,
-                        style: TextStyle(color: Colors.black),
-                      ),
                     ],
                   ),
                   SizedBox(
                     height: 5,
                   ),
-                  Hot(text: ' ${item.hotValue}')
+                  Hot(text: ' ${item.hotValue}  热度')
                 ],
               ),
             ))

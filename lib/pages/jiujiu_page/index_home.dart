@@ -1,16 +1,15 @@
-import 'package:dd_taoke_sdk/model/product.dart';
 import 'package:demo1/pages/jiujiu_page/image_nav.dart';
-import 'package:demo1/repository/jiujiu_respository.dart';
+import 'package:demo1/pages/jiujiu_page/loading_status.dart';
+import 'package:demo1/pages/jiujiu_page/riverpod.dart';
 import 'package:demo1/widgets/RoundUnderlineTabIndicator.dart';
 import 'package:demo1/widgets/index_sticky_tabbar_delegate.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyrefresh/easy_refresh.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:loading_more_list/loading_more_list.dart';
-import 'package:provider/provider.dart';
-import 'package:pull_to_refresh_notification/pull_to_refresh_notification.dart';
-import '../../provider/nine_goods_provider.dart'; // 9.9包邮的provider
-import 'goods_item_widget.dart';
-import 'menu_data.dart';
+import 'package:get/get.dart';
+import '../../provider/nine_goods_provider.dart';
+import 'list.dart'; // 9.9包邮的provider
 
 // 9.9包邮专区
 class JiujiuIndexHome extends StatefulWidget {
@@ -24,91 +23,74 @@ class JiujiuIndexHome extends StatefulWidget {
 
 class _JiujiuIndexHomeState extends State<JiujiuIndexHome>
     with TickerProviderStateMixin {
-  NineGoodsProvider? nineGoodsProvider;
   bool initLoading = false;
   bool nextPageLoading = false;
 
-  late JiuJiuRepository jiuJiuRepository;
   TabController? tabController;
 
   @override
   void initState() {
-    this.jiuJiuRepository = JiuJiuRepository('-1');
-    this.tabController = TabController(length: menuText.length, vsync: this);
+    tabController = TabController(length: 4, vsync: this);
+    Future.microtask(context.read(jiujiuRiverpod).init);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<NineGoodsProvider>(
-      builder: (context, nineGoodsProvider, _) => PullToRefreshNotification(
-        pullBackOnRefresh: true,
-        maxDragOffset: 80.0,
-        onRefresh: () async {
-          await jiuJiuRepository.refresh(true);
-          return true;
-        },
-        child: LoadingMoreCustomScrollView(slivers: <Widget>[
-          SliverAppBar(
-            title: Text('9块9包邮'),
-            centerTitle: true,
-            pinned: true,
-          ),
-          // 顶部图片导航
-          SliverToBoxAdapter(
-            child: buildRow1(),
-          ),
-          SliverToBoxAdapter(
-            child: buildRow2(),
-          ),
-          SliverToBoxAdapter(
-            child: SizedBox(
-              height: 10,
-            ),
-          ),
-          SliverPersistentHeader(
-            pinned: true,
-            delegate: IndexStickyTabBarDelegate(
-                color: Colors.white,
-                child: TabBar(
-                  onTap: (index) async {
-                    setState(() {
-                      jiuJiuRepository =
-                          JiuJiuRepository(menuIds[index].toString());
-                    });
-                    await jiuJiuRepository.refresh(true);
-                  },
-                  controller: tabController,
-                  isScrollable: true,
-                  indicator: RoundUnderlineTabIndicator(
-                      insets: EdgeInsets.only(bottom: 8),
-                      borderSide: BorderSide(
-                        width: 2,
-                        color: Colors.pinkAccent,
-                      )),
-                  tabs: menuText.map((item) {
-                    return Tab(text: item);
-                  }).toList(),
-                  labelColor: Colors.pinkAccent,
-                  labelStyle: TextStyle(
-                      fontSize: ScreenUtil().setSp(50),
-                      fontWeight: FontWeight.w600),
-                  indicatorColor: Colors.pinkAccent,
-                  unselectedLabelColor: Colors.black,
-                  unselectedLabelStyle:
-                      TextStyle(fontSize: ScreenUtil().setSp(50)),
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.white,
+        title: Text('9块9包邮',style: TextStyle(color: Colors.black)),
+        bottom: PreferredSize(preferredSize: Size(Get.width,48),
+        child: Container(
+          alignment: Alignment.centerLeft,
+          child: TabBar(
+            onTap:context.read(jiujiuRiverpod).changeIndex,
+            controller: tabController,
+            isScrollable: true,
+            indicator: RoundUnderlineTabIndicator(
+                insets: EdgeInsets.only(bottom: 8),
+                borderSide: BorderSide(
+                  width: 2,
+                  color: Colors.pinkAccent,
                 )),
+            tabs: [
+              Tab(
+                text: '精选',
+              ),
+              Tab(
+                text: '5.9元区',
+              ),
+              Tab(
+                text: '9.9元区',
+              ),
+              Tab(
+                text: '19.9元区',
+              ),
+            ],
+            labelColor: Colors.pinkAccent,
+            labelStyle: TextStyle(
+                fontSize: ScreenUtil().setSp(50),
+                fontWeight: FontWeight.w600),
+            indicatorColor: Colors.pinkAccent,
+            unselectedLabelColor: Colors.black,
+            unselectedLabelStyle:
+            TextStyle(fontSize: ScreenUtil().setSp(50)),
           ),
-          LoadingMoreSliverList(SliverListConfig<Product>(
-              itemBuilder: (context, item, index) {
-                return GoodsItemWidget(
-                  goodsItem: item,
-                );
-              },
-              sourceList: jiuJiuRepository))
-          //
-        ], rebuildCustomScrollView: true),
+        ),
+
+        ),
       ),
+      body: EasyRefresh.custom(
+          header: MaterialHeader(),
+          footer: MaterialFooter(),
+          onRefresh: context.read(jiujiuRiverpod).refresh,
+          onLoad: context.read(jiujiuRiverpod).nextPage,
+          slivers: [
+            JiuJiuLoadingStatus(),
+            JiuJiuProductList()
+          ]),
     );
   }
 
@@ -226,18 +208,6 @@ class _JiujiuIndexHomeState extends State<JiujiuIndexHome>
         )
       ],
     );
-  }
-
-  @override
-  void didChangeDependencies() async {
-    super.didChangeDependencies();
-    var nineGoodsProvider =
-        Provider.of<NineGoodsProvider>(context);
-    if (this.nineGoodsProvider != nineGoodsProvider) {
-      this.nineGoodsProvider = nineGoodsProvider;
-      _setInitLoadingState(true);
-      _setInitLoadingState(false);
-    }
   }
 
   void _setInitLoadingState(bool isLoading) {
