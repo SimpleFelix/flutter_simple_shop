@@ -40,9 +40,7 @@ class _UserLoginPageState extends State<UserLoginPage> {
           Padding(
             padding: EdgeInsets.only(right: 20.0),
             child: Center(
-              child: Text('注册账号',
-                  style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.w500)),
+              child: Text('注册账号', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500)),
             ),
           )
         ],
@@ -140,9 +138,7 @@ class _UserLoginPageState extends State<UserLoginPage> {
               });
             },
             child: Image.asset(
-              isAgree
-                  ? 'assets/icons/select.png'
-                  : 'assets/icons/select_no.png',
+              isAgree ? 'assets/icons/select.png' : 'assets/icons/select_no.png',
               height: ScreenUtil().setHeight(58),
               width: ScreenUtil().setWidth(58),
             ),
@@ -153,13 +149,9 @@ class _UserLoginPageState extends State<UserLoginPage> {
               lightOrientation: FLightOrientation.LeftBottom,
               text: '我已阅读并同意',
               spans: [
-                TextSpan(
-                    text: '用户协议',
-                    style: TextStyle(decoration: TextDecoration.underline)),
+                TextSpan(text: '用户协议', style: TextStyle(decoration: TextDecoration.underline)),
                 TextSpan(text: '和', style: TextStyle()),
-                TextSpan(
-                    text: '隐私政策',
-                    style: TextStyle(decoration: TextDecoration.underline)),
+                TextSpan(text: '隐私政策', style: TextStyle(decoration: TextDecoration.underline)),
               ],
             ),
           ),
@@ -176,9 +168,7 @@ class _UserLoginPageState extends State<UserLoginPage> {
           width: 80,
           height: 80,
           alignment: Alignment.center,
-          decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.all(Radius.circular(10.0))),
+          decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.all(Radius.circular(10.0))),
           child: Stack(
             children: [
               Container(
@@ -206,8 +196,7 @@ class _UserLoginPageState extends State<UserLoginPage> {
       utils.showMessage('请输入用户名或者密码');
       return;
     }
-    var isLoginSuccess =
-        await context.read(userModel).login(username, password);
+    var isLoginSuccess = await context.read(userModel).login(username, password);
     if (isLoginSuccess) {
       Get.back();
     }
