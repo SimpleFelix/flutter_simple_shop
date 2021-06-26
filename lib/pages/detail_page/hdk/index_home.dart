@@ -1,21 +1,8 @@
-import 'dart:convert';
 import 'dart:ui';
 
 import 'package:common_utils/common_utils.dart';
-import 'package:date_format/date_format.dart';
 import 'package:dd_taoke_sdk/dd_taoke_sdk.dart';
 import 'package:dd_taoke_sdk/model/product.dart';
-import 'package:demo1/modals/Result.dart';
-import 'package:demo1/modals/couponData.dart';
-import 'package:demo1/modals/shop_info.dart';
-import 'package:demo1/pages/detail_page/hdk/model/hdk_detail.dart';
-import 'package:demo1/util/image_util.dart';
-import 'package:demo1/util/request_service.dart';
-import 'package:demo1/util/result_obj_util.dart';
-import 'package:demo1/util/system_toast.dart';
-import 'package:demo1/widgets/RoundUnderlineTabIndicator.dart';
-import 'package:demo1/widgets/extended_image.dart';
-import 'package:demo1/widgets/my_drawable_start_text.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:fbutton_nullsafety/fbutton_nullsafety.dart';
 import 'package:fcontrol_nullsafety/fdefine.dart';
@@ -28,7 +15,14 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
-import 'package:url_launcher/url_launcher.dart';
+
+import '../../../modals/shop_info.dart';
+import '../../../util/image_util.dart';
+import '../../../util/system_toast.dart';
+import '../../../widgets/RoundUnderlineTabIndicator.dart';
+import '../../../widgets/extended_image.dart';
+import '../../../widgets/my_drawable_start_text.dart';
+import 'model/hdk_detail.dart';
 
 class HaoDanKuDetailItem extends StatefulWidget {
   final String goodsId;
@@ -61,7 +55,6 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     futureBuildData = initDatas();
 
@@ -72,8 +65,8 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
   void addScrollListener() {
     _scrollController!.addListener(() {
       // 控制顶部导航显影
-      double scrollHeight = _scrollController!.offset;
-      double t = scrollHeight / (MediaQuery.of(context).size.width * 0.85);
+      var scrollHeight = _scrollController!.offset;
+      var t = scrollHeight / (MediaQuery.of(context).size.width * 0.85);
       if (scrollHeight == 0) {
         t = 0;
       } else if (t > 1.0) {
@@ -86,7 +79,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
       /// // 控制顶部导航显影
 
       //计算详情widget到顶部距离
-      double topHei = getY(_detailImagesGlogbalKey.currentContext!);
+      var topHei = getY(_detailImagesGlogbalKey.currentContext!);
       if (topHei <= _topAppbarHei + ztlHei) {
         _tabController!.animateTo(1);
       } else {
@@ -98,7 +91,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
   }
 
   // 顶部选项卡被切换
-  void tabOnChange(index) {
+  void tabOnChange(int index) {
     if (index == 0) {
       _scrollController!.animateTo(0,
           duration: Duration(milliseconds: 600), curve: Curves.ease);
@@ -115,8 +108,8 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
     // TODO: implement didChangeDependencies
     super.didChangeDependencies();
     _scrollController!.addListener(() {
-      double scrollHeight = _scrollController!.offset;
-      double t = scrollHeight / (MediaQuery.of(context).size.width * 0.85);
+      var scrollHeight = _scrollController!.offset;
+      var t = scrollHeight / (MediaQuery.of(context).size.width * 0.85);
       if (scrollHeight == 0) {
         t = 0;
       } else if (t > 1.0) {
@@ -379,15 +372,15 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
       child: Column(
         children: <Widget>[
           Container(
+            margin: EdgeInsets.symmetric(
+                vertical: ScreenUtil().setHeight(50),
+                horizontal: ScreenUtil().setWidth(50)),
+            alignment: Alignment.topLeft,
             child: Text(
               '宝贝详情',
               style:
                   TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
             ),
-            margin: EdgeInsets.symmetric(
-                vertical: ScreenUtil().setHeight(50),
-                horizontal: ScreenUtil().setWidth(50)),
-            alignment: Alignment.topLeft,
           ),
           buildImagesWidget()
         ],
@@ -396,8 +389,8 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
   }
 
   // 店铺信息
-  Widget buildSliverToBoxAdapterShop({isSliver = true}) {
-    Widget widget = containerWarp(Container(
+  Widget buildSliverToBoxAdapterShop({bool isSliver = true}) {
+    var widget = containerWarp(Container(
       padding: EdgeInsets.symmetric(vertical: ScreenUtil().setHeight(20)),
       child: Row(
         children: <Widget>[
@@ -483,7 +476,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
   }
 
   // 占位
-  Widget buildSliverToBoxAdapterPlaceholder({isSliver = true}) {
+  Widget buildSliverToBoxAdapterPlaceholder({bool isSliver = true}) {
     Widget widget = Container(
       color: Color.fromRGBO(246, 245, 245, 1.0),
       height: ScreenUtil().setHeight(50),
@@ -500,7 +493,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
   }
 
   // 第六行,推荐语
-  Widget buildSliverToBoxAdapterSix({isSliver = true}) {
+  Widget buildSliverToBoxAdapterSix({bool isSliver = true}) {
     var widget = containerWarp(
         Container(
           alignment: Alignment.topLeft,
@@ -535,7 +528,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
   }
 
   // 第五行,领券
-  Widget buildSliverToBoxAdapterFive({isSliver = true}) {
+  Widget buildSliverToBoxAdapterFive({bool isSliver = true}) {
     var widget = containerWarp(
         InkWell(
           onTap: () async {
@@ -657,7 +650,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
   }
 
   // 第四行,满减
-  Widget buildSliverToBoxAdapterFour({isSliver = true}) {
+  Widget buildSliverToBoxAdapterFour({bool isSliver = true}) {
     var widget = containerWarp(Container(
       child: Row(
         children: <Widget>[
@@ -698,13 +691,13 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
       ),
     ));
     if (!isSliver) {
-      return isSliver;
+      return widget;
     }
     return SliverToBoxAdapter(child: widget);
   }
 
   // 第三行,标题
-  Widget buildSliverToBoxAdapterThree({isSliver = true}) {
+  Widget buildSliverToBoxAdapterThree({bool isSliver = true}) {
     var widget = containerWarp(
         Container(
           width: ScreenUtil().setWidth(1440),
@@ -728,7 +721,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
   }
 
   // 第二行,原价+销量
-  Widget buildSliverToBoxAdapterTwo({isSliver = true}) {
+  Widget buildSliverToBoxAdapterTwo({bool isSliver = true}) {
     var widget = containerWarp(
         Container(
           child: Row(
@@ -761,7 +754,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
   }
 
   // 第一行,券后价+返佣
-  Widget buildSliverToBoxAdapterOne({isSliver = true}) {
+  Widget buildSliverToBoxAdapterOne({bool isSliver = true}) {
     var widget = containerWarp(
       Container(
         child: Row(
@@ -809,12 +802,12 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
     );
   }
 
-  Widget containerWarp(Widget child, {double height: 0}) {
+  Widget containerWarp(Widget child, {double height = 0}) {
     return Container(
-      child: child,
       margin: EdgeInsets.symmetric(
           horizontal: ScreenUtil().setWidth(50),
           vertical: ScreenUtil().setHeight(height)),
+      child: child,
     );
   }
 
@@ -974,7 +967,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
   }
 
   String getCatName(String fqcat) {
-    List<String> cats = [
+    var cats = <String>[
       '女装',
       '男装',
       '内衣',
@@ -1016,7 +1009,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
 
   // 获取widget距离顶部的位置
   double getY(BuildContext buildContext) {
-    final RenderBox box = buildContext.findRenderObject() as RenderBox;
+    final box = buildContext.findRenderObject() as RenderBox;
     //final size = box.size;
     final topLeftPosition = box.localToGlobal(Offset.zero);
     return topLeftPosition.dy;

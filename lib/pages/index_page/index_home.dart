@@ -16,9 +16,7 @@ import '../../provider/category_provider.dart';
 import '../../provider/dtk_index_goods_provider.dart';
 import '../../provider/index_provider.dart';
 import '../../repository/IndexGoodsRepository.dart';
-import '../../widgets/component/custom_select_toolbar.dart';
 import '../../widgets/flexd/index_header_flexd_widget.dart';
-import '../../widgets/flexd/index_main_goods_mini_title_bar.dart';
 import '../../widgets/loading_more_list_indicator.dart';
 import '../../widgets/my_clipper.dart';
 import '../../widgets/pullto_refresh_header.dart';
@@ -167,9 +165,9 @@ class _IndexHomeState extends State<IndexHome> with TickerProviderStateMixin, Af
         ),
 
         // 品牌推荐
-        SliverToBoxAdapter(
-          child: StoreComponentIndex(),
-        ),
+        // SliverToBoxAdapter(
+        //   child: StoreComponentIndex(),
+        // ),
 
         // SliverToBoxAdapter(
         //   child: HodgepodgeWidget(),
@@ -193,6 +191,16 @@ class _IndexHomeState extends State<IndexHome> with TickerProviderStateMixin, Af
         //         ], select: 0, hideSubTitle: _titleIsInTop),
         //       )),
         // ),
+        SliverToBoxAdapter(
+          child: Container(
+            margin: EdgeInsets.symmetric(horizontal: 15,vertical: 20),
+            child: Text('随便看看',style: TextStyle(
+              fontSize: 65.sp,
+              color: Colors.black,
+              fontWeight: FontWeight.bold
+            ),),
+          ),
+        ),
 
         //商品列表 (瀑布流)
         _buildGoodsList(),

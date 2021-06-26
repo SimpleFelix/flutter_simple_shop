@@ -4,11 +4,11 @@ import 'package:flustars/flustars.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../fluro/navigator_util.dart';
 
-// 小部件
 import '../widgets/coupon_price.dart';
-import 'extended_image.dart'; // 原价和券后价小部件
+import 'extended_image.dart';
 
 // 瀑布流商品卡片
 class WaterfallGoodsCard extends StatelessWidget {
@@ -20,7 +20,7 @@ class WaterfallGoodsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
         onTap: () {
-          NavigatorUtil.gotoGoodsDetailPage(context, product.id.toString());
+          NavigatorUtil.gotoGoodsDetailPage(context, product.id.toString(),newViewPage: true);
         },
         child: Container(
             //width: Sc.ScreenUtil().setWidth(640), // (1440-150) / 2
@@ -49,7 +49,7 @@ class WaterfallGoodsCard extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                         color: Colors.grey,
-                        fontSize: 12),
+                        fontSize: 45.sp),
                   ),
                 ),
 
@@ -58,15 +58,15 @@ class WaterfallGoodsCard extends StatelessWidget {
                 /// 领券标签
                 Container(
                   alignment: Alignment.centerLeft,
-                  padding: EdgeInsets.symmetric(horizontal: 6),
+                  padding: EdgeInsets.symmetric(horizontal: 6,vertical: 3),
                   child: FSuper(
                     lightOrientation: FLightOrientation.LeftBottom,
                     text:
                         '领 ${NumUtil.getNumByValueDouble(product.couponPrice, 0)} 元券',
                     padding: EdgeInsets.symmetric(
-                        horizontal: 12),
+                        horizontal: 12,vertical: 3),
                     strokeColor: Colors.pink,
-                    corner: FCorner.all(10),
+                    corner: FCorner.all(50),
                     style: TextStyle(color: Colors.pink),
                   ),
                 ),
@@ -80,17 +80,7 @@ class WaterfallGoodsCard extends StatelessWidget {
                       actualPrice: product.actualPrice.toString(),
                       originalPrice: product.originalPrice),
                 ),
-//                _hot(product.twoHoursSales),
-                // 图标或者标签显示
-//                Container(
-//                  margin: EdgeInsets.only(top: 5.0),
-//                  child: Row(
-//                    children: <Widget>[
-//                      _tag('可领${product.couponPrice}元优惠券', Colors.pinkAccent),
-//                      _iconByActivityType(product.activityType),
-//                    ],
-//                  ),
-//                )
+               _hot(product.twoHoursSales??0),
               ],
             )));
   }
@@ -99,7 +89,9 @@ class WaterfallGoodsCard extends StatelessWidget {
   Widget _hot(int twoHoursSales) {
     return Container(
       margin: EdgeInsets.only(top: 2.0, left: 5.0),
+      alignment: Alignment.centerLeft,
       child: Row(
+        mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           Image.asset(
             'assets/icons/hot.png',
@@ -111,7 +103,7 @@ class WaterfallGoodsCard extends StatelessWidget {
               '两小时销量$twoHoursSales,月销${product.monthSales}',
               style: TextStyle(
                   fontSize: 12,
-                  color: Colors.pinkAccent),
+                  color: Colors.black),
             ),
           )
         ],
