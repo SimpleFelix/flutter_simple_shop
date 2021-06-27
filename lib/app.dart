@@ -1,3 +1,4 @@
+import 'package:demo1/pages/index_page/new/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -39,8 +40,9 @@ class _AppState extends State<App> {
 
   // 页面列表
   final List<Widget> _pages = [
-    IndexHome(),
+    // IndexHome(),
     // IndexHomeV2(),
+    IndexHomeNew(),
     JiujiuIndexHome(scrollController: jiujiuController),
     CategoryIndexPage(),
     FavoriteIndexHome(),

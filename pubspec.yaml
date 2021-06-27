@@ -1,5 +1,5 @@
 name: demo1
-description: 典典的小卖部,淘客版本 qq群667186542 
+description: 典典的小卖部,淘客版本 qq群667186542
 version: 2.0.1
 
 environment:
@@ -59,12 +59,13 @@ dependencies:
   sp_util: ^2.0.3
   flutter_markdown: ^0.6.2
   zefyrka: ^1.0.5+1
+  show_up_animation: ^2.0.0
 
   # 浏览器监听网络请求
-#  flutter_stetho:
-#    git:
-#      url: git://github.com/irdevp/flutter_stetho.git
-#      ref: master
+  #  flutter_stetho:
+  #    git:
+  #      url: git://github.com/irdevp/flutter_stetho.git
+  #      ref: master
 
   # windows 组件
 #  window_size:
@@ -90,4 +91,3 @@ flutter:
     - assets/icons/
     - assets/svg/
     - assets/json/
-

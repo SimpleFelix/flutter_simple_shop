@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dd_taoke_sdk/network/util.dart';
+import 'package:demo1/ad.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -71,10 +72,10 @@ class _MyAppState extends State<MyApp> {
         title: '典典小卖部',
         onGenerateRoute: Application.router.generator,
         theme: ThemeData(primaryColor: Colors.pink, bottomNavigationBarTheme: BottomNavigationBarThemeData(selectedLabelStyle: TextStyle(color: Colors.pink), selectedItemColor: Colors.pink)),
-        onReady: () {
+        onInit: () {
           Get.put(AppController());
         },
-        home: App(),
+        home: AdPage(),
       ),
     );
   }

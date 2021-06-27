@@ -8,11 +8,9 @@ import 'package:flutter/widgets.dart' hide NestedScrollView;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:loading_more_list/loading_more_list.dart';
-import 'package:provider/provider.dart';
 import 'package:pull_to_refresh_notification/pull_to_refresh_notification.dart';
 
 import './ddq.dart';
-import '../../provider/category_provider.dart';
 import '../../provider/dtk_index_goods_provider.dart';
 import '../../provider/index_provider.dart';
 import '../../repository/IndexGoodsRepository.dart';
@@ -39,8 +37,6 @@ class IndexHome extends StatefulWidget {
 class _IndexHomeState extends State<IndexHome>
     with TickerProviderStateMixin, AfterLayoutMixin<IndexHome> {
 //   状态管理
-  late final IndexProvider _indexProvider = context.watch<IndexProvider>();
-  List<Category> categorys = [];
   final GlobalKey _titleKey = GlobalKey();
 
   bool _titleIsInTop = false;
@@ -66,19 +62,15 @@ class _IndexHomeState extends State<IndexHome>
 
   @override
   Widget build(BuildContext context) {
-    return Consumer2<DtkIndexGoodsModal, CategoryProvider>(
-      builder: (content, digm, categoryProvider, _) =>
-          PullToRefreshNotification(
-              pullBackOnRefresh: false,
-              maxDragOffset: 80.0,
-              armedDragUpCancel: false,
-              onRefresh: () async {
-                await indexGoodsRepository.refresh(true);
-                return true;
-              },
-              child: _buildIndexBody()),
-      // child: IndexLoadingSkeletonPage(),)
-    );
+    return PullToRefreshNotification(
+        pullBackOnRefresh: false,
+        maxDragOffset: 80.0,
+        armedDragUpCancel: false,
+        onRefresh: () async {
+          await indexGoodsRepository.refresh(true);
+          return true;
+        },
+        child: _buildIndexBody());
   }
 
   // 首页商品列表
@@ -112,17 +104,13 @@ class _IndexHomeState extends State<IndexHome>
     setState(() {
       carouselISLoaded = true;
     });
-    await context.read<DtkIndexGoodsModal>().getGoodsList(1); // 首页商品列表
-    await context
-        .read<CategoryProvider>()
-        .loadDtkCategoryDatas(context); // 分类数据
-    setState(() {
-      categorys = context.read<CategoryProvider>().categorys;
-      tabController = TabController(length: categorys.length + 1, vsync: this);
-      setState(() {
-        categortListIsLoaded = true;
-      });
-    });
+    // await context.read<DtkIndexGoodsModal>().getGoodsList(1); // 首页商品列表
+    // setState(() {
+    //   tabController = TabController(length: categorys.length + 1, vsync: this);
+    //   setState(() {
+    //     categortListIsLoaded = true;
+    //   });
+    // });
   }
 
   // body
@@ -152,7 +140,7 @@ class _IndexHomeState extends State<IndexHome>
                 }
               },
             ),
-          ], color: _indexProvider.topBackground),
+          ]),
           floating: true,
           pinned: true,
         ),
@@ -227,7 +215,6 @@ class _IndexHomeState extends State<IndexHome>
             child: AnimatedContainer(
               duration: Duration(milliseconds: 1000),
               height: ScreenUtil().setHeight(carouselHeight + 50),
-              color: _indexProvider.topBackground,
             )),
         Column(
           children: <Widget>[
