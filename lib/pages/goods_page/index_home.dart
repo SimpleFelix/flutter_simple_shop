@@ -1,10 +1,12 @@
 import 'package:dd_taoke_sdk/model/product.dart';
-import 'package:demo1/pages/goods_page/subcategory_view.dart';
+import 'package:get/get.dart';
+import 'subcategory_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:loading_more_list/loading_more_list.dart';
 import 'package:pull_to_refresh_notification/pull_to_refresh_notification.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import './sort_widget.dart';
 import '../../provider/riverpod/category_riverpod.dart';
 import '../../repository/GoodsListRepository.dart';
@@ -37,8 +39,8 @@ class _GoodsListPageState extends State<GoodsListPage>
     with TickerProviderStateMixin {
   bool showToTopBtn = false; //是否显示到达顶部按钮
   bool changeSortIng = false; // 切换排序中
-  TabController? _tabController; // 排序tab控制器
-  TabController? categorysTabBarController; //主分类tab控制器
+  late TabController _tabController; // 排序tab控制器
+  late TabController categorysTabBarController; //主分类tab控制器
   late GoodsListRepository goodsListRepository;
   List<int> curs = [0, 1, 2, 5, 6];
   int current = 0;
@@ -95,7 +97,7 @@ class _GoodsListPageState extends State<GoodsListPage>
                           brand: '');
                     });
                     goodsListRepository.refresh(true);
-                    _tabController!.animateTo(0);
+                    _tabController.animateTo(0);
                   },),
                 ) ,
               ),
@@ -180,15 +182,15 @@ class _GoodsListPageState extends State<GoodsListPage>
             setState(() {
               currentMainCategory = categorys[index - 1].cid.toString();
               currentSubCategory = '';
-              this.goodsListRepository = GoodsListRepository(
+              goodsListRepository = GoodsListRepository(
                   cids: categorys[index - 1].cid.toString(),
                   g_sort: '0',
                   subcid: '',
                   brand: '');
             });
             changeSubCategory(index - 1);
-            _tabController!.animateTo(0);
-            await this.goodsListRepository.refresh(true);
+            _tabController.animateTo(0);
+            await goodsListRepository.refresh(true);
           } else {
             Navigator.pop(context);
           }
@@ -216,7 +218,7 @@ class _GoodsListPageState extends State<GoodsListPage>
         subcid: widget.subcid,
         g_sort: '0');
     _tabController = TabController(vsync: this, length: 4);
-    categorysTabBarController = TabController(vsync: this, length: 1);
+    categorysTabBarController = TabController(vsync: this, length: context.read(categoryRiverpod).categorys.length+1);
     setState(() {
       currentSubCategory = widget.subcid ?? '';
       currentMainCategory = widget.cids;
@@ -245,7 +247,7 @@ class _GoodsListPageState extends State<GoodsListPage>
   }
 
   // 价格排序图标改变 (从高到低/从低到高)
-  _bulidPriceIconWidget() {
+  Widget _bulidPriceIconWidget() {
     var iconShow = 'assets/icons/px.png';
     if (current == 3) {
       iconShow = 'assets/icons/pxx.png';
@@ -309,7 +311,7 @@ class _GoodsListPageState extends State<GoodsListPage>
   @override
   void dispose() {
     super.dispose();
-    _tabController!.dispose();
+    _tabController.dispose();
   }
 
   Widget buildPulltoRefreshHeader(PullToRefreshScrollNotificationInfo? info) {

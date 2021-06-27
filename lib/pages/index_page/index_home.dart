@@ -221,7 +221,7 @@ class _IndexHomeState extends State<IndexHome>
             SizedBox(
               height: ScreenUtil().setHeight(20),
             ),
-            IndexTopicComponentCarousel()
+            IndexTopicComponentCarousel(list: [],)
             // carouselISLoaded && carouselProviderModal.carousels.isNotEmpty
             //     ? IndexTopSwiper(
             //         carouselProviderModal: this.carouselProviderModal,

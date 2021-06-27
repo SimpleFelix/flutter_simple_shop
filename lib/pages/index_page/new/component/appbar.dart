@@ -1,5 +1,8 @@
+import 'package:dd_taoke_sdk/model/category.dart';
+import 'package:demo1/provider/riverpod/category_riverpod.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class IndexHomeAppbar extends StatelessWidget implements PreferredSizeWidget {
@@ -25,14 +28,14 @@ class IndexHomeAppbar extends StatelessWidget implements PreferredSizeWidget {
       bottom: PreferredSize(
         preferredSize: Size.fromHeight(48),
         child: DefaultTabController(
-          length: 2,
+          length: 1+context.read(categoryRiverpod).categorys.length,
           child: Container(
             alignment: Alignment.centerLeft,
             child: TabBar(
               isScrollable: true,
               tabs: [
                 Tab(text: '精选',),
-                Tab(text: '推荐',),
+                ...renderCategorys(context)
               ],
               labelColor: Colors.black,
               indicatorColor: Colors.transparent,
@@ -42,6 +45,10 @@ class IndexHomeAppbar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
     );
+  }
+
+  List<Widget> renderCategorys(BuildContext context){
+    return context.read(categoryRiverpod).categorys.map((e) => Tab(text: e.cname,)).toList();
   }
 
   @override

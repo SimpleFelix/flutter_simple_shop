@@ -12,29 +12,32 @@ import '../../../provider/index_provider.dart';
 
 /// 首頁輪播圖
 class IndexTopicComponentCarousel extends StatelessWidget {
+
+  final List<Carousel> list;
+
+  const IndexTopicComponentCarousel({Key? key,required this.list}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    final carousel = context.watch<IndexProvider>().carousel;
     return Container(
       margin: EdgeInsets.symmetric(horizontal: kDefaultPadding),
       height: 500.h,
-      child: Stack(
-        children: [
-          my_carousel_comp.Carousel(
-            images: carousel.map(renderItem).toList(),
-            defaultImage: utils.widgetUtils.loading(double.infinity, 500.h),
-            showIndicator: false,
-            overlayShadowSize: 0.9,
-            overlayShadow: true,
-            overlayShadowColors: Colors.grey.shade200,
-            animationCurve: Curves.easeOutQuart,
-            onImageChange: (a,b){
-              context.read<IndexProvider>().setCurrIndex(b+1);
-            },
-            autoplay: true,
-          ),
-          _renderIndexShow()
-        ],
+      child: my_carousel_comp.Carousel(
+        images: list.map(renderItem).toList(),
+        defaultImage: utils.widgetUtils.loading(double.infinity, 500.h),
+        overlayShadow: true,
+        dotSpacing: 12,
+        indicatorBgPadding: 1,
+        overlayShadowColors: Colors.grey.shade200,
+        animationCurve: Curves.easeOutQuart,
+        radius: Radius.circular(5),
+        dotVerticalPadding: 5,
+        dotSize: 5,
+        onImageChange: (a,b){
+          context.read<IndexProvider>().setCurrIndex(b+1);
+        },
+
+        autoplay: true,
       ),
     );
   }
@@ -68,7 +71,7 @@ class IndexTopicComponentCarousel extends StatelessWidget {
         return ExtendedImage.network(
           item.topicImage!,
           fit: BoxFit.cover,
-          borderRadius: BorderRadius.all(Radius.circular(50.sp)),
+          borderRadius: BorderRadius.all(Radius.circular(5)),
           shape: BoxShape.rectangle,
         );
       },
