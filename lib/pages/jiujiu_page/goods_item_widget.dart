@@ -1,14 +1,13 @@
 import 'package:dd_taoke_sdk/model/product.dart';
-import 'package:demo1/common/utils.dart';
-import 'package:demo1/util/image_util.dart';
-import 'package:demo1/widgets/extended_image.dart';
-import 'package:extended_image/extended_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import '../../widgets/tag_widget.dart';
+
+import '../../common/utils.dart';
 import '../../fluro/navigator_util.dart';
+import '../../widgets/extended_image.dart';
+import '../../widgets/tag_widget.dart';
 
 // 9.9商品卡片布局
 class GoodsItemWidget extends StatelessWidget {

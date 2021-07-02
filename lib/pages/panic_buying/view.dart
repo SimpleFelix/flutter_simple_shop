@@ -1,13 +1,13 @@
-import 'package:demo1/pages/panic_buying/components/appbar.dart';
-import 'package:demo1/pages/panic_buying/components/daojishi.dart';
-import 'package:demo1/pages/panic_buying/components/tops_list.dart';
-import 'package:demo1/pages/panic_buying/components/view_status.dart';
-import 'package:demo1/pages/panic_buying/repository.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+import '../../widgets/simple_appbar.dart';
 import 'components/categorys.dart';
 import 'components/list.dart';
+import 'components/tops_list.dart';
+import 'components/view_status.dart';
+import 'repository.dart';
 
 ///
 /// @Author 梁典典
@@ -34,29 +34,26 @@ class _PanicBuyingPageState extends State<PanicBuyingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: SimpleAppBar(
+        title: '排行榜单',
+        bottom: CategorysWithPanicBuying(
+          insets: [
+            Tab(
+              text: '实时榜',
+            ),
+            Tab(
+              text: '全天榜',
+            ),
+          ],
+        ),
+        bottomHeight: 48,
+      ),
       body: Stack(
         children: [
-          Image.asset('assets/images/top_bg.png'),
           CustomScrollView(
             slivers: [
-              AppbarWithPanicBuying(),
-              SliverToBoxAdapter(
-                child: CategorysWithPanicBuying(
-                  insets: [
-                    Tab(
-                      text: '实时榜',
-                    ),
-                    Tab(
-                      text: '全天榜',
-                    ),
-                  ],
-                ),
-              ),
               SliverToBoxAdapter(
                 child: ViewStatusWithPanicBuy(),
-              ),
-              SliverToBoxAdapter(
-                child: DaojishiComp(),
               ),
               TopsProducts(),
               ProductListWithPanic()

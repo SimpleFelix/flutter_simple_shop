@@ -1,11 +1,13 @@
-import 'package:demo1/pages/ddq_page/index_home.dart';
-import 'package:demo1/pages/detail_page/hdk/index_home.dart';
-import 'package:demo1/pages/search/view.dart';
+import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:swipeable_page_route/swipeable_page_route.dart';
 
-import './routes.dart';
 import './application.dart';
+import './routes.dart';
+import '../pages/ddq_page/index_home.dart';
+import '../pages/detail_page/hdk/index_home.dart';
+import '../pages/search/view.dart';
 import '../util/fluro_convert_util.dart';
 
 // 路由工具类
@@ -18,7 +20,7 @@ class NavigatorUtil {
   // 跳转商品详情页方法
   static void gotoGoodsDetailPage(BuildContext context, String goodsId,{bool newViewPage=false}) {
     if(newViewPage){
-      Get.to(()=>HaoDanKuDetailItem(goodsId: goodsId,));
+      context.navigator.push(SwipeablePageRoute(builder: (_)=>HaoDanKuDetailItem(goodsId: goodsId,)));
     }else{
       Application.router
           .navigateTo(context, '${Routes.goodsDetail}?goods_id=$goodsId');

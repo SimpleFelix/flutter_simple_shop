@@ -1,6 +1,7 @@
 import 'package:dd_taoke_sdk/dd_taoke_sdk.dart';
 import 'package:dd_taoke_sdk/model/activity-link_result.dart';
 import 'package:dd_taoke_sdk/params/activity_link_param.dart';
+import 'package:demo1/widgets/simple_appbar.dart';
 import 'package:fbutton_nullsafety/fbutton_nullsafety.dart';
 import 'package:fcontrol_nullsafety/fdefine.dart';
 import 'package:flutter/material.dart';
@@ -45,15 +46,7 @@ class _WaimaiDetailState extends State<WaimaiDetail> with LoadingMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: widget.type == '1' ? Color.fromRGBO(255, 97, 97, 1) : Color.fromRGBO(1, 171, 245, 1),
-      appBar: MorphingAppBar(
-        title: Text(
-          '典典请你吃饭',
-          style: TextStyle(color: Colors.black),
-        ),
-        backgroundColor: Colors.white,
-        iconTheme: IconThemeData(color: Colors.black),
-        elevation: 0,
-      ),
+      appBar: SimpleAppBar(title: '红包领取'),
       body: SingleChildScrollView(
         child: Column(
           children: [renderHeaderImage(), renderNavLink(), utils.widgetUtils.marginTop(), renderKl(), utils.widgetUtils.marginTop(), rendenGuize()],

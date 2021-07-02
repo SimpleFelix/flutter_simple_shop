@@ -1,9 +1,11 @@
-import 'package:demo1/pages/index_page/new/waimai/detail.dart';
+import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:get/get.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
-import 'package:black_hole_flutter/black_hole_flutter.dart';
+
+import '../../../../widgets/simple_appbar.dart';
+import 'detail.dart';
 
 ///
 /// @Author 梁典典
@@ -17,15 +19,7 @@ class WaimaiIndex extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MorphingAppBar(
-        title: Text(
-          '外卖红包',
-          style: TextStyle(color: Colors.black),
-        ),
-        backgroundColor: Colors.white,
-        iconTheme: IconThemeData(color: Colors.black),
-        elevation: 0,
-      ),
+      appBar: SimpleAppBar(title: '外卖红包',),
       body: renderBody(),
     );
   }

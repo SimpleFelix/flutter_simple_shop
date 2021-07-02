@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../repository.dart';
 
-class CategorysWithPanicBuying extends ConsumerWidget {
-
+class CategorysWithPanicBuying extends ConsumerWidget implements PreferredSizeWidget {
   final List<Tab>? insets;
 
   CategorysWithPanicBuying({this.insets});
@@ -15,25 +14,19 @@ class CategorysWithPanicBuying extends ConsumerWidget {
     final isLoading = watch(panicBuyingRiverpod).initLoading;
     final cates = watch(panicBuyingRiverpod).cates;
     if (isLoading) return Container();
-   var _insets =  insets ??[];
+    var _insets = insets ?? [];
     return DefaultTabController(
-      length: cates.length+_insets.length,
+      length: cates.length + _insets.length,
       child: TabBar(
-        tabs: [
-          ..._insets,
-          ...cates.map(_renderItem).toList()
-        ],
+        tabs: [..._insets, ...cates.map(_renderItem).toList()],
         isScrollable: true,
         indicator: BubbleTabIndicator(
           indicatorHeight: 25.0,
-          indicatorColor: Colors.white,
+          indicatorColor: Colors.pink,
           tabBarIndicatorSize: TabBarIndicatorSize.tab,
-          // indicatorRadius: 1,
-          // insets: EdgeInsets.all(1),
-          // padding: EdgeInsets.all(10)
         ),
-        unselectedLabelColor: Colors.white.withOpacity(.67),
-        labelColor: Colors.red,
+        unselectedLabelColor: Colors.black.withOpacity(.67),
+        labelColor: Colors.white,
       ),
     );
   }
@@ -44,4 +37,7 @@ class CategorysWithPanicBuying extends ConsumerWidget {
       child: Text('${item.cname}'),
     );
   }
+
+  @override
+  Size get preferredSize => Size.fromHeight(48);
 }
