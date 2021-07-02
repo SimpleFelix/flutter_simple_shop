@@ -56,8 +56,25 @@ class _WaimaiDetailState extends State<WaimaiDetail> with LoadingMixin {
       ),
       body: SingleChildScrollView(
         child: Column(
-          children: [renderHeaderImage(), renderNavLink(), utils.widgetUtils.marginTop(), renderKl()],
+          children: [renderHeaderImage(), renderNavLink(), utils.widgetUtils.marginTop(), renderKl(), utils.widgetUtils.marginTop(), rendenGuize()],
         ),
+      ),
+    );
+  }
+
+  /// 领取规则
+  Widget rendenGuize() {
+    final style = const TextStyle(color: Colors.white);
+    return Padding(
+      padding: const EdgeInsets.all(12),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('规则说明:', style: style),
+          Text('1.每天最高可领20元红包。', style: style),
+          Text('2.使用红包时下单手机号码必须与收餐人手机号码、领取红包时输入的手机号码一致。', style: style),
+          Text('3.具体红包使用有效期及红包金额以实际收到为准。', style: style),
+        ],
       ),
     );
   }
