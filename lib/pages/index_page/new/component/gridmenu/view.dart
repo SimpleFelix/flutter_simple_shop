@@ -29,7 +29,7 @@ final gridMenuModles = [
           title: '排行榜',
           image: phbImage,
           onTap: () {
-            Get.context!.navigator.push(SwipeablePageRoute(builder: (_) => PanicBuyingPage()));
+            Get.context!.navigator.push(SwipeablePageRoute(builder: (_) => PanicBuyingPage(), canOnlySwipeFromEdge: true));
           },
           isAssets: true))
 ];

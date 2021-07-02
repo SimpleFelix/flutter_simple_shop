@@ -1,3 +1,4 @@
+import 'package:demo1/common/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -42,6 +43,7 @@ class IndexHomeAppbar extends StatelessWidget implements PreferredSizeWidget {
         child: Consumer(
           builder: (BuildContext context, T Function<T>(ProviderBase<Object?, T>) watch, Widget? child) {
             final loading = watch(indexRiverpod).indexLoading;
+            final categoryWidgets = utils.widgetUtils.categoryTabs(context);
             return LayoutBuilder(
               builder: (BuildContext context, BoxConstraints constraints) {
                 return Column(
@@ -52,7 +54,7 @@ class IndexHomeAppbar extends StatelessWidget implements PreferredSizeWidget {
                       duration: Duration(milliseconds: 800),
                       height: 46,
                       child: DefaultTabController(
-                        length: 1 + context.read(categoryRiverpod).categorys.length,
+                        length: 1 + categoryWidgets.length,
                         child: Container(
                           alignment: Alignment.centerLeft,
                           child: TabBar(
@@ -61,7 +63,7 @@ class IndexHomeAppbar extends StatelessWidget implements PreferredSizeWidget {
                               Tab(
                                 text: '精选',
                               ),
-                              ...renderCategorys(context)
+                              ...categoryWidgets
                             ],
                             labelColor: Colors.black,
                             indicatorColor: Colors.transparent,
@@ -88,16 +90,6 @@ class IndexHomeAppbar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
     );
-  }
-
-  List<Widget> renderCategorys(BuildContext context) {
-    return context
-        .read(categoryRiverpod)
-        .categorys
-        .map((e) => Tab(
-              text: e.cname,
-            ))
-        .toList();
   }
 
   @override

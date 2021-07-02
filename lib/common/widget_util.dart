@@ -1,9 +1,13 @@
-import 'package:demo1/widgets/component/custom_loading.dart';
+import 'package:dd_taoke_sdk/model/product.dart';
+import 'package:demo1/widgets/waterfall_goods_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../constant/style.dart';
+import '../provider/riverpod/category_riverpod.dart';
+import '../widgets/component/custom_loading.dart';
 import 'widgets/simple_dialog.dart';
 
 /// 组件工具类
@@ -15,14 +19,17 @@ abstract class WidgetUtilService {
   Widget marginRight({double? width});
 
   /// 显示一个简单的弹窗提示
-  Future<void> showSimpleDialog(String message,{String? title});
+  Future<void> showSimpleDialog(String message, {String? title});
 
-  Widget loading(double width,double height,{double? radius});
+  Widget loading(double width, double height, {double? radius});
+
+  List<Widget> categoryTabs(BuildContext context);
+
+  Widget renderProductCard(Product product);
 }
 
 class WidgetUtils extends WidgetUtilService {
-  double get kBodyHeight =>
-      Get.height - Get.mediaQuery.padding.top - kToolbarHeight;
+  double get kBodyHeight => Get.height - Get.mediaQuery.padding.top - kToolbarHeight;
 
   @override
   Widget marginTop({double? height}) {
@@ -39,7 +46,7 @@ class WidgetUtils extends WidgetUtilService {
   }
 
   @override
-  Future<void> showSimpleDialog(String message,{String? title}) async {
+  Future<void> showSimpleDialog(String message, {String? title}) async {
     await Get.dialog(MySimpleDialog(
       message: message,
       title: title,
@@ -47,7 +54,27 @@ class WidgetUtils extends WidgetUtilService {
   }
 
   @override
-  Widget loading(double width, double height,{double? radius}) {
-    return Skeleton(width: width,height: height,cornerRadius: radius??4,);
+  Widget loading(double width, double height, {double? radius}) {
+    return Skeleton(
+      width: width,
+      height: height,
+      cornerRadius: radius ?? 4,
+    );
+  }
+
+  @override
+  List<Widget> categoryTabs(BuildContext context) {
+    return context
+        .read(categoryRiverpod)
+        .categorys
+        .map((e) => Tab(
+              text: e.cname,
+            ))
+        .toList();
+  }
+
+  @override
+  Widget renderProductCard(Product product) {
+    return WaterfallGoodsCard(product);
   }
 }

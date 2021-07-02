@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../widgets/simple_appbar.dart';
 import 'components/categorys.dart';
 import 'components/list.dart';
-import 'components/tops_list.dart';
 import 'components/view_status.dart';
 import 'repository.dart';
 
@@ -23,6 +23,10 @@ class PanicBuyingPage extends StatefulWidget {
 }
 
 class _PanicBuyingPageState extends State<PanicBuyingPage> {
+
+
+  final EasyRefreshController easyRefreshController = EasyRefreshController();
+
   @override
   void initState() {
     super.initState();
@@ -50,18 +54,30 @@ class _PanicBuyingPageState extends State<PanicBuyingPage> {
       ),
       body: Stack(
         children: [
-          CustomScrollView(
+          EasyRefresh.custom(
+            controller: easyRefreshController,
             slivers: [
+              SliverPadding(padding: EdgeInsets.only(top: 12)),
               SliverToBoxAdapter(
                 child: ViewStatusWithPanicBuy(),
               ),
-              TopsProducts(),
               ProductListWithPanic()
             ],
+            onLoad: () async {
+              final result = await context.read(panicBuyingRiverpod).nextPage();
+              easyRefreshController.finishLoad(noMore: result);
+            },
+            footer: MaterialFooter(),
           ),
         ],
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    easyRefreshController.dispose();
   }
 }
 
