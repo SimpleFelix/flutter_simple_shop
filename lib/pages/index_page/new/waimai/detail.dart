@@ -1,12 +1,12 @@
 import 'package:dd_taoke_sdk/dd_taoke_sdk.dart';
 import 'package:dd_taoke_sdk/model/activity-link_result.dart';
 import 'package:dd_taoke_sdk/params/activity_link_param.dart';
-import 'package:demo1/common/utils.dart';
 import 'package:fbutton_nullsafety/fbutton_nullsafety.dart';
 import 'package:fcontrol_nullsafety/fdefine.dart';
 import 'package:flutter/material.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
 
+import '../../../../common/utils.dart';
 import '../../../../common/widgets/loading_mixin.dart';
 
 ///
@@ -44,10 +44,10 @@ class _WaimaiDetailState extends State<WaimaiDetail> with LoadingMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(255, 97, 97, 1),
+      backgroundColor: widget.type == '1' ? Color.fromRGBO(255, 97, 97, 1) : Color.fromRGBO(1, 171, 245, 1),
       appBar: MorphingAppBar(
         title: Text(
-          '外卖红包',
+          '典典请你吃饭',
           style: TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.white,
@@ -56,7 +56,7 @@ class _WaimaiDetailState extends State<WaimaiDetail> with LoadingMixin {
       ),
       body: SingleChildScrollView(
         child: Column(
-          children: [renderHeaderImage(), renderNavLink()],
+          children: [renderHeaderImage(), renderNavLink(), utils.widgetUtils.marginTop(), renderKl()],
         ),
       ),
     );
@@ -64,7 +64,53 @@ class _WaimaiDetailState extends State<WaimaiDetail> with LoadingMixin {
 
   // 头部
   Widget renderHeaderImage() {
-    return AspectRatio(aspectRatio: 1.87, child: Image.asset('assets/images/waimai/hb/1.png'));
+    return AspectRatio(aspectRatio: 1.87, child: Image.asset('assets/images/waimai/hb/${widget.type == '1' ? '1' : 'sc_bg'}.png'));
+  }
+
+  /// 复制口令模块
+  Widget renderKl() {
+    return Stack(
+      children: [
+        AspectRatio(
+          aspectRatio: 2.33,
+          child: Image.asset('assets/images/waimai/hb/4.png'),
+        ),
+        if (model != null)
+          Positioned(
+              left: 20,
+              right: 20,
+              top: 30,
+              child: Container(
+                  alignment: Alignment.center,
+                  child: Text(
+                    '${model!.longTpwd}',
+                    style: TextStyle(color: Colors.black, fontSize: 12),
+                    textAlign: TextAlign.center,
+                  ))),
+        Positioned(
+          left: 30,
+          right: 30,
+          bottom: 40,
+          child: FButton(
+            height: 40,
+            text: '复制饿了么口令',
+            style: TextStyle(color: Colors.pink),
+            onPressed: () {
+              if (model != null) {
+                utils.copy(model!.longTpwd, message: '复制口令成功,打开淘宝即可领取优惠券');
+              }
+            },
+            clickEffect: true,
+            strokeWidth: 1,
+            strokeColor: Colors.red,
+            alignment: Alignment.center,
+            corner: FCorner.all(50),
+            shadowColor: Colors.red,
+            highlightColor: Colors.pink.shade50,
+          ),
+        )
+      ],
+    );
   }
 
   /// 跳转链接
@@ -94,7 +140,7 @@ class _WaimaiDetailState extends State<WaimaiDetail> with LoadingMixin {
                   style: TextStyle(color: Colors.white),
                   color: Colors.red,
                   onPressed: () {
-                    if(model!=null){
+                    if (model != null) {
                       utils.navToBrowser(model!.clickUrl);
                     }
                   },
