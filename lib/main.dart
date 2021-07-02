@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:dd_taoke_sdk/network/util.dart';
-import 'package:demo1/ad.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,10 +9,10 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:provider/provider.dart';
 import 'package:sp_util/sp_util.dart';
 
-import './app.dart';
 import './fluro/application.dart';
 import './fluro/routes.dart';
 import './provider/providers.dart';
+import 'ad.dart';
 import 'common/service.dart';
 import 'common/utils.dart';
 import 'common/widget_util.dart';
@@ -76,6 +75,7 @@ class _MyAppState extends State<MyApp> {
           Get.put(AppController());
         },
         home: AdPage(),
+        navigatorObservers: [HeroController()],
       ),
     );
   }
