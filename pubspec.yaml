@@ -45,7 +45,7 @@ dependencies:
   palette_generator: ^0.3.0
   crypto: ^3.0.1
   encrypt: ^5.0.0
-  dd_taoke_sdk: ^1.1.6
+  dd_taoke_sdk: ^1.1.7
   fcontrol_nullsafety: ^2.0.0
   flutter_hooks: ^0.17.0
   hooks_riverpod: ^0.14.0+4
@@ -93,3 +93,4 @@ flutter:
     - assets/icons/
     - assets/svg/
     - assets/json/
+    - assets/images/waimai/hb/

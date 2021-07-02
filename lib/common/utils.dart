@@ -60,9 +60,18 @@ class Utils {
   }
 
   // 复制
-  void copy(String? text) {
+  void copy(String? text,{String? message}) {
     Clipboard.setData(ClipboardData(text: text));
-    showMessage('复制成功');
+    showMessage(message??'复制成功');
+  }
+
+  Future<void> navToBrowser(String url)async{
+    if (await canLaunch(url)) {
+      // 判断当前手机是否安装某app. 能否正常跳转
+      await launch(url);
+    }else{
+      copy(url,message: '跳转url失败,链接已复制到剪贴板');
+    }
   }
 
   // 打开淘宝

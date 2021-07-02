@@ -1,6 +1,9 @@
 import 'package:dd_taoke_sdk/dd_taoke_sdk.dart';
 import 'package:dd_taoke_sdk/model/activity-link_result.dart';
 import 'package:dd_taoke_sdk/params/activity_link_param.dart';
+import 'package:demo1/common/utils.dart';
+import 'package:fbutton_nullsafety/fbutton_nullsafety.dart';
+import 'package:fcontrol_nullsafety/fdefine.dart';
 import 'package:flutter/material.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
 
@@ -41,11 +44,65 @@ class _WaimaiDetailState extends State<WaimaiDetail> with LoadingMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromRGBO(255, 97, 97, 1),
       appBar: MorphingAppBar(
-        title: Text('外卖红包',style: TextStyle(color: Colors.black),),
+        title: Text(
+          '外卖红包',
+          style: TextStyle(color: Colors.black),
+        ),
         backgroundColor: Colors.white,
         iconTheme: IconThemeData(color: Colors.black),
         elevation: 0,
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [renderHeaderImage(), renderNavLink()],
+        ),
+      ),
+    );
+  }
+
+  // 头部
+  Widget renderHeaderImage() {
+    return AspectRatio(aspectRatio: 1.87, child: Image.asset('assets/images/waimai/hb/1.png'));
+  }
+
+  /// 跳转链接
+  Widget renderNavLink() {
+    return AspectRatio(
+      aspectRatio: 2,
+      child: Stack(
+        children: [
+          Image.asset('assets/images/waimai/hb/2.png'),
+          Positioned(
+              top: 12,
+              left: 20,
+              right: 20,
+              child: AspectRatio(
+                aspectRatio: 3.98,
+                child: Image.asset('assets/images/waimai/hb/3.png'),
+              )),
+          Positioned(
+              bottom: 35,
+              left: 30,
+              right: 30,
+              child: Container(
+                child: FButton(
+                  height: 40,
+                  alignment: Alignment.center,
+                  text: '领红包点外卖',
+                  style: TextStyle(color: Colors.white),
+                  color: Colors.red,
+                  onPressed: () {
+                    if(model!=null){
+                      utils.navToBrowser(model!.clickUrl);
+                    }
+                  },
+                  highlightColor: Colors.pink,
+                  corner: FCorner.all(50),
+                ),
+              ))
+        ],
       ),
     );
   }
