@@ -32,6 +32,7 @@ class _UserLoginPageState extends State<UserLoginPage> {
   Scaffold buildScaffold(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
@@ -47,8 +48,7 @@ class _UserLoginPageState extends State<UserLoginPage> {
       ),
       body: Stack(
         children: <Widget>[
-          Container(
-            height: MediaQuery.of(context).size.height,
+          SingleChildScrollView(
             child: Column(
               children: <Widget>[
                 //   Logo
@@ -99,7 +99,7 @@ class _UserLoginPageState extends State<UserLoginPage> {
               ],
             ),
           ),
-          renderXieyi()
+          // renderXieyi()
         ],
       ),
     );

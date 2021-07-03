@@ -12,7 +12,6 @@ class IndexHomeNew extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: IndexHomeAppbar(),
       body: EasyRefresh.custom(slivers: [SliverPadding(padding: EdgeInsets.only(top: 12), sliver: IndexCarousel()), GridMenuComponent()]),
     );

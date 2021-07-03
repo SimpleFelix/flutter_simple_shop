@@ -1,4 +1,5 @@
 import 'package:black_hole_flutter/black_hole_flutter.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loading_more_list/loading_more_list.dart';
@@ -64,11 +65,19 @@ class GridMenuComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
-      child: WaterfallFlow.count(
-        crossAxisCount: 4,
-        shrinkWrap: true,
-        physics: NeverScrollableScrollPhysics(),
-        children: gridMenuModles,
+      child: Container(
+        margin: EdgeInsets.symmetric(horizontal: 12,vertical: 6),
+        padding: EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(8)
+        ),
+        child: WaterfallFlow.count(
+          crossAxisCount: 4,
+          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
+          children: gridMenuModles,
+        ),
       ),
     );
   }

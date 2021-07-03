@@ -5,6 +5,7 @@ import 'package:dd_taoke_sdk/dd_taoke_sdk.dart';
 import 'package:dd_taoke_sdk/model/coupon_link_result.dart';
 import 'package:dd_taoke_sdk/model/product.dart';
 import 'package:demo1/widgets/loading_widget.dart';
+import 'package:demo1/widgets/simple_price.dart';
 import 'package:fbutton_nullsafety/fbutton_nullsafety.dart';
 import 'package:fcontrol_nullsafety/fdefine.dart';
 import 'package:flutter/cupertino.dart';
@@ -650,21 +651,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            FSuper(
-              lightOrientation: FLightOrientation.LeftBottom,
-              text: '券后价 ',
-              spans: [
-                TextSpan(text: '¥ ', style: TextStyle(color: Colors.red, fontSize: ScreenUtil().setSp(60), fontWeight: FontWeight.w800)),
-                TextSpan(
-                  text: '${info.actualPrice} ',
-                  style: TextStyle(color: Colors.red, fontSize: ScreenUtil().setSp(100), fontWeight: FontWeight.w800),
-                ),
-                TextSpan(
-                  text: '${info.discounts}折',
-                  style: TextStyle(fontSize: ScreenUtil().setSp(50)),
-                ),
-              ],
-            ),
+            SimplePrice(price:'${info.actualPrice} ',zhe: '${info.discounts}',),
 
             // 预计可得
             // FSuper(

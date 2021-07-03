@@ -17,23 +17,50 @@ class BanjiaResp extends ChangeNotifier{
   List<SessionsList> sessions = [];
   String? banner;
 
+  String  currTime= '';
+
+  bool loading = false;
+
   // 初始化
-  Future<bool> init()async{
+  Future<bool> init({bool change=false})async{
 
 
-   final result =  await DdTaokeSdk.instance.getHalfdayProducts();
+    loading = true;
+    products.clear();
+    if(!change){
+      sessions.clear();
+    }
+
+    notifyListeners();
+
+   final result =  await DdTaokeSdk.instance.getHalfdayProducts(sessions: currTime);
 
    if(result!=null){
      products.addAll(result.halfPriceInfo!.list??[]);
-     sessions.addAll(result.sessionsList??[]);
+     if(!change){
+       sessions.addAll(result.sessionsList??[]);
+     }
+
      if(result.halfPriceInfo!.banner!=null){
        banner = result.halfPriceInfo!.banner;
      }
+     if(!change){
+       currTime = sessions.firstWhere((element) => element.status=='1').hpdTime??'';
+     }
 
+
+     loading = false;
      notifyListeners();
    }
 
     return false;
+  }
+
+
+  void onChange(String time){
+    print('change $time');
+    currTime = time;
+    init(change: true);
   }
 
 }
