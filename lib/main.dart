@@ -32,7 +32,7 @@ void main() async {
   /// 本地缓存工具类
   try{
     await SpUtil.getInstance();
-  }catch(e){}
+  }catch(_){}
 
   WidgetsFlutterBinding.ensureInitialized();
 
