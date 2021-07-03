@@ -70,7 +70,7 @@ class _MyAppState extends State<MyApp> {
         debugShowCheckedModeBanner: false,
         title: '典典小卖部',
         onGenerateRoute: Application.router.generator,
-        theme: ThemeData(primaryColor: Colors.pink, bottomNavigationBarTheme: BottomNavigationBarThemeData(selectedLabelStyle: TextStyle(color: Colors.pink), selectedItemColor: Colors.pink)),
+        theme: ThemeData(primaryColor: Colors.white, bottomNavigationBarTheme: BottomNavigationBarThemeData(selectedLabelStyle: TextStyle(color: Colors.pink), selectedItemColor: Colors.pink)),
         onInit: () {
           Get.put(AppController());
         },

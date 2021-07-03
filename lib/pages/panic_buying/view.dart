@@ -40,7 +40,7 @@ class _PanicBuyingPageState extends State<PanicBuyingPage> {
     return Scaffold(
       appBar: SimpleAppBar(
         title: '排行榜单',
-        bottom: CategorysWithPanicBuying(
+        bottom: BottomCategoryTabs(
           insets: [
             Tab(
               text: '实时榜',
@@ -49,8 +49,10 @@ class _PanicBuyingPageState extends State<PanicBuyingPage> {
               text: '全天榜',
             ),
           ],
+          onTap:  context.read(panicBuyingRiverpod).tabChanged,
         ),
         bottomHeight: 48,
+
       ),
       body: Stack(
         children: [
@@ -61,7 +63,9 @@ class _PanicBuyingPageState extends State<PanicBuyingPage> {
               SliverToBoxAdapter(
                 child: ViewStatusWithPanicBuy(),
               ),
-              ProductListWithPanic()
+              Consumer(builder: (BuildContext context, T Function<T>(ProviderBase<Object?, T>) watch, Widget? child) {
+                return ProductsList(watch(panicBuyingRiverpod).products);
+              },)
             ],
             onLoad: () async {
               final result = await context.read(panicBuyingRiverpod).nextPage();

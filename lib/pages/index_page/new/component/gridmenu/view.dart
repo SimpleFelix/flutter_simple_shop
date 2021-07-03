@@ -1,4 +1,5 @@
 import 'package:black_hole_flutter/black_hole_flutter.dart';
+import 'package:demo1/pages/zhe/view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loading_more_list/loading_more_list.dart';
@@ -11,6 +12,7 @@ import 'model.dart';
 
 const elmImage = 'assets/svg/elm_logo.svg';
 const phbImage = 'assets/svg/phb.svg';
+const zheImage = 'assets/svg/zhe.svg';
 
 final gridMenuModles = [
   /// 领券
@@ -30,6 +32,16 @@ final gridMenuModles = [
           image: phbImage,
           onTap: () {
             Get.context!.navigator.push(SwipeablePageRoute(builder: (_) => PanicBuyingPage(), canOnlySwipeFromEdge: true));
+          },
+          isAssets: true)),
+
+  /// 排行榜
+  GridMenuItem(
+      item: GridMenuModel(
+          title: '折上折',
+          image: zheImage,
+          onTap: () {
+            Get.context!.navigator.push(SwipeablePageRoute(builder: (_)=>ZheIndex(),canOnlySwipeFromEdge: true));
           },
           isAssets: true))
 ];

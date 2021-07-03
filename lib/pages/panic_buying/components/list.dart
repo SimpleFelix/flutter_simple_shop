@@ -4,18 +4,24 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:loading_more_list/loading_more_list.dart';
 
 import '../../../common/utils.dart';
-import '../repository.dart';
 
-class ProductListWithPanic extends ConsumerWidget {
+class ProductsList extends ConsumerWidget {
+  final List<Product> products;
+
+  ProductsList(this.products);
+
   @override
   Widget build(BuildContext context, ScopedReader watch) {
-    final products = watch(panicBuyingRiverpod).products;
     if (products.isEmpty) {
-      return SliverToBoxAdapter(
-        child: Container(),
-      );
+      return SliverToBoxAdapter(child: Container(),);
     }
-    return SliverPadding(padding: EdgeInsets.all(8), sliver: SliverWaterfallFlow.count(crossAxisCount: 2, crossAxisSpacing: 8, mainAxisSpacing: 8, children: products.map(itemBuilder).toList()));
+    return SliverPadding(
+        padding: EdgeInsets.all(8),
+        sliver: SliverWaterfallFlow.count(
+            crossAxisCount: 2,
+            crossAxisSpacing: 8,
+            mainAxisSpacing: 8,
+            children: products.map(itemBuilder).toList()));
   }
 
   Widget itemBuilder(Product item) {

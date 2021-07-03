@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../common/utils.dart';
-import '../repository.dart';
 
-class CategorysWithPanicBuying extends ConsumerWidget implements PreferredSizeWidget {
+class BottomCategoryTabs extends ConsumerWidget
+    implements PreferredSizeWidget {
   final List<Tab>? insets;
+  final ValueChanged<int>? onTap;
 
-  CategorysWithPanicBuying({this.insets});
+  BottomCategoryTabs({this.insets, this.onTap});
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
@@ -28,7 +29,7 @@ class CategorysWithPanicBuying extends ConsumerWidget implements PreferredSizeWi
           ),
           unselectedLabelColor: Colors.black.withOpacity(.67),
           labelColor: Colors.white,
-          onTap: context.read(panicBuyingRiverpod).tabChanged,
+          onTap: onTap,
         ),
       ),
     );

@@ -74,6 +74,15 @@ class Utils {
     }
   }
 
+  // 跳转到浏览器
+  Future<void> openLink(String url)async{
+    if (await canLaunch(url)) {
+      await launch(url);
+    }else{
+      print('打开失败:$url');
+    }
+  }
+
   // 打开淘宝
   Future<void> openTaobao(String url) async {
 

@@ -50,7 +50,7 @@ class WaterfallGoodsCard extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                         color: Colors.grey,
-                        fontSize: 45.sp),
+                        fontSize: 12),
                   ),
                 ),
 

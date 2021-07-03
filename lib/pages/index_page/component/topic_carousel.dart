@@ -1,9 +1,12 @@
+import 'dart:convert';
+
 import 'package:carousel_pro_nullsafety/carousel_pro_nullsafety.dart' as my_carousel_comp;
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dd_taoke_sdk/model/carousel_model.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 import 'package:provider/provider.dart';
 
 import '../../../common/utils.dart';
@@ -19,26 +22,46 @@ class IndexTopicComponentCarousel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: kDefaultPadding),
-      height: 500.h,
-      child: my_carousel_comp.Carousel(
-        images: list.map(renderItem).toList(),
-        defaultImage: utils.widgetUtils.loading(double.infinity, 500.h),
-        overlayShadow: true,
-        dotSpacing: 12,
-        indicatorBgPadding: 1,
-        overlayShadowColors: Colors.grey.shade200,
-        animationCurve: Curves.easeOutQuart,
-        radius: Radius.circular(5),
-        dotVerticalPadding: 5,
-        dotSize: 5,
-        onImageChange: (a,b){
-          context.read<IndexProvider>().setCurrIndex(b+1);
-        },
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+      child: AspectRatio(
+        aspectRatio: 2.53,
+        child: Swiper(itemBuilder: (BuildContext context, int index) {
+          final item = list[index];
+          return renderItem(item);
+        }, itemCount: list.length,
+          pagination: SwiperPagination(),
 
-        autoplay: true,
+        ),
       ),
+    );
+  }
+
+
+  Widget render(){
+    return my_carousel_comp.Carousel(
+      images: list.map(renderItem).toList(),
+      defaultImage: utils.widgetUtils.loading(double.infinity, 500.h),
+      overlayShadow: true,
+      dotSpacing: 12,
+      indicatorBgPadding: 1,
+      overlayShadowColors: Colors.grey.shade200,
+      animationCurve: Curves.easeOutQuart,
+      radius: Radius.circular(5),
+      dotVerticalPadding: 5,
+      dotSize: 5,
+      onImageChange: (a,b){
+      },
+      onImageTap: (index){
+        final clickItem = list[index];
+        print('点击;${jsonEncode(clickItem)}');
+        if(clickItem.link!=null){
+          utils.openLink(clickItem.link!);
+        }
+
+      },
+
+      autoplay: true,
     );
   }
 
