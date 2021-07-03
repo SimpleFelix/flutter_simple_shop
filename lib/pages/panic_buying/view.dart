@@ -23,8 +23,6 @@ class PanicBuyingPage extends StatefulWidget {
 }
 
 class _PanicBuyingPageState extends State<PanicBuyingPage> {
-
-
   final EasyRefreshController easyRefreshController = EasyRefreshController();
 
   @override
