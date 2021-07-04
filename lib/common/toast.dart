@@ -7,7 +7,7 @@ void showToast(String text) {
 void showLoading(BuildContext context, [String? text]) {
   text = text ?? 'Loading...';
   showDialog(
-      barrierDismissible: false,
+      barrierDismissible: true,
       context: context,
       builder: (context) {
         return Center(

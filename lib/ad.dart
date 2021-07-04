@@ -1,4 +1,5 @@
 import 'package:after_layout/after_layout.dart';
+import 'package:demo1/pages/index_page/new/index_riverpod.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -51,6 +52,7 @@ class _AdPageState extends State<AdPage> with AfterLayoutMixin {
   @override
   void afterFirstLayout(BuildContext context) async {
     await context.read(categoryRiverpod).init();
+    await context.read(indexRiverpod).fetch();
     await Get.off(()=>App());
   }
 }

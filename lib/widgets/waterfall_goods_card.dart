@@ -40,21 +40,21 @@ class WaterfallGoodsCard extends StatelessWidget {
                 _title(product.dtitle!),
 
                 SizedBox(height:12),
-                // 购买理由
-                Container(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: 12),
-                  child: Text(
-                    product.desc!,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 12),
-                  ),
-                ),
+                // // 购买理由
+                // Container(
+                //   padding: EdgeInsets.symmetric(
+                //       horizontal: 12),
+                //   child: Text(
+                //     product.desc!,
+                //     maxLines: 2,
+                //     overflow: TextOverflow.ellipsis,
+                //     style: TextStyle(
+                //         color: Colors.grey,
+                //         fontSize: 12),
+                //   ),
+                // ),
 
-                SizedBox(height: 12),
+                // SizedBox(height: 12),
 
                 /// 领券标签
                 Container(

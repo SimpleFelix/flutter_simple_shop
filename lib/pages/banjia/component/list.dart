@@ -1,9 +1,11 @@
 import 'package:badges/badges.dart';
 import 'package:dd_taoke_sdk/model/halfday_result.dart';
+import 'package:demo1/fluro/navigator_util.dart';
 import 'package:demo1/widgets/extended_image.dart';
 import 'package:demo1/widgets/simple_price.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:loading_more_list/loading_more_list.dart';
 
 class BanjiaList extends StatelessWidget {
@@ -73,7 +75,9 @@ class BanjiaList extends StatelessWidget {
                       hideText: true,
                     ),
                     ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          NavigatorUtil.gotoGoodsDetailPage(Get.context!, '${item.id}',newViewPage: true);
+                        },
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(Colors.pink)
                       ),
