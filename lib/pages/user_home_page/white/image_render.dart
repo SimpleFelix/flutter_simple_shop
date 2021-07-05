@@ -19,18 +19,8 @@ class ImageText extends SpecialText {
 
   @override
   InlineSpan finishText() {
-    ///content already has endflag '/'
     var text = '$flag${getContent()}>';
-
-    ///'<img src='$url'/>'
-//    var index1 = text.indexOf(''') + 1;
-//    var index2 = text.indexOf(''', index1);
-//
-//    var url = text.substring(index1, index2);
-//
-    ////'<img src='$url' width='${item.imageSize.width}' height='${item.imageSize.height}'/>'
     var html = parse(text);
-
     var img = html.getElementsByTagName('img').first;
     var url = img.attributes['src']!;
     _imageUrl = url;

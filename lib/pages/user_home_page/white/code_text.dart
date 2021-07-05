@@ -28,7 +28,7 @@ class CodeText extends SpecialText {
           child: SyntaxView(
             code: Uri.decodeComponent(codeString),
             syntax: buildType(typeString),
-            fontSize: 12.0,
+            fontSize: 14,
             withZoom: true,
             withLinesCount: true,
             syntaxTheme: SyntaxTheme.ayuLight(),
