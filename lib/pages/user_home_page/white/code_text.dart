@@ -27,7 +27,7 @@ class CodeText extends SpecialText {
           height: 300,
           child: SyntaxView(
             code: Uri.decodeComponent(codeString),
-            syntax: Syntax.DART,
+            syntax: buildType(typeString),
             fontSize: 12.0,
             withZoom: true,
             withLinesCount: true,
@@ -35,5 +35,28 @@ class CodeText extends SpecialText {
             expanded: true,
           ),
         ));
+  }
+
+  Syntax buildType(String type) {
+    switch (type) {
+      case 'dart':
+        return Syntax.DART;
+      case 'C':
+        return Syntax.C;
+      case 'C++':
+        return Syntax.CPP;
+      case 'Java':
+        return Syntax.JAVA;
+      case 'Kotlin':
+        return Syntax.KOTLIN;
+      case 'Swift':
+        return Syntax.SWIFT;
+      case 'JavaScript':
+        return Syntax.JAVASCRIPT;
+      case 'YAML':
+        return Syntax.YAML;
+      default:
+        return Syntax.DART;
+    }
   }
 }
