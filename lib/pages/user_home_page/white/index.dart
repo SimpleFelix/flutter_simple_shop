@@ -79,6 +79,7 @@ class _WhiteIndexState extends State<WhiteIndex> {
                   specialTextSpanBuilder: MySpecialTextSpanBuilder(
                     showAtBackground: false,
                     goodsCardOnTapCallBack: deleteOneGoodsCard,
+                    atTextOnTap: onAtTextTap
                   ),
                   focusNode: _focusNode,
                   maxLines: null,
@@ -111,6 +112,13 @@ class _WhiteIndexState extends State<WhiteIndex> {
       ),
     );
   }
+
+
+  /// @ 用户被点击
+  void onAtTextTap(dynamic text){
+    print('at 用户被点击:$text');
+  }
+
 
   ///
   /// 底部工具栏
