@@ -6,7 +6,7 @@
 
 [![qq群 667186542](https://badgen.net/badge/QQ%E7%BE%A4/667186542/pink)](https://jq.qq.com/?_wv=1027&k=Z0AHodXB)
 ![典典的小卖部](https://badgen.net/badge/%E5%85%B8%E5%85%B8%E7%9A%84%E5%B0%8F%E5%8D%96%E9%83%A8/v2.1.0/red)
-![Flutter](https://badgen.net/badge/flutter/v2.2.2/red)
+![Flutter](https://badgen.net/badge/flutter/v2.2.3/red)
 ![start](https://badgen.net/github/stars/mdddj/flutter_simple_shop)
 ![fork](https://badgen.net/github/forks/mdddj/flutter_simple_shop)
 
@@ -21,29 +21,6 @@
 
 这是我入门flutter写的项目,一边学一边写,肯定有很多不合理的地方,还望各位大佬勿喷!谢谢
 有问题也可以提交iss,或者加flutter学习群提问,看到都会回复的,群号667186542
-
-## 更新日志
-
-#### v2.1.0 `2021-06-10`
-    * `A` 新增windows桌面端支持
-    * 'F' 修复商品详情页不能正确显示的问题
-
-##### 更改windows icon
-请找到`windows/runner/resources`文件夹下替换`app_icon.icon`文件
-
-##### 更改windows 标题
-请找到`lib/main.dart` 文件大约在第`22`行,修改`setWindowTitle()`函数中的内容
-
-
-#### v2.0.1
-
-    * `U` 升级Flutter版本到v2.2.1 (空安全支持)
-    * `U` 升级插件依赖
-
-#### v2.0.0
-    * `A` 品牌列表,品牌详情,品牌商品列表页面
-    * `U` 升级版本号为2.0.0
-
 
 ## 注意
 
