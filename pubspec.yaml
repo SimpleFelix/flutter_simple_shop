@@ -12,7 +12,6 @@ dependencies:
   cupertino_icons: ^1.0.3
   get: ^4.1.4
   url_launcher: ^6.0.6
-  flutter_webview_plugin: ^0.4.0
   supercharged: ^2.0.0
   flutter_syntax_view: ^4.0.0
   date_format: ^2.0.2
