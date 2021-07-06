@@ -141,7 +141,7 @@ class PyqList extends ConsumerWidget {
                               if(result!=null){
                                 utils.copy(result.longTpwd,message: '复制成功,打开淘宝即可领取优惠券');
                               }
-                              Get.back();
+                              closeLoading();
                             },
                             strokeWidth: 1,
                             strokeColor: Colors.grey.shade200,

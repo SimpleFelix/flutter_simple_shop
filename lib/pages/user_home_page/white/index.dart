@@ -263,7 +263,7 @@ class _WhiteIndexState extends State<WhiteIndex> {
         newText += value.text.substring(0, end);
       }
       newText += text;
-      if (value.text.length > end && end>=0) {
+      if (value.text.length > end && end >= 0) {
         newText += value.text.substring(end, value.text.length);
       }
     } else {
@@ -275,7 +275,6 @@ class _WhiteIndexState extends State<WhiteIndex> {
     _textEditingController.value = value.copyWith(text: newText, selection: value.selection.copyWith(baseOffset: end + text.length, extentOffset: end + text.length));
     _textEditingController.selection = TextSelection.fromPosition(TextPosition(offset: newText.length));
     if (value.selection.isValid) {
-
     } else {
       // print('选择无效');
       // _textEditingController.value = TextEditingValue(text: text, selection: TextSelection.fromPosition(TextPosition(offset: text.length)));

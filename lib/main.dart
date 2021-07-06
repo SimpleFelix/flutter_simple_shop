@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dd_taoke_sdk/network/util.dart';
+import 'package:demo1/service/api_service.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -41,6 +42,7 @@ void main() async {
   GetIt.instance.registerSingleton<WidgetUtils>(WidgetUtils());
   GetIt.instance.registerSingleton<NavigatorUtil>(NavigatorUtil());
   GetIt.instance.registerSingleton<Api>(Api());
+  GetIt.instance.registerSingleton<TKApiService>(TKApiService());
 
   /// https 请求处理
   HttpOverrides.global = MyHttpOverrides();

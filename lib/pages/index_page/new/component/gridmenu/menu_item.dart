@@ -41,7 +41,7 @@ class GridMenuItem extends StatelessWidget {
 
   // 标题
   Widget renderTitle() {
-    return DefaultTextStyle.merge(child: Text(item.title), style: Get.textTheme.subtitle2!.copyWith(fontSize: 50.sp), maxLines: 1, overflow: TextOverflow.ellipsis);
+    return DefaultTextStyle.merge(child: Text(item.title), style: Get.textTheme.subtitle2!.copyWith(fontSize: 12), maxLines: 1, overflow: TextOverflow.ellipsis);
   }
 
   // 图片

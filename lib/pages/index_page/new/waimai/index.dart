@@ -29,36 +29,31 @@ class WaimaiIndex extends StatelessWidget {
   }
 
   Widget renderBody() {
-    return EasyRefresh.custom(
-        slivers: [renderWaimaihongbao(), renderWaimaiShangChao()]);
+    return EasyRefresh.custom(slivers: [renderWaimaihongbao(), renderWaimaiShangChao()]);
   }
 
   /// 商超红包
   Widget renderWaimaiShangChao() {
     return SliverToBoxAdapter(
-      child: GestureDetector(
-          onTap: () => navTo('2'),
-          child: renderImage('assets/images/waimai2.png')),
+      child: GestureDetector(onTap: () => navTo('2'), child: renderImage('assets/images/waimai2.png')),
     );
   }
 
   /// 普通外卖红包
   Widget renderWaimaihongbao() {
     return SliverToBoxAdapter(
-      child: GestureDetector(
-          onTap: () => navTo('1'),
-          child: renderImage('assets/images/waimai1.png')),
+      child: GestureDetector(onTap: () => navTo('1'), child: renderImage('assets/images/waimai1.png')),
     );
   }
 
   void navTo(String type) {
-    Get.context!.navigator
-        .push(SwipeablePageRoute(builder: (_) => WaimaiDetail(type: type)));
+    Get.context!.navigator.push(SwipeablePageRoute(builder: (_) => WaimaiDetail(type: type)));
   }
 
   /// 渲染图片
   Widget renderImage(String image) {
     return Container(
+      margin: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       child: AspectRatio(
         aspectRatio: 1.75,
         child: ExtendedImage.asset(

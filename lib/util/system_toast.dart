@@ -1,4 +1,4 @@
-import 'package:demo1/common/toast.dart';
+import '../common/toast.dart';
 
 class SystemToast {
 
