@@ -1,9 +1,10 @@
+import 'package:demo1/common/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 void showToast(String text) {
-  print('显示一个简单弹窗');
+  utils.showMessage(text);
 }
 
 void showLoading(BuildContext context, [String? text]) {

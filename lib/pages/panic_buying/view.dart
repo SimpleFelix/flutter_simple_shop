@@ -50,7 +50,6 @@ class _PanicBuyingPageState extends State<PanicBuyingPage> {
           onTap:  context.read(panicBuyingRiverpod).tabChanged,
         ),
         bottomHeight: 48,
-
       ),
       body: Stack(
         children: [

@@ -79,7 +79,7 @@ class Utils {
     if (await canLaunch(url)) {
       await launch(url);
     }else{
-      print('打开失败:$url');
+      copy(url,message: '跳转url失败,链接已复制到剪贴板');
     }
   }
 

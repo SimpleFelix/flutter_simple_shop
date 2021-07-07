@@ -1,4 +1,5 @@
 import 'package:demo1/common/utils.dart';
+import 'package:demo1/pages/search/view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -6,8 +7,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fsearch_nullsafety/fsearch_nullsafety.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:black_hole_flutter/black_hole_flutter.dart';
 
-import '../../../../provider/riverpod/category_riverpod.dart';
 import '../index_riverpod.dart';
 
 /// 首页导航栏
@@ -23,9 +25,14 @@ class IndexHomeAppbar extends StatelessWidget implements PreferredSizeWidget {
         backgroundColor: Colors.grey.shade50,
         padding: EdgeInsets.symmetric(vertical: 8),
         corner: FSearchCorner.all(5),
-        hints: ['输入淘宝标题', '复制淘宝链接', '搜索你想要找的商品'],
-        hintStyle: TextStyle(color: Colors.grey, fontSize: 12),
+        hints: ['输入"淘宝标题"来查找优惠券', '复制"淘宝链接"进行检索', '输入"关键字"来查找商品,比如"辣条"'],
+        hintStyle: TextStyle(color: Colors.grey, fontSize: 45.sp),
+        hintSwitchEnable: true,
+        hintSwitchDuration: Duration(seconds: 5),
+        hintSwitchAnimDuration: Duration(milliseconds: 800),
+        hintSwitchType: FSearchAnimationType.Scroll,
         prefixes: [
+          SizedBox(width: 12,),
           FaIcon(
             FontAwesomeIcons.search,
             color: Colors.grey,
@@ -36,6 +43,12 @@ class IndexHomeAppbar extends StatelessWidget implements PreferredSizeWidget {
           )
         ],
         cursorColor: Colors.pink,
+        onTap: (){
+          context.navigator.push(SwipeablePageRoute(builder: (_)=>SearchPage(
+            initSearchKeyWord: '',
+          )));
+        },
+        enable: false,
       ),
       actions: [
         IconButton(
