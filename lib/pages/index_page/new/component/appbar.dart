@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fsearch_nullsafety/fsearch_nullsafety.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
 
 import '../../../../provider/riverpod/category_riverpod.dart';
@@ -17,9 +18,12 @@ class IndexHomeAppbar extends StatelessWidget implements PreferredSizeWidget {
     return MorphingAppBar(
       backgroundColor: Colors.white,
       elevation: 0,
-      title: CupertinoSearchTextField(
-        placeholder: '搜索商品,标题',
-        placeholderStyle: TextStyle(fontSize: 13, color: Colors.grey),
+      title: FSearch(
+        backgroundColor: Colors.grey.shade50,
+        padding: EdgeInsets.symmetric(vertical: 8),
+        corner: FSearchCorner.all(5),
+        hints: ['输入淘宝标题','复制淘宝链接','搜索你想要找的商品'],
+        hintStyle: TextStyle(color: Colors.grey,fontSize: 12),
       ),
       actions: [
         IconButton(

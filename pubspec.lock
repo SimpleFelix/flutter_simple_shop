@@ -513,6 +513,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.1.0"
+  fsearch_nullsafety:
+    dependency: "direct main"
+    description:
+      name: fsearch_nullsafety
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.0.0"
   fsuper_nullsafety:
     dependency: "direct main"
     description:
