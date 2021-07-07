@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fsearch_nullsafety/fsearch_nullsafety.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
 
@@ -22,8 +23,19 @@ class IndexHomeAppbar extends StatelessWidget implements PreferredSizeWidget {
         backgroundColor: Colors.grey.shade50,
         padding: EdgeInsets.symmetric(vertical: 8),
         corner: FSearchCorner.all(5),
-        hints: ['输入淘宝标题','复制淘宝链接','搜索你想要找的商品'],
-        hintStyle: TextStyle(color: Colors.grey,fontSize: 12),
+        hints: ['输入淘宝标题', '复制淘宝链接', '搜索你想要找的商品'],
+        hintStyle: TextStyle(color: Colors.grey, fontSize: 12),
+        prefixes: [
+          FaIcon(
+            FontAwesomeIcons.search,
+            color: Colors.grey,
+            size: 15,
+          ),
+          SizedBox(
+            width: 12,
+          )
+        ],
+        cursorColor: Colors.pink,
       ),
       actions: [
         IconButton(

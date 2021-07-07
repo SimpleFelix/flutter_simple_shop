@@ -26,7 +26,7 @@ final gridMenuModles = [
   /// 领券
   GridMenuItem(
       item: GridMenuModel(
-          title: '饿了么领券',
+          title: '饿么领券',
           image: elmImage,
           isAssets: true,
           onTap: () {
