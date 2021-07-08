@@ -24,13 +24,13 @@ class IndexHomeAppbar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return SAppBarSearch(
-      hintText: '输入关键字来进行检索优惠券,例如:"辣条"',
+      hintText: '输入关键字,例如:"辣条"',
       onTap: () => navTo(context),
       readOnly: true,
       eve: 0,
-      leadingWidth: 50,
+      leadingWidth: 58,
       leading: Container(
-        alignment: Alignment.centerRight,
+        alignment: Alignment.center,
         child: SvgPicture.asset(
           'assets/svg/diandian.svg',
           width: 34,
