@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sp_util/sp_util.dart';
 
@@ -15,33 +16,39 @@ class UserModel extends ChangeNotifier {
   /// 是否已经登录
   bool isLogin = false;
 
+  // 判断用户是否有淘客权限
+  bool hasAdminAuthority() {
+    return isLogin && user != null && user!.roles.where((element) => element.name == 'admin').toList().isNotEmpty;
+  }
 
   // 用户登录的方法处理
   Future<bool> login(String username, String password) async {
-    return await utils.api.login(username, password, tokenHandle: tokenHandle, loginFail: utils.showMessage);
+    return await utils.api.login(username, password, tokenHandle: tokenHandle, loginFail: (msg) {
+      utils.showMessage(msg);
+      Hive.box('app').delete('token');
+    });
   }
 
   // token处理
   void tokenHandle(String token) {
     _token = token;
-    SpUtil.putString('token', token);
+    var box = Hive.box('app');
+    box.put('token', token);
     appStartWithUserModel();
     notifyListeners();
   }
 
   // app启动的时候获取token,判断是否失败,
   Future<void> appStartWithUserModel() async {
-    final token = SpUtil.getString('token');
-    print('获取到本地存储的用户token:$token');
+    final token = Hive.box('app').get('token');
     if (token != null) {
-     final _user = await utils.api.getUser(token);
-     if(_user!=null){
-       print('登录成功:${_user.nickName}');
-       user = _user;
-       _token = _token;
-       isLogin = true;
-       notifyListeners();
-     }
+      final _user = await utils.api.getUser(token);
+      if (_user != null) {
+        user = _user;
+        _token = _token;
+        isLogin = true;
+        notifyListeners();
+      }
     }
   }
 }

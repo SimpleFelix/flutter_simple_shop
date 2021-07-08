@@ -1,5 +1,6 @@
 import 'package:demo1/common/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:swipeable_page_route/swipeable_page_route.dart';
 
 class UserHomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   const UserHomeAppBar({Key? key}) : super(key: key);
@@ -9,6 +10,7 @@ class UserHomeAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: Colors.transparent,
       elevation: 0,
+      automaticallyImplyLeading: false,
       title: Text(
         '个人中心',
         style: TextStyle(color: Colors.black),

@@ -1,25 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:swipeable_page_route/swipeable_page_route.dart';
 
 class SAppBarSearch extends StatefulWidget implements PreferredSizeWidget {
-  SAppBarSearch({
-    Key? key,
-    this.borderRadius = 20,
-    this.autoFocus = false,
-    this.focusNode,
-    this.controller,
-    this.height = 40,
-    this.value,
-    this.leading,
-    this.suffix,
-    this.actions = const [],
-    this.hintText,
-    this.onTap,
-    this.onClear,
-    this.onCancel,
-    this.onChanged,
-    this.onSearch, this.bgColor,
-  }) : super(key: key);
+  SAppBarSearch(
+      {Key? key,
+      this.borderRadius = 20,
+      this.autoFocus = false,
+      this.focusNode,
+      this.controller,
+      this.height = 40,
+      this.value,
+      this.leading,
+      this.suffix,
+      this.actions = const [],
+      this.hintText,
+      this.onTap,
+      this.onClear,
+      this.onCancel,
+      this.onChanged,
+      this.onSearch,
+      this.bgColor,
+      this.readOnly,
+      this.bottom,
+      this.eve,this.leadingWidth})
+      : super(key: key);
   final double borderRadius;
   final bool autoFocus;
   final FocusNode? focusNode;
@@ -31,8 +36,15 @@ class SAppBarSearch extends StatefulWidget implements PreferredSizeWidget {
   // 默认值
   final String? value;
 
+  final double? leadingWidth;
+
+  final bool? readOnly;
+  final PreferredSizeWidget? bottom;
+
   // 最前面的组件
   final Widget? leading;
+
+  final double? eve;
 
   // 搜索框后缀组件
   final Widget? suffix;
@@ -81,7 +93,7 @@ class _SAppBarSearchState extends State<SAppBarSearch> {
   void initState() {
     _controller = widget.controller ?? TextEditingController();
     _focusNode = widget.focusNode ?? FocusNode();
-    if (widget.value != null) _controller.text = widget.value??'';
+    if (widget.value != null) _controller.text = widget.value ?? '';
     // 监听输入框状态
     _focusNode.addListener(() => setState(() {}));
     // 监听输入框变化
@@ -151,11 +163,11 @@ class _SAppBarSearchState extends State<SAppBarSearch> {
     final hasDrawer = scaffold.hasDrawer;
     var left = !canPop && !hasDrawer && widget.leading == null ? 15.0 : 0.0;
     var right = isActionEmpty && !isFocus && isTextEmpty ? 15.0 : 0.0;
-    return AppBar(
-      backgroundColor: widget.bgColor??Get.theme.primaryColor,
+    return MorphingAppBar(
+      backgroundColor: widget.bgColor ?? Get.theme.primaryColor,
       titleSpacing: 0,
       leading: isFocus ? SizedBox() : widget.leading,
-      leadingWidth: isFocus ? 15 : kToolbarHeight,
+      leadingWidth: isFocus ? 15 : (widget.leadingWidth ?? kToolbarHeight),
       iconTheme: IconThemeData(color: Colors.black),
       title: Container(
         margin: EdgeInsets.only(right: right, left: left),
@@ -173,6 +185,7 @@ class _SAppBarSearchState extends State<SAppBarSearch> {
             ),
             Expanded(
               child: TextField(
+                readOnly: widget.readOnly ?? false,
                 autofocus: widget.autoFocus,
                 focusNode: _focusNode,
                 controller: _controller,
@@ -193,6 +206,8 @@ class _SAppBarSearchState extends State<SAppBarSearch> {
         ),
       ),
       actions: _actions(),
+      elevation: widget.eve ?? 3,
+      bottom: widget.bottom,
     );
   }
 

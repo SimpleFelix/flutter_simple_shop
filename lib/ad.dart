@@ -1,13 +1,14 @@
 import 'package:after_layout/after_layout.dart';
-import 'package:demo1/pages/index_page/new/index_riverpod.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:get/get.dart';
 import 'package:show_up_animation/show_up_animation.dart';
+import 'package:swipeable_page_route/swipeable_page_route.dart';
 
 import 'app.dart';
-import 'controller/app_controller.dart';
+import 'pages/index_page/new/index_riverpod.dart';
 import 'provider/riverpod/category_riverpod.dart';
 
 class AdPage extends StatefulWidget {
@@ -21,38 +22,39 @@ class _AdPageState extends State<AdPage> with AfterLayoutMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Obx((){
-        final bg = AppController.find.bgBytes.value;
-        return Stack(
+        body: Center(
+      child: ShowUpAnimation(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            if(bg!=null)
-              Positioned(left:0,top:0,child: Image.memory(bg,width: Get.width,height: Get.height,fit: BoxFit.cover,)),
-            Center(
-              child: ShowUpAnimation(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text('欢迎来到典典的小卖部',style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white
-                    ),),
-                    SizedBox(height: 20),
-                    CircularProgressIndicator()
-                  ],
+            AnimatedTextKit(
+              animatedTexts: [
+                WavyAnimatedText(
+                  '欢迎来到典典的小卖部',
+                  textStyle: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.pink
+                  ),
                 ),
-              ),
+              ],
+              totalRepeatCount: 4,
+              pause: const Duration(milliseconds: 500),
+              displayFullTextOnTap: true,
+              stopPauseOnTap: true,
             ),
+            // SizedBox(height: 20),
+            // CircularProgressIndicator()
           ],
-        );
-      })
-    );
+        ),
+      ),
+    ));
   }
 
   @override
   void afterFirstLayout(BuildContext context) async {
     await context.read(categoryRiverpod).init();
     await context.read(indexRiverpod).fetch();
-    await Get.off(()=>App());
+    await context.navigator.pushReplacement(SwipeablePageRoute(builder: (_) => App()));
   }
 }

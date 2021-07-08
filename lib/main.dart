@@ -6,9 +6,9 @@ import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:provider/provider.dart';
-import 'package:sp_util/sp_util.dart';
 
 import './fluro/application.dart';
 import './fluro/routes.dart';
@@ -22,7 +22,8 @@ import 'fluro/navigator_util.dart';
 
 void main() async {
   /// 初始化sdk
-  DdTaokeUtil.instance.init('https://itbug.shop', '443'); //  远程服务器
+  // DdTaokeUtil.instance.init('https://itbug.shop', '443'); //  远程服务器
+  DdTaokeUtil.instance.init('https://192.168.199.89', '443',debug: false); //  远程服务器
 
   /// 路由配置
   /// [已弃用]
@@ -31,9 +32,8 @@ void main() async {
   Application.router = router;
 
   /// 本地缓存工具类
-  try{
-    await SpUtil.getInstance();
-  }catch(_){}
+  await Hive.initFlutter();
+  await Hive.openBox('app');
 
   WidgetsFlutterBinding.ensureInitialized();
 

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 mixin LoadingMixin<T extends StatefulWidget> on State<T> {
-  bool loadingState = true;
+  bool loadingState = false;
 
   String error = '';
 

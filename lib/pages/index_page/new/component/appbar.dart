@@ -1,54 +1,41 @@
-import 'package:demo1/common/utils.dart';
-import 'package:demo1/pages/search/view.dart';
+import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:fsearch_nullsafety/fsearch_nullsafety.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:black_hole_flutter/black_hole_flutter.dart';
 
+import '../../../../common/utils.dart';
+import '../../../../widgets/appbar_search.dart';
+import '../../../search/view.dart';
 import '../index_riverpod.dart';
 
 /// 首页导航栏
 class IndexHomeAppbar extends StatelessWidget implements PreferredSizeWidget {
   const IndexHomeAppbar({Key? key}) : super(key: key);
 
+  void navTo(BuildContext context) {
+    context.navigator.push(SwipeablePageRoute(
+        builder: (_) => SearchPage(
+              initSearchKeyWord: '',
+            )));
+  }
+
   @override
   Widget build(BuildContext context) {
-    return MorphingAppBar(
-      backgroundColor: Colors.white,
-      elevation: 0,
-      title: FSearch(
-        backgroundColor: Colors.grey.shade50,
-        padding: EdgeInsets.symmetric(vertical: 8),
-        corner: FSearchCorner.all(5),
-        hints: ['输入"淘宝标题"来查找优惠券', '复制"淘宝链接"进行检索', '输入"关键字"来查找商品,比如"辣条"'],
-        hintStyle: TextStyle(color: Colors.grey, fontSize: 45.sp),
-        hintSwitchEnable: true,
-        hintSwitchDuration: Duration(seconds: 5),
-        hintSwitchAnimDuration: Duration(milliseconds: 800),
-        hintSwitchType: FSearchAnimationType.Scroll,
-        prefixes: [
-          SizedBox(width: 12,),
-          FaIcon(
-            FontAwesomeIcons.search,
-            color: Colors.grey,
-            size: 15,
-          ),
-          SizedBox(
-            width: 12,
-          )
-        ],
-        cursorColor: Colors.pink,
-        onTap: (){
-          context.navigator.push(SwipeablePageRoute(builder: (_)=>SearchPage(
-            initSearchKeyWord: '',
-          )));
-        },
-        enable: false,
+    return SAppBarSearch(
+      hintText: '输入关键字来进行检索优惠券,例如:"辣条"',
+      onTap: () => navTo(context),
+      readOnly: true,
+      eve: 0,
+      leadingWidth: 50,
+      leading: Container(
+        alignment: Alignment.centerRight,
+        child: SvgPicture.asset(
+          'assets/svg/diandian.svg',
+          width: 34,
+          height: 34,
+        ),
       ),
       actions: [
         IconButton(
@@ -58,15 +45,6 @@ class IndexHomeAppbar extends StatelessWidget implements PreferredSizeWidget {
               color: Colors.black,
             ))
       ],
-      leading: Container(
-        alignment: Alignment.centerRight,
-        child: SvgPicture.asset(
-          'assets/svg/diandian.svg',
-          width: 34,
-          height: 34,
-        ),
-      ),
-      leadingWidth: 45,
       bottom: PreferredSize(
         preferredSize: Size.fromHeight(48),
         child: Consumer(

@@ -4,7 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-
+import 'package:black_hole_flutter/black_hole_flutter.dart';
+import 'package:swipeable_page_route/swipeable_page_route.dart';
 import '../constant/style.dart';
 import '../provider/riverpod/category_riverpod.dart';
 import '../widgets/component/custom_loading.dart';
@@ -76,5 +77,10 @@ class WidgetUtils extends WidgetUtilService {
   @override
   Widget renderProductCard(Product product) {
     return WaterfallGoodsCard(product);
+  }
+
+
+  Future<T?> to<T>(Widget page)async{
+    return await Get.context!.navigator.push<T>(SwipeablePageRoute(builder: (_)=> page));
   }
 }

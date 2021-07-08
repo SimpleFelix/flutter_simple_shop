@@ -33,7 +33,7 @@ class Api extends ApiService {
       if (msg != null) {
         loginFail?.call(msg);
       }
-    });
+    }, isTaokeApi: false);
     if (result.isNotEmpty) {
       Get.log('登录成功:$result');
       tokenHandle?.call(result);
@@ -44,12 +44,12 @@ class Api extends ApiService {
 
   @override
   Future<User?> getUser(String token) async {
-    final result = await request.get('/api/auth/current', data: {'token': token},onStart: AppController.find.addAuthDetail,isTaokeApi: false);
+    final result = await request.get('/api/auth/current', data: {'token': token}, onStart: AppController.find.addAuthDetail, isTaokeApi: false);
 
-    if(result.isNotEmpty){
-      try{
+    if (result.isNotEmpty) {
+      try {
         return User.fromJson(jsonDecode(result));
-      }catch(e,s){
+      } catch (e, s) {
         print(e);
         print(s);
         return null;
@@ -64,5 +64,13 @@ class Api extends ApiService {
       print(msg);
       utils.showMessage(msg);
     }
+  }
+
+  Future<String> post(String url, Map<String, dynamic> data) async {
+    return request.post(url, data: data, isTaokeApi: false, onStart: AppController.find.addAuthDetail);
+  }
+
+  Future<String> get(String url,{Map<String,dynamic>? data,ResultDataMapHandle? mapHandle,ApiError? error}) async {
+    return request.get(url,data: data,mapData: mapHandle,error: error,isTaokeApi: false);
   }
 }
