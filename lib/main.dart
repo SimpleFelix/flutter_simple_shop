@@ -9,6 +9,7 @@ import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:provider/provider.dart';
+import 'package:window_size/window_size.dart';
 
 import './fluro/application.dart';
 import './fluro/routes.dart';
@@ -22,7 +23,7 @@ import 'fluro/navigator_util.dart';
 
 void main() async {
   /// 初始化sdk
-  DdTaokeUtil.instance.init('https://itbug.shop', '443',debug: false); //  远程服务器
+  DdTaokeUtil.instance.init('https://itbug.shop', '443', debug: false); //  远程服务器
   // DdTaokeUtil.instance.init('https://192.168.199.89', '443',debug: false); //
   //
 
@@ -50,10 +51,13 @@ void main() async {
 
   /// getx 控制器
 
-  /// 构建web程序需要注释这个,会报错
-  // if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
-  //   setWindowTitle('典典的小卖部 桌面客户端  v2.0.0');
-  // }
+  // / 构建web程序需要注释这个,会报错
+  if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
+    setWindowTitle('典典的小卖部 桌面客户端  v2.0.0');
+    final windowSize = Size(500, 1041);
+    setWindowMaxSize(windowSize);
+    setWindowMinSize(windowSize);
+  }
 
   /// 启动app
   runApp(ProviderScope(child: MyApp()));

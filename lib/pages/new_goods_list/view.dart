@@ -1,3 +1,4 @@
+import 'package:after_layout/after_layout.dart';
 import 'package:dd_taoke_sdk/constant/sort.dart';
 import 'package:dd_taoke_sdk/model/category.dart';
 import 'package:demo1/pages/goods_page/sort_widget.dart';
@@ -25,18 +26,13 @@ class NewGoodsList extends StatefulWidget {
   _NewGoodsListState createState() => _NewGoodsListState();
 }
 
-class _NewGoodsListState extends State<NewGoodsList> with SingleTickerProviderStateMixin {
+class _NewGoodsListState extends State<NewGoodsList> with SingleTickerProviderStateMixin, AfterLayoutMixin {
   late TabController _tabController;
 
   @override
   void initState() {
     super.initState();
-
-    Future.microtask(()async{
-      context.read(goodsListRiverpod).setCategory(widget.category, widget.subcategory);
-      await context.read(goodsListRiverpod).onRefresh();
-    });
-
+    context.read(goodsListRiverpod).setCategory(widget.category, widget.subcategory, isInit: true);
     _tabController = TabController(length: 4, vsync: this);
   }
 
@@ -50,12 +46,7 @@ class _NewGoodsListState extends State<NewGoodsList> with SingleTickerProviderSt
         ),
         bottomHeight: 48,
       ),
-      body: EasyRefresh.custom(
-          onLoad: context.read(goodsListRiverpod).nextPage,
-          onRefresh: context.read(goodsListRiverpod).onRefresh,
-          header: MaterialHeader(),
-          footer: MaterialFooter(),
-          slivers: [
+      body: EasyRefresh.custom(onLoad: context.read(goodsListRiverpod).nextPage, onRefresh: context.read(goodsListRiverpod).onRefresh, header: MaterialHeader(), footer: MaterialFooter(), slivers: [
         Consumer(
           builder: (BuildContext context, T Function<T>(ProviderBase<Object?, T>) watch, Widget? child) {
             final cate = watch(goodsListRiverpod).category;
@@ -153,5 +144,10 @@ class _NewGoodsListState extends State<NewGoodsList> with SingleTickerProviderSt
       height: ScreenUtil().setHeight(60),
       width: ScreenUtil().setWidth(60),
     );
+  }
+
+  @override
+  void afterFirstLayout(BuildContext context) async {
+    await context.read(goodsListRiverpod).onRefresh();
   }
 }

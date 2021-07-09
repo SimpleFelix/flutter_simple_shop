@@ -1,7 +1,9 @@
+import 'package:after_layout/after_layout.dart';
 import 'package:demo1/pages/dynamic/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 import './pages/category_page/index_home.dart';
@@ -18,7 +20,7 @@ class App extends StatefulWidget {
   _AppState createState() => _AppState();
 }
 
-class _AppState extends State<App> {
+class _AppState extends State<App> with AfterLayoutMixin{
   UserProvider? userProvider;
   static ScrollController mController = ScrollController();
   static ScrollController jiujiuController = ScrollController(); // 9.9包邮页面滑动控制器
@@ -214,5 +216,15 @@ class _AppState extends State<App> {
       this.userProvider = userProvider;
     }
     super.didChangeDependencies();
+  }
+
+  @override
+  void afterFirstLayout(BuildContext context) {
+    if(GetPlatform.isWindows){
+      Get.dialog(AlertDialog(
+        title: Text('提示'),
+        content: Text('windows版本:可以拖动窗口边缘拉伸到合适位置'),
+      ));
+    }
   }
 }

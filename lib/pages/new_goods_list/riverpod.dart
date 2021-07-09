@@ -32,10 +32,13 @@ class GoodsListState extends ChangeNotifier {
   // 关闭
   CancelToken? cancelToken;
 
-  void setCategory(Category c, Subcategory? sc) {
+  void setCategory(Category c, Subcategory? sc,{bool isInit = false}) {
     category = c;
     subcategory = sc;
-    notifyListeners();
+    if(!isInit){
+      notifyListeners();
+    }
+
   }
 
   // 刷新
