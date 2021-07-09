@@ -10,12 +10,12 @@ class GoodsListRepository extends LoadingMoreBase<Product> {
   int pageSize = 50; // 每页条数，默认为100，最大值200，若小于10，则按10条处理，每页条数仅支持输入10,50,100,200
 
   //外面传进来的参数
-  String? g_sort;
+  String? sortStr;
   String? brand;
   String? cids;
   String? subcid;
 
-  GoodsListRepository({this.g_sort, this.brand, this.cids, this.subcid});
+  GoodsListRepository({this.sortStr, this.brand, this.cids, this.subcid});
 
   @override
   bool get hasMore => _hasMore;
@@ -32,13 +32,13 @@ class GoodsListRepository extends LoadingMoreBase<Product> {
 
   @override
   Future<bool> loadData([bool isloadMoreAction = false]) async {
-    bool isSuccess = false;
-    print("正在获取第$pageindex页数据,排序:$g_sort,品牌:$brand,主类目:$cids,子类目:$subcid");
+    var isSuccess = false;
+    print('正在获取第$pageindex页数据,排序:$sortStr,品牌:$brand,主类目:$cids,子类目:$subcid');
 
     final result = await DdTaokeSdk.instance.getProducts(
         param: ProductListParam(
             pageId: '$pageindex',
-            sort: '$g_sort',
+            sort: '$sortStr',
             brand: '$brand',
             cids: '$cids',
             subcid: '$subcid'));

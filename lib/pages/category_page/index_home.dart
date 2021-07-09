@@ -41,8 +41,7 @@ class _CategoryIndexPageState extends State<CategoryIndexPage> {
       ),
       body: EditePageHandle(
         child: Consumer(
-          builder: (BuildContext context,
-              T Function<T>(ProviderBase<Object?, T>) watch, Widget? child) {
+          builder: (BuildContext context, T Function<T>(ProviderBase<Object?, T>) watch, Widget? child) {
             final categorys = watch(categoryRiverpod).categorys;
             final current = watch(categoryRiverpod).current;
             if (categorys.isEmpty) {
@@ -52,8 +51,7 @@ class _CategoryIndexPageState extends State<CategoryIndexPage> {
             }
             return Container(
                 width: MediaQuery.of(context).size.width,
-                height:
-                    Get.height - kToolbarHeight - Get.mediaQuery.padding.top,
+                height: Get.height - kToolbarHeight - Get.mediaQuery.padding.top,
                 child: Row(
                   children: <Widget>[
                     //左侧
@@ -64,13 +62,8 @@ class _CategoryIndexPageState extends State<CategoryIndexPage> {
                           itemCount: categorys.length,
                           itemBuilder: (context, index) {
                             return InkWell(
-                              onTap: () => context
-                                  .read(categoryRiverpod)
-                                  .setCurrent(categorys[index]),
-                              child: LeftWidgetItem(
-                                  item: categorys[index],
-                                  isCurrent:
-                                      current.cid == categorys[index].cid),
+                              onTap: () => context.read(categoryRiverpod).setCurrent(categorys[index]),
+                              child: LeftWidgetItem(item: categorys[index], isCurrent: current.cid == categorys[index].cid),
                             );
                           }),
                     ),
@@ -80,13 +73,9 @@ class _CategoryIndexPageState extends State<CategoryIndexPage> {
                       child: Container(
                           color: Colors.white,
                           child: WaterfallFlow.builder(
-                            gridDelegate:
-                                SliverWaterfallFlowDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 3),
+                            gridDelegate: SliverWaterfallFlowDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
                             itemBuilder: (context, sIndex) {
-                              return RightWidgetItme(
-                                  cid: current.cid.toString(),
-                                  item: current.subcategories![sIndex]);
+                              return RightWidgetItme(category: current, item: current.subcategories![sIndex]);
                             },
                             itemCount: (current.subcategories ?? []).length,
                           )),

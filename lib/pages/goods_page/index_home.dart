@@ -1,20 +1,20 @@
 import 'package:dd_taoke_sdk/model/product.dart';
-import 'package:get/get.dart';
-import 'subcategory_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:loading_more_list/loading_more_list.dart';
 import 'package:pull_to_refresh_notification/pull_to_refresh_notification.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:swipeable_page_route/swipeable_page_route.dart';
+
 import './sort_widget.dart';
 import '../../provider/riverpod/category_riverpod.dart';
-import '../../repository/GoodsListRepository.dart';
+import '../../repository/goods_list_repository.dart';
 import '../../util/fluro_convert_util.dart';
 import '../../widgets/RoundUnderlineTabIndicator.dart';
 import '../../widgets/StickyTabBarDelegate.dart';
 import '../../widgets/loading_more_list_indicator.dart';
 import '../../widgets/waterfall_goods_card.dart';
+import 'subcategory_view.dart';
 
 ///
 
@@ -57,13 +57,14 @@ class _GoodsListPageState extends State<GoodsListPage>
         return Future<bool>.value(true);
       },
       child: Scaffold(
-        appBar: AppBar(
+        appBar: MorphingAppBar(
           title: Text(t),
           leading: BackButton(
             onPressed: () async {
               Navigator.pop(context);
             },
           ),
+          elevation: 0,
         ),
         body: PullToRefreshNotification(
           pullBackOnRefresh: true,
@@ -81,26 +82,26 @@ class _GoodsListPageState extends State<GoodsListPage>
               buildTopCategorys(),
 
               //子分类
-              SliverToBoxAdapter(
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                  ),
-                  child: SubCategoryView(changeSubcategory: (subcategory){
-                    setState(() {
-                      currentSubCategory = subcategory.subcid.toString();
-                      currentMainCategory = '';
-                      goodsListRepository = GoodsListRepository(
-                          cids: '',
-                          g_sort: '0',
-                          subcid: subcategory.subcid.toString(),
-                          brand: '');
-                    });
-                    goodsListRepository.refresh(true);
-                    _tabController.animateTo(0);
-                  },),
-                ) ,
-              ),
+              // SliverToBoxAdapter(
+              //   child: Container(
+              //     decoration: BoxDecoration(
+              //       color: Colors.white,
+              //     ),
+              //     child: SubCategoryView(changeSubcategory: (subcategory){
+              //       setState(() {
+              //         currentSubCategory = subcategory.subcid.toString();
+              //         currentMainCategory = '';
+              //         goodsListRepository = GoodsListRepository(
+              //             cids: '',
+              //             sortStr: '0',
+              //             subcid: subcategory.subcid.toString(),
+              //             brand: '');
+              //       });
+              //       goodsListRepository.refresh(true);
+              //       _tabController.animateTo(0);
+              //     },),
+              //   ) ,
+              // ),
 
               //排序
               SliverPersistentHeader(
@@ -119,22 +120,18 @@ class _GoodsListPageState extends State<GoodsListPage>
                       controller: _tabController,
                       tabs: <Widget>[
                         SortWidget(
-                          onTap: () => sortOnChange(0),
                           title: '人气',
                           current: current == 0,
                         ),
                         SortWidget(
-                          onTap: () => sortOnChange(1),
                           title: '最新',
                           current: current == 1,
                         ),
                         SortWidget(
-                          onTap: () => sortOnChange(2),
                           title: '销量',
                           current: current == 2,
                         ),
                         SortWidget(
-                            onTap: () => sortOnChange(3),
                             title: '价格',
                             current: current == 3,
                             icon: _bulidPriceIconWidget()),
@@ -184,7 +181,7 @@ class _GoodsListPageState extends State<GoodsListPage>
               currentSubCategory = '';
               goodsListRepository = GoodsListRepository(
                   cids: categorys[index - 1].cid.toString(),
-                  g_sort: '0',
+                  sortStr: '0',
                   subcid: '',
                   brand: '');
             });
@@ -216,7 +213,7 @@ class _GoodsListPageState extends State<GoodsListPage>
         cids: widget.subcid!=''  ? '' : widget.cids,
         brand: widget.brand,
         subcid: widget.subcid,
-        g_sort: '0');
+        sortStr: '0');
     _tabController = TabController(vsync: this, length: 4);
     categorysTabBarController = TabController(vsync: this, length: context.read(categoryRiverpod).categorys.length+1);
     setState(() {
@@ -270,7 +267,7 @@ class _GoodsListPageState extends State<GoodsListPage>
           cids: currentMainCategory,
           brand: widget.brand,
           subcid: currentSubCategory,
-          g_sort: '$index');
+          sortStr: '$index');
       await goodsListRepository.refresh(true);
       setState(() {
         priceSortType = 0;
@@ -283,7 +280,7 @@ class _GoodsListPageState extends State<GoodsListPage>
           cids: currentMainCategory,
           brand: widget.brand,
           subcid: currentSubCategory,
-          g_sort: '4');
+          sortStr: '4');
       await goodsListRepository.refresh(true);
       setState(() {
         priceSortType = 1;
@@ -297,7 +294,7 @@ class _GoodsListPageState extends State<GoodsListPage>
           cids: currentMainCategory,
           brand: widget.brand,
           subcid: currentSubCategory,
-          g_sort: '$index');
+          sortStr: '$index');
       await goodsListRepository.refresh(true);
     }
   }

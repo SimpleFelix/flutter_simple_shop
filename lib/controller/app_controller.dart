@@ -45,14 +45,18 @@ class AppController extends GetxController {
 
   /// 检测新版本
   Future<void> getNewVersion() async {
-    final serverVersion = await tkApi.getLastVersion();
-    if (serverVersion.isNotEmpty) {
-      final map = jsonDecode(serverVersion);
-      final packInfo = await PackageInfo.fromPlatform();
-      if (map['version'] != packInfo.version) {
-        // 判定为有新版本
-        await Get.dialog(NewVersionDialog(map: map));
+
+    if(GetPlatform.isAndroid || GetPlatform.isIOS){
+      final serverVersion = await tkApi.getLastVersion();
+      if (serverVersion.isNotEmpty) {
+        final map = jsonDecode(serverVersion);
+        final packInfo = await PackageInfo.fromPlatform();
+        if (map['version'] != packInfo.version) {
+          // 判定为有新版本
+          await Get.dialog(NewVersionDialog(map: map));
+        }
       }
     }
+
   }
 }

@@ -1,74 +1,75 @@
 import 'package:dd_taoke_sdk/model/category.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-
-import '../../provider/riverpod/category_riverpod.dart';
 
 class SubCategoryView extends ConsumerWidget {
   final ValueChanged<Subcategory>? changeSubcategory;
+  final Category category;
+  final Subcategory? subcategory;
 
-  SubCategoryView({this.changeSubcategory});
+  SubCategoryView(this.category, {this.changeSubcategory, this.subcategory});
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
-    final current = watch(categoryRiverpod).currentWithProductList;
-    if (current != null) {
-      final showSubcategorys = current.subcategories;
-      return GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 5,
-            mainAxisSpacing: 5,
-            crossAxisSpacing: 5,
-            childAspectRatio: 0.8),
-        itemCount: showSubcategorys!.length > 10 ? 10 : showSubcategorys.length,
-        shrinkWrap: true,
-        itemBuilder: (context, index) {
-          return buildSubCategoryItem(showSubcategorys[index]);
-        },
-      );
-    }
-    return Container();
+    final showSubcategorys = category.subcategories ?? [];
+    return Container(
+      decoration: BoxDecoration(color: Colors.white),
+      child: buildGridView(showSubcategorys),
+    );
+  }
+
+  GridView buildGridView(List<Subcategory> showSubcategorys) {
+    return GridView.builder(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 6,
+      ),
+      itemCount: showSubcategorys.length,
+      shrinkWrap: true,
+      itemBuilder: (context, index) {
+        return buildSubCategoryItem(showSubcategorys[index]);
+      },
+    );
   }
 
   // 子分类布局
-  Widget buildSubCategoryItem(Subcategory subcategory) {
-    return Consumer(
-      builder: (BuildContext context,
-          T Function<T>(ProviderBase<Object?, T>) watch, Widget? child) {
-        final currentSubCategory = watch(categoryRiverpod).currentSubCategory;
-        return InkWell(
-          onTap: () {
-            if (currentSubCategory != null &&
-                subcategory.subcid != currentSubCategory.subcid) {
-              changeSubcategory?.call(subcategory);
-            }
-          },
-          child: Container(
-            width: 200.w,
+  Widget buildSubCategoryItem(Subcategory item) {
+    return InkWell(
+      onTap: () {
+        if(subcategory==null){
+          changeSubcategory?.call(item);
+          return;
+        }
+        if (subcategory != null && subcategory!.subcid != item.subcid) {
+          changeSubcategory?.call(item);
+        }
+      },
+      child: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+          return Container(
+            width: constraints.maxWidth,
+            height: constraints.maxHeight,
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 ExtendedImage.network(
-                  subcategory.scpic!,
-                  width: ScreenUtil().setWidth(200),
+                  item.scpic!,
+                  width: constraints.maxWidth * 0.5,
+                  height: constraints.maxWidth * 0.5,
                   fit: BoxFit.fill,
                   cache: true,
                   borderRadius: BorderRadius.all(Radius.circular(30.0)),
                 ),
                 Text(
-                  subcategory.subcname!,
-                  style: TextStyle(
-                      color: currentSubCategory != null &&
-                              currentSubCategory.subcid == subcategory.subcid
-                          ? Colors.pinkAccent
-                          : Colors.black),
+                  item.subcname!,
+                  style: TextStyle(color: subcategory != null && subcategory!.subcid == item.subcid ? Colors.pinkAccent : Colors.black),
                 )
               ],
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }
