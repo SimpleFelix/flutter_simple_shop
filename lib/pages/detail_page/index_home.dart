@@ -6,6 +6,7 @@ import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
 
 import './action_buttons.dart';
 import './detail_imgs_widget.dart';
+
 //小部件
 import './swiper_widget.dart';
 import '../../constant/color.dart';
@@ -26,9 +27,7 @@ class DetailIndex extends StatefulWidget {
 }
 
 class _DetailIndexState extends State<DetailIndex> {
-
   bool loadIng = true;
-
 
   // 唯品会商品数据
   WeipinhuiDetail? weipinhuiDetail;
@@ -76,13 +75,10 @@ class _DetailIndexState extends State<DetailIndex> {
                           SizedBox(height: ScreenUtil().setHeight(10)),
                           // 价钱行
                           Container(
-                            padding:
-                                EdgeInsets.only(left: 20, top: 5, bottom: 5),
+                            padding: EdgeInsets.only(left: 20, top: 5, bottom: 5),
                             child: CouponPriceWidget(
-                              actualPrice: detail.marketPrice
-                                  .toString(),
-                              originalPrice:
-                                  double.parse(detail.vipPrice),
+                              actualPrice: detail.vipPrice,
+                              originalPrice: double.parse(detail.marketPrice),
                               couponPriceFontSize: 100,
                               originalPriceFontSize: 55,
                               interval: 15.0,
@@ -97,19 +93,13 @@ class _DetailIndexState extends State<DetailIndex> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
                                 Container(
-                                  child: Text(
-                                      '月销:',
-                                      style: TextStyle(color: Colors.grey)),
+                                  child: Text('月销:', style: TextStyle(color: Colors.grey)),
                                 ),
                                 Container(
-                                  child: Text(
-                                      '两小时销量:',
-                                      style: TextStyle(color: Colors.grey)),
+                                  child: Text('两小时销量:', style: TextStyle(color: Colors.grey)),
                                 ),
                                 Container(
-                                  child: Text(
-                                      '当天销量:',
-                                      style: TextStyle(color: Colors.grey)),
+                                  child: Text('当天销量:', style: TextStyle(color: Colors.grey)),
                                 ),
                               ],
                             ),
@@ -127,17 +117,12 @@ class _DetailIndexState extends State<DetailIndex> {
                                 Expanded(
                                   child: Row(
                                     children: <Widget>[
-                                      Image.asset('assets/icons/youhuiquan.png',
-                                          width: ScreenUtil().setWidth(78),
-                                          height: ScreenUtil().setHeight(78)),
+                                      Image.asset('assets/icons/youhuiquan.png', width: ScreenUtil().setWidth(78), height: ScreenUtil().setHeight(78)),
                                       Container(
-                                        child: Text(
-                                            '该商品可领取满'
+                                        child: Text('该商品可领取满'
                                             '减红包'),
                                       ),
-                                      Icon(Icons.help_outline,
-                                          color: Colors.black26,
-                                          size: ScreenUtil().setSp(70))
+                                      Icon(Icons.help_outline, color: Colors.black26, size: ScreenUtil().setSp(70))
                                     ],
                                   ),
                                 ),
@@ -158,10 +143,7 @@ class _DetailIndexState extends State<DetailIndex> {
                           Container(
                             padding: EdgeInsets.only(left: 20),
                             height: ScreenUtil().setHeight(150),
-                            decoration: BoxDecoration(
-                                border: Border(
-                                    bottom: BorderSide(
-                                        width: 0.5, color: Colors.black12))),
+                            decoration: BoxDecoration(border: Border(bottom: BorderSide(width: 0.5, color: Colors.black12))),
                             child: Row(
                               children: <Widget>[
                                 Container(
@@ -188,10 +170,7 @@ class _DetailIndexState extends State<DetailIndex> {
                           Container(
                             padding: EdgeInsets.only(left: 20),
                             height: ScreenUtil().setHeight(150),
-                            decoration: BoxDecoration(
-                                border: Border(
-                                    bottom: BorderSide(
-                                        width: 0.5, color: Colors.black12))),
+                            decoration: BoxDecoration(border: Border(bottom: BorderSide(width: 0.5, color: Colors.black12))),
                             child: Row(
                               children: <Widget>[
                                 Container(
@@ -208,9 +187,7 @@ class _DetailIndexState extends State<DetailIndex> {
                                     alignment: Alignment.centerLeft,
                                     child: Text(
                                       '立即领取',
-                                      style: TextStyle(
-                                          color: primaryColor,
-                                          fontWeight: FontWeight.w600),
+                                      style: TextStyle(color: primaryColor, fontWeight: FontWeight.w600),
                                     ),
                                   ),
                                 ),
@@ -232,10 +209,7 @@ class _DetailIndexState extends State<DetailIndex> {
                           Container(
                             padding: EdgeInsets.only(left: 20),
                             height: ScreenUtil().setHeight(150),
-                            decoration: BoxDecoration(
-                                border: Border(
-                                    bottom: BorderSide(
-                                        width: 0.5, color: Colors.black12))),
+                            decoration: BoxDecoration(border: Border(bottom: BorderSide(width: 0.5, color: Colors.black12))),
                             child: Row(
                               children: <Widget>[
                                 Container(
@@ -265,10 +239,7 @@ class _DetailIndexState extends State<DetailIndex> {
                           Container(
                             padding: EdgeInsets.only(left: 20),
                             height: ScreenUtil().setHeight(150),
-                            decoration: BoxDecoration(
-                                border: Border(
-                                    bottom: BorderSide(
-                                        width: 0.5, color: Colors.black12))),
+                            decoration: BoxDecoration(border: Border(bottom: BorderSide(width: 0.5, color: Colors.black12))),
                             child: Row(
                               children: <Widget>[
                                 Container(
@@ -313,8 +284,7 @@ class _DetailIndexState extends State<DetailIndex> {
                           ),
 
                           // 详情图
-                          DetailImagesWidget(
-                              images: ''),
+                          DetailImagesWidget(images: ''),
                         ],
                       ),
                     )),
@@ -329,8 +299,7 @@ class _DetailIndexState extends State<DetailIndex> {
             )));
   }
 
-  void _gotoGetCouperLink() async {
-  }
+  void _gotoGetCouperLink() async {}
 
   //商品是否包邮
   Widget _isFreeshipRemoteDistrict() {
@@ -366,17 +335,15 @@ class _DetailIndexState extends State<DetailIndex> {
     var now = DateTime.now();
     final endTime = detail.schemeEndTime;
     var difference = DateUtil.getDateTime(DateUtil.formatDateMs(endTime))!.difference(now);
-    var str =
-        '${difference.inDays}天${difference.inHours % 24}小时${difference.inMinutes % 60}分';
+    var str = '${difference.inDays}天${difference.inHours % 24}小时${difference.inMinutes % 60}分';
     return str;
   }
 
   WeipinhuiResult get detail => weipinhuiDetail!.result[0];
 
   Widget _imgSwiper() {
-    if (weipinhuiDetail!=null) {
-      return SwiperWidget(
-          images: weipinhuiDetail!.result[0].goodsMainPicture);
+    if (weipinhuiDetail != null) {
+      return SwiperWidget(images: weipinhuiDetail!.result[0].goodsMainPicture);
     }
     return Container();
   }
@@ -397,11 +364,11 @@ class _DetailIndexState extends State<DetailIndex> {
   void initState() {
     super.initState();
     Future.microtask(() async {
-     final result = await tkApi.getWphProductInfo(widget.weipinhuiId);
-     setState(() {
-       weipinhuiDetail = result;
-       loadIng = false;
-     });
+      final result = await tkApi.getWphProductInfo(widget.weipinhuiId);
+      setState(() {
+        weipinhuiDetail = result;
+        loadIng = false;
+      });
     });
   }
 }

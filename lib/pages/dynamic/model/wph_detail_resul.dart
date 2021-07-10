@@ -124,8 +124,8 @@ class WeipinhuiResult {
           asT<Map<String, dynamic>>(jsonRes['storeServiceCapability'])!),
       brandName: asT<String>(jsonRes['brandName'])!,
       brandLogoFull: asT<String>(jsonRes['brandLogoFull'])!,
-      couponInfo: CouponInfo.fromJson(
-          asT<Map<String, dynamic>>(jsonRes['couponInfo'])!),
+      couponInfo:jsonRes['couponInfo']!=null ? CouponInfo.fromJson(
+          asT<Map<String, dynamic>>(jsonRes['couponInfo']??{})!) : null,
       brandStoreSn: asT<String>(jsonRes['brandStoreSn'])!,
       sellTimeFrom: asT<int>(jsonRes['sellTimeFrom'])!,
       schemeStartTime: asT<int>(jsonRes['schemeStartTime'])!,
@@ -166,7 +166,7 @@ class WeipinhuiResult {
   StoreServiceCapability storeServiceCapability;
   String brandName;
   String brandLogoFull;
-  CouponInfo couponInfo;
+  CouponInfo? couponInfo;
   String brandStoreSn;
   int sellTimeFrom;
   int schemeStartTime;
