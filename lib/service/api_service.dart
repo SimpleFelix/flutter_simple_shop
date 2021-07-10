@@ -1,4 +1,8 @@
+import 'dart:convert';
+
 import 'package:dd_taoke_sdk/network/util.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
 
 import '../common/toast.dart';
@@ -26,6 +30,32 @@ class TKApiService {
   /// 获取服务器最新的版本号
   Future<String> getLastVersion() async {
     return await utils.api.get('/api/version/last-version');
+  }
+
+  /// 返回唯品会精编商品
+  Future<void> getWphJbProducts(int page,{String? pageSize,String? sort,String? totalCount,ValueChanged<List<dynamic>>? valueChanged}) async {
+    var data = <String, dynamic>{};
+    data['page'] = '$page';
+    if(pageSize!=null) {
+      data['pageSize'] = pageSize;
+    }
+    if(sort!=null){
+      data['sort'] = sort;
+    }
+    if(totalCount!=null){
+      data['totalCount'] = totalCount;
+    }
+    final result = await utils.api.get('/api/zhe/jb',data: data);
+    try{
+      final map = jsonDecode(result);
+      if(map['status'] == 200){
+        final list = map['content'] as List<dynamic>;
+        valueChanged?.call(list);
+      }
+    }catch(e,s){
+      print(e);
+      print(s);
+    }
   }
 }
 

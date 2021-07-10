@@ -15,9 +15,10 @@ class PriceLayout extends StatelessWidget {
         children: [
           Text('¥ $original', style: TextStyle(fontSize: 52.sp, color: Colors.red)),
           SizedBox(width: 10.w),
-          Expanded(
-            child: Text('¥$discounts', maxLines: 1, overflow: TextOverflow.ellipsis, style: TextStyle(fontSize: 48.sp, color: Colors.grey, decoration: TextDecoration.lineThrough)),
-          )
+          if (discounts.isNotEmpty)
+            Expanded(
+              child: Text('¥$discounts', maxLines: 1, overflow: TextOverflow.ellipsis, style: TextStyle(fontSize: 48.sp, color: Colors.grey, decoration: TextDecoration.lineThrough)),
+            )
         ],
       ),
     );

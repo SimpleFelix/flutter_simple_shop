@@ -1,3 +1,4 @@
+import 'package:demo1/pages/dynamic/pages/wph.dart';
 import 'package:flutter/material.dart';
 
 import 'pages/pyq.dart';
@@ -10,8 +11,7 @@ class DynamicIndex extends StatefulWidget {
   _DynamicIndexState createState() => _DynamicIndexState();
 }
 
-class _DynamicIndexState extends State<DynamicIndex>
-    with SingleTickerProviderStateMixin {
+class _DynamicIndexState extends State<DynamicIndex> with SingleTickerProviderStateMixin {
   late TabController tabController;
 
   @override
@@ -31,7 +31,7 @@ class _DynamicIndexState extends State<DynamicIndex>
                 text: '动态',
               ),
               Tab(
-                text: '发现',
+                text: '唯品会',
               ),
             ],
             controller: tabController,
@@ -44,7 +44,7 @@ class _DynamicIndexState extends State<DynamicIndex>
         controller: tabController,
         children: [
           PyqView(),
-          Container(),
+          WeipinhuiJinBianGoods(),
         ],
       ),
     );

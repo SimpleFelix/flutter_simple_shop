@@ -22,7 +22,7 @@ class SubCategoryView extends ConsumerWidget {
   GridView buildGridView(List<Subcategory> showSubcategorys) {
     return GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 6,
+        crossAxisCount: 4,
       ),
       itemCount: showSubcategorys.length,
       shrinkWrap: true,
@@ -36,7 +36,7 @@ class SubCategoryView extends ConsumerWidget {
   Widget buildSubCategoryItem(Subcategory item) {
     return InkWell(
       onTap: () {
-        if(subcategory==null){
+        if (subcategory == null) {
           changeSubcategory?.call(item);
           return;
         }
