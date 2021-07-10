@@ -23,7 +23,8 @@ class SAppBarSearch extends StatefulWidget implements PreferredSizeWidget {
       this.bgColor,
       this.readOnly,
       this.bottom,
-      this.eve,this.leadingWidth})
+      this.eve,
+      this.leadingWidth})
       : super(key: key);
   final double borderRadius;
   final bool autoFocus;
@@ -79,13 +80,13 @@ class SAppBarSearch extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _SAppBarSearchState extends State<SAppBarSearch> {
-  late TextEditingController _controller;
-  late FocusNode _focusNode;
+  TextEditingController? _controller;
+  FocusNode? _focusNode;
   bool isInput = false;
 
-  bool get isFocus => _focusNode.hasFocus;
+  bool get isFocus => _focusNode != null ? _focusNode!.hasFocus : false;
 
-  bool get isTextEmpty => _controller.text.isEmpty;
+  bool get isTextEmpty => _controller != null ? _controller!.text.isEmpty : true;
 
   bool get isActionEmpty => widget.actions.isEmpty;
 
@@ -93,30 +94,34 @@ class _SAppBarSearchState extends State<SAppBarSearch> {
   void initState() {
     _controller = widget.controller ?? TextEditingController();
     _focusNode = widget.focusNode ?? FocusNode();
-    if (widget.value != null) _controller.text = widget.value ?? '';
+    if (widget.value != null) {
+      if (_controller != null) {
+        _controller!.text = widget.value ?? '';
+      }
+    }
     // 监听输入框状态
-    _focusNode.addListener(() => setState(() {}));
+    _focusNode?.addListener(() => setState(() {}));
     // 监听输入框变化
     // 解决当外部改变输入框内容时 控件处于正确的状态中 (显示清除图标按钮和取消按钮等)
-    _controller.addListener(() {
+    _controller?.addListener(() {
       setState(() {});
-      widget.onChanged?.call(_controller.text);
+      widget.onChanged?.call(_controller != null ? _controller!.text : '');
     });
     super.initState();
   }
 
   // 清除输入框内容
   void _onClearInput() {
-    _controller.clear();
-    if (!isFocus) _focusNode.requestFocus();
+    _controller?.clear();
+    if (!isFocus) _focusNode?.requestFocus();
     setState(() {});
     widget.onClear?.call();
   }
 
   // 取消输入框编辑
   void _onCancelInput() {
-    _controller.clear();
-    _focusNode.unfocus();
+    _controller?.clear();
+    _focusNode?.unfocus();
     setState(() {});
     widget.onCancel?.call();
   }
@@ -213,8 +218,8 @@ class _SAppBarSearchState extends State<SAppBarSearch> {
 
   @override
   void dispose() {
-    _controller.dispose();
-    _focusNode.dispose();
+    _controller?.dispose();
+    _focusNode?.dispose();
     super.dispose();
   }
 }

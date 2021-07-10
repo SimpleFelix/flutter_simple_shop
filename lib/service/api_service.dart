@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:dd_taoke_sdk/network/util.dart';
 import 'package:demo1/pages/dynamic/model/wph_detail_resul.dart';
+import 'package:demo1/pages/pinduoduo/search/model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
@@ -70,6 +71,36 @@ class TKApiService {
       } catch (_) {}
     }
     return null;
+  }
+
+  /// 拼多多搜索
+  Future<List<PddDetail>> pddSearch(String keyWorlds,{Map<String,dynamic>? map}) async {
+
+    var result = <PddDetail>[];
+
+    var data = <String,dynamic>{};
+    data['keyword'] = keyWorlds;
+    if(map!=null){
+      data.addAll(map);
+    }
+    final response = await utils.api.get('/tkapi/api/v1/dtk/apis/pdd-search',data: data);
+
+    if(response.isNotEmpty){
+      try{
+        final _map = jsonDecode(response);
+        print(_map['goodsList'].runtimeType );
+        if(_map['goodsList'] is List<dynamic>){
+          final _list = List<PddDetail>.from((_map['goodsList'] as List<dynamic>).map((e) => PddDetail.fromJson(e))).toList();
+          result.addAll(_list);
+        }
+      }catch(s,st){
+        print('解析拼多多数据失败:$s');
+        print(st);
+      }
+    }
+
+
+    return result;
   }
 }
 

@@ -1,6 +1,7 @@
 import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:demo1/common/utils.dart';
 import 'package:demo1/pages/index_page/new/index_riverpod.dart';
+import 'package:demo1/pages/pinduoduo/search/view.dart';
 import 'package:demo1/service/api_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -87,6 +88,7 @@ final gridMenuModles = [
           title: '拼多多',
           image: 'assets/svg/pdd.svg',
           onTap: () {
+            Get.context!.navigator.push(SwipeablePageRoute(builder: (_)=>SearchPage(),canOnlySwipeFromEdge: true));
           },
           isAssets: true)),
 
