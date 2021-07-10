@@ -80,7 +80,16 @@ final gridMenuModles = [
             });
             Get.context!.read(indexRiverpod).changeLoadingState(false);
           },
-          isAssets: true))
+          isAssets: true)),
+
+  GridMenuItem(
+      item: GridMenuModel(
+          title: '拼多多',
+          image: 'assets/svg/pdd.svg',
+          onTap: () {
+          },
+          isAssets: true)),
+
 ];
 
 /// 首页的网格菜单

@@ -1,4 +1,5 @@
 import 'package:badges/badges.dart';
+import 'package:demo1/pages/detail_page/index_home.dart';
 import 'package:demo1/pages/dynamic/wph_riverpod.dart';
 import 'package:demo1/pages/index_page/store/price_layout.dart';
 import 'package:demo1/service/api_service.dart';
@@ -7,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:html/dom.dart' as dom;
 
@@ -43,7 +45,7 @@ class _WeipinhuiJinBianGoodsState extends State<WeipinhuiJinBianGoods> {
   Widget renderItem(dynamic item) {
     return GestureDetector(
       onTap: (){
-        tkApi.getWphProductInfo(item['id']);
+         Get.to(()=> DetailIndex(weipinhuiId: item['id']));
       },
       child: Card(
         elevation: 0,

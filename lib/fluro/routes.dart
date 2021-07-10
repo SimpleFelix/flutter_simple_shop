@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import '../pages/other_page/not_found_page.dart';
 import 'handle/ddq_handle.dart';
 import 'handle/error_handle.dart';
-import 'handle/goods_detail_handle.dart';
 import 'handle/goods_list_handle.dart';
 import 'handle/hdk_detail_handle.dart';
 
@@ -44,7 +43,6 @@ class Routes {
 
     // 定义首页路由
     router.define(home, handler: homeHandel);
-    router.define(goodsDetail, handler: goodsDetailHandle);
     router.define(goodsList, handler: goodsListHandle);
     router.define(ddq, handler: ddqHandle);
     router.define(error, handler: errorHandle);
