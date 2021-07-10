@@ -57,6 +57,16 @@ class TKApiService {
       print(s);
     }
   }
+
+  /// 获取唯品会商品详情
+  /// id  --  id 或者url
+  Future<void> getWphProductInfo(String id) async {
+    print('商品id: $id');
+    final result = await utils.api.get('/api/zhe/info',data: {
+      'id':id
+    });
+    Get.log(result);
+  }
 }
 
 TKApiService get tkApi => GetIt.I.get<TKApiService>();
