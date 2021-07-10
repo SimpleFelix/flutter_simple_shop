@@ -124,7 +124,7 @@ class PyqList extends ConsumerWidget {
                         children: [
                           SimplePrice(
                             price: '${product.actualPrice}',
-                            hideText: true,
+                            hideText: '',
                             orignPrice: '${product.originalPrice}',
                             fontSize: 22,
                             color: Colors.pink,

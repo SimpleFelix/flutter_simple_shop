@@ -72,7 +72,7 @@ class BanjiaList extends StatelessWidget {
                   children: [
                     SimplePrice(
                       price: '${item.price}',
-                      hideText: true,
+                      hideText: '',
                     ),
                     ElevatedButton(
                         onPressed: () {
