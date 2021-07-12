@@ -18,12 +18,14 @@
 
 - 支持接入大淘客Api,折淘客Api
 - 支持淘宝,拼多多,京东,唯品会,饿了么,美团领券
-- 支持Android,Web,Windows,Ios 四端编译 <a href="https://itbug.shop/app">[下载体验]
+- 支持Android,Web,Windows,Ios 四端编译 [下载体验](https://itbug.shop/app)
 
-#### Getx重构版本: https://github.com/mdddj/simple_shop_v2
-#### web管理后台: https://github.com/mdddj/ddxmb-admin
-#### web预览地址: https://itbug.shop
-#### 接口文档:https://github.com/mdddj/flutter_dd_dataoke_sdk
+
+|     SDK文档     | [![pub](https://badgen.net/pub/v/dd_taoke_sdk)](https://pub.dev/packages/dd_taoke_sdk)                 |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Web管理后台 | [Github (Antd Pro React TypeScript版)]( https://github.com/mdddj/ddxmb-admin)  |
+| Getx重构版   | [典典的小卖部 getx 重构版本](https://github.com/mdddj/simple_shop_v2)  |
+
 
 
 
