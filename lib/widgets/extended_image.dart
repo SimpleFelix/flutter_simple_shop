@@ -57,8 +57,9 @@ class ExtendedImageWidget extends StatelessWidget {
 /// 需要直系父亲组件声明宽高
 class SimpleImage extends StatelessWidget {
   final String url;
+  final BorderRadius? radius;
 
-  const SimpleImage({Key? key, required this.url}) : super(key: key);
+  const SimpleImage({Key? key, required this.url, this.radius}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +70,7 @@ class SimpleImage extends StatelessWidget {
           height: double.infinity,
           decoration: BoxDecoration(
             color: Colors.grey[200],
-            borderRadius: BorderRadius.circular(8),
+            borderRadius:radius ?? BorderRadius.circular(8),
           ),
         ),
         Positioned(
@@ -84,7 +85,7 @@ class SimpleImage extends StatelessWidget {
             loadStateChanged: loadingState,
             cache: true,
             shape: BoxShape.rectangle,
-            borderRadius: BorderRadius.circular(8),
+            borderRadius:radius ?? BorderRadius.circular(8),
           ),
         ),
       ],

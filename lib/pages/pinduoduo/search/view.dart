@@ -18,6 +18,11 @@ class _SearchPageState extends State<SearchPage> {
   final SearchLogic logic = Get.put(SearchLogic());
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: SAppBarSearch(

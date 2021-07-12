@@ -21,25 +21,33 @@ class WaterfallGoodsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
         onTap: () {
-          NavigatorUtil.gotoGoodsDetailPage(context, product.id.toString(),newViewPage: true);
+          NavigatorUtil.gotoGoodsDetailPage(context, product.id.toString(),
+              newViewPage: true);
         },
         child: Container(
             //width: Sc.ScreenUtil().setWidth(640), // (1440-150) / 2
             padding: EdgeInsets.only(bottom: 12),
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.all(Radius.circular(10.0)),
+              borderRadius: BorderRadius.all(Radius.circular(5)),
             ),
             child: Column(
               children: <Widget>[
                 _image(),
-
-                SizedBox(height:12),
+                SizedBox(height: 5),
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 5),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [renderShopType(),renderCals()],
+                  ),
+                ),
+                SizedBox(height: 5),
 
                 // 标题
                 _title(product.dtitle!),
 
-                SizedBox(height:12),
+                SizedBox(height: 5),
                 // // 购买理由
                 // Container(
                 //   padding: EdgeInsets.symmetric(
@@ -59,13 +67,12 @@ class WaterfallGoodsCard extends StatelessWidget {
                 /// 领券标签
                 Container(
                   alignment: Alignment.centerLeft,
-                  padding: EdgeInsets.symmetric(horizontal: 6,vertical: 3),
+                  padding: EdgeInsets.symmetric(horizontal: 5, vertical: 3),
                   child: FSuper(
                     lightOrientation: FLightOrientation.LeftBottom,
                     text:
                         '领 ${NumUtil.getNumByValueDouble(product.couponPrice, 0)} 元券',
-                    padding: EdgeInsets.symmetric(
-                        horizontal: 12,vertical: 3),
+                    padding: EdgeInsets.symmetric(horizontal: 12, vertical: 3),
                     strokeColor: Colors.pink,
                     corner: FCorner.all(50),
                     style: TextStyle(color: Colors.pink),
@@ -75,21 +82,49 @@ class WaterfallGoodsCard extends StatelessWidget {
                 SizedBox(height: 12),
 
                 Container(
-                  padding: EdgeInsets.symmetric(
-                      horizontal:12),
-                  child:  CouponPriceWidget(
+                  padding: EdgeInsets.symmetric(horizontal: 5),
+                  child: CouponPriceWidget(
                       actualPrice: product.actualPrice.toString(),
                       originalPrice: product.originalPrice),
                 ),
-                Hot(text: '两小时销量${product.twoHoursSales??0},月销${product.monthSales}')
+                Hot(
+                    text:
+                        '两小时销量${product.twoHoursSales ?? 0},月销${product.monthSales}')
               ],
             )));
+  }
+
+  /// 销量
+  Widget renderCals(){
+    return Container(
+      child: Text('月销${product.monthSales}',
+      style: TextStyle(
+        fontSize: 45.sp,
+        color: Color.fromRGBO(0, 0, 0, .32)
+      ),
+      ),
+    );
+  }
+
+
+  /// 店铺类型
+  Widget renderShopType() {
+    final text = product.shopType == 0 ? '淘宝' : '天猫';
+    return Container(
+      padding: EdgeInsets.all(1),
+      decoration: BoxDecoration(
+          color: Colors.red, borderRadius: BorderRadius.circular(3)),
+      child: Text(
+        '$text',
+        style: TextStyle(color: Colors.white,fontSize: 45.sp),
+      ),
+    );
   }
 
   // 标题
   Widget _title(String dtitle) {
     return Container(
-        padding: EdgeInsets.symmetric(horizontal: 12),
+        padding: EdgeInsets.symmetric(horizontal: 5),
         child: Stack(
           children: <Widget>[
             Container(
@@ -99,10 +134,12 @@ class WaterfallGoodsCard extends StatelessWidget {
                 style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.w600,
-                    fontSize: 15),
+                    fontSize: 50.sp),
 //                maxLines: 1,
 //                overflow: TextOverflow.ellipsis,
                 textAlign: TextAlign.start,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
               ),
             )
           ],
@@ -117,7 +154,11 @@ class WaterfallGoodsCard extends StatelessWidget {
         return SizedBox(
             width: constraints.maxWidth,
             height: constraints.maxWidth,
-            child: SimpleImage(url: img));
+            child: SimpleImage(
+              url: img,
+              radius: BorderRadius.only(
+                  topLeft: Radius.circular(5), topRight: Radius.circular(5)),
+            ));
       },
     );
   }
@@ -131,8 +172,7 @@ class WaterfallGoodsCard extends StatelessWidget {
           color: bgColor, borderRadius: BorderRadius.all(Radius.circular(2.0))),
       child: Text(
         text,
-        style:
-            TextStyle(fontSize: 15, color: Colors.white),
+        style: TextStyle(fontSize: 15, color: Colors.white),
       ),
     );
   }
@@ -142,14 +182,10 @@ class WaterfallGoodsCard extends StatelessWidget {
     Widget icon = Text(''); // 默认无活动
 
     if (activityType == 3) {
-      icon = Image.asset('assets/icons/jhs.png',
-          height: 16,
-          width: 16);
+      icon = Image.asset('assets/icons/jhs.png', height: 16, width: 16);
     }
     if (activityType == 2) {
-      icon = Image.asset('assets/icons/qg.png',
-          height: 16,
-          width: 16);
+      icon = Image.asset('assets/icons/qg.png', height: 16, width: 16);
     }
     return Container(margin: EdgeInsets.only(left: 5.0), child: icon);
   }
@@ -159,9 +195,7 @@ class WaterfallGoodsCard extends StatelessWidget {
     return newRankingGoods == 1
         ? Container(
             margin: EdgeInsets.only(left: 5.0),
-            child: Image.asset('assets/icons/new.png',
-                height: 16,
-                width: 16),
+            child: Image.asset('assets/icons/new.png', height: 16, width: 16),
           )
         : Text('');
   }
