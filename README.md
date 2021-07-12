@@ -12,6 +12,13 @@
     <img src="https://static.saintic.com/picbed/huang/2020/12/14/1607875349615.png">
 </p>
 
+---
+
+一个淘客导购APP:
+
+- 支持接入大淘客Api,折淘客Api
+- 支持淘宝,拼多多,京东,唯品会,饿了么,美团领券
+- 支持Android,Web,Windows,Ios 四端编译
 
 #### Getx重构版本: https://github.com/mdddj/simple_shop_v2
 #### web管理后台: https://github.com/mdddj/ddxmb-admin
