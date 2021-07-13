@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:dd_taoke_sdk/network/util.dart';
 import 'package:demo1/service/api_service.dart';
+import 'package:demo1/service/blog_api.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -24,7 +25,7 @@ import 'fluro/navigator_util.dart';
 void main() async {
   /// 初始化sdk
   // DdTaokeUtil.instance.init('https://itbug.shop', '443', debug: false); //  远程服务器
-  DdTaokeUtil.instance.init('https://192.168.199.64', '443',debug: false); //
+  DdTaokeUtil.instance.init('https://192.168.199.64', '443', debug: false); //
   //
 
   /// 路由配置
@@ -45,6 +46,7 @@ void main() async {
   GetIt.instance.registerSingleton<NavigatorUtil>(NavigatorUtil());
   GetIt.instance.registerSingleton<Api>(Api());
   GetIt.instance.registerSingleton<TKApiService>(TKApiService());
+  GetIt.instance.registerSingleton<BlogApi>(BlogApi());
 
   /// https 请求处理
   HttpOverrides.global = MyHttpOverrides();

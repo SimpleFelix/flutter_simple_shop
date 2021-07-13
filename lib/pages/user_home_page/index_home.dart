@@ -5,6 +5,7 @@ import 'package:demo1/provider/riverpod/user_riverpod.dart';
 import 'package:demo1/widgets/wrap.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../common/utils.dart';
@@ -44,7 +45,16 @@ class _IndexHomeState extends State<UserIndexHome> {
                             onTap: () {
                               utils.widgetUtils.to(NewVersionPage());
                             },
-                            isAssets: true))
+                            isAssets: true)),
+                    GridMenuItem(
+                        item: GridMenuModel(
+                            title: '发布博客',
+                            image: '',
+                            onTap: () {
+                              utils.widgetUtils.to(NewVersionPage());
+                            },
+                            isAssets: true,
+                            icon: CircleAvatar(child: FaIcon(FontAwesomeIcons.edit))))
                   ],
                 );
               },

@@ -47,6 +47,14 @@ class GridMenuItem extends StatelessWidget {
   // 图片
   Widget renderImage(BoxConstraints constraints) {
     final size = constraints.maxWidth * 0.5;
+    if (item.icon != null) {
+      return Container(
+      width: size,
+        height: size,
+        child: item.icon!);
+    }
+
+
     final svgComp = SvgPicture.asset(item.image);
     final imageComp = SimpleImage(url: item.image);
     final show = item.isAssets ? svgComp : imageComp;

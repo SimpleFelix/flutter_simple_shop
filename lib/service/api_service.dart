@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:dd_taoke_sdk/network/util.dart';
 import 'package:demo1/pages/dynamic/model/wph_detail_resul.dart';
 import 'package:demo1/pages/pinduoduo/search/model.dart';
-import 'package:demo1/util/request.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';

@@ -16,7 +16,8 @@ class GridMenuModel {
   bool isAssets;
 
   VoidCallback onTap;
+  Widget? icon;
 
-  GridMenuModel({required this.title,required this.image,required this.onTap,required this.isAssets});
+  GridMenuModel({required this.title,required this.image,required this.onTap,required this.isAssets,this.icon});
 
 }
