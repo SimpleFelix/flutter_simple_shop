@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
-import 'package:provider/provider.dart';
 
 import './pages/category_page/index_home.dart';
 import './pages/favorite_page/index_home.dart';
@@ -13,15 +12,13 @@ import './pages/jiujiu_page/index_home.dart';
 import './pages/user_home_page/index_home.dart';
 import './personal/personal.dart';
 import 'pages/index_page/new/index.dart';
-import 'provider/user_provider.dart';
 
 class App extends StatefulWidget {
   @override
   _AppState createState() => _AppState();
 }
 
-class _AppState extends State<App> with AfterLayoutMixin{
-  UserProvider? userProvider;
+class _AppState extends State<App> with AfterLayoutMixin {
   static ScrollController mController = ScrollController();
   static ScrollController jiujiuController = ScrollController(); // 9.9包邮页面滑动控制器
 
@@ -62,7 +59,6 @@ class _AppState extends State<App> with AfterLayoutMixin{
     );
   }
 
-
   @override
   void initState() {
 //监听滚动事件，打印滚动位置
@@ -96,36 +92,23 @@ class _AppState extends State<App> with AfterLayoutMixin{
   @override
   Widget build(BuildContext context) {
     // 屏幕适配初始化
-    ScreenUtil.init(
-        BoxConstraints(
-            maxWidth: MediaQuery.of(context).size.width,
-            maxHeight: MediaQuery.of(context).size.height),
-        designSize: Size(1440, 2940),
-        orientation: Orientation.portrait);
+    ScreenUtil.init(BoxConstraints(maxWidth: MediaQuery.of(context).size.width, maxHeight: MediaQuery.of(context).size.height), designSize: Size(1440, 2940), orientation: Orientation.portrait);
     return Scaffold(
       // 滚动到顶部按钮
-      floatingActionButton: !showToTopBtn ||
-              _currentIndex == 2 ||
-              _currentIndex == 3 ||
-              _currentIndex == 0 ||
-              _currentIndex == 4
+      floatingActionButton: !showToTopBtn || _currentIndex == 2 || _currentIndex == 3 || _currentIndex == 0 || _currentIndex == 4
           ? null
           : FloatingActionButton(
               onPressed: () {
                 //返回到顶部时执行动画
                 if (_currentIndex == 0) {
-                  mController.animateTo(.0,
-                      duration: Duration(milliseconds: 200),
-                      curve: Curves.ease);
+                  mController.animateTo(.0, duration: Duration(milliseconds: 200), curve: Curves.ease);
                 }
                 if (_currentIndex == 1) {
-                  jiujiuController.animateTo(.0,
-                      duration: Duration(milliseconds: 200),
-                      curve: Curves.ease);
+                  jiujiuController.animateTo(.0, duration: Duration(milliseconds: 200), curve: Curves.ease);
                 }
               },
               child: Icon(Icons.arrow_upward, color: Colors.white)),
-      bottomNavigationBar:  BottomNavigationBar(
+      bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           //当前页面索引
           currentIndex: _currentIndex,
@@ -136,7 +119,7 @@ class _AppState extends State<App> with AfterLayoutMixin{
             });
           }),
           items: [
-             BottomNavigationBarItem(
+            BottomNavigationBarItem(
                 label: '首页',
                 icon: _currentIndex == 0
                     ? Image.asset(
@@ -149,7 +132,7 @@ class _AppState extends State<App> with AfterLayoutMixin{
                         height: 32.0,
                         width: 32.0,
                       )),
-             BottomNavigationBarItem(
+            BottomNavigationBarItem(
                 label: '9.9包邮',
                 icon: _currentIndex == 1
                     ? Image.asset(
@@ -162,7 +145,7 @@ class _AppState extends State<App> with AfterLayoutMixin{
                         height: 32.0,
                         width: 32.0,
                       )),
-             BottomNavigationBarItem(
+            BottomNavigationBarItem(
                 label: '分类',
                 icon: _currentIndex == 2
                     ? Image.asset(
@@ -175,7 +158,7 @@ class _AppState extends State<App> with AfterLayoutMixin{
                         height: 32.0,
                         width: 32.0,
                       )),
-             BottomNavigationBarItem(
+            BottomNavigationBarItem(
                 label: '收藏',
                 icon: _currentIndex == 3
                     ? Image.asset(
@@ -188,7 +171,7 @@ class _AppState extends State<App> with AfterLayoutMixin{
                         height: 32.0,
                         width: 32.0,
                       )),
-             BottomNavigationBarItem(
+            BottomNavigationBarItem(
                 label: '我的',
                 icon: _currentIndex == 4
                     ? Image.asset(
@@ -210,17 +193,8 @@ class _AppState extends State<App> with AfterLayoutMixin{
   }
 
   @override
-  void didChangeDependencies() {
-    var userProvider = Provider.of<UserProvider>(context);
-    if (this.userProvider != userProvider) {
-      this.userProvider = userProvider;
-    }
-    super.didChangeDependencies();
-  }
-
-  @override
   void afterFirstLayout(BuildContext context) {
-    if(GetPlatform.isWindows){
+    if (GetPlatform.isWindows) {
       Get.dialog(AlertDialog(
         title: Text('提示'),
         content: Text('windows版本:可以拖动窗口边缘拉伸到合适位置'),
