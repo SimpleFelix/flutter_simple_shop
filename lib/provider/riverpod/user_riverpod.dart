@@ -16,6 +16,8 @@ class UserModel extends ChangeNotifier {
   /// 是否已经登录
   bool isLogin = false;
 
+  String get getUserToken => _token ?? '';
+
   // 判断用户是否有淘客权限
   bool hasAdminAuthority() {
     return isLogin && user != null && user!.roles.where((element) => element.name == 'admin').toList().isNotEmpty;
