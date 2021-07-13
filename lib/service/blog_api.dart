@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:demo1/common/utils.dart';
+import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 
 /// 博客api
@@ -10,7 +11,9 @@ class BlogApi {
 
   /// 获取分类列表
   Future<void> getCategorys() async {
-    final result = await utils.api.get('/api/blog/category-list');
-    Logger().d(jsonDecode(result));
+    final result = await utils.api.get('/api/blog/category-list',otherDataHandle: (data){
+      Logger().wtf(jsonEncode(data));
+    });
+
   }
 }

@@ -70,7 +70,7 @@ class Api extends ApiService {
     return request.post(url, data: data, isTaokeApi: false, onStart: AppController.find.addAuthDetail);
   }
 
-  Future<String> get(String url,{Map<String,dynamic>? data,ResultDataMapHandle? mapHandle,ApiError? error}) async {
-    return request.get(url,data: data,mapData: mapHandle,error: error,isTaokeApi: false);
+  Future<String> get(String url,{Map<String,dynamic>? data,ResultDataMapHandle? mapHandle,ApiError? error,ValueChanged<dynamic>? otherDataHandle}) async {
+    return request.get(url,data: data,mapData: mapHandle,error: error,isTaokeApi: false,otherDataHandle: otherDataHandle);
   }
 }

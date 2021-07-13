@@ -1,6 +1,7 @@
 
 import 'package:dd_taoke_sdk/dd_taoke_sdk.dart';
 import 'package:dd_taoke_sdk/model/category.dart';
+import 'package:demo1/common/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -15,6 +16,8 @@ class CategoryState extends ChangeNotifier{
   Category? currentWithProductList;
 
   Subcategory? currentSubCategory;
+
+
 
   Future<void> init()async {
     categorys.clear();
@@ -40,6 +43,11 @@ class CategoryState extends ChangeNotifier{
   void setCurrentSubCategory(Subcategory subcategory){
     currentSubCategory = subcategory;
     notifyListeners();
+  }
+
+
+  Future<void>  getBlogCategory() async {
+    await utils.blogApi.getCategorys();
   }
 
 }

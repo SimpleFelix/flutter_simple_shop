@@ -1,6 +1,7 @@
 import 'dart:io';
 
 // import 'package:filepicker_windows/filepicker_windows.dart';
+import 'package:demo1/service/blog_api.dart';
 import 'package:demo1/service/user_api.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -21,6 +22,7 @@ class Utils {
 
   Api get api => GetIt.instance.get<Api>();
   UserApi get userApi => GetIt.instance.get<UserApi>();
+  BlogApi get blogApi => GetIt.instance.get<BlogApi>();
 
   // 显示一条消息
   void showMessage(String msg) {

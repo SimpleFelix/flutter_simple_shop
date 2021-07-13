@@ -1,3 +1,4 @@
+import 'package:demo1/pages/blog/write_blog/view.dart';
 import 'package:demo1/pages/index_page/new/component/gridmenu/menu_item.dart';
 import 'package:demo1/pages/index_page/new/component/gridmenu/model.dart';
 import 'package:demo1/pages/user_home_page/pages/new_version_page.dart';
@@ -51,7 +52,7 @@ class _IndexHomeState extends State<UserIndexHome> {
                             title: '发布博客',
                             image: '',
                             onTap: () {
-                              utils.widgetUtils.to(NewVersionPage());
+                              utils.widgetUtils.to(WriteBlogPage());
                             },
                             isAssets: true,
                             icon: CircleAvatar(child: FaIcon(FontAwesomeIcons.edit))))

@@ -13,12 +13,21 @@ class WriteBlogPage extends StatefulWidget {
 class _WriteBlogPageState extends State<WriteBlogPage> {
   final WriteBlogLogic logic = Get.put(WriteBlogLogic());
 
+
+
   @override
-    Widget build(BuildContext context) {
-      return Scaffold(
-        appBar: SimpleAppBar(title: '发布博客'),
-      );
-    }
+  void initState() {
+    super.initState();
+    logic.getBlogCategorys(context);
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: SimpleAppBar(title: '发布博客'),
+    );
+  }
 
   @override
   void dispose() {
