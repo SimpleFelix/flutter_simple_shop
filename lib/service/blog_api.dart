@@ -12,7 +12,7 @@ class BlogApi {
   /// 获取分类列表
   Future<void> getCategorys() async {
     final result = await utils.api.get('/api/blog/category-list',otherDataHandle: (data){
-      Logger().wtf(jsonEncode(data));
+      Logger().wtf(data);
     });
 
   }
