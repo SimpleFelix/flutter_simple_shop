@@ -47,7 +47,7 @@ void main() async {
   /// getx 控制器
 
   // / 构建web程序需要注释这个,会报错
-  if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
+  if (!GetPlatform.isWeb && GetPlatform.isWindows || GetPlatform.isLinux || GetPlatform.isMacOS) {
     setWindowTitle('典典的小卖部 桌面客户端  v2.0.0');
     final windowSize = Size(500, 1041);
     setWindowMaxSize(windowSize);
