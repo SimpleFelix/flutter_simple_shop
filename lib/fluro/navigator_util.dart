@@ -3,34 +3,37 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
 
-import './application.dart';
-import './routes.dart';
 import '../pages/ddq_page/index_home.dart';
 import '../pages/detail_page/hdk/index_home.dart';
+import '../pages/goods_page/index_home.dart';
+import '../pages/index_page/index_home.dart';
+import '../pages/other_page/not_found_page.dart';
 import '../pages/search/view.dart';
+import '../pages/user_home_page/login/login_page.dart';
+import '../pages/user_home_page/order/my_order.dart';
+import '../pages/user_home_page/order/order_add.dart';
+import '../pages/user_home_page/white/index.dart';
 import '../util/fluro_convert_util.dart';
 
 // 路由工具类
 class NavigatorUtil {
   // 跳转首页方法
   static void gotoHomePage(BuildContext context) {
-    Application.router.navigateTo(context, Routes.home, replace: true);
+    context.navigator.pushReplacement(SwipeablePageRoute(builder: (_)=>IndexHome()));
   }
 
   // 跳转商品详情页方法
   static void gotoGoodsDetailPage(BuildContext context, String goodsId,{bool newViewPage=false}) {
-    if(newViewPage){
-      context.navigator.push(SwipeablePageRoute(builder: (_)=>HaoDanKuDetailItem(goodsId: goodsId,)));
-    }else{
-      Application.router
-          .navigateTo(context, '${Routes.goodsDetail}?goods_id=$goodsId');
+    if(newViewPage) {
+      context.navigator.push(
+          SwipeablePageRoute(builder: (_) => HaoDanKuDetailItem(goodsId: goodsId,)));
     }
-
   }
 
 //  跳转到错误页面
   static void gotoErrorPage(BuildContext context) {
-    Application.router.navigateTo(context, Routes.error);
+    context.navigator.push(
+        SwipeablePageRoute(builder: (_) => NotFoundPage()));
   }
 
 //跳转到商品列表页面
@@ -39,37 +42,44 @@ class NavigatorUtil {
     if (title != null) {
       title = FluroConvertUtils.fluroCnParamsEncode(title);
     }
-    Application.router.navigateTo(context,
-        '${Routes.goodsList}?subcid=${subcid ?? ''}&cids=${cids ?? ''}&brand=${brand ?? ''}&title=${title ?? ''}&showCates=${showCates??'0'}');
+    final widget = GoodsListPage(subcid: subcid,brand: brand,cids: cids,title:title,showCates:showCates);
+    context.navigator.push(
+        SwipeablePageRoute(builder: (_) => widget));
   }
 
   //跳转到钉钉抢页面
   static void goTODdqPage() {
-    Get.to(()=>DdqIndexHome());
+    Get.context!.navigator.push(
+        SwipeablePageRoute(builder: (_) => DdqIndexHome()));
   }
 
   // 跳转到登入页面
   static void gotoUserLoginPage(BuildContext context) {
-    Application.router.navigateTo(context, Routes.userLoginPgae);
+    context.navigator.push(
+        SwipeablePageRoute(builder: (_) => UserLoginPage()));
   }
 
   // 跳转到发布动态页面
   static void goetoWhitePage(BuildContext context){
-    Application.router.navigateTo(context, Routes.white);
+    context.navigator.push(
+        SwipeablePageRoute(builder: (_) => WhiteIndex()));
   }
 
   // 跳转到绑定订单页面
   static void gotoOrderAddIndexPage(BuildContext context){
-    Application.router.navigateTo(context, Routes.orderAdd);
+    context.navigator.push(
+        SwipeablePageRoute(builder: (_) => OrderAddIndexPage()));
   }
 
   static void gotoOrderAllIndexPage(BuildContext context,String _stype){
-    Application.router.navigateTo(context, '${Routes.orderAll}${'?stype=$_stype'}');
+    context.navigator.push(
+        SwipeablePageRoute(builder: (_) => MyOrderHomePage(stype: _stype,)));
   }
 
   // 前往好单库商品详情页面
   static void gotoHaodankuGoodsDetailPage(BuildContext context,String? goodsId){
-    Application.router.navigateTo(context, '${Routes.hdkDetail}${'?goods_id=$goodsId'}');
+    context.navigator.push(
+        SwipeablePageRoute(builder: (_) => HaoDanKuDetailItem(goodsId:goodsId!)));
   }
 
   /// 跳转到搜索页面

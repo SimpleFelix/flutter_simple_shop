@@ -1,10 +1,6 @@
 import 'dart:io';
 
 import 'package:dd_taoke_sdk/network/util.dart';
-import 'package:demo1/service/api_service.dart';
-import 'package:demo1/service/blog_api.dart';
-import 'package:demo1/service/user_api.dart';
-import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
@@ -13,8 +9,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:provider/provider.dart';
 import 'package:window_size/window_size.dart';
 
-import './fluro/application.dart';
-import './fluro/routes.dart';
 import './provider/providers.dart';
 import 'ad.dart';
 import 'common/service.dart';
@@ -22,18 +16,15 @@ import 'common/utils.dart';
 import 'common/widget_util.dart';
 import 'controller/app_controller.dart';
 import 'fluro/navigator_util.dart';
+import 'service/api_service.dart';
+import 'service/blog_api.dart';
+import 'service/user_api.dart';
 
 void main() async {
   /// 初始化sdk
-  // DdTaokeUtil.instance.init('https://itbug.shop', '443', debug: false); //  远程服务器
-  DdTaokeUtil.instance.init('https://192.168.199.64', '443', debug: false); //
+  DdTaokeUtil.instance.init('https://itbug.shop', '443', debug: false); //  远程服务器
+  // DdTaokeUtil.instance.init('https://192.168.199.64', '443', debug: false); //
   //
-
-  /// 路由配置
-  /// [已弃用]
-  var router = FluroRouter();
-  Routes.configureRoutes(router);
-  Application.router = router;
 
   /// 本地缓存工具类
   await Hive.initFlutter();
@@ -80,7 +71,6 @@ class _MyAppState extends State<MyApp> {
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: '典典小卖部',
-        onGenerateRoute: Application.router.generator,
         theme: ThemeData(primaryColor: Colors.white, bottomNavigationBarTheme: BottomNavigationBarThemeData(selectedLabelStyle: TextStyle(color: Colors.pink), selectedItemColor: Colors.pink)),
         onInit: () {
           Get.put(AppController());
