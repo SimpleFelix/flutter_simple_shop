@@ -23,7 +23,7 @@ import 'service/user_api.dart';
 void main() async {
   /// 初始化sdk
   DdTaokeUtil.instance.init('https://itbug.shop', '443', debug: false); //  远程服务器
-  // DdTaokeUtil.instance.init('https://192.168.199.64', '443', debug: false); //
+  // DdTaokeUtil.instance.init('http://localhost', '80', debug: false); //
   //
 
   /// 本地缓存工具类
@@ -47,12 +47,12 @@ void main() async {
   /// getx 控制器
 
   // / 构建web程序需要注释这个,会报错
-  if (!GetPlatform.isWeb && GetPlatform.isWindows || GetPlatform.isLinux || GetPlatform.isMacOS) {
-    setWindowTitle('典典的小卖部 桌面客户端  v2.0.0');
-    final windowSize = Size(500, 1041);
-    setWindowMaxSize(windowSize);
-    setWindowMinSize(windowSize);
-  }
+  // if (!GetPlatform.isWeb && (GetPlatform.isWindows || GetPlatform.isLinux || GetPlatform.isMacOS)) {
+  //   setWindowTitle('典典的小卖部 桌面客户端  v2.0.0');
+  //   final windowSize = Size(500, 1041);
+  //   setWindowMaxSize(windowSize);
+  //   setWindowMinSize(windowSize);
+  // }
 
   /// 启动app
   runApp(ProviderScope(child: MyApp()));
@@ -76,7 +76,6 @@ class _MyAppState extends State<MyApp> {
           Get.put(AppController());
         },
         home: AdPage(),
-        navigatorObservers: [HeroController()],
       ),
     );
   }
@@ -89,6 +88,7 @@ class _MyAppState extends State<MyApp> {
 class MyHttpOverrides extends HttpOverrides {
   @override
   HttpClient createHttpClient(SecurityContext? context) {
-    return super.createHttpClient(context)..badCertificateCallback = (X509Certificate cert, String host, int port) => true;
+    return super.createHttpClient(context)
+      ..badCertificateCallback = (X509Certificate cert, String host, int port) => true;
   }
 }
