@@ -3,9 +3,11 @@ import 'dart:convert';
 import 'package:dd_taoke_sdk/network/util.dart';
 import 'package:demo1/pages/dynamic/model/wph_detail_resul.dart';
 import 'package:demo1/pages/pinduoduo/search/model.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
+import 'package:logger/logger.dart';
 
 import '../common/toast.dart';
 import '../common/utils.dart';
@@ -100,9 +102,38 @@ class TKApiService {
     return result;
   }
 
+  /// 拼多多推荐商品
+  Future<List<dynamic>> pddRecommendGoods(int page, int channelType) async {
+    final result = await DdTaokeUtil.dio!.get<String>('/pdd/recommend', queryParameters: {'page': page, 'channelType': channelType});
+    if (result.statusCode == 200 && result.data != null) {
+      final json = result.data;
+      if (json != null && json.isNotEmpty) {
+        Logger().w(jsonDecode(json));
+        try {
+          final data = jsonDecode(json);
+          final pddRespose = data['goods_basic_detail_response'];
+          if (pddRespose != null) {
+            if (pddRespose['list'] is List<dynamic>) {
+              return pddRespose['list'] as List<dynamic>;
+            }
+          }
+        } catch (e) {
+          print('拼多多商品解析失败');
+        }
+      }
+    }
+    return [];
+  }
+
+  /// 获取平多多详情
+  Future<void> ppdDetail(String goodsSgin) async {
+    final result = await utils.api.get('/pdd/detail', data: {'id': goodsSgin});
+    Get.log(result);
+  }
+
   /// 拼多多转链
   Future<void> pddCovert(String goodsSgin) async {
-    var data = {'goodsSign': goodsSgin,'customParameters':'{"uid":"9246632808"}'};
+    var data = {'goodsSign': goodsSgin, 'customParameters': '{"uid":"9246632808"}'};
     final result = await utils.api.get('/tkapi/api/v1/dtk/apis/pdd-goods-prom-generate', data: data);
     if (result.isNotEmpty) {
       Get.log(result);

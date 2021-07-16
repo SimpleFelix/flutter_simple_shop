@@ -1,3 +1,4 @@
+import 'package:demo1/common/components/pdd/view.dart';
 import 'package:demo1/service/api_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
@@ -34,7 +35,7 @@ class _SearchPageState extends State<SearchPage> {
         /// 拼多多商品列表
         Obx(() {
           final products = logic.products;
-          print(products.length);
+          if (products.isEmpty) return SliverFillRemaining(child: PddRecommendListView());
           return SliverList(delegate: SliverChildBuilderDelegate((_, index) => renderItem(products[index]), childCount: products.length));
         })
       ]),

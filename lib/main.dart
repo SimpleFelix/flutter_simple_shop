@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:dd_taoke_sdk/network/util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_stetho_null_safety/flutter_stetho_null_safety.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -24,8 +25,10 @@ import 'service/user_api.dart';
 void main() async {
   /// 初始化sdk
   // DdTaokeUtil.instance.init('https://itbug.shop', '443', debug: false); //  远程服务器
-  DdTaokeUtil.instance.init('http://localhost', '80', debug: false); //
+  DdTaokeUtil.instance.init('https://localhost', '443', debug: false); //
   //
+
+  await Stetho.initialize();
 
   /// 本地缓存工具类
   await Hive.initFlutter();
