@@ -1,14 +1,15 @@
+import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:dd_taoke_sdk/model/product.dart';
-import 'package:demo1/widgets/waterfall_goods_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
+
 import '../constant/style.dart';
 import '../provider/riverpod/category_riverpod.dart';
 import '../widgets/component/custom_loading.dart';
+import '../widgets/waterfall_goods_card.dart';
 import 'widgets/simple_dialog.dart';
 
 /// 组件工具类

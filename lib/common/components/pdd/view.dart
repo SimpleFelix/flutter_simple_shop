@@ -1,9 +1,12 @@
 import 'package:common_utils/common_utils.dart';
+import 'package:demo1/pages/public_detail/view.dart';
 import 'package:demo1/widgets/component/coupon_discount.dart';
 import 'package:demo1/widgets/extended_image.dart';
 import 'package:demo1/widgets/simple_price.dart';
 import 'package:flutter/material.dart';
+import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:loading_more_list/loading_more_list.dart';
+import 'package:swipeable_page_route/swipeable_page_route.dart';
 
 import '../../../modals/pdd_product.dart';
 import 'resp.dart';
@@ -37,31 +40,36 @@ class _PddRecommendListViewState extends State<PddRecommendListView> {
   }
 
   // 渲染item
-  Widget renderIten(_, PddGoods item, int index) {
+  Widget renderIten(BuildContext context, PddGoods item, int index) {
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
-        return Container(
-            decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(5)),
-            child: Column(
-              children: [
-                renderImage(constraints, item),
-                Padding(
-                  padding: const EdgeInsets.all(5),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        '${item.goodsName}',
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      SimplePrice(price: '${MoneyUtil.changeF2Y(item.minGroupPrice)}'),
-                      CouponDiscountShow(value: '${MoneyUtil.changeF2Y(item.couponDiscount)}'.replaceAll('.00', ''))
-                    ],
-                  ),
-                )
-              ],
-            ));
+        return GestureDetector(
+          onTap: (){
+            context.navigator.push(SwipeablePageRoute(builder: (_)=>PublicDetailView(goodsId: item.goodsSign, type: 'pdd')));
+          },
+          child: Container(
+              decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(5)),
+              child: Column(
+                children: [
+                  renderImage(constraints, item),
+                  Padding(
+                    padding: const EdgeInsets.all(5),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '${item.goodsName}',
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        SimplePrice(price: '${MoneyUtil.changeF2Y(item.minGroupPrice)}'),
+                        CouponDiscountShow(value: '${MoneyUtil.changeF2Y(item.couponDiscount)}'.replaceAll('.00', ''))
+                      ],
+                    ),
+                  )
+                ],
+              )),
+        );
       },
     );
   }

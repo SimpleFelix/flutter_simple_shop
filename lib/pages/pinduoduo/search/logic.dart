@@ -1,7 +1,7 @@
+import '../../../modals/pdd_detail_model.dart';
 import 'package:get/get.dart';
 
 import '../../../service/api_service.dart';
-import 'model.dart';
 
 class SearchLogic extends GetxController {
 

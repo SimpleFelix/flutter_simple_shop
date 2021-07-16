@@ -1,16 +1,14 @@
 import 'dart:convert';
 
 import 'package:dd_taoke_sdk/network/util.dart';
-import 'package:demo1/pages/dynamic/model/wph_detail_resul.dart';
-import 'package:demo1/pages/pinduoduo/search/model.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
-import 'package:logger/logger.dart';
 
 import '../common/toast.dart';
 import '../common/utils.dart';
+import '../modals/pdd_detail_model.dart';
+import '../pages/dynamic/model/wph_detail_resul.dart';
 
 class TKApiService {
   /// 美团领券
@@ -108,7 +106,6 @@ class TKApiService {
     if (result.statusCode == 200 && result.data != null) {
       final json = result.data;
       if (json != null && json.isNotEmpty) {
-        Logger().w(jsonDecode(json));
         try {
           final data = jsonDecode(json);
           final pddRespose = data['goods_basic_detail_response'];
@@ -126,9 +123,23 @@ class TKApiService {
   }
 
   /// 获取平多多详情
-  Future<void> ppdDetail(String goodsSgin) async {
-    final result = await utils.api.get('/pdd/detail', data: {'id': goodsSgin});
-    Get.log(result);
+  Future<PddDetail?> ppdDetail(String goodsSgin) async {
+    final result = await DdTaokeUtil.dio!.get<String>('/pdd/detail', queryParameters: {'id': goodsSgin});
+    if(result.statusCode==200&&result.data!=null){
+      final json = result.data;
+      if (json != null && json.isNotEmpty) {
+        try {
+          final data = jsonDecode(json);
+          final pddRespose = data['goods_detail_response']['goods_details'];
+          if(pddRespose is List<dynamic>){
+            final item = pddRespose.first;
+            return PddDetail.fromJson(item);
+          }
+        } catch (e) {
+          print('拼多多商品详情解析失败');
+        }
+      }
+    }
   }
 
   /// 拼多多转链

@@ -1,15 +1,15 @@
-import 'package:demo1/common/components/pdd/view.dart';
-import 'package:demo1/service/api_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:get/get.dart';
 
+import '../../../common/components/pdd/view.dart';
+import '../../../modals/pdd_detail_model.dart';
+import '../../../service/api_service.dart';
 import '../../../widgets/appbar_search.dart';
 import '../../../widgets/component/coupon_discount.dart';
 import '../../../widgets/extended_image.dart';
 import '../../../widgets/simple_price.dart';
 import 'logic.dart';
-import 'model.dart';
 
 class SearchPage extends StatefulWidget {
   @override

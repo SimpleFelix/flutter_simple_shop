@@ -20,7 +20,6 @@ class PddRecommendListResp extends LoadingMoreBase<PddGoods> {
       print(e);
       print(s);
     }
-
     return true;
   }
 
