@@ -4,6 +4,7 @@ import 'package:dd_taoke_sdk/network/util.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:provider/provider.dart';
@@ -22,8 +23,8 @@ import 'service/user_api.dart';
 
 void main() async {
   /// 初始化sdk
-  DdTaokeUtil.instance.init('https://itbug.shop', '443', debug: false); //  远程服务器
-  // DdTaokeUtil.instance.init('http://localhost', '80', debug: false); //
+  // DdTaokeUtil.instance.init('https://itbug.shop', '443', debug: false); //  远程服务器
+  DdTaokeUtil.instance.init('http://localhost', '80', debug: false); //
   //
 
   /// 本地缓存工具类
@@ -71,7 +72,9 @@ class _MyAppState extends State<MyApp> {
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: '典典小卖部',
-        theme: ThemeData(primaryColor: Colors.white, bottomNavigationBarTheme: BottomNavigationBarThemeData(selectedLabelStyle: TextStyle(color: Colors.pink), selectedItemColor: Colors.pink)),
+        theme: ThemeData(primaryColor: Colors.white, bottomNavigationBarTheme: BottomNavigationBarThemeData(selectedLabelStyle: TextStyle(color: Colors.pink), selectedItemColor: Colors.pink,
+
+        ),textTheme: GoogleFonts.notoSansTextTheme()),
         onInit: () {
           Get.put(AppController());
         },
@@ -88,7 +91,6 @@ class _MyAppState extends State<MyApp> {
 class MyHttpOverrides extends HttpOverrides {
   @override
   HttpClient createHttpClient(SecurityContext? context) {
-    return super.createHttpClient(context)
-      ..badCertificateCallback = (X509Certificate cert, String host, int port) => true;
+    return super.createHttpClient(context)..badCertificateCallback = (X509Certificate cert, String host, int port) => true;
   }
 }

@@ -102,7 +102,7 @@ class TKApiService {
 
   /// 拼多多转链
   Future<void> pddCovert(String goodsSgin) async {
-    var data = {'goodsSign': goodsSgin,'customParameters':'{"uid":"11111"}'};
+    var data = {'goodsSign': goodsSgin,'customParameters':'{"uid":"9246632808"}'};
     final result = await utils.api.get('/tkapi/api/v1/dtk/apis/pdd-goods-prom-generate', data: data);
     if (result.isNotEmpty) {
       Get.log(result);

@@ -4,6 +4,7 @@ import 'dart:typed_data';
 import 'package:demo1/service/api_service.dart';
 import 'package:demo1/widgets/component/new_version_dialog.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -45,18 +46,18 @@ class AppController extends GetxController {
 
   /// 检测新版本
   Future<void> getNewVersion() async {
-
-    if(GetPlatform.isAndroid || GetPlatform.isIOS){
+    if (!kIsWeb) {
       final serverVersion = await tkApi.getLastVersion();
       if (serverVersion.isNotEmpty) {
         final map = jsonDecode(serverVersion);
-        final packInfo = await PackageInfo.fromPlatform();
-        if (map['version'] != packInfo.version) {
-          // 判定为有新版本
-          await Get.dialog(NewVersionDialog(map: map));
+        if(GetPlatform.isAndroid){
+          final packInfo = await PackageInfo.fromPlatform();
+          if (map['version'] != packInfo.version) {
+            // 判定为有新版本
+            await Get.dialog(NewVersionDialog(map: map));
+          }
         }
       }
     }
-
   }
 }
