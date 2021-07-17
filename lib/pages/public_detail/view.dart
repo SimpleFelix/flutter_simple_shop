@@ -1,11 +1,14 @@
-import 'package:demo1/widgets/extended_image.dart';
-import 'package:demo1/widgets/loading_widget.dart';
-import 'package:demo1/widgets/simple_price.dart';
+import 'package:fcontrol_nullsafety/fdefine.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_blurhash/flutter_blurhash.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
 import 'package:get/get.dart';
 
+import '../../common/no_shadow_croll_ehavior.dart';
 import '../../service/api_service.dart';
-import '../../widgets/simple_appbar.dart';
+import '../../widgets/extended_image.dart';
+import '../../widgets/loading_widget.dart';
 import 'abs.dart';
 import 'model.dart';
 
@@ -38,18 +41,120 @@ class _PublicDetailViewState extends State<PublicDetailView> implements PublicDe
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: SimpleAppBar(
-        title: '商品详情',
-      ),
-      body: info != null
-          ? SingleChildScrollView(
-              child: Column(
-                children: [renderHeader()],
-              ),
-            )
-          : LoadingWidget(),
+    return Stack(
+      children: [
+        Container(
+          width: double.infinity,
+          height: double.infinity,
+          child: BlurHash(hash: 'LgJQ[]~o%0V?tixvNHM}R-xaaeWU'),
+        ),
+        Scaffold(
+          backgroundColor: Colors.transparent,
+          body: info != null
+              ? ScrollConfiguration(
+                  behavior: NoShadowScrollBehavior(),
+                  child: SingleChildScrollView(
+                    physics: BouncingScrollPhysics(),
+                    child: Column(
+                      children: [renderNav(), renderHeader(), renderDetail()],
+                    ),
+                  ),
+                )
+              : LoadingWidget(),
+        ),
+      ],
     );
+  }
+
+  /// 导航区域
+  Widget renderNav() {
+    return Container(
+      margin: EdgeInsets.only(top: Get.mediaQuery.padding.top + 12, left: 12, right: 12),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              // 返回按钮
+              IconButton(
+                  onPressed: Get.back,
+                  icon: FaIcon(
+                    FontAwesomeIcons.arrowLeft,
+                    color: Colors.grey.shade200,
+                    size: 18,
+                  ))
+            ],
+          ),
+          SizedBox(
+            height: 5,
+          ),
+          Row(
+            children: [
+              SizedBox(
+                width: 50,
+                height: 50,
+                child: Image.asset('assets/images/dd.png'),
+              ),
+              SizedBox(
+                width: 12,
+              ),
+              Text(
+                '典典为你推荐',
+                style: TextStyle(color: Colors.white, fontSize: 15),
+              )
+            ],
+          )
+        ],
+      ),
+    );
+  }
+
+  /// 商品信息
+  Widget renderDetail() {
+    return Container(
+      alignment: Alignment.centerLeft,
+      margin: EdgeInsets.all(12),
+      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(12)),
+      child: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+          return Column(
+            children: [
+              Container(
+                padding: EdgeInsets.all(12),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('商品信息'),
+                    SizedBox(height: 5),
+                    Row(
+                      children: [
+                        Text(
+                          '销量${info!.sales}件',
+                          style: TextStyle(color: Colors.grey, fontSize: 15),
+                        )
+                      ],
+                    )
+                  ],
+                ),
+              ),
+              ...renderImages(constraints.maxWidth)
+            ],
+          );
+        },
+      ),
+    );
+  }
+
+  /// 图片
+  List<Widget> renderImages(double width) {
+    return info!.detailImages
+        .map((e) => SizedBox(
+              width: width,
+              height: width,
+              child: SimpleImage(
+                url: e,
+              ),
+            ))
+        .toList();
   }
 
   /// 头部容器
@@ -70,7 +175,7 @@ class _PublicDetailViewState extends State<PublicDetailView> implements PublicDe
                   padding: EdgeInsets.symmetric(horizontal: 6, vertical: 3),
                   decoration: BoxDecoration(color: Colors.red, borderRadius: BorderRadius.circular(5)),
                   child: Text(
-                    '${info!.type}',
+                    '${getTypeLabel()}',
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
@@ -79,8 +184,8 @@ class _PublicDetailViewState extends State<PublicDetailView> implements PublicDe
                 ),
                 Text(
                   '${info!.title}',
-                  style: Get.textTheme.headline5,
-                  maxLines: 1,
+                  style: Get.textTheme.headline5!.copyWith(fontSize: 18),
+                  maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
                 SizedBox(
@@ -99,7 +204,11 @@ class _PublicDetailViewState extends State<PublicDetailView> implements PublicDe
                             '券后价',
                             style: TextStyle(color: Colors.red, fontSize: 12),
                           ),
-                          Text('¥ ${info!.price}', style: TextStyle(color: Colors.red, fontSize: 18))
+                          FSuper(
+                              text: '¥ ',
+                              style: TextStyle(color: Colors.red, fontSize: 16),
+                              spans: [TextSpan(text: '${info!.price}', style: TextStyle(color: Colors.red, fontSize: 20, fontWeight: FontWeight.bold))],
+                              lightOrientation: FLightOrientation.RightTop)
                         ],
                       ),
                     ),
@@ -116,22 +225,25 @@ class _PublicDetailViewState extends State<PublicDetailView> implements PublicDe
               ],
             ),
           ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 12),
-            height: 50,
-            decoration: BoxDecoration(color: Colors.red, borderRadius: BorderRadius.only(bottomLeft: Radius.circular(12), bottomRight: Radius.circular(12))),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  '${info!.coupon}元隐藏券',
-                  style: TextStyle(color: Colors.white),
-                ),
-                Text(
-                  '去领券 >',
-                  style: TextStyle(color: Colors.white),
-                )
-              ],
+          GestureDetector(
+            onTap: onGetCoupon,
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 12),
+              height: 50,
+              decoration: BoxDecoration(color: Colors.red, borderRadius: BorderRadius.only(bottomLeft: Radius.circular(12), bottomRight: Radius.circular(12))),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    '${info!.coupon.replaceAll('.00', '')}元隐藏券',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  Text(
+                    '去领券 >',
+                    style: TextStyle(color: Colors.white),
+                  )
+                ],
+              ),
             ),
           )
         ],
@@ -163,7 +275,16 @@ class _PublicDetailViewState extends State<PublicDetailView> implements PublicDe
   }
 
   @override
-  Future<void> onShare() {
-    throw UnimplementedError();
+  Future<void> onShare() async {}
+
+  @override
+  String getTypeLabel() {
+    if (info != null) {
+      switch (info!.type) {
+        case 'pdd':
+          return '拼多多';
+      }
+    }
+    return '';
   }
 }

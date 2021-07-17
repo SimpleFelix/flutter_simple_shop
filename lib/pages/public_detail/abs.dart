@@ -11,4 +11,7 @@ abstract class PublicDetailViewAbs {
 
   /// 点击了领券按钮
   Future<void> onGetCoupon();
+
+  /// 获取类型名字
+  String getTypeLabel();
 }

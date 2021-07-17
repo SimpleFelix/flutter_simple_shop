@@ -24,8 +24,8 @@ import 'service/user_api.dart';
 
 void main() async {
   /// 初始化sdk
-  // DdTaokeUtil.instance.init('https://itbug.shop', '443', debug: false); //  远程服务器
-  DdTaokeUtil.instance.init('https://localhost', '443', debug: false); //
+  DdTaokeUtil.instance.init('https://itbug.shop', '443', debug: false); //  远程服务器
+  // DdTaokeUtil.instance.init('https://localhost', '443', debug: false); //
   //
 
   await Stetho.initialize();
