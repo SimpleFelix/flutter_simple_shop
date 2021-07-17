@@ -64,12 +64,12 @@ class TKApiService {
   /// id  --  id 或者url
   Future<WeipinhuiDetail?> getWphProductInfo(String id) async {
     print('商品id: $id');
-    final result = await utils.api.get('/api/zhe/wph-detail-v2', data: {'id': id,'queryDetail':true});
+    final result = await utils.api.get('/api/zhe/wph-detail-v2', data: {'id': id, 'queryDetail': true});
     if (result.isNotEmpty) {
       try {
         final item = jsonDecode(result)['result'][0];
         return WeipinhuiDetail.fromJson(item);
-      } catch (e,s) {
+      } catch (e, s) {
         print(s);
       }
     }
@@ -128,17 +128,17 @@ class TKApiService {
   /// 获取平多多详情
   Future<PddDetail?> ppdDetail(String goodsSgin) async {
     final result = await DdTaokeUtil.dio!.get<String>('/pdd/detail', queryParameters: {'id': goodsSgin});
-    if(result.statusCode==200&&result.data!=null){
+    if (result.statusCode == 200 && result.data != null) {
       final json = result.data;
       if (json != null && json.isNotEmpty) {
         try {
           final data = jsonDecode(json);
           final pddRespose = data['goods_detail_response']['goods_details'];
-          if(pddRespose is List<dynamic>){
+          if (pddRespose is List<dynamic>) {
             final item = pddRespose.first;
             return PddDetail.fromJson(item);
           }
-        } catch (e,s) {
+        } catch (e, s) {
           print(e);
           print(s);
           print('拼多多商品详情解析失败');
@@ -148,11 +148,17 @@ class TKApiService {
   }
 
   /// 拼多多转链
-  Future<void> pddCovert(String goodsSgin) async {
-    var data = {'goodsSign': goodsSgin, 'customParameters': '{"uid":"9246632808"}'};
-    final result = await utils.api.get('/tkapi/api/v1/dtk/apis/pdd-goods-prom-generate', data: data);
-    if (result.isNotEmpty) {
-      Get.log(result);
+  Future<dynamic> pddCovert(String goodsSgin) async {
+    var data = {'id': goodsSgin};
+    final result = await DdTaokeUtil.dio!.get<String>('/pdd/covert', queryParameters: data);
+    if (result.statusCode == 200 && result.data != null) {
+      final json = result.data ?? '';
+      if(json.isNotEmpty){
+        try{
+          final map  = jsonDecode(json);
+          return map['goods_promotion_url_generate_response']['goods_promotion_url_list'][0];
+        }catch(_){}
+      }
     }
   }
 }

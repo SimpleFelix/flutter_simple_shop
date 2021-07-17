@@ -79,53 +79,41 @@ class Utils {
   }
 
   // 跳转到浏览器
-  Future<void> openLink(String url)async{
-    if (await canLaunch(url)) {
-      await launch(url);
-    }else{
-      copy(url,message: '跳转url失败,链接已复制到剪贴板');
-    }
+  Future<void> openLink(String url,{String urlYs = ''})async{
+    await urlToApp(url,urlYs);
   }
 
-  // 打开淘宝
-  Future<void> openTaobao(String url) async {
-
-
+  /// url 跳转到 app  使用约束
+  Future<void> urlToApp(String url,String urlYs) async {
     /// 如果是windows平台,直接跳转到浏览器打开链接
     if(GetPlatform.isWindows){
       await launch(url);
       return;
     }
+    var _url = url;
+    _url = '$urlYs${urlHandle(url)}';
+    print('app 约束跳转$_url');
+    if (await canLaunch(_url)) {
+      // 判断当前手机是否安装某app. 能否正常跳转
+      await launch(_url);
+    } else {
+      await launch(url);
+    }
+  }
 
+  // 打开淘宝
+  Future<void> openTaobao(String url) async {
+    urlToApp(url,'taobao://');
+  }
 
+  String urlHandle(String url) {
     var _url = url;
     if (_url.indexOf('http://') == 0) {
       _url = _url.replaceAll('http://', '');
     } else if (_url.indexOf('https://') == 0) {
       _url = _url.replaceAll('https://', '');
     }
-    _url = 'taobao://$_url';
-    if (await canLaunch(_url)) {
-      // 判断当前手机是否安装某app. 能否正常跳转
-      await launch(_url);
-    } else {
-      await Get.dialog(AlertDialog(
-        title: Text('打开淘宝APP失败'),
-        content: Text('请检查是否安装淘宝APP'),
-        actions: [
-          TextButton(
-              onPressed: () {
-                copy(url);
-              },
-              child: Text('复制链接')),
-          ElevatedButton(
-              onPressed: () {
-                launch(url);
-              },
-              child: Text('跳转到浏览器领取'))
-        ],
-      ));
-    }
+    return _url;
   }
 }
 

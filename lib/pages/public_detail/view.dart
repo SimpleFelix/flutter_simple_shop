@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:demo1/common/utils.dart';
 import 'package:demo1/util/image_util.dart';
 import 'package:demo1/widgets/component/custom_loading.dart';
 import 'package:extended_image/extended_image.dart';
@@ -259,6 +262,7 @@ class _PublicDetailViewState extends State<PublicDetailView> implements PublicDe
 
   @override
   Future<PublicDetailModel?> fetchData() async {
+    print('id是:${widget.goodsId}');
     switch (widget.type) {
       case 'pdd':
         return await getPxxDetail();
@@ -286,12 +290,37 @@ class _PublicDetailViewState extends State<PublicDetailView> implements PublicDe
   }
 
   @override
-  Future<void> onGetCoupon() {
-    throw UnimplementedError();
+  Future<void> onGetCoupon() async {
+    if(info!=null){
+      switch(info!.type){
+        case '拼多多':
+          await pxxGet();
+          break;
+        default:
+          break;
+      }
+    }
+  }
+
+
+  /// 平夕夕领券
+  Future<void> pxxGet({bool onShare = false}) async {
+    final urls =  await tkApi.pddCovert(widget.goodsId); // 获取转换成功的链接对象
+    if(urls!=null){
+      print('转链成功:${jsonEncode(urls)}');
+      if(onShare){
+        utils.copy(urls['mobile_short_url'],message: '链接已复制');
+        return;
+      }
+      await utils.openLink(urls['mobile_short_url'],urlYs: 'pinduoduo://');
+    }
+
   }
 
   @override
-  Future<void> onShare() async {}
+  Future<void> onShare() async {
+
+  }
 
   @override
   String getTypeLabel() {
