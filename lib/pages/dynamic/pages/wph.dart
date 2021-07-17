@@ -45,6 +45,7 @@ class _WeipinhuiJinBianGoodsState extends State<WeipinhuiJinBianGoods> {
     );
   }
 
+  /// 唯品会卡片布局
   Widget renderItem(dynamic item) {
     return GestureDetector(
       onTap: (){
@@ -59,31 +60,45 @@ class _WeipinhuiJinBianGoodsState extends State<WeipinhuiJinBianGoods> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(5), border: Border.all(color: Colors.redAccent)),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    renderSvg(),
-                    SizedBox(
-                      width: 12,
-                    ),
-                    Text(
-                      '${item['shop_name']}',
-                      style: TextStyle(color: Colors.red, fontSize: 15, fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  renderSvg(),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Text(
+                    '梁典典',
+                    style: TextStyle(color: Colors.black, fontSize: 13),
+                  ),
+                ],
               ),
               Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
-                    child: Html(
-                      data: '${item['content']}',
-                      onLinkTap: (String? url, RenderContext context, Map<String, String> attributes, dom.Element? element) {
-                        print('点击的链接是:$url');
-                      },
+                    child: Column(
+                      children: [
+                        Html(
+                          data: '${item['content']}',
+                          onLinkTap: (String? url, RenderContext context, Map<String, String> attributes, dom.Element? element) {
+                            print('点击的链接是:$url');
+                          },
+                        ),
+                        Row(
+                          children: [
+                            Container(
+                              padding: EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                              decoration: BoxDecoration(color: Colors.pink, borderRadius: BorderRadius.circular(5)),
+                              child: Text(
+                                '特卖价',
+                                style: TextStyle(fontSize: 10, color: Colors.white),
+                              ),
+                            ),
+                            PriceLayout(original: '${item['quanhou_price']}'.replaceAll('.00', ''), discounts: ''),
+                          ],
+                        )
+                      ],
                     ),
                   ),
                   SizedBox(
@@ -93,19 +108,7 @@ class _WeipinhuiJinBianGoodsState extends State<WeipinhuiJinBianGoods> {
                   )
                 ],
               ),
-              Row(
-                children: [
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                    decoration: BoxDecoration(color: Colors.pink, borderRadius: BorderRadius.circular(5)),
-                    child: Text(
-                      '特卖价',
-                      style: TextStyle(fontSize: 10, color: Colors.white),
-                    ),
-                  ),
-                  PriceLayout(original: '${item['quanhou_price']}', discounts: ''),
-                ],
-              )
+
             ],
           ),
         ),
@@ -114,11 +117,14 @@ class _WeipinhuiJinBianGoodsState extends State<WeipinhuiJinBianGoods> {
   }
 
   Widget renderSvg() {
-    return SvgPicture.asset(
-      'assets/svg/brand.svg',
-      width: 23,
-      height: 23,
-      color: Colors.red,
+    return Row(
+      children: [
+        SizedBox(
+          width: 24,
+          height: 24,
+          child: Image.asset('assets/images/dd.png'),
+        ),
+      ],
     );
   }
 }

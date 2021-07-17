@@ -18,7 +18,7 @@ class WeipinhuiDetail {
       required this.goodsName,
       required this.brandName,
       required this.brandLogoFull,
-      required this.couponInfo,
+       this.couponInfo,
       required this.brandStoreSn,
       required this.sellTimeFrom,
       required this.schemeStartTime,
@@ -51,7 +51,6 @@ class WeipinhuiDetail {
         goodsName: asT<String>(jsonRes['goodsName'])!,
         brandName: asT<String>(jsonRes['brandName'])!,
         brandLogoFull: asT<String>(jsonRes['brandLogoFull'])!,
-        couponInfo: CouponInfo.fromJson(asT<Map<String, dynamic>>(jsonRes['couponInfo'])!),
         brandStoreSn: asT<String>(jsonRes['brandStoreSn'])!,
         sellTimeFrom: asT<int>(jsonRes['sellTimeFrom'])!,
         schemeStartTime: asT<int>(jsonRes['schemeStartTime'])!,
@@ -84,7 +83,7 @@ class WeipinhuiDetail {
   String goodsName;
   String brandName;
   String brandLogoFull;
-  CouponInfo couponInfo;
+  CouponInfo? couponInfo;
   String brandStoreSn;
   int sellTimeFrom;
   int schemeStartTime;

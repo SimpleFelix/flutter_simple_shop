@@ -67,7 +67,6 @@ class SimpleImage extends StatelessWidget {
       children: [
         Container(
           width: double.infinity,
-          height: double.infinity,
           decoration: BoxDecoration(
             color: Colors.grey[200],
             borderRadius:radius ?? BorderRadius.circular(8),
@@ -84,6 +83,7 @@ class SimpleImage extends StatelessWidget {
             height: double.infinity,
             loadStateChanged: loadingState,
             cache: true,
+            fit: BoxFit.cover,
             shape: BoxShape.rectangle,
             borderRadius:radius ?? BorderRadius.circular(8),
           ),

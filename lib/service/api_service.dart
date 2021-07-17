@@ -69,7 +69,9 @@ class TKApiService {
       try {
         final item = jsonDecode(result)['result'][0];
         return WeipinhuiDetail.fromJson(item);
-      } catch (_) {}
+      } catch (e,s) {
+        print(s);
+      }
     }
     return null;
   }

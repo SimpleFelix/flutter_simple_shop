@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 Widget loadingState(ExtendedImageState state) {
   final w = state.imageWidget;
   final wd = w.width ?? double.infinity;
-  final he = w.height  ?? double.infinity;
+  final he = w.height  ?? wd;
   switch (state.extendedImageLoadState) {
     case LoadState.loading:
       return Skeleton(
