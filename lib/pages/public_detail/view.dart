@@ -152,6 +152,7 @@ class _PublicDetailViewState extends State<PublicDetailView> implements PublicDe
               height: width,
               child: SimpleImage(
                 url: e,
+                radius: BorderRadius.zero,
               ),
             ))
         .toList();

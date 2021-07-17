@@ -135,7 +135,9 @@ class TKApiService {
             final item = pddRespose.first;
             return PddDetail.fromJson(item);
           }
-        } catch (e) {
+        } catch (e,s) {
+          print(e);
+          print(s);
           print('拼多多商品详情解析失败');
         }
       }

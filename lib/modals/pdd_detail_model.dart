@@ -3,7 +3,6 @@ import 'dart:developer';
 
 import 'ff_convert_convert_util.dart';
 
-
 class PddDetail {
   PddDetail({
     required this.activityPromotionRate,
@@ -60,8 +59,7 @@ class PddDetail {
   });
 
   factory PddDetail.fromJson(Map<String, dynamic> jsonRes) {
-    final List<int>? activityTags =
-    jsonRes['activity_tags'] is List ? <int>[] : null;
+    final List<int>? activityTags = jsonRes['activity_tags'] is List ? <int>[] : null;
     if (activityTags != null) {
       for (final dynamic item in jsonRes['activity_tags']!) {
         if (item != null) {
@@ -83,8 +81,7 @@ class PddDetail {
       }
     }
 
-    final List<String>? goodsGalleryUrls =
-    jsonRes['goods_gallery_urls'] is List ? <String>[] : null;
+    final List<String>? goodsGalleryUrls = jsonRes['goods_gallery_urls'] is List ? <String>[] : null;
     if (goodsGalleryUrls != null) {
       for (final dynamic item in jsonRes['goods_gallery_urls']!) {
         if (item != null) {
@@ -106,8 +103,7 @@ class PddDetail {
       }
     }
 
-    final List<int>? serviceTags =
-    jsonRes['service_tags'] is List ? <int>[] : null;
+    final List<int>? serviceTags = jsonRes['service_tags'] is List ? <int>[] : null;
     if (serviceTags != null) {
       for (final dynamic item in jsonRes['service_tags']!) {
         if (item != null) {
@@ -118,8 +114,7 @@ class PddDetail {
       }
     }
 
-    final List<String>? unifiedTags =
-    jsonRes['unified_tags'] is List ? <String>[] : null;
+    final List<String>? unifiedTags = jsonRes['unified_tags'] is List ? <String>[] : null;
     if (unifiedTags != null) {
       for (final dynamic item in jsonRes['unified_tags']!) {
         if (item != null) {
@@ -130,8 +125,7 @@ class PddDetail {
       }
     }
 
-    final List<Object>? videoUrls =
-    jsonRes['video_urls'] is List ? <Object>[] : null;
+    final List<Object>? videoUrls = jsonRes['video_urls'] is List ? <Object>[] : null;
     if (videoUrls != null) {
       for (final dynamic item in jsonRes['video_urls']!) {
         if (item != null) {
@@ -142,7 +136,7 @@ class PddDetail {
       }
     }
     return PddDetail(
-      activityPromotionRate: asT<int>(jsonRes['activity_promotion_rate'])!,
+      activityPromotionRate: asT<int>(jsonRes['activity_promotion_rate'] ?? 0)!,
       activityTags: activityTags!,
       brandName: asT<String>(jsonRes['brand_name'])!,
       catIds: catIds!,
@@ -165,12 +159,9 @@ class PddDetail {
       lgstTxt: asT<String>(jsonRes['lgst_txt'])!,
       mallCouponDiscountPct: asT<int>(jsonRes['mall_coupon_discount_pct'])!,
       mallCouponEndTime: asT<int>(jsonRes['mall_coupon_end_time'])!,
-      mallCouponMaxDiscountAmount:
-      asT<int>(jsonRes['mall_coupon_max_discount_amount'])!,
-      mallCouponMinOrderAmount:
-      asT<int>(jsonRes['mall_coupon_min_order_amount'])!,
-      mallCouponRemainQuantity:
-      asT<int>(jsonRes['mall_coupon_remain_quantity'])!,
+      mallCouponMaxDiscountAmount: asT<int>(jsonRes['mall_coupon_max_discount_amount'])!,
+      mallCouponMinOrderAmount: asT<int>(jsonRes['mall_coupon_min_order_amount'])!,
+      mallCouponRemainQuantity: asT<int>(jsonRes['mall_coupon_remain_quantity'])!,
       mallCouponStartTime: asT<int>(jsonRes['mall_coupon_start_time'])!,
       mallCouponTotalQuantity: asT<int>(jsonRes['mall_coupon_total_quantity'])!,
       mallCps: asT<int>(jsonRes['mall_cps'])!,
@@ -192,8 +183,7 @@ class PddDetail {
       servTxt: asT<String>(jsonRes['serv_txt'])!,
       shareRate: asT<int>(jsonRes['share_rate'])!,
       subsidyAmount: asT<int>(jsonRes['subsidy_amount'])!,
-      subsidyDuoAmountTenMillion:
-      asT<int>(jsonRes['subsidy_duo_amount_ten_million'])!,
+      subsidyDuoAmountTenMillion: asT<int>(jsonRes['subsidy_duo_amount_ten_million'] ?? 0)!,
       unifiedTags: unifiedTags!,
       videoUrls: videoUrls!,
       zsDuoId: asT<int>(jsonRes['zs_duo_id'])!,
@@ -258,59 +248,58 @@ class PddDetail {
   }
 
   Map<String, dynamic> toJson() => <String, dynamic>{
-    'activity_promotion_rate': activityPromotionRate,
-    'activity_tags': activityTags,
-    'brand_name': brandName,
-    'cat_ids': catIds,
-    'coupon_discount': couponDiscount,
-    'coupon_end_time': couponEndTime,
-    'coupon_min_order_amount': couponMinOrderAmount,
-    'coupon_remain_quantity': couponRemainQuantity,
-    'coupon_start_time': couponStartTime,
-    'coupon_total_quantity': couponTotalQuantity,
-    'desc_txt': descTxt,
-    'extra_coupon_amount': extraCouponAmount,
-    'goods_desc': goodsDesc,
-    'goods_gallery_urls': goodsGalleryUrls,
-    'goods_image_url': goodsImageUrl,
-    'goods_name': goodsName,
-    'goods_sign': goodsSign,
-    'goods_thumbnail_url': goodsThumbnailUrl,
-    'has_coupon': hasCoupon,
-    'has_mall_coupon': hasMallCoupon,
-    'lgst_txt': lgstTxt,
-    'mall_coupon_discount_pct': mallCouponDiscountPct,
-    'mall_coupon_end_time': mallCouponEndTime,
-    'mall_coupon_max_discount_amount': mallCouponMaxDiscountAmount,
-    'mall_coupon_min_order_amount': mallCouponMinOrderAmount,
-    'mall_coupon_remain_quantity': mallCouponRemainQuantity,
-    'mall_coupon_start_time': mallCouponStartTime,
-    'mall_coupon_total_quantity': mallCouponTotalQuantity,
-    'mall_cps': mallCps,
-    'mall_id': mallId,
-    'mall_img_url': mallImgUrl,
-    'mall_name': mallName,
-    'merchant_type': merchantType,
-    'min_group_price': minGroupPrice,
-    'min_normal_price': minNormalPrice,
-    'only_scene_auth': onlySceneAuth,
-    'opt_id': optId,
-    'opt_ids': optIds,
-    'opt_name': optName,
-    'plan_type': planType,
-    'predict_promotion_rate': predictPromotionRate,
-    'promotion_rate': promotionRate,
-    'sales_tip': salesTip,
-    'service_tags': serviceTags,
-    'serv_txt': servTxt,
-    'share_rate': shareRate,
-    'subsidy_amount': subsidyAmount,
-    'subsidy_duo_amount_ten_million': subsidyDuoAmountTenMillion,
-    'unified_tags': unifiedTags,
-    'video_urls': videoUrls,
-    'zs_duo_id': zsDuoId,
-  };
+        'activity_promotion_rate': activityPromotionRate,
+        'activity_tags': activityTags,
+        'brand_name': brandName,
+        'cat_ids': catIds,
+        'coupon_discount': couponDiscount,
+        'coupon_end_time': couponEndTime,
+        'coupon_min_order_amount': couponMinOrderAmount,
+        'coupon_remain_quantity': couponRemainQuantity,
+        'coupon_start_time': couponStartTime,
+        'coupon_total_quantity': couponTotalQuantity,
+        'desc_txt': descTxt,
+        'extra_coupon_amount': extraCouponAmount,
+        'goods_desc': goodsDesc,
+        'goods_gallery_urls': goodsGalleryUrls,
+        'goods_image_url': goodsImageUrl,
+        'goods_name': goodsName,
+        'goods_sign': goodsSign,
+        'goods_thumbnail_url': goodsThumbnailUrl,
+        'has_coupon': hasCoupon,
+        'has_mall_coupon': hasMallCoupon,
+        'lgst_txt': lgstTxt,
+        'mall_coupon_discount_pct': mallCouponDiscountPct,
+        'mall_coupon_end_time': mallCouponEndTime,
+        'mall_coupon_max_discount_amount': mallCouponMaxDiscountAmount,
+        'mall_coupon_min_order_amount': mallCouponMinOrderAmount,
+        'mall_coupon_remain_quantity': mallCouponRemainQuantity,
+        'mall_coupon_start_time': mallCouponStartTime,
+        'mall_coupon_total_quantity': mallCouponTotalQuantity,
+        'mall_cps': mallCps,
+        'mall_id': mallId,
+        'mall_img_url': mallImgUrl,
+        'mall_name': mallName,
+        'merchant_type': merchantType,
+        'min_group_price': minGroupPrice,
+        'min_normal_price': minNormalPrice,
+        'only_scene_auth': onlySceneAuth,
+        'opt_id': optId,
+        'opt_ids': optIds,
+        'opt_name': optName,
+        'plan_type': planType,
+        'predict_promotion_rate': predictPromotionRate,
+        'promotion_rate': promotionRate,
+        'sales_tip': salesTip,
+        'service_tags': serviceTags,
+        'serv_txt': servTxt,
+        'share_rate': shareRate,
+        'subsidy_amount': subsidyAmount,
+        'subsidy_duo_amount_ten_million': subsidyDuoAmountTenMillion,
+        'unified_tags': unifiedTags,
+        'video_urls': videoUrls,
+        'zs_duo_id': zsDuoId,
+      };
 
-  PddDetail clone() =>
-      PddDetail.fromJson(asT<Map<String, dynamic>>(jsonDecode(jsonEncode(this)))!);
+  PddDetail clone() => PddDetail.fromJson(asT<Map<String, dynamic>>(jsonDecode(jsonEncode(this)))!);
 }
