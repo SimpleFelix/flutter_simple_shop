@@ -64,10 +64,11 @@ class TKApiService {
   /// id  --  id 或者url
   Future<WeipinhuiDetail?> getWphProductInfo(String id) async {
     print('商品id: $id');
-    final result = await utils.api.get('/api/zhe/info', data: {'id': id});
+    final result = await utils.api.get('/api/zhe/wph-detail-v2', data: {'id': id,'queryDetail':true});
     if (result.isNotEmpty) {
       try {
-        return WeipinhuiDetail.fromJson(jsonDecode(result));
+        final item = jsonDecode(result)['result'][0];
+        return WeipinhuiDetail.fromJson(item);
       } catch (_) {}
     }
     return null;

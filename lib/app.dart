@@ -159,7 +159,7 @@ class _AppState extends State<App> with AfterLayoutMixin {
                         width: 32.0,
                       )),
             BottomNavigationBarItem(
-                label: '收藏',
+                label: '动态',
                 icon: _currentIndex == 3
                     ? Image.asset(
                         'assets/nav/shoucang.png',

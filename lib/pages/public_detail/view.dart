@@ -257,8 +257,18 @@ class _PublicDetailViewState extends State<PublicDetailView> implements PublicDe
     switch (widget.type) {
       case 'pdd':
         return await getPxxDetail();
+      case 'wph':
+        return await getWphDetail();
       default:
         break;
+    }
+  }
+
+  /// 加载唯品会详情
+  Future<PublicDetailModel?> getWphDetail() async {
+    final result = await tkApi.getWphProductInfo(widget.goodsId);
+    if (result != null) {
+      return PublicDetailModel.fromWph(result);
     }
   }
 
@@ -286,6 +296,6 @@ class _PublicDetailViewState extends State<PublicDetailView> implements PublicDe
           return '拼多多';
       }
     }
-    return '';
+    return info!.type;
   }
 }

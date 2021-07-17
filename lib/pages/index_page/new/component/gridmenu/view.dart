@@ -27,12 +27,29 @@ final gridMenuModles = [
   /// 领券
   GridMenuItem(
       item: GridMenuModel(
-          title: '饿么领券',
+          title: '饿了吗',
           image: elmImage,
           isAssets: true,
           onTap: () {
             Get.context!.navigator.push(SwipeablePageRoute(builder: (_) => WaimaiIndex()));
           })),
+
+  GridMenuItem(
+      item: GridMenuModel(
+          title: '美团领券',
+          image: mtwmImage,
+          onTap: () async {
+            Get.context!.read(indexRiverpod).changeLoadingState(true);
+            await tkApi.meituan({'actId': '2', 'linkType': '1'}, mapHandle: (data) {
+              final url = (data['data'] ?? '').toString();
+              print('美团推广链接:$url');
+              if (url.isNotEmpty) {
+                utils.openLink(url);
+              }
+            });
+            Get.context!.read(indexRiverpod).changeLoadingState(false);
+          },
+          isAssets: true)),
 
   /// 排行榜
   GridMenuItem(
@@ -50,7 +67,7 @@ final gridMenuModles = [
           title: '折上折',
           image: zheImage,
           onTap: () {
-            Get.context!.navigator.push(SwipeablePageRoute(builder: (_)=>ZheIndex(),canOnlySwipeFromEdge: true));
+            Get.context!.navigator.push(SwipeablePageRoute(builder: (_) => ZheIndex(), canOnlySwipeFromEdge: true));
           },
           isAssets: true)),
 
@@ -59,39 +76,18 @@ final gridMenuModles = [
           title: '每日半价',
           image: banjiaImage,
           onTap: () {
-            Get.context!.navigator.push(SwipeablePageRoute(builder: (_)=>BanjiaIndex(),canOnlySwipeFromEdge: true));
+            Get.context!.navigator.push(SwipeablePageRoute(builder: (_) => BanjiaIndex(), canOnlySwipeFromEdge: true));
           },
           isAssets: true)),
 
   GridMenuItem(
       item: GridMenuModel(
-          title: '美团领券',
-          image: mtwmImage,
-          onTap: () async {
-            Get.context!.read(indexRiverpod).changeLoadingState(true);
-            await tkApi.meituan({
-              'actId':'2',
-              'linkType':'1'
-            },mapHandle: (data){
-             final url =  (data['data'] ?? '').toString();
-             print('美团推广链接:$url');
-             if(url.isNotEmpty){
-               utils.openLink(url);
-             }
-            });
-            Get.context!.read(indexRiverpod).changeLoadingState(false);
-          },
-          isAssets: true)),
-
-  GridMenuItem(
-      item: GridMenuModel(
-          title: '拼多多',
+          title: '拼夕夕',
           image: 'assets/svg/pdd.svg',
           onTap: () {
-            Get.context!.navigator.push(SwipeablePageRoute(builder: (_)=>SearchPage(),canOnlySwipeFromEdge: true));
+            Get.context!.navigator.push(SwipeablePageRoute(builder: (_) => SearchPage(), canOnlySwipeFromEdge: true));
           },
           isAssets: true)),
-
 ];
 
 /// 首页的网格菜单
@@ -102,12 +98,9 @@ class GridMenuComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 12,vertical: 6),
+        margin: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
         padding: EdgeInsets.all(12),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(8)
-        ),
+        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(8)),
         child: WaterfallFlow.count(
           crossAxisCount: 5,
           shrinkWrap: true,

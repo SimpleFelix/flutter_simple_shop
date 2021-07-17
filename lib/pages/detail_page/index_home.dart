@@ -339,11 +339,11 @@ class _DetailIndexState extends State<DetailIndex> {
     return str;
   }
 
-  WeipinhuiResult get detail => weipinhuiDetail!.result[0];
+  WeipinhuiDetail get detail => weipinhuiDetail!;
 
   Widget _imgSwiper() {
     if (weipinhuiDetail != null) {
-      return SwiperWidget(images: weipinhuiDetail!.result[0].goodsMainPicture);
+      return SwiperWidget(images: weipinhuiDetail!.goodsMainPicture);
     }
     return Container();
   }

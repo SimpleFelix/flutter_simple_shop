@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'ff_convert_convert_util.dart';
 
@@ -59,134 +58,120 @@ class PddDetail {
   });
 
   factory PddDetail.fromJson(Map<String, dynamic> jsonRes) {
-    final List<int>? activityTags = jsonRes['activity_tags'] is List ? <int>[] : null;
-    if (activityTags != null) {
-      for (final dynamic item in jsonRes['activity_tags']!) {
-        if (item != null) {
-          tryCatch(() {
-            activityTags.add(asT<int>(item)!);
-          });
-        }
+    final activityTags = jsonRes['activity_tags'] is List ? <int>[] : <int>[];
+    for (final dynamic item in jsonRes['activity_tags'] ?? []) {
+      if (item != null) {
+        tryCatch(() {
+          activityTags.add(asT<int>(item)!);
+        });
       }
     }
 
-    final List<int>? catIds = jsonRes['cat_ids'] is List ? <int>[] : null;
-    if (catIds != null) {
-      for (final dynamic item in jsonRes['cat_ids']!) {
-        if (item != null) {
-          tryCatch(() {
-            catIds.add(asT<int>(item)!);
-          });
-        }
+    final catIds = jsonRes['cat_ids'] is List ? <int>[] : <int>[];
+    for (final dynamic item in jsonRes['cat_ids']??[]) {
+      if (item != null) {
+        tryCatch(() {
+          catIds.add(asT<int>(item)!);
+        });
       }
     }
 
-    final List<String>? goodsGalleryUrls = jsonRes['goods_gallery_urls'] is List ? <String>[] : null;
-    if (goodsGalleryUrls != null) {
-      for (final dynamic item in jsonRes['goods_gallery_urls']!) {
-        if (item != null) {
-          tryCatch(() {
-            goodsGalleryUrls.add(asT<String>(item)!);
-          });
-        }
+    final goodsGalleryUrls = jsonRes['goods_gallery_urls'] is List ? <String>[] : <String>[];
+    for (final dynamic item in jsonRes['goods_gallery_urls']??[]) {
+      if (item != null) {
+        tryCatch(() {
+          goodsGalleryUrls.add(asT<String>(item)!);
+        });
       }
     }
 
-    final List<int>? optIds = jsonRes['opt_ids'] is List ? <int>[] : null;
-    if (optIds != null) {
-      for (final dynamic item in jsonRes['opt_ids']!) {
-        if (item != null) {
-          tryCatch(() {
-            optIds.add(asT<int>(item)!);
-          });
-        }
+    final optIds = jsonRes['opt_ids'] is List ? <int>[] : <int>[];
+    for (final dynamic item in jsonRes['opt_ids']!) {
+      if (item != null) {
+        tryCatch(() {
+          optIds.add(asT<int>(item)!);
+        });
       }
     }
 
-    final List<int>? serviceTags = jsonRes['service_tags'] is List ? <int>[] : null;
-    if (serviceTags != null) {
-      for (final dynamic item in jsonRes['service_tags']!) {
-        if (item != null) {
-          tryCatch(() {
-            serviceTags.add(asT<int>(item)!);
-          });
-        }
+    final serviceTags = jsonRes['service_tags'] is List ? <int>[] : <int>[];
+    for (final dynamic item in jsonRes['service_tags']!) {
+      if (item != null) {
+        tryCatch(() {
+          serviceTags.add(asT<int>(item)!);
+        });
       }
     }
 
-    final List<String>? unifiedTags = jsonRes['unified_tags'] is List ? <String>[] : null;
-    if (unifiedTags != null) {
-      for (final dynamic item in jsonRes['unified_tags']!) {
-        if (item != null) {
-          tryCatch(() {
-            unifiedTags.add(asT<String>(item)!);
-          });
-        }
+    final unifiedTags = jsonRes['unified_tags'] is List ? <String>[] : <String>[];
+    for (final dynamic item in jsonRes['unified_tags']!) {
+      if (item != null) {
+        tryCatch(() {
+          unifiedTags.add(asT<String>(item)!);
+        });
       }
     }
 
-    final List<Object>? videoUrls = jsonRes['video_urls'] is List ? <Object>[] : null;
-    if (videoUrls != null) {
-      for (final dynamic item in jsonRes['video_urls']!) {
-        if (item != null) {
-          tryCatch(() {
-            videoUrls.add(asT<Object>(item)!);
-          });
-        }
+    final videoUrls = jsonRes['video_urls'] is List ? <Object>[] : <Object>[];
+    for (final dynamic item in jsonRes['video_urls']!) {
+      if (item != null) {
+        tryCatch(() {
+          videoUrls.add(asT<Object>(item)!);
+        });
       }
     }
     return PddDetail(
       activityPromotionRate: asT<int>(jsonRes['activity_promotion_rate'] ?? 0)!,
-      activityTags: activityTags!,
-      brandName: asT<String>(jsonRes['brand_name'])!,
-      catIds: catIds!,
-      couponDiscount: asT<int>(jsonRes['coupon_discount'])!,
-      couponEndTime: asT<int>(jsonRes['coupon_end_time'])!,
-      couponMinOrderAmount: asT<int>(jsonRes['coupon_min_order_amount'])!,
-      couponRemainQuantity: asT<int>(jsonRes['coupon_remain_quantity'])!,
-      couponStartTime: asT<int>(jsonRes['coupon_start_time'])!,
-      couponTotalQuantity: asT<int>(jsonRes['coupon_total_quantity'])!,
-      descTxt: asT<String>(jsonRes['desc_txt'])!,
-      extraCouponAmount: asT<int>(jsonRes['extra_coupon_amount'])!,
-      goodsDesc: asT<String>(jsonRes['goods_desc'])!,
-      goodsGalleryUrls: goodsGalleryUrls!,
-      goodsImageUrl: asT<String>(jsonRes['goods_image_url'])!,
-      goodsName: asT<String>(jsonRes['goods_name'])!,
-      goodsSign: asT<String>(jsonRes['goods_sign'])!,
-      goodsThumbnailUrl: asT<String>(jsonRes['goods_thumbnail_url'])!,
-      hasCoupon: asT<bool>(jsonRes['has_coupon'])!,
-      hasMallCoupon: asT<bool>(jsonRes['has_mall_coupon'])!,
-      lgstTxt: asT<String>(jsonRes['lgst_txt'])!,
-      mallCouponDiscountPct: asT<int>(jsonRes['mall_coupon_discount_pct'])!,
-      mallCouponEndTime: asT<int>(jsonRes['mall_coupon_end_time'])!,
-      mallCouponMaxDiscountAmount: asT<int>(jsonRes['mall_coupon_max_discount_amount'])!,
-      mallCouponMinOrderAmount: asT<int>(jsonRes['mall_coupon_min_order_amount'])!,
-      mallCouponRemainQuantity: asT<int>(jsonRes['mall_coupon_remain_quantity'])!,
-      mallCouponStartTime: asT<int>(jsonRes['mall_coupon_start_time'])!,
-      mallCouponTotalQuantity: asT<int>(jsonRes['mall_coupon_total_quantity'])!,
-      mallCps: asT<int>(jsonRes['mall_cps'])!,
-      mallId: asT<int>(jsonRes['mall_id'])!,
-      mallImgUrl: asT<String>(jsonRes['mall_img_url'])!,
-      mallName: asT<String>(jsonRes['mall_name'])!,
-      merchantType: asT<int>(jsonRes['merchant_type'])!,
-      minGroupPrice: asT<int>(jsonRes['min_group_price'])!,
-      minNormalPrice: asT<int>(jsonRes['min_normal_price'])!,
-      onlySceneAuth: asT<bool>(jsonRes['only_scene_auth'])!,
-      optId: asT<int>(jsonRes['opt_id'])!,
-      optIds: optIds!,
-      optName: asT<String>(jsonRes['opt_name'])!,
-      planType: asT<int>(jsonRes['plan_type'])!,
-      predictPromotionRate: asT<int>(jsonRes['predict_promotion_rate'])!,
-      promotionRate: asT<int>(jsonRes['promotion_rate'])!,
-      salesTip: asT<String>(jsonRes['sales_tip'])!,
-      serviceTags: serviceTags!,
-      servTxt: asT<String>(jsonRes['serv_txt'])!,
-      shareRate: asT<int>(jsonRes['share_rate'])!,
-      subsidyAmount: asT<int>(jsonRes['subsidy_amount'])!,
+      activityTags: activityTags,
+      brandName: asT<String>(jsonRes['brand_name'] ?? '')!,
+      catIds: catIds,
+      couponDiscount: asT<int>(jsonRes['coupon_discount'] ?? 0)!,
+      couponEndTime: asT<int>(jsonRes['coupon_end_time'] ?? 0)!,
+      couponMinOrderAmount: asT<int>(jsonRes['coupon_min_order_amount'] ?? 0)!,
+      couponRemainQuantity: asT<int>(jsonRes['coupon_remain_quantity'] ?? 0)!,
+      couponStartTime: asT<int>(jsonRes['coupon_start_time'] ?? 0)!,
+      couponTotalQuantity: asT<int>(jsonRes['coupon_total_quantity'] ?? 0)!,
+      descTxt: asT<String>(jsonRes['desc_txt'] ?? '')!,
+      extraCouponAmount: asT<int>(jsonRes['extra_coupon_amount'] ?? 0)!,
+      goodsDesc: asT<String>(jsonRes['goods_desc'] ?? '')!,
+      goodsGalleryUrls: goodsGalleryUrls,
+      goodsImageUrl: asT<String>(jsonRes['goods_image_url'] ?? '')!,
+      goodsName: asT<String>(jsonRes['goods_name'] ?? '')!,
+      goodsSign: asT<String>(jsonRes['goods_sign'] ?? '')!,
+      goodsThumbnailUrl: asT<String>(jsonRes['goods_thumbnail_url'] ?? '')!,
+      hasCoupon: asT<bool>(jsonRes['has_coupon'] ?? false)!,
+      hasMallCoupon: asT<bool>(jsonRes['has_mall_coupon'] ?? false)!,
+      lgstTxt: asT<String>(jsonRes['lgst_txt'] ?? '')!,
+      mallCouponDiscountPct: asT<int>(jsonRes['mall_coupon_discount_pct'] ?? 0)!,
+      mallCouponEndTime: asT<int>(jsonRes['mall_coupon_end_time'] ?? 0)!,
+      mallCouponMaxDiscountAmount: asT<int>(jsonRes['mall_coupon_max_discount_amount'] ?? 0)!,
+      mallCouponMinOrderAmount: asT<int>(jsonRes['mall_coupon_min_order_amount'] ?? 0)!,
+      mallCouponRemainQuantity: asT<int>(jsonRes['mall_coupon_remain_quantity'] ?? 0)!,
+      mallCouponStartTime: asT<int>(jsonRes['mall_coupon_start_time'] ?? 0)!,
+      mallCouponTotalQuantity: asT<int>(jsonRes['mall_coupon_total_quantity'] ?? 0)!,
+      mallCps: asT<int>(jsonRes['mall_cps'] ?? 0)!,
+      mallId: asT<int>(jsonRes['mall_id'] ?? 0)!,
+      mallImgUrl: asT<String>(jsonRes['mall_img_url'] ?? '')!,
+      mallName: asT<String>(jsonRes['mall_name'] ?? '')!,
+      merchantType: asT<int>(jsonRes['merchant_type'] ?? 0)!,
+      minGroupPrice: asT<int>(jsonRes['min_group_price'] ?? 0)!,
+      minNormalPrice: asT<int>(jsonRes['min_normal_price'] ?? 0)!,
+      onlySceneAuth: asT<bool>(jsonRes['only_scene_auth'] ?? false)!,
+      optId: asT<int>(jsonRes['opt_id'] ?? 0)!,
+      optIds: optIds,
+      optName: asT<String>(jsonRes['opt_name'] ?? '')!,
+      planType: asT<int>(jsonRes['plan_type'] ?? 0)!,
+      predictPromotionRate: asT<int>(jsonRes['predict_promotion_rate'] ?? 0)!,
+      promotionRate: asT<int>(jsonRes['promotion_rate'] ?? 0)!,
+      salesTip: asT<String>(jsonRes['sales_tip'] ?? '')!,
+      serviceTags: serviceTags,
+      servTxt: asT<String>(jsonRes['serv_txt'] ?? '')!,
+      shareRate: asT<int>(jsonRes['share_rate'] ?? 0)!,
+      subsidyAmount: asT<int>(jsonRes['subsidy_amount'] ?? 0)!,
       subsidyDuoAmountTenMillion: asT<int>(jsonRes['subsidy_duo_amount_ten_million'] ?? 0)!,
-      unifiedTags: unifiedTags!,
-      videoUrls: videoUrls!,
-      zsDuoId: asT<int>(jsonRes['zs_duo_id'])!,
+      unifiedTags: unifiedTags,
+      videoUrls: videoUrls,
+      zsDuoId: asT<int>(jsonRes['zs_duo_id']??0)!,
     );
   }
 
