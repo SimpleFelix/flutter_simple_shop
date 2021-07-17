@@ -1,9 +1,9 @@
 import 'package:dd_taoke_sdk/model/category.dart';
-import 'package:demo1/common/utils.dart';
-import 'package:demo1/pages/new_goods_list/view.dart';
-import 'package:demo1/widgets/extended_image.dart';
 import 'package:flutter/material.dart';
-import '../../fluro/navigator_util.dart';
+
+import '../../common/utils.dart';
+import '../../widgets/extended_image.dart';
+import '../new_goods_list/view.dart';
 
 class RightWidgetItme extends StatelessWidget {
   final Subcategory item;

@@ -26,8 +26,8 @@ class GridMenuItem extends StatelessWidget {
         return GestureDetector(
           onTap: item.onTap,
           child: Container(
-            padding: EdgeInsets.all(12),
             alignment: Alignment.center,
+            padding: EdgeInsets.symmetric(vertical: 12),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,

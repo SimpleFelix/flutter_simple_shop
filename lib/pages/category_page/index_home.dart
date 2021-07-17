@@ -73,7 +73,7 @@ class _CategoryIndexPageState extends State<CategoryIndexPage> {
                       child: Container(
                           color: Colors.white,
                           child: WaterfallFlow.builder(
-                            gridDelegate: SliverWaterfallFlowDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+                            gridDelegate: SliverWaterfallFlowDelegateWithFixedCrossAxisCount(crossAxisCount: 3,mainAxisSpacing: 12,crossAxisSpacing: 20),
                             itemBuilder: (context, sIndex) {
                               return RightWidgetItme(category: current, item: current.subcategories![sIndex]);
                             },
