@@ -1,8 +1,5 @@
 import 'dart:io';
 
-// import 'package:filepicker_windows/filepicker_windows.dart';
-import 'package:demo1/service/blog_api.dart';
-import 'package:demo1/service/user_api.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -11,6 +8,9 @@ import 'package:image_picker/image_picker.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../fluro/navigator_util.dart';
+// import 'package:filepicker_windows/filepicker_windows.dart';
+import '../service/blog_api.dart';
+import '../service/user_api.dart';
 import 'service.dart';
 import 'widget_util.dart';
 

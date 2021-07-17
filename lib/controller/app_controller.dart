@@ -1,8 +1,6 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
-import 'package:demo1/service/api_service.dart';
-import 'package:demo1/widgets/component/new_version_dialog.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
@@ -12,6 +10,8 @@ import 'package:package_info/package_info.dart';
 
 import '../network/interceptor/auth_interceptor.dart';
 import '../provider/riverpod/user_riverpod.dart';
+import '../service/api_service.dart';
+import '../widgets/component/new_version_dialog.dart';
 
 /// app 控制器
 class AppController extends GetxController {

@@ -9,7 +9,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:provider/provider.dart';
-import 'package:window_size/window_size.dart';
 
 import './provider/providers.dart';
 import 'ad.dart';
@@ -24,11 +23,11 @@ import 'service/user_api.dart';
 
 void main() async {
   /// 初始化sdk
-  // DdTaokeUtil.instance.init('https://itbug.shop', '443', debug: false); //  远程服务器
-  DdTaokeUtil.instance.init('https://192.168.199.64', '443', debug: false); //
+  DdTaokeUtil.instance.init('https://itbug.shop', '443', debug: false); //  远程服务器
+  // DdTaokeUtil.instance.init('https://192.168.199.64', '443', debug: false); //
   //
 
-  await Stetho.initialize();
+  // await Stetho.initialize();
 
   /// 本地缓存工具类
   await Hive.initFlutter();
