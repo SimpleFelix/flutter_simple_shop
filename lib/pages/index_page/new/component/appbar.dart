@@ -27,7 +27,7 @@ class IndexHomeAppbar extends StatelessWidget implements PreferredSizeWidget {
       hintText: '输入关键字,例如:"辣条"',
       onTap: () => navTo(context),
       readOnly: true,
-      eve: 0,
+      eve: 3,
       leadingWidth: 58,
       leading: Container(
         alignment: Alignment.center,

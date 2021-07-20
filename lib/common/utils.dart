@@ -8,7 +8,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../fluro/navigator_util.dart';
-// import 'package:filepicker_windows/filepicker_windows.dart';
 import '../service/blog_api.dart';
 import '../service/user_api.dart';
 import 'service.dart';
@@ -21,7 +20,9 @@ class Utils {
   NavigatorUtil get routerUtils => GetIt.instance.get<NavigatorUtil>();
 
   Api get api => GetIt.instance.get<Api>();
+
   UserApi get userApi => GetIt.instance.get<UserApi>();
+
   BlogApi get blogApi => GetIt.instance.get<BlogApi>();
 
   // 显示一条消息
@@ -64,29 +65,29 @@ class Utils {
   }
 
   // 复制
-  void copy(String? text,{String? message}) {
+  void copy(String? text, {String? message}) {
     Clipboard.setData(ClipboardData(text: text));
-    showMessage(message??'复制成功');
+    showMessage(message ?? '复制成功');
   }
 
-  Future<void> navToBrowser(String url)async{
+  Future<void> navToBrowser(String url) async {
     if (await canLaunch(url)) {
       // 判断当前手机是否安装某app. 能否正常跳转
       await launch(url);
-    }else{
-      copy(url,message: '跳转url失败,链接已复制到剪贴板');
+    } else {
+      copy(url, message: '跳转url失败,链接已复制到剪贴板');
     }
   }
 
   // 跳转到浏览器
-  Future<void> openLink(String url,{String urlYs = ''})async{
-    await urlToApp(url,urlYs);
+  Future<void> openLink(String url, {String urlYs = ''}) async {
+    await urlToApp(url, urlYs);
   }
 
   /// url 跳转到 app  使用约束
-  Future<void> urlToApp(String url,String urlYs) async {
+  Future<void> urlToApp(String url, String urlYs) async {
     /// 如果是windows平台,直接跳转到浏览器打开链接
-    if(GetPlatform.isWindows){
+    if (GetPlatform.isWindows) {
       await launch(url);
       return;
     }
@@ -103,7 +104,7 @@ class Utils {
 
   // 打开淘宝
   Future<void> openTaobao(String url) async {
-    urlToApp(url,'taobao://');
+    urlToApp(url, 'taobao://');
   }
 
   String urlHandle(String url) {
@@ -118,3 +119,4 @@ class Utils {
 }
 
 Utils get utils => GetIt.instance.get<Utils>();
+

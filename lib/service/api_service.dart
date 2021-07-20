@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:dd_taoke_sdk/network/util.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
 
 import '../common/toast.dart';

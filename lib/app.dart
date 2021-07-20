@@ -1,16 +1,15 @@
 import 'package:after_layout/after_layout.dart';
-import 'package:demo1/pages/dynamic/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 
 import './pages/category_page/index_home.dart';
-import './pages/favorite_page/index_home.dart';
 import './pages/index_page/index_home.dart';
 import './pages/jiujiu_page/index_home.dart';
 import './pages/user_home_page/index_home.dart';
 import './personal/personal.dart';
+import 'pages/dynamic/index.dart';
 import 'pages/index_page/new/index.dart';
 
 class App extends StatefulWidget {

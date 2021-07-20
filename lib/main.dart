@@ -2,10 +2,8 @@ import 'dart:io';
 
 import 'package:dd_taoke_sdk/network/util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_stetho_null_safety/flutter_stetho_null_safety.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:provider/provider.dart';
@@ -74,9 +72,12 @@ class _MyAppState extends State<MyApp> {
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: '典典小卖部',
-        theme: ThemeData(primaryColor: Colors.white, bottomNavigationBarTheme: BottomNavigationBarThemeData(selectedLabelStyle: TextStyle(color: Colors.pink), selectedItemColor: Colors.pink,
-
-        ),textTheme: GoogleFonts.notoSansTextTheme()),
+        theme: ThemeData(
+          primaryColor: Colors.white,
+          bottomNavigationBarTheme: BottomNavigationBarThemeData(
+            selectedItemColor: Colors.pink
+          )
+        ),
         onInit: () {
           Get.put(AppController());
         },

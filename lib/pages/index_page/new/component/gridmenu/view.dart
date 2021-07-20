@@ -1,5 +1,6 @@
 import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:demo1/common/utils.dart';
+import 'package:demo1/config/app_config.dart';
 import 'package:demo1/pages/index_page/new/index_riverpod.dart';
 import 'package:demo1/pages/pinduoduo/search/view.dart';
 import 'package:demo1/service/api_service.dart';
@@ -22,6 +23,7 @@ const phbImage = 'assets/svg/phb.svg';
 const zheImage = 'assets/svg/zhe.svg';
 const banjiaImage = 'assets/svg/banjia.svg';
 const mtwmImage = 'assets/svg/mt.svg';
+const chf = 'assets/svg/chf.svg';
 
 final gridMenuModles = [
   /// 领券
@@ -86,6 +88,14 @@ final gridMenuModles = [
           image: 'assets/svg/pdd.svg',
           onTap: () {
             Get.context!.navigator.push(SwipeablePageRoute(builder: (_) => SearchPage(), canOnlySwipeFromEdge: true));
+          },
+          isAssets: true)),
+  GridMenuItem(
+      item: GridMenuModel(
+          title: '8折话费',
+          image: chf,
+          onTap: () {
+            utils.openLink(appConfig['huafeiUrl'].toString());
           },
           isAssets: true)),
 ];
