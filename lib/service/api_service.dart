@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dd_taoke_sdk/network/util.dart';
+import 'package:demo1/modals/pdd_search_item_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get_it/get_it.dart';
 
@@ -76,8 +77,8 @@ class TKApiService {
   }
 
   /// 拼多多搜索
-  Future<List<PddDetail>> pddSearch(String keyWorlds, {Map<String, dynamic>? map}) async {
-    var result = <PddDetail>[];
+  Future<List<PddSearchItemModel>> pddSearch(String keyWorlds, {Map<String, dynamic>? map}) async {
+    var result = <PddSearchItemModel>[];
 
     var data = <String, dynamic>{};
     data['keyword'] = keyWorlds;
@@ -91,7 +92,7 @@ class TKApiService {
         final _map = jsonDecode(response);
         print(_map['goodsList'].runtimeType);
         if (_map['goodsList'] is List<dynamic>) {
-          final _list = List<PddDetail>.from((_map['goodsList'] as List<dynamic>).map((e) => PddDetail.fromJson(e))).toList();
+          final _list = List<PddSearchItemModel>.from((_map['goodsList'] as List<dynamic>).map((e) => PddSearchItemModel.fromJson(e))).toList();
           result.addAll(_list);
         }
       } catch (s, st) {

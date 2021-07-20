@@ -86,7 +86,7 @@ class PddDetail {
     }
 
     final optIds = jsonRes['opt_ids'] is List ? <int>[] : <int>[];
-    for (final dynamic item in jsonRes['opt_ids']!) {
+    for (final dynamic item in jsonRes['opt_ids']??[]) {
       if (item != null) {
         tryCatch(() {
           optIds.add(asT<int>(item)!);
@@ -95,7 +95,7 @@ class PddDetail {
     }
 
     final serviceTags = jsonRes['service_tags'] is List ? <int>[] : <int>[];
-    for (final dynamic item in jsonRes['service_tags']!) {
+    for (final dynamic item in jsonRes['service_tags']??[]) {
       if (item != null) {
         tryCatch(() {
           serviceTags.add(asT<int>(item)!);
@@ -104,7 +104,7 @@ class PddDetail {
     }
 
     final unifiedTags = jsonRes['unified_tags'] is List ? <String>[] : <String>[];
-    for (final dynamic item in jsonRes['unified_tags']!) {
+    for (final dynamic item in jsonRes['unified_tags']??[]) {
       if (item != null) {
         tryCatch(() {
           unifiedTags.add(asT<String>(item)!);
@@ -113,7 +113,7 @@ class PddDetail {
     }
 
     final videoUrls = jsonRes['video_urls'] is List ? <Object>[] : <Object>[];
-    for (final dynamic item in jsonRes['video_urls']!) {
+    for (final dynamic item in jsonRes['video_urls']??[]) {
       if (item != null) {
         tryCatch(() {
           videoUrls.add(asT<Object>(item)!);

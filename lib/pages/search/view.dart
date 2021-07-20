@@ -1,4 +1,4 @@
-import 'package:demo1/provider/riverpod/search_riverpod.dart';
+import '../../provider/riverpod/search_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:get/get.dart';
@@ -34,6 +34,7 @@ class _SearchPageState extends State<SearchPage> {
           context.read(searchRiverpod).loadData(worlds: value);
           Get.to(() => SearchListIndex(value: value));
         },
+        eve: 3,
       ),
       body: EasyRefresh.custom(slivers: [
         SliverToBoxAdapter(

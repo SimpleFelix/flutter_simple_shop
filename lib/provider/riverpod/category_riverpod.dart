@@ -49,4 +49,11 @@ class CategoryState extends ChangeNotifier {
     notifyListeners();
     return list;
   }
+
+  int getIndexWithCategory(Category category){
+   return categorys.indexWhere((element) => element.cid==category.cid);
+  }
+  Category getCategoryByIndex(int index){
+    return categorys[index];
+  }
 }

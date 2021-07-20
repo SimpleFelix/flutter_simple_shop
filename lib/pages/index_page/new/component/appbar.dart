@@ -6,7 +6,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
 
 import '../../../../common/utils.dart';
+import '../../../../provider/riverpod/category_riverpod.dart';
 import '../../../../widgets/appbar_search.dart';
+import '../../../new_goods_list/view.dart';
 import '../../../search/view.dart';
 import '../index_riverpod.dart';
 
@@ -75,6 +77,16 @@ class IndexHomeAppbar extends StatelessWidget implements PreferredSizeWidget {
                             labelColor: Colors.black,
                             indicatorColor: Colors.transparent,
                             unselectedLabelColor: Colors.grey,
+                            onTap: (int index) {
+                              if (index == 0) {
+                                return;
+                              }
+                              final category = context.read(categoryRiverpod).getCategoryByIndex(index - 1);
+                              utils.widgetUtils.to(NewGoodsList(
+                                category: category,
+                                initIndex: context.read(categoryRiverpod).getIndexWithCategory(category),
+                              ));
+                            },
                           ),
                         ),
                       ),

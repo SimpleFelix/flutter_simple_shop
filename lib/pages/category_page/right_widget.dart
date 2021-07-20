@@ -1,7 +1,9 @@
 import 'package:dd_taoke_sdk/model/category.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../common/utils.dart';
+import '../../provider/riverpod/category_riverpod.dart';
 import '../../widgets/extended_image.dart';
 import '../new_goods_list/view.dart';
 
@@ -15,11 +17,10 @@ class RightWidgetItme extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        // NavigatorUtil.gotoGoodslistPage(context,
-        //     subcid: item.subcid.toString(), title: item.subcname, cids: cid);
         utils.widgetUtils.to(NewGoodsList(
           category: category,
           subcategory: item,
+          initIndex: context.read(categoryRiverpod).getIndexWithCategory(category),
         ));
       },
       child: Container(

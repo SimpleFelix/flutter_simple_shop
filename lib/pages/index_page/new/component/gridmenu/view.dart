@@ -42,11 +42,11 @@ final gridMenuModles = [
           image: mtwmImage,
           onTap: () async {
             Get.context!.read(indexRiverpod).changeLoadingState(true);
-            await tkApi.meituan({'actId': '2', 'linkType': '1'}, mapHandle: (data) {
+            await tkApi.meituan({'actId': '2', 'linkType': '1'}, mapHandle: (data) async {
               final url = (data['data'] ?? '').toString();
               print('美团推广链接:$url');
               if (url.isNotEmpty) {
-                utils.openLink(url);
+                await utils.openLink(url);
               }
             });
             Get.context!.read(indexRiverpod).changeLoadingState(false);

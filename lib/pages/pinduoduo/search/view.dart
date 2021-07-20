@@ -3,7 +3,7 @@ import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:get/get.dart';
 
 import '../../../common/components/pdd/view.dart';
-import '../../../modals/pdd_detail_model.dart';
+import '../../../modals/pdd_search_item_model.dart';
 import '../../../service/api_service.dart';
 import '../../../widgets/appbar_search.dart';
 import '../../../widgets/component/coupon_discount.dart';
@@ -32,17 +32,24 @@ class _SearchPageState extends State<SearchPage> {
         onSearch: logic.onSearch,
       ),
       body: EasyRefresh.custom(slivers: [
-        /// 拼多多商品列表
         Obx(() {
           final products = logic.products;
-          if (products.isEmpty) return SliverFillRemaining(child: PddRecommendListView());
-          return SliverList(delegate: SliverChildBuilderDelegate((_, index) => renderItem(products[index]), childCount: products.length));
+          return SliverFillRemaining(
+              child: AnimatedSwitcher(
+            duration: Duration(milliseconds: 800),
+            child: products.isNotEmpty
+                ? ListView.builder(
+                    itemBuilder: (_, index) => renderItem(products[index]),
+                    itemCount: products.length,
+                  )
+                : PddRecommendListView(),
+          ));
         })
       ]),
     );
   }
 
-  Widget renderItem(PddDetail item) {
+  Widget renderItem(PddSearchItemModel item) {
     return GestureDetector(
       onTap: () {
         tkApi.pddCovert(item.goodsSign);

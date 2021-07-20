@@ -1,7 +1,7 @@
 import 'package:after_layout/after_layout.dart';
 import 'package:dd_taoke_sdk/constant/sort.dart';
 import 'package:dd_taoke_sdk/model/category.dart';
-import 'package:demo1/pages/goods_page/sort_widget.dart';
+import 'package:demo1/pages/new_goods_list/components/sort_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,22 +10,22 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../widgets/RoundUnderlineTabIndicator.dart';
 import '../../widgets/StickyTabBarDelegate.dart';
 import '../../widgets/simple_appbar.dart';
-import '../goods_page/subcategory_view.dart';
 import '../panic_buying/components/categorys.dart';
 import '../panic_buying/components/list.dart';
+import 'components/subcategory_view.dart';
 import 'riverpod.dart';
 
 /// 新的商品列表
 class NewGoodsList extends StatefulWidget {
   final Category category;
   final Subcategory? subcategory;
+  final int? initIndex;
 
-  const NewGoodsList({Key? key, required this.category, this.subcategory}) : super(key: key);
+  const NewGoodsList({Key? key, required this.category, this.subcategory, this.initIndex}) : super(key: key);
 
   @override
   _NewGoodsListState createState() => _NewGoodsListState();
 }
-
 class _NewGoodsListState extends State<NewGoodsList> with SingleTickerProviderStateMixin, AfterLayoutMixin {
   late TabController _tabController;
 
@@ -43,6 +43,7 @@ class _NewGoodsListState extends State<NewGoodsList> with SingleTickerProviderSt
         title: '产品列表',
         bottom: BottomCategoryTabs(
           onTap: (int index) => context.read(goodsListRiverpod).mainCateChange(index, context),
+          initIndex: widget.initIndex,
         ),
         bottomHeight: 48,
       ),

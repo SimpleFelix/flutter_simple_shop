@@ -4,12 +4,12 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../common/utils.dart';
 
-class BottomCategoryTabs extends ConsumerWidget
-    implements PreferredSizeWidget {
+class BottomCategoryTabs extends ConsumerWidget implements PreferredSizeWidget  {
   final List<Tab>? insets;
   final ValueChanged<int>? onTap;
+  final int? initIndex;
 
-  BottomCategoryTabs({this.insets, this.onTap});
+  BottomCategoryTabs({this.insets, this.onTap, this.initIndex});
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
@@ -19,6 +19,7 @@ class BottomCategoryTabs extends ConsumerWidget
       alignment: Alignment.centerLeft,
       child: DefaultTabController(
         length: categoryWidgets.length + _insets.length,
+        initialIndex: initIndex ?? 0,
         child: TabBar(
           tabs: [..._insets, ...categoryWidgets],
           isScrollable: true,

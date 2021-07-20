@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:show_up_animation/show_up_animation.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
 
 import '../constant/style.dart';

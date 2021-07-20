@@ -1,4 +1,5 @@
-import '../../../modals/pdd_detail_model.dart';
+import '../../../modals/pdd_search_item_model.dart';
+
 import 'package:get/get.dart';
 
 import '../../../service/api_service.dart';
@@ -6,7 +7,7 @@ import '../../../service/api_service.dart';
 class SearchLogic extends GetxController {
 
 
-  List<PddDetail> products = <PddDetail>[].obs; // 商品列表
+  List<PddSearchItemModel> products = <PddSearchItemModel>[].obs; // 商品列表
 
   /// 执行搜索
   void onSearch(String chats) {

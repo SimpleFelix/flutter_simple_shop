@@ -27,7 +27,6 @@ class _CategoryIndexPageState extends State<CategoryIndexPage> {
           style: TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.white,
-        elevation: 0,
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(42),
           child: Container(
@@ -50,6 +49,7 @@ class _CategoryIndexPageState extends State<CategoryIndexPage> {
               );
             }
             return Container(
+                margin: EdgeInsets.only(top: 12),
                 width: MediaQuery.of(context).size.width,
                 height: Get.height - kToolbarHeight - Get.mediaQuery.padding.top,
                 child: Row(
@@ -73,7 +73,7 @@ class _CategoryIndexPageState extends State<CategoryIndexPage> {
                       child: Container(
                           color: Colors.white,
                           child: WaterfallFlow.builder(
-                            gridDelegate: SliverWaterfallFlowDelegateWithFixedCrossAxisCount(crossAxisCount: 3,mainAxisSpacing: 12,crossAxisSpacing: 20),
+                            gridDelegate: SliverWaterfallFlowDelegateWithFixedCrossAxisCount(crossAxisCount: 3, mainAxisSpacing: 12, crossAxisSpacing: 20),
                             itemBuilder: (context, sIndex) {
                               return RightWidgetItme(category: current, item: current.subcategories![sIndex]);
                             },
@@ -86,6 +86,5 @@ class _CategoryIndexPageState extends State<CategoryIndexPage> {
         ),
       ),
     );
-    ;
   }
 }

@@ -5,7 +5,6 @@ import 'package:swipeable_page_route/swipeable_page_route.dart';
 
 import '../pages/ddq_page/index_home.dart';
 import '../pages/detail_page/hdk/index_home.dart';
-import '../pages/goods_page/index_home.dart';
 import '../pages/index_page/index_home.dart';
 import '../pages/other_page/not_found_page.dart';
 import '../pages/search/view.dart';
@@ -36,16 +35,6 @@ class NavigatorUtil {
         SwipeablePageRoute(builder: (_) => NotFoundPage()));
   }
 
-//跳转到商品列表页面
-  static void gotoGoodslistPage(BuildContext context,
-      {String? subcid, String? cids, String? brand, String? title,String? showCates}) {
-    if (title != null) {
-      title = FluroConvertUtils.fluroCnParamsEncode(title);
-    }
-    final widget = GoodsListPage(subcid: subcid,brand: brand,cids: cids,title:title,showCates:showCates);
-    context.navigator.push(
-        SwipeablePageRoute(builder: (_) => widget));
-  }
 
   //跳转到钉钉抢页面
   static void goTODdqPage() {
