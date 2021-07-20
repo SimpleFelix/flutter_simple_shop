@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TitleWidget extends StatelessWidget {
   final int? size; // 字体大小
@@ -21,7 +20,7 @@ class TitleWidget extends StatelessWidget {
         maxLines: 2,
         overflow: TextOverflow.ellipsis,
         style: TextStyle(
-          fontSize: ScreenUtil().setSp(size ?? 50),
+          fontSize: 12,
           color: color ?? Colors.black38,
           fontWeight: fontWeight ?? FontWeight.w600,
         ),

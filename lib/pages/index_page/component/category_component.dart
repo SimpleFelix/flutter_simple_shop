@@ -1,6 +1,5 @@
 import 'package:dd_taoke_sdk/model/category.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 import '../../../constant/style.dart';
@@ -120,7 +119,7 @@ class _CategoryComponentState extends State<CategoryComponent> {
     final size = _valueNotifier.value!.size![_current];
     if(offset!=null&&size!=null) {
       print('组件大小:$size, 组件位置:$offset');
-      final widgetWidth = size.width-50.w;
+      final widgetWidth = size.width-12;
       return AnimatedPositioned(
           bottom: 0,
           left: offset.dx,

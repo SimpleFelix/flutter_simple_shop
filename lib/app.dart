@@ -1,6 +1,5 @@
 import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 
@@ -90,8 +89,6 @@ class _AppState extends State<App> with AfterLayoutMixin {
 
   @override
   Widget build(BuildContext context) {
-    // 屏幕适配初始化
-    ScreenUtil.init(BoxConstraints(maxWidth: MediaQuery.of(context).size.width, maxHeight: MediaQuery.of(context).size.height), designSize: Size(1440, 2940), orientation: Orientation.portrait);
     return Scaffold(
       // 滚动到顶部按钮
       floatingActionButton: !showToTopBtn || _currentIndex == 2 || _currentIndex == 3 || _currentIndex == 0 || _currentIndex == 4

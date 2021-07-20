@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class IndexPublicLayout extends StatelessWidget {
   final Widget? child;
@@ -21,8 +20,8 @@ class IndexPublicLayout extends StatelessWidget {
       margin: margin == null
           ? EdgeInsets.only(
               top: 10,
-              left: ScreenUtil().setWidth(50),
-              right: ScreenUtil().setWidth(50))
+              left: 12,
+              right: 12)
           : EdgeInsets.zero,
       child: PhysicalModel(
           color: Colors.grey.shade50,

@@ -2,7 +2,6 @@ import 'package:fbutton_nullsafety/fbutton_nullsafety.dart';
 import 'package:fcontrol_nullsafety/fdefine.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
 import 'package:get/get.dart';
@@ -139,8 +138,8 @@ class _UserLoginPageState extends State<UserLoginPage> {
             },
             child: Image.asset(
               isAgree ? 'assets/icons/select.png' : 'assets/icons/select_no.png',
-              height: ScreenUtil().setHeight(58),
-              width: ScreenUtil().setWidth(58),
+              height: 22,
+              width:22,
             ),
           ),
           Padding(

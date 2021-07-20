@@ -1,6 +1,5 @@
 import 'package:demo1/common/utils.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class SvgTitle extends StatelessWidget {
@@ -30,7 +29,7 @@ class SvgTitle extends StatelessWidget {
             utils.widgetUtils.marginTop(height: 5),
             Text(
               title!,
-              style: TextStyle(fontSize: ScreenUtil().setSp(50)),
+              style: TextStyle(fontSize: 12),
             )
           ],
         ),

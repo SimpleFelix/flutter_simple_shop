@@ -1,7 +1,6 @@
 import 'package:dd_taoke_sdk/model/brand_list_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 import '../../../provider/index_provider.dart';
@@ -15,7 +14,7 @@ class StoreItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
       child: Column(
         children: [_buildInfo(context)],
       ),
@@ -26,12 +25,12 @@ class StoreItemCard extends StatelessWidget {
     var bgColor = Provider.of<IndexProvider>(context).brandBgColorMap[storeInfo.brandId];
     bgColor = bgColor ?? Colors.grey[200];
     return Container(
-      height: 350.h,
-      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
-      margin: EdgeInsets.only(top: 30.h),
+      height: 150,
+      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+      margin: EdgeInsets.only(top: 12),
       decoration: BoxDecoration(
         color: bgColor!.withOpacity(.05),
-        borderRadius: BorderRadius.all(Radius.circular(30.sp)),
+        borderRadius: BorderRadius.all(Radius.circular(12)),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -45,16 +44,16 @@ class StoreItemCard extends StatelessWidget {
                   Container(
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.all(Radius.circular(20.sp)),
+                      borderRadius: BorderRadius.all(Radius.circular(12)),
                     ),
                     child: _buildLogo(),
                   ),
-                  SizedBox(width: 30.w),
+                  SizedBox(width: 12),
                   Text(
                     storeInfo.brandName!,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(fontSize: 55.sp, color: Colors.black),
+                    style: TextStyle(fontSize: 12, color: Colors.black),
                   )
                 ],
               ),
@@ -69,7 +68,7 @@ class StoreItemCard extends StatelessWidget {
   }
 
   Widget _buildBrandFeatures() {
-    return Container(margin: EdgeInsets.only(top: 30.h),child: Text('${storeInfo.brandFeatures}', style: TextStyle(fontSize: 50.sp, color: Colors.black87)),);
+    return Container(margin: EdgeInsets.only(top: 12),child: Text('${storeInfo.brandFeatures}', style: TextStyle(fontSize: 12, color: Colors.black87)),);
   }
 
   /// 打折的组件
@@ -77,12 +76,12 @@ class StoreItemCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: Colors.pinkAccent,
-        borderRadius: BorderRadius.all(Radius.circular(30.sp)),
+        borderRadius: BorderRadius.all(Radius.circular(12)),
       ),
-      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
+      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
       child: Text(
         '最高优惠${storeInfo.maxDiscount}折',
-        style: TextStyle(fontSize: 50.sp, color: Colors.white),
+        style: TextStyle(fontSize: 12, color: Colors.white),
       ),
     );
   }
@@ -90,8 +89,8 @@ class StoreItemCard extends StatelessWidget {
   Image _buildLogo() {
     return Image.network(
       storeInfo.brandLogo!,
-      width: 100.w,
-      height: 100.h,
+      width: 12,
+      height: 12,
     );
   }
 }

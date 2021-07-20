@@ -1,7 +1,6 @@
 import 'package:common_utils/common_utils.dart';
 import 'package:fcontrol_nullsafety/fdefine.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
 
 import './action_buttons.dart';
@@ -65,14 +64,14 @@ class _DetailIndexState extends State<DetailIndex> {
                         children: <Widget>[
                           // 轮播图
                           _imgSwiper(),
-                          SizedBox(height: ScreenUtil().setHeight(15)),
+                          SizedBox(height: 12),
                           // 标题
                           TitleWidget(
                             title: detail.goodsName,
                             size: 60,
                             color: Colors.black,
                           ),
-                          SizedBox(height: ScreenUtil().setHeight(10)),
+                          SizedBox(height: 5),
                           // 价钱行
                           Container(
                             padding: EdgeInsets.only(left: 20, top: 5, bottom: 5),
@@ -105,24 +104,24 @@ class _DetailIndexState extends State<DetailIndex> {
                             ),
                           ),
 
-                          SizedBox(height: ScreenUtil().setHeight(40)),
+                          SizedBox(height: 12),
                           // 返利说明
                           Container(
                             padding: EdgeInsets.only(left: 20),
                             color: Color.fromRGBO(251, 242, 245, 1.0),
-                            height: ScreenUtil().setHeight(150),
+                            height: 120,
                             child: Row(
                               children: <Widget>[
                                 // 左边文字
                                 Expanded(
                                   child: Row(
                                     children: <Widget>[
-                                      Image.asset('assets/icons/youhuiquan.png', width: ScreenUtil().setWidth(78), height: ScreenUtil().setHeight(78)),
+                                      Image.asset('assets/icons/youhuiquan.png', width: 30, height: 30),
                                       Container(
                                         child: Text('该商品可领取满'
                                             '减红包'),
                                       ),
-                                      Icon(Icons.help_outline, color: Colors.black26, size: ScreenUtil().setSp(70))
+                                      Icon(Icons.help_outline, color: Colors.black26, size: 12)
                                     ],
                                   ),
                                 ),
@@ -142,12 +141,12 @@ class _DetailIndexState extends State<DetailIndex> {
                           //有效期
                           Container(
                             padding: EdgeInsets.only(left: 20),
-                            height: ScreenUtil().setHeight(150),
+                            height: 75,
                             decoration: BoxDecoration(border: Border(bottom: BorderSide(width: 0.5, color: Colors.black12))),
                             child: Row(
                               children: <Widget>[
                                 Container(
-                                  width: ScreenUtil().setWidth(300),
+                                  width: 150,
                                   alignment: Alignment.centerLeft,
                                   padding: EdgeInsets.only(right: 10),
                                   child: Text(
@@ -169,12 +168,12 @@ class _DetailIndexState extends State<DetailIndex> {
                           //领券
                           Container(
                             padding: EdgeInsets.only(left: 20),
-                            height: ScreenUtil().setHeight(150),
+                            height: 75,
                             decoration: BoxDecoration(border: Border(bottom: BorderSide(width: 0.5, color: Colors.black12))),
                             child: Row(
                               children: <Widget>[
                                 Container(
-                                  width: ScreenUtil().setWidth(300),
+                                  width:150,
                                   alignment: Alignment.centerLeft,
                                   padding: EdgeInsets.only(right: 10),
                                   child: Text(
@@ -208,12 +207,12 @@ class _DetailIndexState extends State<DetailIndex> {
                           // 促销活动
                           Container(
                             padding: EdgeInsets.only(left: 20),
-                            height: ScreenUtil().setHeight(150),
+                            height: 75,
                             decoration: BoxDecoration(border: Border(bottom: BorderSide(width: 0.5, color: Colors.black12))),
                             child: Row(
                               children: <Widget>[
                                 Container(
-                                  width: ScreenUtil().setWidth(300),
+                                  width: 150,
                                   alignment: Alignment.centerLeft,
                                   padding: EdgeInsets.only(right: 10),
                                   child: Text(
@@ -238,12 +237,12 @@ class _DetailIndexState extends State<DetailIndex> {
                           // 服务
                           Container(
                             padding: EdgeInsets.only(left: 20),
-                            height: ScreenUtil().setHeight(150),
+                            height: 75,
                             decoration: BoxDecoration(border: Border(bottom: BorderSide(width: 0.5, color: Colors.black12))),
                             child: Row(
                               children: <Widget>[
                                 Container(
-                                  width: ScreenUtil().setWidth(300),
+                                  width: 150,
                                   alignment: Alignment.centerLeft,
                                   padding: EdgeInsets.only(right: 10),
                                   child: Text(

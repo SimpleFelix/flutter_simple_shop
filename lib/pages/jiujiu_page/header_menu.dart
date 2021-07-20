@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import '../../provider/nine_goods_provider.dart';
 import '../../widgets/toast_postion.dart';
@@ -65,11 +64,11 @@ class _HeaderMenuState extends State<HeaderMenu>
               isScrollable: true,
               labelColor: Colors.pinkAccent,
               labelStyle: TextStyle(
-                  fontSize: ScreenUtil().setSp(50),
+                  fontSize: 12,
                   fontWeight: FontWeight.w600),
               indicatorColor: Colors.pinkAccent,
               unselectedLabelColor: Colors.black,
-              unselectedLabelStyle: TextStyle(fontSize: ScreenUtil().setSp(50)),
+              unselectedLabelStyle: TextStyle(fontSize:12),
               tabs: tabs.map((text) => Tab(text: text)).toList(),
             ),
           ],

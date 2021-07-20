@@ -2,7 +2,6 @@ import 'package:demo1/fluro/navigator_util.dart';
 import 'package:demo1/pages/user_home_page/widgets/svg_title.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OrderIndex extends StatelessWidget {
   @override

@@ -2,7 +2,6 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 import './index_layout.dart';
@@ -27,7 +26,7 @@ class _DDQWidgetState extends State<DDQWidget> {
     return Consumer<DdqProvider>(
       builder: (context, ddqProvider, _) => IndexPublicLayout(
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 50.w, vertical: 25.h),
+          padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
           child: Column(
             children: <Widget>[
               ComponentTitle(
@@ -36,7 +35,7 @@ class _DDQWidgetState extends State<DDQWidget> {
                 onTap: NavigatorUtil.goTODdqPage,
               ),
               SizedBox(
-                height: ScreenUtil().setHeight(50),
+                height: 12,
               ),
               _buildWidgetGoosList(),
             ],
@@ -60,14 +59,14 @@ class _DDQWidgetState extends State<DDQWidget> {
                 list[0].originalPrice.toString(),
                 list[0].monthSales.toString(),
                 list[0].dtitle!),
-            SizedBox(width: ScreenUtil().setWidth(50)),
+            SizedBox(width: 12),
             _mimiGoodsCard(
                 list[1].mainPic,
                 list[1].actualPrice.toString(),
                 list[1].originalPrice.toString(),
                 list[1].monthSales.toString(),
                 list[1].dtitle!),
-            SizedBox(width: ScreenUtil().setWidth(50)),
+            SizedBox(width: 12),
             _mimiGoodsCard(
                 list[2].mainPic,
                 list[2].actualPrice.toString(),
@@ -106,7 +105,7 @@ class _DDQWidgetState extends State<DDQWidget> {
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.w400,
-                        fontSize: 40.sp),
+                        fontSize: 12),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.left,
@@ -124,10 +123,10 @@ class _DDQWidgetState extends State<DDQWidget> {
                           '￥$price',
                           style: TextStyle(
                               color: Colors.red,
-                              fontSize: ScreenUtil().setSp(50)),
+                              fontSize:12),
                         ),
                       ),
-                      SizedBox(width: ScreenUtil().setWidth(20)),
+                      SizedBox(width: 12),
                       Expanded(
                         child: Text(
                           '￥$orginPrice',
@@ -135,7 +134,7 @@ class _DDQWidgetState extends State<DDQWidget> {
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                               color: Colors.black38,
-                              fontSize: ScreenUtil().setSp(45),
+                              fontSize:12,
                               decoration: TextDecoration.lineThrough),
                         ),
                       )

@@ -5,7 +5,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dd_taoke_sdk/model/carousel_model.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 import 'package:provider/provider.dart';
 
@@ -41,7 +40,7 @@ class IndexTopicComponentCarousel extends StatelessWidget {
   Widget render(){
     return my_carousel_comp.Carousel(
       images: list.map(renderItem).toList(),
-      defaultImage: utils.widgetUtils.loading(double.infinity, 500.h),
+      defaultImage: utils.widgetUtils.loading(double.infinity, 200),
       overlayShadow: true,
       dotSpacing: 12,
       indicatorBgPadding: 1,
@@ -81,7 +80,7 @@ class IndexTopicComponentCarousel extends StatelessWidget {
               ),
               child: Text('$curr/$count',style: TextStyle(
                 color: Colors.white,
-                fontSize: 55.sp
+                fontSize: 12
               ),),
             );
           },
@@ -104,7 +103,7 @@ class IndexTopicComponentCarousel extends StatelessWidget {
   CarouselSlider buildCarouselSlider(List<Carousel> carousel, BuildContext context) {
     return CarouselSlider(
       options: CarouselOptions(
-          height: 500.h,
+          height: 200,
           autoPlay: true,
           enlargeCenterPage: true),
       items: carousel.map(renderItem).toList(),

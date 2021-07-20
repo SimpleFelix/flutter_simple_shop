@@ -1,6 +1,5 @@
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'model/index_grid_menu_item_model.dart';
 
@@ -35,7 +34,7 @@ class IndexGridViewMenu extends StatelessWidget {
                 height: constraints.maxWidth,
               ),
             )),
-            Text('${model.title}',style: TextStyle(fontSize: 50.sp))
+            Text('${model.title}',style: TextStyle(fontSize: 12))
           ],
         );
       },),

@@ -5,7 +5,6 @@ import 'package:demo1/util/user_utils.dart';
 import 'package:fbutton_nullsafety/fbutton_nullsafety.dart';
 import 'package:fcontrol_nullsafety/fdefine.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
 import '../../../util/request_service.dart';
@@ -17,8 +16,8 @@ class OrderAddIndexPage extends StatefulWidget {
 }
 
 class _OrderAddState extends State<OrderAddIndexPage> {
-  int svgSize = 450;
-  double placeholderHeight = ScreenUtil().setHeight(50);
+  var svgSize = 220.0;
+  double placeholderHeight =12;
   TextEditingController textEditingController = TextEditingController();
 
   @override
@@ -39,8 +38,8 @@ class _OrderAddState extends State<OrderAddIndexPage> {
               child: Center(
                   child: SvgPicture.asset(
                       'assets/svg/undraw_shopping_app_flsj.svg',
-                      height: ScreenUtil().setHeight(svgSize),
-                      width: ScreenUtil().setWidth(svgSize))),
+                      height: svgSize,
+                      width: svgSize)),
             ),
             buildPlaceHolderSizedBox(),
             Container(
@@ -54,8 +53,8 @@ class _OrderAddState extends State<OrderAddIndexPage> {
             buildPlaceHolderSizedBox(),
             Container(
               child: FButton(
-                width: ScreenUtil().setWidth(500),
-                height: ScreenUtil().setHeight(150),
+                width: 200,
+                height: 55,
                 text: '绑定',
                 color: Colors.pinkAccent,
                 onPressed: () async {

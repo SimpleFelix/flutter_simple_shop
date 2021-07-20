@@ -4,7 +4,6 @@ import 'package:dd_taoke_sdk/model/category.dart';
 import 'package:demo1/pages/new_goods_list/components/sort_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../widgets/RoundUnderlineTabIndicator.dart';
@@ -142,8 +141,8 @@ class _NewGoodsListState extends State<NewGoodsList> with SingleTickerProviderSt
     }
     return Image.asset(
       iconShow,
-      height: ScreenUtil().setHeight(60),
-      width: ScreenUtil().setWidth(60),
+      height: 12,
+      width: 12,
     );
   }
 

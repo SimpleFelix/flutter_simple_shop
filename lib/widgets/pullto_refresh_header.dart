@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pull_to_refresh_notification/pull_to_refresh_notification.dart';
 
 
@@ -71,7 +70,7 @@ import 'package:pull_to_refresh_notification/pull_to_refresh_notification.dart';
               child: Text(
                 '$modeStr',
                 style: TextStyle(
-                    fontSize: ScreenUtil().setSp(50),
+                    fontSize: 12,
                     inherit: false,
                     color: Colors.grey),
               ),

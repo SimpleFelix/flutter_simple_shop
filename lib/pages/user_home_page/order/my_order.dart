@@ -3,7 +3,6 @@ import 'package:demo1/modals/order_list_model.dart';
 import 'package:demo1/widgets/loading_more_list_indicator.dart';
 import 'package:demo1/widgets/pullto_refresh_header.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:loading_more_list/loading_more_list.dart';
 import 'package:pull_to_refresh_notification/pull_to_refresh_notification.dart';
 import '../../../repository/order_respository.dart';
@@ -60,8 +59,8 @@ class _MyOrderHomePageState extends State<MyOrderHomePage> {
                         Icon stateIcon = Icon(Icons.clear,color: stateTipColor,);
                       }
                       return Container(
-                        padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(50),vertical: ScreenUtil().setHeight(30)),
-                        margin: EdgeInsets.only(bottom: ScreenUtil().setHeight(30)),
+                        padding: EdgeInsets.symmetric(horizontal:12,vertical: 12),
+                        margin: EdgeInsets.only(bottom: 12),
                         decoration: BoxDecoration(
                           color:Colors.white
                         ),
@@ -75,7 +74,7 @@ class _MyOrderHomePageState extends State<MyOrderHomePage> {
                                 Row(
                                   children: <Widget>[
                                     stateIcon,
-                                    SizedBox(width: ScreenUtil().setWidth(20),),
+                                    SizedBox(width: 12,),
                                     Text('$stateTip',style: TextStyle(color: stateTipColor),),
                                   ],
                                 )

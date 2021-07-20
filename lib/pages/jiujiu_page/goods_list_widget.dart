@@ -1,6 +1,6 @@
 import 'package:dd_taoke_sdk/model/product.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import './goods_item_widget.dart';
 
 class GoodsListWidget extends StatelessWidget {
@@ -12,8 +12,8 @@ class GoodsListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return isInitLoading!? Container(
-      height: ScreenUtil().setHeight(500),
-      width: ScreenUtil().setWidth(1440),
+      height:250,
+      width: Get.width,
       child: Center(
         child: Image.asset("assets/images/loading.gif"),
       ),

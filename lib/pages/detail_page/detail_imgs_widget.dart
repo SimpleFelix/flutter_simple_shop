@@ -1,6 +1,5 @@
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../modals/goods_detail_image.dart';
 import '../../widgets/detail_simple_bborder_button.dart';
@@ -40,7 +39,7 @@ class DetailImagesWidget extends StatelessWidget {
                     child: Text('暂无图文'),
                   )),
           Container(
-            height: ScreenUtil().setHeight(200),
+            height: 100,
           )
         ],
       ),

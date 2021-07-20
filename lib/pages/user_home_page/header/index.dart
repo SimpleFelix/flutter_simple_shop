@@ -3,7 +3,6 @@ import 'package:demo1/provider/riverpod/user_riverpod.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../common/utils.dart';
@@ -15,7 +14,7 @@ class HeaderIndex extends StatelessWidget {
   HeaderIndex();
 
   final TextStyle subTitleStyle =
-      TextStyle(color: Colors.black26, fontSize: ScreenUtil().setSp(50));
+      TextStyle(color: Colors.black26, fontSize: 12);
 
   @override
   Widget build(BuildContext context) {

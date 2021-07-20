@@ -2,11 +2,9 @@ import 'package:demo1/pages/jiujiu_page/image_nav.dart';
 import 'package:demo1/pages/jiujiu_page/loading_status.dart';
 import 'package:demo1/pages/jiujiu_page/riverpod.dart';
 import 'package:demo1/widgets/RoundUnderlineTabIndicator.dart';
-import 'package:demo1/widgets/index_sticky_tabbar_delegate.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../provider/nine_goods_provider.dart';
 import 'list.dart'; // 9.9包邮的provider
@@ -71,12 +69,12 @@ class _JiujiuIndexHomeState extends State<JiujiuIndexHome>
             ],
             labelColor: Colors.pinkAccent,
             labelStyle: TextStyle(
-                fontSize: ScreenUtil().setSp(50),
+                fontSize: 12,
                 fontWeight: FontWeight.w600),
             indicatorColor: Colors.pinkAccent,
             unselectedLabelColor: Colors.black,
             unselectedLabelStyle:
-            TextStyle(fontSize: ScreenUtil().setSp(50)),
+            TextStyle(fontSize: 12),
           ),
         ),
 

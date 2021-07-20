@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 
 class ListItem extends StatelessWidget {
@@ -17,10 +17,10 @@ class ListItem extends StatelessWidget {
     return GestureDetector(
       onTap:onTap as void Function()?,
       child: Container(
-        height: ScreenUtil().setHeight(200),
-        width: ScreenUtil().setWidth(1440),
-        padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(70)),
-        margin: isCard ? EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(70)):EdgeInsets.zero,
+        height: 111,
+        width: Get.width,
+        padding: EdgeInsets.symmetric(horizontal:12),
+        margin: isCard ? EdgeInsets.symmetric(horizontal: 12):EdgeInsets.zero,
         decoration: BoxDecoration(
           color: Colors.white,
           border: Border(bottom: BorderSide(width: 0.5,color: Colors.black12))

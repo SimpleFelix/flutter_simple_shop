@@ -2,7 +2,6 @@ import 'package:dd_taoke_sdk/model/product.dart';
 import 'package:demo1/widgets/extended_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../widgets/tag_widget.dart';
 import '../../fluro/navigator_util.dart';
 
@@ -70,14 +69,14 @@ class GoodsItem extends StatelessWidget {
                                         color: state != 2
                                             ? Colors.pinkAccent
                                             : Colors.green,
-                                        fontSize: ScreenUtil().setSp(40))),
+                                        fontSize: 12)),
                                 TextSpan(
                                     text: '${goodsItem.actualPrice}',
                                     style: TextStyle(
                                         color: state != 2
                                             ? Colors.pinkAccent
                                             : Colors.green,
-                                        fontSize: ScreenUtil().setSp(70),
+                                        fontSize: 12,
                                         fontWeight: FontWeight.w600)),
                                 TextSpan(
                                     text: '  券后价    ',
@@ -85,13 +84,13 @@ class GoodsItem extends StatelessWidget {
                                         color: state != 2
                                             ? Colors.pinkAccent
                                             : Colors.green,
-                                        fontSize: ScreenUtil().setSp(40))),
+                                        fontSize: 12)),
                                 TextSpan(
                                     text: '原价${goodsItem.originalPrice}',
                                     style: TextStyle(
                                         color: Colors.black38,
                                         decoration: TextDecoration.lineThrough,
-                                        fontSize: ScreenUtil().setSp(40))),
+                                        fontSize: 12)),
                               ]),
                             ),
                           )
@@ -100,8 +99,8 @@ class GoodsItem extends StatelessWidget {
                     ),
                     //下面部分
                     Container(
-                      width: ScreenUtil().setWidth(900),
-                      height: ScreenUtil().setHeight(120),
+                      width: 500,
+                      height: 60,
                       child: Stack(
                         children: <Widget>[
                           Container(
@@ -119,13 +118,13 @@ class GoodsItem extends StatelessWidget {
                                 TextSpan(
                                   text: state != 2 ? '已抢' : '月销',
                                   style: TextStyle(
-                                      fontSize: ScreenUtil().setSp(45),
+                                      fontSize: 15,
                                       color: Color.fromRGBO(137, 60, 17, 1.0)),
                                 ),
                                 TextSpan(
                                   text: ' ${goodsItem.monthSales} ',
                                   style: TextStyle(
-                                      fontSize: ScreenUtil().setSp(65),
+                                      fontSize: 15,
                                       color: state != 2
                                           ? Color.fromRGBO(255, 91, 0, 1.0)
                                           : Colors.green),
@@ -133,7 +132,7 @@ class GoodsItem extends StatelessWidget {
                                 TextSpan(
                                   text: '件',
                                   style: TextStyle(
-                                      fontSize: ScreenUtil().setSp(45),
+                                      fontSize: 15,
                                       color: Color.fromRGBO(137, 60, 17, 1.0)),
                                 )
                               ]),
@@ -145,8 +144,8 @@ class GoodsItem extends StatelessWidget {
                                   top: 0,
                                   child: Image.asset(
                                     'assets/images/lijigoumai.png',
-                                    width: ScreenUtil().setWidth(350),
-                                    height: ScreenUtil().setHeight(140),
+                                    width: 120,
+                                    height: 120,
                                     fit: BoxFit.cover,
                                   ),
                                 )
@@ -156,12 +155,12 @@ class GoodsItem extends StatelessWidget {
                               top: 0,
                               child: Container(
                                 alignment: Alignment.center,
-                                width: ScreenUtil().setWidth(280),
-                                height: ScreenUtil().setHeight(120),
+                                width: 140,
+                                height: 60,
                                 child: Text(
                                   state != 2 ? '立即抢购' : '即将开始',
                                   style: TextStyle(
-                                      fontSize: ScreenUtil().setSp(40),
+                                      fontSize: 12,
                                       color: state != 2
                                           ? Colors.white
                                           : Colors.green),

@@ -4,8 +4,6 @@ import 'package:common_utils/common_utils.dart';
 import 'package:dd_taoke_sdk/dd_taoke_sdk.dart';
 import 'package:dd_taoke_sdk/model/coupon_link_result.dart';
 import 'package:dd_taoke_sdk/model/product.dart';
-import 'package:demo1/widgets/loading_widget.dart';
-import 'package:demo1/widgets/simple_price.dart';
 import 'package:fbutton_nullsafety/fbutton_nullsafety.dart';
 import 'package:fcontrol_nullsafety/fdefine.dart';
 import 'package:flutter/cupertino.dart';
@@ -14,8 +12,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
 import 'package:get/get.dart';
 
@@ -24,7 +22,9 @@ import '../../../modals/shop_info.dart';
 import '../../../util/image_util.dart';
 import '../../../widgets/RoundUnderlineTabIndicator.dart';
 import '../../../widgets/extended_image.dart';
+import '../../../widgets/loading_widget.dart';
 import '../../../widgets/my_drawable_start_text.dart';
+import '../../../widgets/simple_price.dart';
 import '../detail_imgs_widget.dart';
 import 'model/hdk_detail.dart';
 
@@ -42,7 +42,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
   CouponLinkResult? couponLinkResult;
   List<Video>? videos = [];
   ShopInfo? _shopInfo;
-  var futureBuildData;
+  late Future<String> futureBuildData;
   double _appbarOpaction = 0;
   int curentSwaiperIndex = 0;
   double ztlHei = MediaQueryData.fromWindow(window).padding.top; // 转态栏高度
@@ -98,13 +98,13 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
     if (index == 0) {
       _scrollController!.animateTo(0, duration: Duration(milliseconds: 600), curve: Curves.ease);
     } else if (index == 1) {
-      _scrollController!.animateTo(_initImagesTopHei - ztlHei - _topAppbarHei + 5, duration: Duration(milliseconds: 600), curve: Curves.ease);
+      _scrollController!.animateTo(_initImagesTopHei - ztlHei - _topAppbarHei + 5,
+          duration: Duration(milliseconds: 600), curve: Curves.ease);
     }
   }
 
   @override
   void didChangeDependencies() {
-    // TODO: implement didChangeDependencies
     super.didChangeDependencies();
     _scrollController!.addListener(() {
       var scrollHeight = _scrollController!.offset;
@@ -127,10 +127,6 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
         statusBarColor: Colors.grey,
-
-        ///这是设置状态栏的图标和字体的颜色
-        ///Brightness.light  一般都是显示为白色
-        ///Brightness.dark 一般都是显示为黑色
         statusBarIconBrightness: Brightness.light));
     return Scaffold(
       backgroundColor: Colors.white,
@@ -152,7 +148,8 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
       onNotification: (notification) {
         if (_topAppbarHei == 0) {
           setState(() {
-            _topAppbarHei = _appbarGlogbalKey.currentContext!.size!.height + MediaQueryData.fromWindow(window).padding.top;
+            _topAppbarHei = _appbarGlogbalKey.currentContext!.size!.height +
+                MediaQueryData.fromWindow(window).padding.top;
             _initImagesTopHei = getY(_detailImagesGlogbalKey.currentContext!);
           });
           addScrollListener();
@@ -184,15 +181,19 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
           // 返回顶部按钮
           _showToTopButton
               ? Positioned(
-                  bottom: ScreenUtil().setHeight(390),
-                  right: ScreenUtil().setWidth(70),
+                  bottom: 80,
+                  right: 12,
                   child: InkWell(
                     onTap: () {
-                      _scrollController!.animateTo(0, duration: Duration(milliseconds: 600), curve: Curves.ease);
+                      _scrollController!
+                          .animateTo(0, duration: Duration(milliseconds: 600), curve: Curves.ease);
                     },
                     child: Container(
                       padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.all(Radius.circular(35)), border: Border.all(width: .5, color: Colors.black26.withOpacity(.2))),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(Radius.circular(35)),
+                          border: Border.all(width: .5, color: Colors.black26.withOpacity(.2))),
                       child: Icon(
                         Icons.vertical_align_top,
                         color: Colors.black,
@@ -204,108 +205,125 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
 
           //底部操作栏
           Positioned(
-            bottom: ScreenUtil().setHeight(0),
-            left: ScreenUtil().setWidth(0),
+            bottom: 0,
+            left: 0,
             child: Container(
-              margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(0)),
-              decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.all(Radius.circular(5))),
-              width: ScreenUtil().setWidth(1440),
-              height: ScreenUtil().setHeight(250),
+              decoration: BoxDecoration(
+                  color: Colors.white),
+              width: Get.width,
+              height: 60,
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Container(
-                      height: ScreenUtil().setHeight(150),
-                      width: ScreenUtil().setWidth(620),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: <Widget>[
-                          Center(
-                            child: Column(
-                              children: <Widget>[
-                                Icon(
-                                  Icons.home,
-                                  size: ScreenUtil().setSp(50),
-                                ),
-                                Text(
-                                  '首页',
-                                  style: TextStyle(fontSize: ScreenUtil().setSp(40)),
-                                )
-                              ],
-                            ),
-                          ),
-                          Center(
-                            child: Column(
-                              children: <Widget>[
-                                Icon(
-                                  Icons.share,
-                                  size: ScreenUtil().setSp(50),
-                                ),
-                                Text(
-                                  '分享',
-                                  style: TextStyle(fontSize: ScreenUtil().setSp(40)),
-                                )
-                              ],
-                            ),
-                          ),
-                          Center(
-                            child: Column(
-                              children: <Widget>[
-                                Icon(
-                                  Icons.local_pharmacy,
-                                  size: ScreenUtil().setSp(50),
-                                ),
-                                Text(
-                                  '收藏',
-                                  style: TextStyle(fontSize: ScreenUtil().setSp(40)),
-                                )
-                              ],
-                            ),
-                          ),
-                        ],
-                      )),
-                  Container(
-                    width: ScreenUtil().setWidth(820),
+                  Expanded(
+                      child: Container(
+                    padding: EdgeInsets.symmetric(vertical: 12),
+                    alignment: Alignment.center,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
-                        FSuper(
-                          lightOrientation: FLightOrientation.LeftBottom,
-                          height: ScreenUtil().setHeight(150),
-                          width: ScreenUtil().setWidth(335),
-                          text: '复制口令',
-                          corner: FCorner.all(50),
-                          textAlignment: Alignment.center,
-                          padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(50)),
-                          gradient: LinearGradient(colors: [
-                            Colors.redAccent,
-                            Color(0xfffcad2c),
-                          ]),
-                          onClick: () async {
-                            if (couponLinkResult != null) {
-                              utils.copy(couponLinkResult!.longTpwd ?? '无优惠券');
-                            }
-                          },
+                        Center(
+                          child: Column(
+                            children: <Widget>[
+                              Icon(
+                                Icons.home,
+                                size: 12,
+                              ),
+                              SizedBox(height: 5,),
+                              Text(
+                                '首页',
+                                style: TextStyle(fontSize: 12),
+                              )
+                            ],
+                          ),
                         ),
-                        FSuper(
-                          lightOrientation: FLightOrientation.LeftBottom,
-                          height: ScreenUtil().setHeight(150),
-                          width: ScreenUtil().setWidth(335),
-                          text: '立即领券',
-                          corner: FCorner.all(50),
-                          textAlignment: Alignment.center,
-                          padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(50)),
-                          gradient: LinearGradient(colors: [
-                            Colors.pinkAccent,
-                            Color(0xfffcad2c),
-                          ]),
-                          onClick: () async {
-                            if (couponLinkResult != null) {
-                              await utils.openTaobao(couponLinkResult!.couponClickUrl ?? 'https://itbug.shop');
-                            }
-                          },
+                        Center(
+                          child: Column(
+                            children: <Widget>[
+                              Icon(
+                                Icons.share,
+                                size: 12,
+                              ),
+                              SizedBox(height: 5,),
+                              Text(
+                                '分享',
+                                style: TextStyle(fontSize: 12),
+                              )
+                            ],
+                          ),
+                        ),
+                        Center(
+                          child: Column(
+                            children: <Widget>[
+                              Icon(
+                                Icons.local_pharmacy,
+                                size: 12,
+                              ),
+                              SizedBox(height: 5,),
+                              Text(
+                                '收藏',
+                                style: TextStyle(fontSize: 12),
+                              )
+                            ],
+                          ),
                         ),
                       ],
                     ),
+                  )),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      FSuper(
+                        margin: EdgeInsets.symmetric(vertical: 12),
+                        lightOrientation: FLightOrientation.LeftBottom,
+                        text: '复制口令',
+                        corner: FCorner.all(12),
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 12
+                        ),
+                        textAlignment: Alignment.center,
+                        padding: EdgeInsets.symmetric(horizontal: 22),
+                        gradient: LinearGradient(colors: [
+                          Colors.redAccent,
+                          Color(0xfffcad2c),
+                        ]),
+                        onClick: () async {
+                          if (couponLinkResult != null) {
+                            utils.copy(couponLinkResult!.longTpwd ?? '无优惠券',message: '复制成功,打开淘宝APP领取优惠券');
+                          }
+                        },
+                      ),
+                      SizedBox(
+                        width: 12,
+                      ),
+                      FSuper(
+                        margin: EdgeInsets.symmetric(vertical: 12),
+                        lightOrientation: FLightOrientation.LeftBottom,
+                        text: '立即领券',
+                        corner: FCorner.all(12),
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 12
+                        ),
+                        textAlignment: Alignment.center,
+                        padding: EdgeInsets.symmetric(horizontal: 22),
+                        gradient: LinearGradient(colors: [
+                          Colors.pinkAccent,
+                          Color(0xfffcad2c),
+                        ]),
+                        onClick: () async {
+                          if (couponLinkResult != null) {
+                            await utils.openTaobao(
+                                couponLinkResult!.couponClickUrl ?? 'https://itbug.shop');
+                          }
+                        },
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    width: 12,
                   )
                 ],
               ),
@@ -322,7 +340,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
       child: Column(
         children: <Widget>[
           Container(
-            margin: EdgeInsets.symmetric(vertical: ScreenUtil().setHeight(50), horizontal: ScreenUtil().setWidth(50)),
+            margin: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
             alignment: Alignment.topLeft,
             child: Text(
               '宝贝详情',
@@ -338,19 +356,20 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
   // 店铺信息
   Widget buildSliverToBoxAdapterShop({bool isSliver = true}) {
     var widget = containerWarp(Container(
-      padding: EdgeInsets.symmetric(vertical: ScreenUtil().setHeight(20)),
+      padding: EdgeInsets.symmetric(vertical: 12),
       child: Row(
         children: <Widget>[
           Container(
-            width: ScreenUtil().setWidth(670),
+            width: 500,
             child: Row(
               children: <Widget>[
                 CircleAvatar(
-                  backgroundImage:
-                      (_shopInfo != null && _shopInfo!.pictUrl != null ? NetworkImage(MImageUtils.magesProcessor(_shopInfo!.pictUrl!)) : AssetImage('assets/images/ava.png')) as ImageProvider<Object>?,
+                  backgroundImage: (_shopInfo != null && _shopInfo!.pictUrl != null
+                      ? NetworkImage(MImageUtils.magesProcessor(_shopInfo!.pictUrl!))
+                      : AssetImage('assets/images/ava.png')) as ImageProvider<Object>?,
                 ),
                 SizedBox(
-                  width: ScreenUtil().setWidth(30),
+                  width: 12,
                 ),
                 Text(
                   _shopInfo != null ? _shopInfo!.sellerNick! : '店铺名初始化',
@@ -361,14 +380,14 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
             ),
           ),
           Container(
-            width: ScreenUtil().setWidth(670),
+            width: 500,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 FButton(
                   text: '进店逛逛',
                   color: Colors.white,
-                  padding: EdgeInsets.all(ScreenUtil().setWidth(15)),
+                  padding: EdgeInsets.all(12),
                   onPressed: () {},
                   clickEffect: true,
                   strokeColor: Color.fromRGBO(254, 55, 56, 1),
@@ -376,12 +395,12 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
                   highlightColor: Colors.grey.shade100,
                 ),
                 SizedBox(
-                  width: ScreenUtil().setWidth(20),
+                  width: 12,
                 ),
                 FButton(
                   text: '全部商品',
                   color: Color.fromRGBO(254, 55, 56, 1),
-                  padding: EdgeInsets.all(ScreenUtil().setWidth(15)),
+                  padding: EdgeInsets.all(12),
                   onPressed: () {},
                   clickEffect: true,
                   strokeWidth: 1,
@@ -401,28 +420,11 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
     );
   }
 
-  // 轮播图阴影
-  Positioned buildPositionedYy() {
-    return Positioned(
-      bottom: 0,
-      left: 0,
-      child: Container(
-        height: ScreenUtil().setHeight(400),
-        width: ScreenUtil().setWidth(1440),
-        decoration: BoxDecoration(
-            gradient: LinearGradient(begin: Alignment.bottomRight, colors: [
-          Colors.grey[700]!.withOpacity(.2),
-          Colors.grey.withOpacity(.0),
-        ])),
-      ),
-    );
-  }
-
   // 占位
   Widget buildSliverToBoxAdapterPlaceholder({bool isSliver = true}) {
     Widget widget = Container(
       color: Color.fromRGBO(246, 245, 245, 1.0),
-      height: ScreenUtil().setHeight(50),
+      height: 12,
     );
     if (!isSliver) {
       return widget;
@@ -430,7 +432,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
     return SliverToBoxAdapter(
       child: Container(
         color: Color.fromRGBO(246, 245, 245, 1.0),
-        height: ScreenUtil().setHeight(50),
+        height: 12,
       ),
     );
   }
@@ -456,7 +458,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
             ],
           ),
         ),
-        height: 30);
+        height: 12);
     if (!isSliver) {
       return widget;
     }
@@ -475,74 +477,85 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
             }
           },
           child: Container(
-            height: ScreenUtil().setHeight(300),
-            padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(30), vertical: ScreenUtil().setHeight(20)),
-            decoration: BoxDecoration(color: Color.fromRGBO(252, 54, 74, 1.0), borderRadius: BorderRadius.all(Radius.circular(5))),
+            height: 100,
+            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+            decoration: BoxDecoration(
+                color: Color.fromRGBO(252, 54, 74, 1.0),
+                borderRadius: BorderRadius.all(Radius.circular(5))),
             child: Row(
               children: <Widget>[
-                Stack(
-                  children: <Widget>[
-                    Container(
-                      height: ScreenUtil().setHeight(260),
-                      padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(20), vertical: ScreenUtil().setHeight(30)),
-                      decoration: BoxDecoration(color: Color.fromRGBO(255, 237, 199, 1.0), borderRadius: BorderRadius.all(Radius.circular(5))),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          Container(
-                            child: Text(
-                              '${info.couponPrice}元优惠券',
-                              style: TextStyle(color: Color.fromRGBO(145, 77, 9, 1.0), fontSize: ScreenUtil().setSp(60), fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                          SizedBox(
-                            height: ScreenUtil().setHeight(20),
-                          ),
-                          Container(
-                            child: Text(
-                              '使用日期:${getTimeStr(info.couponStartTime ?? '')} - ${getTimeStr(info.couponEndTime ?? '已过期')}',
-                              style: TextStyle(color: Color.fromRGBO(145, 77, 9, 1.0), fontWeight: FontWeight.w400),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    // 圆
-                    Positioned(
-                      left: ScreenUtil().setWidth(-25),
-                      top: ScreenUtil().setHeight(105),
-                      child: Container(
-                        height: ScreenUtil().setHeight(50),
-                        width: ScreenUtil().setWidth(50),
-                        decoration: BoxDecoration(shape: BoxShape.circle, color: Color.fromRGBO(252, 54, 74, 1.0)),
-                      ),
-                    ),
-                    Positioned(
-                      right: ScreenUtil().setWidth(-25),
-                      top: ScreenUtil().setHeight(105),
-                      child: Container(
-                        height: ScreenUtil().setHeight(50),
-                        width: ScreenUtil().setWidth(50),
-                        decoration: BoxDecoration(shape: BoxShape.circle, color: Color.fromRGBO(252, 54, 74, 1.0)),
-                      ),
-                    )
-                  ],
-                ),
                 Expanded(
-                  child: Container(
-                    alignment: Alignment.center,
-                    margin: EdgeInsets.only(left: ScreenUtil().setWidth(50)),
-                    child: Text(
-                      '立即领券 >',
-                      style: TextStyle(color: Colors.white, fontSize: ScreenUtil().setSp(50)),
-                    ),
+                  child: Stack(
+                    children: <Widget>[
+                      Container(
+                        padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            color: Color.fromRGBO(255, 237, 199, 1.0),
+                            borderRadius: BorderRadius.all(Radius.circular(5))),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                            Container(
+                              child: Text(
+                                '${info.couponPrice}元优惠券'.replaceAll('.0', ''),
+                                style: TextStyle(
+                                    color: Color.fromRGBO(145, 77, 9, 1.0),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 12,
+                            ),
+                            Container(
+                              child: Text(
+                                '使用日期:${getTimeStr(info.couponStartTime ?? '')} - ${getTimeStr(info.couponEndTime ?? '已过期')}',
+                                style: TextStyle(
+                                    color: Color.fromRGBO(145, 77, 9, 1.0),
+                                    fontWeight: FontWeight.w400),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      // 圆
+                      Positioned(
+                        left: -6,
+                        top: 38,
+                        child: Container(
+                          height: 12,
+                          width: 12,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle, color: Color.fromRGBO(252, 54, 74, 1.0)),
+                        ),
+                      ),
+                      Positioned(
+                        right: -6,
+                        top: 38,
+                        child: Container(
+                          height: 12,
+                          width: 12,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle, color: Color.fromRGBO(252, 54, 74, 1.0)),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(width: 30,),
+                Container(
+                  alignment: Alignment.center,
+                  child: Text(
+                    '立即领券 >',
+                    style: TextStyle(color: Colors.white, fontSize: 12),
                   ),
                 )
               ],
             ),
           ),
         ),
-        height: 20);
+        height: 12);
     if (!isSliver) {
       return widget;
     }
@@ -557,10 +570,10 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
       child: Row(
         children: <Widget>[
           Container(
-            width: ScreenUtil().setWidth(250),
+            width: 120,
             child: Text(
               '满减',
-              style: TextStyle(color: Colors.grey, fontSize: ScreenUtil().setSp(45)),
+              style: TextStyle(color: Colors.grey, fontSize: 12),
             ),
           ),
           Expanded(
@@ -574,7 +587,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
                   textAlignment: Alignment.center,
                   style: TextStyle(color: Colors.white),
                   corner: FCorner.all(4),
-                  padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(20), vertical: ScreenUtil().setHeight(5)),
+                  padding: EdgeInsets.symmetric(horizontal: 12, vertical: 2),
                 ),
                 // Text(
                 //   ' 活动已过期',
@@ -599,12 +612,13 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
   Widget buildSliverToBoxAdapterThree({bool isSliver = true}) {
     var widget = containerWarp(
         Container(
-          width: ScreenUtil().setWidth(1440),
+          width: Get.width,
           child: DrawableStartText(
             lettersCountOfAfterImage: info.dtitle!.length,
-            assetImage: info.shopType == 1 ? 'assets/icons/tianmao2.png' : 'assets/icons/taobao2.png',
+            assetImage:
+                info.shopType == 1 ? 'assets/icons/tianmao2.png' : 'assets/icons/taobao2.png',
             text: ' ${info.title}',
-            textStyle: TextStyle(fontSize: ScreenUtil().setSp(50), fontWeight: FontWeight.w400),
+            textStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
           ),
         ),
         height: 20);
@@ -625,7 +639,11 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
             children: <Widget>[
               FSuper(
                 lightOrientation: FLightOrientation.LeftBottom,
-                spans: <TextSpan>[TextSpan(text: '原价 ¥ ${info.originalPrice}', style: TextStyle(color: Colors.grey, decoration: TextDecoration.lineThrough))],
+                spans: <TextSpan>[
+                  TextSpan(
+                      text: '原价 ¥ ${info.originalPrice}',
+                      style: TextStyle(color: Colors.grey, decoration: TextDecoration.lineThrough))
+                ],
               ),
               FSuper(
                 lightOrientation: FLightOrientation.LeftBottom,
@@ -633,8 +651,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
               )
             ],
           ),
-        ),
-        height: 20);
+        ));
     if (!isSliver) {
       return widget;
     }
@@ -651,18 +668,10 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            SimplePrice(price:'${info.actualPrice} ',zhe: '${info.discounts}',),
-
-            // 预计可得
-            // FSuper(
-            //   lightOrientation: FLightOrientation.LeftBottom,
-            //   text: '预计收益 ¥0',
-            //   backgroundColor: Colors.pinkAccent.withOpacity(0.1),
-            //   shadowBlur: 4,
-            //   padding: EdgeInsets.symmetric(
-            //       horizontal: ScreenUtil().setWidth(10),
-            //       vertical: ScreenUtil().setHeight(5)),
-            // ),
+            SimplePrice(
+              price: '${info.actualPrice} ',
+              zhe: '${info.discounts}',
+            ),
           ],
         ),
       ),
@@ -678,7 +687,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
 
   Widget containerWarp(Widget child, {double height = 0}) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(50), vertical: ScreenUtil().setHeight(height)),
+      margin: EdgeInsets.symmetric(horizontal: 12, vertical: height),
       child: child,
     );
   }
@@ -710,10 +719,9 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
     return Stack(
       children: <Widget>[
         buildContainer(swiper: swiper),
-        buildPositionedYy(),
         Positioned(
-          left: ScreenUtil().setWidth(50),
-          top: ScreenUtil().setHeight(50) + ztlHei,
+          left: 12,
+          top: 12 + ztlHei,
           child: GestureDetector(
             onTap: () {
               Navigator.pop(context);
@@ -728,11 +736,13 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
           ),
         ),
         Positioned(
-          right: ScreenUtil().setWidth(50),
-          bottom: ScreenUtil().setHeight(50),
+          right: 12,
+          bottom: 12,
           child: Container(
-            decoration: BoxDecoration(color: Colors.black26.withOpacity(.3), borderRadius: BorderRadius.all(Radius.circular(15))),
-            padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(30), vertical: ScreenUtil().setHeight(20)),
+            decoration: BoxDecoration(
+                color: Colors.black26.withOpacity(.3),
+                borderRadius: BorderRadius.all(Radius.circular(5))),
+            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 5),
             child: Text(
               '${curentSwaiperIndex + 1} / ${getImages().length}',
               style: TextStyle(color: Colors.white),
@@ -749,25 +759,19 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
       opacity: _appbarOpaction,
       child: Container(
         key: _appbarGlogbalKey,
-        padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(30)),
+        padding: EdgeInsets.symmetric(horizontal: 12),
         margin: EdgeInsets.only(top: MediaQueryData.fromWindow(window).padding.top),
-        height: ScreenUtil().setHeight(200),
-        decoration: BoxDecoration(color: Colors.white, boxShadow: [BoxShadow(color: Colors.black26)]),
+        height: kToolbarHeight,
+        width: Get.width,
+        decoration:
+            BoxDecoration(color: Colors.white, boxShadow: [BoxShadow(color: Colors.black26)]),
         child: Row(
           children: <Widget>[
-            InkWell(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: Container(
-                width: ScreenUtil().setWidth(300),
-                alignment: Alignment.centerLeft,
-                child: Icon(
-                  Icons.chevron_left,
-                  color: Colors.black,
-                ),
-              ),
+            IconButton(
+              icon: FaIcon(FontAwesomeIcons.arrowLeft),
+              color: Colors.black, onPressed: Get.back,
             ),
+            SizedBox(width: 12,),
             Expanded(
               child: TabBar(
                 indicator: RoundUnderlineTabIndicator(
@@ -786,8 +790,8 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
                 onTap: tabOnChange,
               ),
             ),
+            SizedBox(width: 12,),
             Container(
-              width: ScreenUtil().setWidth(300),
               alignment: Alignment.centerRight,
               child: Icon(
                 Icons.more_horiz,
@@ -800,9 +804,9 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
     );
   }
 
-  Container buildContainer({Widget? swiper}) {
+  Container buildContainer({Widget? swiper,double? width}) {
     return Container(
-      height: ScreenUtil().setHeight(1340),
+      height: width ?? Get.width,
       margin: EdgeInsets.only(top: MediaQueryData.fromWindow(window).padding.top),
       child: swiper,
     );
@@ -829,7 +833,25 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
   }
 
   String getCatName(String fqcat) {
-    var cats = <String>['女装', '男装', '内衣', '美妆', '配饰', '鞋品', '箱包', '儿童', '母婴', '居家', '美食', '数码', '家电', '其他', '车品', '文体', '宠物'];
+    var cats = <String>[
+      '女装',
+      '男装',
+      '内衣',
+      '美妆',
+      '配饰',
+      '鞋品',
+      '箱包',
+      '儿童',
+      '母婴',
+      '居家',
+      '美食',
+      '数码',
+      '家电',
+      '其他',
+      '车品',
+      '文体',
+      '宠物'
+    ];
     return cats[int.parse(fqcat) - 1];
   }
 

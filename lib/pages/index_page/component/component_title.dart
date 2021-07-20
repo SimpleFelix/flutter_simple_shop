@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ComponentTitle extends StatelessWidget {
   final String title;
@@ -10,7 +9,7 @@ class ComponentTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: ScreenUtil().setHeight(height),
+      height: height,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
@@ -18,7 +17,7 @@ class ComponentTitle extends StatelessWidget {
             alignment: Alignment.centerLeft,
             child: Text(
               title,
-              style: TextStyle(color: Colors.black, fontSize: ScreenUtil().setSp(70)),
+              style: TextStyle(color: Colors.black, fontSize:12),
             ),
           ),
           InkWell(

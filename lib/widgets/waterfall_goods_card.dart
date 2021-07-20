@@ -3,7 +3,6 @@ import 'package:fcontrol_nullsafety/fdefine.dart';
 import 'package:flustars/flustars.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
 
 import '../common/widgets/hot.dart';
@@ -99,7 +98,7 @@ class WaterfallGoodsCard extends StatelessWidget {
     return Container(
       child: Text('月销${product.monthSales}',
       style: TextStyle(
-        fontSize: 45.sp,
+        fontSize: 12,
         color: Color.fromRGBO(0, 0, 0, .32)
       ),
       ),
@@ -116,7 +115,7 @@ class WaterfallGoodsCard extends StatelessWidget {
           color: Colors.red, borderRadius: BorderRadius.circular(3)),
       child: Text(
         '$text',
-        style: TextStyle(color: Colors.white,fontSize: 45.sp),
+        style: TextStyle(color: Colors.white,fontSize: 12),
       ),
     );
   }
@@ -134,7 +133,7 @@ class WaterfallGoodsCard extends StatelessWidget {
                 style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.w600,
-                    fontSize: 50.sp),
+                    fontSize: 13),
 //                maxLines: 1,
 //                overflow: TextOverflow.ellipsis,
                 textAlign: TextAlign.start,

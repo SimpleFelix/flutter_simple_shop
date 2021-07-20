@@ -1,8 +1,6 @@
 import 'package:demo1/common/utils.dart';
 import 'package:demo1/pages/index_page/component/component_title.dart';
 import 'package:demo1/pages/index_page/store/goods_card.dart';
-import 'package:demo1/pages/index_page/store/store_card.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:demo1/provider/index_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -14,7 +12,7 @@ class StoreComponentIndex extends StatelessWidget {
     final storeData = context.watch<IndexProvider>().storeData;
     if (storeData != null) {
       return Container(
-            margin: EdgeInsets.symmetric(horizontal: 50.w,vertical: 12),
+            margin: EdgeInsets.symmetric(horizontal: 12,vertical: 12),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.all(Radius.circular(8)),
@@ -24,10 +22,10 @@ class StoreComponentIndex extends StatelessWidget {
               elevation: 3,
               borderRadius: BorderRadius.circular(8),
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 50.w, vertical: 20.h),
+                padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
                 child: Column(
                   children: [
-                    utils.widgetUtils.marginTop(height: 25.h),
+                    utils.widgetUtils.marginTop(height: 12),
                     ComponentTitle(title: '今日品牌推荐', height: 100),
                     // StoreItemCard(storeInfo: storeData.lists![0]),
                     utils.widgetUtils.marginTop(),

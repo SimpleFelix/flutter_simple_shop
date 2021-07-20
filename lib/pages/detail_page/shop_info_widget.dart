@@ -2,7 +2,6 @@ import 'package:dd_taoke_sdk/model/product.dart';
 import 'package:demo1/util/image_util.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ShopInfoWidget extends StatelessWidget {
   final Product goodsInfo;
@@ -23,9 +22,9 @@ class ShopInfoWidget extends StatelessWidget {
                   padding: EdgeInsets.only(top: 5.0, bottom: 5.0, right: 10.0),
                   child:goodsInfo.shopLogo!.isNotEmpty? Image.network(
                     MImageUtils.magesProcessor(goodsInfo.shopLogo!),
-                    width: 180.w,
-                    height: 180.h,
-                  ) : Image.asset('assets/images/ava.jpg',width: 180.w,height: 180.h,),
+                    width: 91,
+                    height: 90,
+                  ) : Image.asset('assets/images/ava.jpg',width:91,height:90,),
                 ),
                 Expanded(
                   child: Column(
@@ -36,7 +35,7 @@ class ShopInfoWidget extends StatelessWidget {
                         goodsInfo.shopName!,
                         style: TextStyle(
                             fontWeight: FontWeight.w600,
-                            fontSize: ScreenUtil().setSp(50)),
+                            fontSize: 12),
                       ),
                       Container(
                           child: Row(
@@ -45,13 +44,13 @@ class ShopInfoWidget extends StatelessWidget {
                           goodsInfo.shopType == 1
                               ? Image.asset(
                                   "assets/icons/tianmao.png",
-                                  width: ScreenUtil().setWidth(60),
-                                  height: ScreenUtil().setHeight(60),
+                                  width: 12,
+                                  height: 12,
                                 )
                               : Image.asset(
                                   "assets/icons/taobao.png",
-                                  width: ScreenUtil().setWidth(60),
-                                  height: ScreenUtil().setHeight(60),
+                                  width: 12,
+                                  height: 12,
                                 ),
 
                           //是否金牌卖家
@@ -60,8 +59,8 @@ class ShopInfoWidget extends StatelessWidget {
                                   margin: EdgeInsets.only(left: 5.0),
                                   child: Image.asset(
                                     "assets/icons/jinpai.png",
-                                    width: ScreenUtil().setWidth(60),
-                                    height: ScreenUtil().setHeight(60),
+                                    width: 12,
+                                    height: 12,
                                   ),
                                 )
                               : Container()

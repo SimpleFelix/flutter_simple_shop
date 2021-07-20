@@ -5,7 +5,6 @@ import 'package:dd_taoke_sdk/model/category.dart';
 import 'package:dd_taoke_sdk/model/product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart' hide NestedScrollView;
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:loading_more_list/loading_more_list.dart';
 import 'package:pull_to_refresh_notification/pull_to_refresh_notification.dart';
@@ -78,8 +77,8 @@ class _IndexHomeState extends State<IndexHome>
     return LoadingMoreSliverList(SliverListConfig<Product>(
       extendedListDelegate: SliverWaterfallFlowDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          crossAxisSpacing: ScreenUtil().setHeight(30),
-          mainAxisSpacing: ScreenUtil().setWidth(30)),
+          crossAxisSpacing: 12,
+          mainAxisSpacing: 12),
       itemBuilder: (context, item, index) {
         return PhysicalModel(
           color: Colors.grey.shade50,
@@ -90,7 +89,7 @@ class _IndexHomeState extends State<IndexHome>
       },
       sourceList: indexGoodsRepository,
       padding: EdgeInsets.only(
-          left: ScreenUtil().setWidth(50), right: ScreenUtil().setWidth(50)),
+          left: 12, right: 12),
 //      lastChildLayoutType: LastChildLayoutType.foot,
       indicatorBuilder: (context, state) {
         return LoadingMoreListCostumIndicator(state, isSliver: true);
@@ -193,7 +192,7 @@ class _IndexHomeState extends State<IndexHome>
             child: Text(
               '随便看看',
               style: TextStyle(
-                  fontSize: 65.sp,
+                  fontSize: 12,
                   color: Colors.black,
                   fontWeight: FontWeight.bold),
             ),
@@ -214,12 +213,12 @@ class _IndexHomeState extends State<IndexHome>
             clipper: MyClipper(),
             child: AnimatedContainer(
               duration: Duration(milliseconds: 1000),
-              height: ScreenUtil().setHeight(carouselHeight + 50),
+              height: carouselHeight + 50,
             )),
         Column(
           children: <Widget>[
             SizedBox(
-              height: ScreenUtil().setHeight(20),
+              height: 12,
             ),
             IndexTopicComponentCarousel(list: [],)
             // carouselISLoaded && carouselProviderModal.carousels.isNotEmpty
@@ -277,12 +276,12 @@ class _IndexHomeState extends State<IndexHome>
                 },
                 child: Icon(
                   Icons.message,
-                  size: ScreenUtil().setSp(80),
+                  size: 12,
                 ),
               ),
               Text(
                 '消息',
-                style: TextStyle(fontSize: ScreenUtil().setSp(45)),
+                style: TextStyle(fontSize:12),
               )
             ],
           ),
@@ -304,7 +303,7 @@ class _IndexHomeState extends State<IndexHome>
   // 监听主滑动距离
   void _addMainScrollListening() {
     var topAppbarHei =
-        330.h + MediaQueryData.fromWindow(window).padding.top; // 顶部搜索框和选项卡高度
+        111 + MediaQueryData.fromWindow(window).padding.top; // 顶部搜索框和选项卡高度
     _mainScrollController.addListener(() {
       var titleTopHei = _titleLocationHandler();
       if (titleTopHei <= topAppbarHei) {

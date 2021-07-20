@@ -1,6 +1,5 @@
 import 'package:dd_taoke_sdk/model/brand_list_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../util/image_util.dart';
@@ -21,8 +20,8 @@ class BrandItemCard extends StatelessWidget {
        await Get.to(BrandDetailPage(brandId: storeInfo.brandId.toString()));
       },
       child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 30.w, vertical: 30.h),
-        padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 30.h),
+        margin: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+        padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.all(Radius.circular(15)),
@@ -49,8 +48,8 @@ class BrandItemCard extends StatelessWidget {
                 ),
                 child: Image.network(
                   MImageUtils.magesProcessor(storeInfo.brandLogo!),
-                  width: 100.w,
-                  height: 150.h,
+                  width: 50,
+                  height: 50,
                 ),
               ),
               1),
@@ -64,17 +63,17 @@ class BrandItemCard extends StatelessWidget {
                       children: [
                         Text(
                           '${storeInfo.brandName}',
-                          style: TextStyle(fontSize: 55.sp, color: Colors.black, fontWeight: FontWeight.bold),
+                          style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
                         ),
                         Text(
                           '已售${Numeral(storeInfo.sales!)}件 >',
-                          style: TextStyle(fontSize: 48.sp, color: Colors.grey[500]),
+                          style: TextStyle(fontSize: 12, color: Colors.grey[500]),
                         )
                       ],
                     ),
                     Text(
                       '单品低至${storeInfo.maxDiscount}折  |  领券最高减${storeInfo.maxDiscountAmount}',
-                      style: TextStyle(fontSize: 48.sp, color: Colors.redAccent),
+                      style: TextStyle(fontSize: 12, color: Colors.redAccent),
                     )
                   ],
                 ),
@@ -91,7 +90,7 @@ class BrandItemCard extends StatelessWidget {
       crossAxisCount: 3,
       childAspectRatio: .8,
       shrinkWrap: true,
-      crossAxisSpacing: 30.w,
+      crossAxisSpacing: 12,
       physics: NeverScrollableScrollPhysics(),
       children: [
         StoreGoodsItemLayout(storeGoods: storeInfo.goodsList![0]),

@@ -1,9 +1,9 @@
-import 'package:demo1/pages/brand_page/models/brand_detail_model.dart';
-import 'package:demo1/util/image_util.dart';
-import 'package:demo1/util/number_cover.dart';
-import 'package:demo1/widgets/tag_widget.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
+
+import '../../../util/image_util.dart';
+import '../../../util/number_cover.dart';
+import '../../../widgets/tag_widget.dart';
+import '../models/brand_detail_model.dart';
 
 /// 品牌信息卡片
 class BrandDetail extends StatelessWidget {
@@ -16,7 +16,7 @@ class BrandDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double _h = 300.h;
+    double _h = 150;
     return Container(
       height: _h,
       decoration: BoxDecoration(color: bgColor.withOpacity(.5)),
@@ -43,7 +43,7 @@ class BrandDetail extends StatelessWidget {
     return Container(
       child: Text('${Numeral(brandDetailModel!.fansNum!)}粉丝   ${Numeral(brandDetailModel!.sales!)}近期销量',style: TextStyle(
         color: Colors.white.withOpacity(.8),
-        fontSize: 45.sp
+        fontSize: 12
       ),),
     );
   }
@@ -54,12 +54,12 @@ class BrandDetail extends StatelessWidget {
         Text(
           brandDetailModel!.brandName!,
           style: TextStyle(
-              fontSize: 55.sp, color: Colors.white, fontWeight: FontWeight.bold),
+              fontSize: 14, color: Colors.white, fontWeight: FontWeight.bold),
         ),
-        SizedBox(width: 20.w,),
-        InkWell(child: Icon(Icons.info_outline_rounded,color: Colors.white.withOpacity(.5),size: 15,),onTap: (){
+        SizedBox(width: 12,),
+        InkWell(onTap: (){
           showInfo(context);
-        },)
+        },child: Icon(Icons.info_outline_rounded,color: Colors.white.withOpacity(.5),size: 15,),)
       ],
     );
   }
@@ -80,8 +80,8 @@ class BrandDetail extends StatelessWidget {
           backgroundColor: Colors.white,
           child: Image.network(
             MImageUtils.magesProcessor(brandDetailModel!.brandLogo!),
-            width: 300.w,
-            height: 300.w,
+            width: 150,
+            height: 150,
             fit: BoxFit.cover,
           ),
         ),

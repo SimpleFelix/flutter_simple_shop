@@ -1,6 +1,5 @@
 import 'package:dd_taoke_sdk/model/product.dart';
 import 'package:demo1/util/image_util.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:demo1/pages/index_page/store/price_layout.dart';
 import 'package:flutter/material.dart';
 
@@ -41,14 +40,14 @@ class StoreGoodsItemLayout extends StatelessWidget {
   /// 折扣小部件
   Widget _buildDiscountLayout() {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10.w),
+      padding: EdgeInsets.symmetric(horizontal: 12),
       decoration: BoxDecoration(
         color: Colors.pinkAccent.withOpacity(.5),
-        borderRadius: BorderRadius.all(Radius.circular(30.sp)),
+        borderRadius: BorderRadius.all(Radius.circular(12)),
       ),
       child: Text(
-        "${storeGoods.discounts}折",
-        style: TextStyle(fontSize: 50.sp, color: Colors.white),
+        '${storeGoods.discounts}折',
+        style: TextStyle(fontSize: 12, color: Colors.white),
       ),
     );
   }

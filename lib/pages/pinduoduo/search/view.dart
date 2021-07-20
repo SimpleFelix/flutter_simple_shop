@@ -1,14 +1,16 @@
+import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:get/get.dart';
+import 'package:swipeable_page_route/swipeable_page_route.dart';
 
 import '../../../common/components/pdd/view.dart';
 import '../../../modals/pdd_search_item_model.dart';
-import '../../../service/api_service.dart';
 import '../../../widgets/appbar_search.dart';
 import '../../../widgets/component/coupon_discount.dart';
 import '../../../widgets/extended_image.dart';
 import '../../../widgets/simple_price.dart';
+import '../../public_detail/view.dart';
 import 'logic.dart';
 
 class SearchPage extends StatefulWidget {
@@ -52,7 +54,7 @@ class _SearchPageState extends State<SearchPage> {
   Widget renderItem(PddSearchItemModel item) {
     return GestureDetector(
       onTap: () {
-        tkApi.pddCovert(item.goodsSign);
+        context.navigator.push(SwipeablePageRoute(builder: (_) => PublicDetailView(goodsId: item.goodsSign, type: 'pdd')));
       },
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 12, vertical: 6),

@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:loading_more_list/loading_more_list.dart';
@@ -56,7 +55,7 @@ class _CategoryIndexPageState extends State<CategoryIndexPage> {
                   children: <Widget>[
                     //左侧
                     Container(
-                      width: ScreenUtil().setWidth(300),
+                      width: 80,
                       color: Color.fromRGBO(248, 248, 248, 1.0),
                       child: ListView.builder(
                           itemCount: categorys.length,

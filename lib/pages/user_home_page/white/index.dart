@@ -5,7 +5,6 @@ import 'package:demo1/pages/user_home_page/white/components/code_input.dart';
 import 'package:demo1/pages/user_home_page/white/views/markdown_preview.dart';
 import 'package:extended_text_field/extended_text_field.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart' as su;
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
@@ -67,7 +66,7 @@ class _WhiteIndexState extends State<WhiteIndex> {
           children: <Widget>[
             Expanded(
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: su.ScreenUtil().setWidth(70)),
+                padding: EdgeInsets.symmetric(horizontal: 12),
                 child: ExtendedTextField(
                   key: _key,
                   autofocus: false,
@@ -202,8 +201,8 @@ class _WhiteIndexState extends State<WhiteIndex> {
       onTap: onTap,
       child: SvgPicture.asset(
         path,
-        width: su.ScreenUtil().setWidth(size),
-        height: su.ScreenUtil().setHeight(size),
+        width: size,
+        height: size,
       ),
     );
   }

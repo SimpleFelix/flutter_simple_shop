@@ -4,8 +4,8 @@ import 'package:fbutton_nullsafety/fbutton_nullsafety.dart';
 import 'package:fcontrol_nullsafety/fdefine.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:demo1/provider/user_provider.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -77,10 +77,10 @@ class _IndexState extends State<FavoriteIndexHome> {
               //------------收藏列表end
               userProvider.isEditFavoriteIng
                   ? Positioned(
-                      bottom: ScreenUtil().setHeight(70),
-                      left: ScreenUtil().setWidth(70),
-                      width: ScreenUtil().setWidth(1300),
-                      height: ScreenUtil().setHeight(200),
+                      bottom: 12,
+                      left: 12,
+                      width: Get.width,
+                      height: 100,
                       child: Container(
                         margin: EdgeInsets.all(5),
                         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
@@ -92,7 +92,7 @@ class _IndexState extends State<FavoriteIndexHome> {
                           children: <Widget>[
                             // 全选/取消全选
                             Container(
-                              width: ScreenUtil().setWidth(450),
+                              width:120,
                               child: Row(
                                 children: <Widget>[
                                   Checkbox(
@@ -122,13 +122,13 @@ class _IndexState extends State<FavoriteIndexHome> {
                                         TextSpan(
                                             text: userProvider.editFavoriteIds.length.toString(),
                                             style: TextStyle(
-                                                fontSize: ScreenUtil().setSp(70),
+                                                fontSize:12,
                                                 color: Colors.black)),
                                         TextSpan(text: " 项", style: TextStyle(color: Colors.grey))
                                       ],
                                     ),
                                     FButton(
-                                      width: ScreenUtil().setWidth(300),
+                                      width: 120,
                                       text: "删除",
                                       padding: EdgeInsets.zero,
                                       color: Colors.pinkAccent,

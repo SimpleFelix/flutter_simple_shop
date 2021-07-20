@@ -1,6 +1,5 @@
 import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 // 自定义选择项目工具条
 class CustomSelectToolbar extends StatefulWidget {
@@ -23,7 +22,7 @@ class _CustomSelectToolbarState extends State<CustomSelectToolbar>
     return Stack(
       children: [
         Container(
-          margin: EdgeInsets.symmetric(horizontal: 50.w, vertical: 10.h),
+          margin: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
           child: getItemSize() > 4
               ? Container(
                   child: SingleChildScrollView(
@@ -71,7 +70,7 @@ class _CustomSelectToolbarState extends State<CustomSelectToolbar>
                 selectMenu.title!,
                 style: TextStyle(
                     color: _buildPrimaryColor(getIndexNumber(selectMenu)),
-                    fontSize: 60.sp),
+                    fontSize: 15),
               ),
             ),
             AnimatedOpacity(
@@ -81,7 +80,7 @@ class _CustomSelectToolbarState extends State<CustomSelectToolbar>
                 visible: !hideSubTitle,
                 child: Container(
                   padding:
-                      EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
+                      EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                   decoration: BoxDecoration(
                       borderRadius: getIndexNumber(selectMenu) == select
                           ? BorderRadius.all(Radius.circular(15.0))
@@ -92,7 +91,7 @@ class _CustomSelectToolbarState extends State<CustomSelectToolbar>
                   child: Text(
                     selectMenu.subTitle!,
                     style: TextStyle(
-                        fontSize: 45.sp,
+                        fontSize: 12,
                         color: getIndexNumber(selectMenu) == select
                             ? Colors.white
                             : Colors.grey),
@@ -117,8 +116,8 @@ class _CustomSelectToolbarState extends State<CustomSelectToolbar>
                 alignment: Alignment.center,
                 width: getItemWidgetWidth(),
                 child: Container(
-                  width: 120.w,
-                  height: 20.h,
+                  width: 60,
+                  height: 6,
                   decoration: BoxDecoration(
                     color:   getIndexNumber(selectMenu) == select ? Colors.redAccent : Colors.transparent,
                     borderRadius: BorderRadius.all(Radius.circular(15.0))
@@ -148,7 +147,7 @@ class _CustomSelectToolbarState extends State<CustomSelectToolbar>
 
   // 计算每个item的宽度
   double getItemWidgetWidth() {
-    var ww = MediaQuery.of(context).size.width - 100.w;
+    var ww = MediaQuery.of(context).size.width - 50;
     if (widget.items!.isNotEmpty) {
       switch (getItemSize()) {
         case 1:

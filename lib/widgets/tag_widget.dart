@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TagWidget extends StatelessWidget {
   final String? title;
@@ -12,7 +11,7 @@ class TagWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: ScreenUtil().setWidth(600),
+      width: 300,
       padding: EdgeInsets.all(1.0),
       margin: EdgeInsets.all(2.0),
       decoration: BoxDecoration(
@@ -37,11 +36,11 @@ class TagWidget2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10.w),
+      padding: EdgeInsets.symmetric(horizontal: 12),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(40.sp)),
+          borderRadius: BorderRadius.all(Radius.circular(12)),
           color: Colors.grey[100]),
-      child: Text(tag!,style: TextStyle(fontSize: 43.sp),),
+      child: Text(tag!,style: TextStyle(fontSize: 12),),
     );
   }
 }

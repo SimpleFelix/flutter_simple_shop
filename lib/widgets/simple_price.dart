@@ -1,7 +1,6 @@
 import 'package:fcontrol_nullsafety/fdefine.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
 
 class SimplePrice extends StatelessWidget {
@@ -19,19 +18,19 @@ class SimplePrice extends StatelessWidget {
       lightOrientation: FLightOrientation.LeftBottom,
       text: hideText ?? '券后价 ',
       style: TextStyle(
-        fontSize:fontSize!=null ? fontSize! * .7 : 12,
+        fontSize:fontSize!=null ? fontSize! * .7 : 14,
         color: color ?? Colors.red
       ),
       spans: [
-        TextSpan(text: ' ¥', style: TextStyle(color:color?? Colors.red, fontSize: ScreenUtil().setSp(60), fontWeight: FontWeight.w800)),
+        TextSpan(text: ' ¥', style: TextStyle(color:color?? Colors.red, fontSize: 14, fontWeight: FontWeight.w800)),
         TextSpan(
           text: '$price ',
-          style: TextStyle(color:color ?? Colors.red, fontSize:fontSize ?? ScreenUtil().setSp(100), fontWeight: FontWeight.w800),
+          style: TextStyle(color:color ?? Colors.red, fontSize:fontSize ?? 18, fontWeight: FontWeight.w800),
         ),
         if(zhe!=null)
         TextSpan(
           text: '$zhe折',
-          style: TextStyle(fontSize: ScreenUtil().setSp(50)),
+          style: TextStyle(fontSize: 14),
         ),
         if(orignPrice!=null)
           TextSpan(text:'原价$orignPrice',style: TextStyle(

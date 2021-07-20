@@ -1,8 +1,8 @@
-import 'package:demo1/pages/brand_page/models/brand_detail_model.dart';
-import 'package:demo1/pages/index_page/store/price_layout.dart';
-import 'package:demo1/util/image_util.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
+
+import '../../../util/image_util.dart';
+import '../../index_page/store/price_layout.dart';
+import '../models/brand_detail_model.dart';
 
 /// 品牌的商品列表
 class DetailProductList extends StatelessWidget {
@@ -18,17 +18,17 @@ class DetailProductList extends StatelessWidget {
   }
 
   Widget _builderList(BuildContext context, int index) {
-    BrandDetailGoodsList brandDetailGoodsList = list![index];
+    var brandDetailGoodsList = list![index];
     return Card(
       elevation: 1,
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
-        margin: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+        padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+        margin: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
         decoration: BoxDecoration(color: Colors.white),
         child: Row(
           children: [
             _buildImage(brandDetailGoodsList),
-            SizedBox(width: 40.w,),
+            SizedBox(width: 12,),
             Expanded(child: _buildData(brandDetailGoodsList))
           ],
         ),
@@ -38,7 +38,7 @@ class DetailProductList extends StatelessWidget {
 
   Widget _buildData(BrandDetailGoodsList item) {
     return SizedBox(
-      height: 400.w,
+      height: 200,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,7 +47,7 @@ class DetailProductList extends StatelessWidget {
             item.dTitle!,
             style: TextStyle(
                 color: Colors.black,
-                fontSize: 50.sp,
+                fontSize: 12,
                 fontWeight: FontWeight.bold),
           ),
           Column(
@@ -60,7 +60,7 @@ class DetailProductList extends StatelessWidget {
 
   // 商品主图
   Widget _buildImage(BrandDetailGoodsList item) {
-    Size imageSize = Size(400.w, 400.w);
+    var imageSize = Size(200, 200);
     return Container(
         color: Colors.grey[200],
         child: Image.network(

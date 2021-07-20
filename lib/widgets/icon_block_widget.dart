@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class IconBlockWidget extends StatelessWidget {
   final String? desc;
@@ -32,8 +31,8 @@ class IconBlockWidget extends StatelessWidget {
                   children: <Widget>[
                     Image.asset(
                       'assets/icons/tuijian.png',
-                      width: ScreenUtil().setWidth(55),
-                      height: ScreenUtil().setHeight(55),
+                      width: 16,
+                      height: 16,
                     ),
                     Container(
                       margin: EdgeInsets.only(left: 4.0),

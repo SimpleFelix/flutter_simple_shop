@@ -1,8 +1,8 @@
 import 'package:fcontrol_nullsafety/fdefine.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
+import 'package:get/get.dart';
 
 // 底部浮动操作按钮
 class ActionButtons extends StatelessWidget {
@@ -16,49 +16,49 @@ class ActionButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      bottom: ScreenUtil().setHeight(50),
-      left: ScreenUtil().setWidth(70),
+      bottom:12,
+      left:12,
       child: FSuper(
         lightOrientation: FLightOrientation.LeftBottom,
-        width: ScreenUtil().setWidth(1300),
-        height: ScreenUtil().setHeight(240),
+        width:Get.width,
+        height: 120,
         backgroundColor: Color.fromRGBO(255, 255, 255, 0.85),
         shadowColor: Colors.black26,
         shadowBlur: 10,
         child2: Row(
           children: <Widget>[
             Container(
-              width: ScreenUtil().setWidth(600),
-              height: ScreenUtil().setHeight(200),
+              width: Get.width/2,
+              height: 100,
               padding: EdgeInsets.symmetric(
-                  horizontal: ScreenUtil().setWidth(20),
-                  vertical: ScreenUtil().setHeight(20)),
+                  horizontal: 12,
+                  vertical: 12),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   FSuper(
                     lightOrientation: FLightOrientation.LeftBottom,
-                    height: ScreenUtil().setHeight(250),
+                    height:120,
 //                    width: ScreenUtil().setWidth(180),
                     text: '首页',
                     textAlignment: Alignment.bottomCenter,
                     child1Alignment: Alignment.topCenter,
                     child1: Icon(
                       Icons.home,
-                      size: ScreenUtil().setSp(70),
+                      size: 12,
                     ),
                   ),
                   FSuper(
                     lightOrientation: FLightOrientation.LeftBottom,
-                    height: ScreenUtil().setHeight(250),
+                    height: 120,
 //                    width: ScreenUtil().setWidth(180),
                     text: '分享',
                     textAlignment: Alignment.bottomCenter,
                     child1Alignment: Alignment.topCenter,
                     child1: Icon(
                       Icons.share,
-                      size: ScreenUtil().setSp(70),
+                      size: 20,
                     ),
                   ),
                   InkWell(
@@ -66,14 +66,14 @@ class ActionButtons extends StatelessWidget {
                     },
                     child: FSuper(
                       lightOrientation: FLightOrientation.LeftBottom,
-                      height: ScreenUtil().setHeight(250),
+                      height: 120,
 //                    width: ScreenUtil().setWidth(180),
                       text: '收藏',
                       textAlignment: Alignment.bottomCenter,
                       child1Alignment: Alignment.topCenter,
                       child1: Icon(
                         Icons.favorite_border,
-                        size: ScreenUtil().setSp(70),
+                        size: 20,
                       ),
                     ),
                   )
@@ -82,8 +82,8 @@ class ActionButtons extends StatelessWidget {
             ),
             FSuper(
               lightOrientation: FLightOrientation.LeftBottom,
-              width: ScreenUtil().setWidth(620),
-              height: ScreenUtil().setHeight(250),
+              width: 200,
+              height: 120,
               padding:
                   EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
               margin: EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
@@ -101,7 +101,7 @@ class ActionButtons extends StatelessWidget {
                     ),
                   ),
                   Container(
-                      height: ScreenUtil().setHeight(40),
+                      height: 120,
                       child: VerticalDivider(color: Colors.white)),
                   InkWell(
                     onTap: getCallBack as void Function()?,

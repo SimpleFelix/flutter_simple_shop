@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
@@ -41,8 +40,8 @@ class _DdqIndexHomeState extends State<DdqIndexHome> {
                 _buildList(),
                 SliverPersistentHeader(
                   delegate: SliverAppBarDelegate(
-                      maxHeight: ScreenUtil().setHeight(150),
-                      minHeight: ScreenUtil().setHeight(150),
+                      maxHeight: 75,
+                      minHeight:75,
                       child: Container(
                         child: Center(
                           child: Text('我是有底线的~~'),

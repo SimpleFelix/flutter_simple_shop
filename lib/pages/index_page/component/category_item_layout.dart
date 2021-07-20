@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'category_notification_stream.dart';
 
@@ -41,17 +40,17 @@ class _CategoryItemDefaultLayoutState extends State<CategoryItemDefaultLayout> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(right: 50.w, left: widget.index == 0 ? 25.w : 0),
-      padding: EdgeInsets.symmetric(horizontal: 25.w),
+      margin: EdgeInsets.only(right: 12, left: widget.index == 0 ? 12 : 0),
+      padding: EdgeInsets.symmetric(horizontal: 12),
       alignment: Alignment.centerLeft,
       child: widget.index == widget.current
           ? Text(
               widget.name!,
-              style: widget.currentStyle ?? TextStyle(fontSize: 55.sp, color: Theme.of(context).primaryColor),
+              style: widget.currentStyle ?? TextStyle(fontSize: 12, color: Theme.of(context).primaryColor),
             )
           : Text(
               widget.name!,
-              style: widget.textStyle ?? TextStyle(fontSize: 55.sp, color: Color.fromRGBO(255, 255, 255, .65)),
+              style: widget.textStyle ?? TextStyle(fontSize: 12, color: Color.fromRGBO(255, 255, 255, .65)),
             ),
     );
   }

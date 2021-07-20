@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
+import 'package:get/get.dart';
 import '../../widgets/extended_image.dart';
 
 class SwiperWidget extends StatelessWidget {
@@ -27,18 +27,18 @@ class SwiperWidget extends StatelessWidget {
               itemCount: imgArr.length,
               pagination: new SwiperPagination(),
             ),
-            width: ScreenUtil().setWidth(1440),
-            height: ScreenUtil().setHeight(1440),
+            width: Get.width,
+            height: Get.width,
           ),
 
           // 返回按钮
           Positioned(
-              top: ScreenUtil().setHeight(120),
-              left: ScreenUtil().setWidth(80),
+              top: 20,
+              left: 20,
               child: ClipOval(
                 child: Container(
-                    width: ScreenUtil().setWidth(150),
-                    height: ScreenUtil().setHeight(150),
+                    width: 50,
+                    height: 50,
                     decoration: BoxDecoration(
                       color: Colors.black26.withOpacity(0.8),
                     ),
@@ -47,7 +47,7 @@ class SwiperWidget extends StatelessWidget {
                             icon: Icon(
                               Icons.chevron_left,
                               color: Colors.white,
-                              size: ScreenUtil().setSp(80),
+                              size: 40,
                             ),
                             onPressed: () {
                               Navigator.pop(context);

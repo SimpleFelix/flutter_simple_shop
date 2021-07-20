@@ -1,6 +1,5 @@
-import 'package:demo1/pages/index_page/component/category_component.dart';
+import '../index_page/component/category_component.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CategoryDelegate extends SliverPersistentHeaderDelegate {
   final SelectWithItem onSelect;
@@ -10,23 +9,23 @@ class CategoryDelegate extends SliverPersistentHeaderDelegate {
   @override
   Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Container(
-        height: 150.h,
+        height: 75,
         color: Colors.white,
         alignment: Alignment.center,
         child: CategoryComponent(
           onSelect: onSelect,
           controller: controller,
-          textStyle: TextStyle(fontSize: 55.sp, color: Colors.black),
+          textStyle: TextStyle(fontSize: 14, color: Colors.black),
         ));
   }
 
   @override
   // TODO: implement maxExtent
-  double get maxExtent => 150.h;
+  double get maxExtent => 75;
 
   @override
   // TODO: implement minExtent
-  double get minExtent => 150.h;
+  double get minExtent => 75;
 
   @override
   bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) => true;

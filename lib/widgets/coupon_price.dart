@@ -1,6 +1,5 @@
 import 'package:fcontrol_nullsafety/fdefine.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
 import '../constant/color.dart';
 
@@ -17,31 +16,30 @@ class CouponPriceWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var couponPriceSymbolFontSize = (couponPriceFontSize ?? 80.0) * 0.75;
     return Container(
       child: Row(
         children: <Widget>[
           Container(
             margin: EdgeInsets.only(right: 3.0),
-            child: Text('券后', style: TextStyle(color: Colors.black38, fontSize: ScreenUtil().setSp(couponPriceSymbolFontSize * 0.6))),
+            child: Text('券后', style: TextStyle(color: Colors.black38, fontSize: 12)),
           ),
           Container(
             child: Text(
               '¥',
-              style: TextStyle(fontSize: ScreenUtil().setSp(couponPriceSymbolFontSize), color: Colors.pinkAccent),
+              style: TextStyle(fontSize: 15, color: Colors.pinkAccent),
             ),
           ),
           Container(
             child: Text(
               actualPrice.toString(),
-              style: TextStyle(color: Colors.pinkAccent, fontSize: ScreenUtil().setSp(couponPriceFontSize ?? 80)),
+              style: TextStyle(color: Colors.pinkAccent, fontSize: 15),
             ),
           ),
           Container(
             margin: EdgeInsets.only(left: interval ?? 10.0),
             child: Text(
               '¥$originalPrice',
-              style: TextStyle(decoration: TextDecoration.lineThrough, color: Colors.black38, fontSize: ScreenUtil().setSp(originalPriceFontSize ?? 50)),
+              style: TextStyle(decoration: TextDecoration.lineThrough, color: Colors.black38, fontSize: 12),
             ),
           ),
           //多少折

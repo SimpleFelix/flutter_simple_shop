@@ -1,5 +1,4 @@
 import 'package:dd_taoke_sdk/model/brand_list_model.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
 
 import 'goods_item_layout.dart';
@@ -17,7 +16,7 @@ class StoreGoodsCard extends StatelessWidget {
       physics: NeverScrollableScrollPhysics(),
       padding: EdgeInsets.zero,
       gridDelegate:
-          SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, childAspectRatio: 0.8, mainAxisSpacing: 10.w),
+          SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, childAspectRatio: 0.8, mainAxisSpacing: 12),
       itemBuilder: (BuildContext context, int index) {
         final storeGoods = storeInfo!.goodsList![index];
         return StoreGoodsItemLayout(storeGoods: storeGoods);

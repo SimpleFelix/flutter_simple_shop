@@ -7,7 +7,6 @@ import 'package:demo1/widgets/title_widget.dart';
 import 'package:fcontrol_nullsafety/fdefine.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
 import '../../modals/favorites_model.dart';
 
@@ -25,7 +24,7 @@ class FavoriteGoodsItem extends StatelessWidget {
       Container(
         padding: EdgeInsets.only(left: 10, right: 10, bottom: 10, top: 10),
         margin: EdgeInsets.only(left: 10, right: 10, top: 10),
-        height: ScreenUtil().setHeight(500),
+        height: 250,
         decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.all(Radius.circular(15))),
@@ -81,8 +80,8 @@ class FavoriteGoodsItem extends StatelessWidget {
         right: 10,
         top: 10,
         child: Container(
-          width: ScreenUtil().setWidth(200),
-          height: ScreenUtil().setHeight(500),
+          width: 100,
+          height: 250,
           decoration: BoxDecoration(
 //              color: Colors.grey,
               borderRadius: BorderRadius.all(Radius.circular(15))),
