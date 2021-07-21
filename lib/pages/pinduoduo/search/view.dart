@@ -9,6 +9,7 @@ import '../../../modals/pdd_search_item_model.dart';
 import '../../../widgets/appbar_search.dart';
 import '../../../widgets/component/coupon_discount.dart';
 import '../../../widgets/extended_image.dart';
+import '../../../widgets/loading_widget.dart';
 import '../../../widgets/simple_price.dart';
 import '../../public_detail/view.dart';
 import 'logic.dart';
@@ -36,6 +37,7 @@ class _SearchPageState extends State<SearchPage> {
       body: EasyRefresh.custom(slivers: [
         Obx(() {
           final products = logic.products;
+          final loading = logic.loading.value;
           return SliverFillRemaining(
               child: AnimatedSwitcher(
             duration: Duration(milliseconds: 800),
@@ -44,7 +46,7 @@ class _SearchPageState extends State<SearchPage> {
                     itemBuilder: (_, index) => renderItem(products[index]),
                     itemCount: products.length,
                   )
-                : PddRecommendListView(),
+                :loading ? LoadingWidget() : PddRecommendListView(),
           ));
         })
       ]),
