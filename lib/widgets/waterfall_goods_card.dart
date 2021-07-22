@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
 
 import '../common/widgets/hot.dart';
-import '../fluro/navigator_util.dart';
+import '../util/navigator_util.dart';
 import '../widgets/coupon_price.dart';
 import 'extended_image.dart';
 

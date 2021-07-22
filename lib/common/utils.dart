@@ -8,7 +8,7 @@ import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../fluro/navigator_util.dart';
+import '../util/navigator_util.dart';
 import '../service/blog_api.dart';
 import '../service/user_api.dart';
 import 'service.dart';

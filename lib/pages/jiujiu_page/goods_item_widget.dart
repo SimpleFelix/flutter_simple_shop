@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../common/utils.dart';
-import '../../fluro/navigator_util.dart';
+import '../../util/navigator_util.dart';
 import '../../widgets/extended_image.dart';
 import '../../widgets/tag_widget.dart';
 

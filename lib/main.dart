@@ -14,7 +14,7 @@ import 'common/service.dart';
 import 'common/utils.dart';
 import 'common/widget_util.dart';
 import 'controller/app_controller.dart';
-import 'fluro/navigator_util.dart';
+import 'util/navigator_util.dart';
 import 'service/api_service.dart';
 import 'service/blog_api.dart';
 import 'service/user_api.dart';

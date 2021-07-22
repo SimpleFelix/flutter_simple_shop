@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import './index_layout.dart';
-import '../../fluro/navigator_util.dart';
+import '../../util/navigator_util.dart';
 import '../../provider/ddq_provider.dart';
 import '../../widgets/extended_image.dart';
 import 'component/component_title.dart';

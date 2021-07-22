@@ -12,7 +12,7 @@ import '../pages/user_home_page/login/login_page.dart';
 import '../pages/user_home_page/order/my_order.dart';
 import '../pages/user_home_page/order/order_add.dart';
 import '../pages/user_home_page/white/index.dart';
-import '../util/fluro_convert_util.dart';
+import 'fluro_convert_util.dart';
 
 // 路由工具类
 class NavigatorUtil {

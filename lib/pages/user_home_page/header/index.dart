@@ -7,7 +7,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../common/utils.dart';
 import '../../../constant/style.dart';
-import '../../../fluro/navigator_util.dart';
+import '../../../util/navigator_util.dart';
 
 // 头部容器
 class HeaderIndex extends StatelessWidget {

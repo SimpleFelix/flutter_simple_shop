@@ -1,4 +1,4 @@
-import 'package:demo1/fluro/navigator_util.dart';
+import 'package:demo1/util/navigator_util.dart';
 import 'package:demo1/provider/user_provider.dart';
 import 'package:demo1/util/image_util.dart';
 import 'package:demo1/widgets/coupon_price.dart';

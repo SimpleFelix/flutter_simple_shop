@@ -1,6 +1,6 @@
 import 'package:badges/badges.dart';
 import 'package:dd_taoke_sdk/model/halfday_result.dart';
-import 'package:demo1/fluro/navigator_util.dart';
+import 'package:demo1/util/navigator_util.dart';
 import 'package:demo1/widgets/extended_image.dart';
 import 'package:demo1/widgets/simple_price.dart';
 import 'package:flutter/cupertino.dart';

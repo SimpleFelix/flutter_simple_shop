@@ -3,7 +3,7 @@ import 'package:demo1/widgets/extended_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../widgets/tag_widget.dart';
-import '../../fluro/navigator_util.dart';
+import '../../util/navigator_util.dart';
 
 // 9.9商品卡片布局
 class GoodsItem extends StatelessWidget {
