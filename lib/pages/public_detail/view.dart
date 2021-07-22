@@ -312,6 +312,11 @@ class _PublicDetailViewState extends State<PublicDetailView> implements PublicDe
         utils.copy(urls['mobile_short_url'], message: '链接已复制');
         return;
       }
+
+      if(await utils.weChatBro){
+        await utils.openLink(urls['mobile_short_url'].toString().replaceAll('https://', ''));
+      }
+
       await utils.openLink(urls['mobile_short_url'], urlYs: 'pinduoduo://');
     }
   }

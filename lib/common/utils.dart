@@ -127,7 +127,7 @@ class Utils {
     return _url;
   }
 
-  // 判断是否为微信浏览器
+  /// 判断是否为微信浏览器
   Future<bool> get weChatBro => DdTaokeSdkWeb().isWeChatBrowser();
 }
 
