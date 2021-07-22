@@ -216,7 +216,7 @@ class _PublicDetailViewState extends State<PublicDetailView> implements PublicDe
                           FSuper(
                               text: '¥ ',
                               style: TextStyle(color: Colors.red, fontSize: 16),
-                              spans: [TextSpan(text: '${info!.price}', style: TextStyle(color: Colors.red, fontSize: 20, fontWeight: FontWeight.bold))],
+                              spans: [TextSpan(text: '${info!.price}', style: TextStyle(color: Colors.red, fontSize: 25, fontWeight: FontWeight.bold))],
                               lightOrientation: FLightOrientation.RightTop)
                         ],
                       ),
@@ -243,12 +243,13 @@ class _PublicDetailViewState extends State<PublicDetailView> implements PublicDe
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  if (info!.coupon.isNotEmpty)
+                    Text(
+                      '${info!.coupon.replaceAll('.00', '')}元隐藏券',
+                      style: TextStyle(color: Colors.white),
+                    ),
                   Text(
-                    '${info!.coupon.replaceAll('.00', '')}元隐藏券',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  Text(
-                    '去领券 >',
+                    info!.coupon.isNotEmpty ? '去领券 >' : '去购买 >',
                     style: TextStyle(color: Colors.white),
                   )
                 ],
@@ -291,8 +292,8 @@ class _PublicDetailViewState extends State<PublicDetailView> implements PublicDe
 
   @override
   Future<void> onGetCoupon() async {
-    if(info!=null){
-      switch(info!.type){
+    if (info != null) {
+      switch (info!.type) {
         case '拼多多':
           await pxxGet();
           break;
@@ -302,25 +303,21 @@ class _PublicDetailViewState extends State<PublicDetailView> implements PublicDe
     }
   }
 
-
   /// 平夕夕领券
   Future<void> pxxGet({bool onShare = false}) async {
-    final urls =  await tkApi.pddCovert(widget.goodsId); // 获取转换成功的链接对象
-    if(urls!=null){
+    final urls = await tkApi.pddCovert(widget.goodsId); // 获取转换成功的链接对象
+    if (urls != null) {
       print('转链成功:${jsonEncode(urls)}');
-      if(onShare){
-        utils.copy(urls['mobile_short_url'],message: '链接已复制');
+      if (onShare) {
+        utils.copy(urls['mobile_short_url'], message: '链接已复制');
         return;
       }
-      await utils.openLink(urls['mobile_short_url'],urlYs: 'pinduoduo://');
+      await utils.openLink(urls['mobile_url'], urlYs: 'pinduoduo://');
     }
-
   }
 
   @override
-  Future<void> onShare() async {
-
-  }
+  Future<void> onShare() async {}
 
   @override
   String getTypeLabel() {
