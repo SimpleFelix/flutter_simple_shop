@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:dd_taoke_sdk/dd_taoke_sdk_web.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -98,7 +99,16 @@ class Utils {
       // 判断当前手机是否安装某app. 能否正常跳转
       await launch(_url);
     } else {
-      await launch(url);
+      if(await weChatBro){
+        // 如果是微信浏览器
+        if(await canLaunch(url)){
+          await launch(url);
+        }else{
+          await launch(url.replaceAll('https://', ''));
+        }
+      }else{
+        await launch(url);
+      }
     }
   }
 
@@ -116,6 +126,9 @@ class Utils {
     }
     return _url;
   }
+
+  // 判断是否为微信浏览器
+  Future<bool> get weChatBro => DdTaokeSdkWeb().isWeChatBrowser();
 }
 
 Utils get utils => GetIt.instance.get<Utils>();

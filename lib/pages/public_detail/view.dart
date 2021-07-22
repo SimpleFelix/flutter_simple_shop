@@ -312,7 +312,7 @@ class _PublicDetailViewState extends State<PublicDetailView> implements PublicDe
         utils.copy(urls['mobile_short_url'], message: '链接已复制');
         return;
       }
-      await utils.openLink(urls['mobile_url'], urlYs: 'pinduoduo://');
+      await utils.openLink(urls['mobile_short_url'], urlYs: 'pinduoduo://');
     }
   }
 
