@@ -6,6 +6,7 @@ import 'package:demo1/widgets/simple_price.dart';
 import 'package:flutter/material.dart';
 import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:loading_more_list/loading_more_list.dart';
+import 'package:show_up_animation/show_up_animation.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
 
 import '../../../modals/pdd_product.dart';
@@ -62,8 +63,12 @@ class _PddRecommendListViewState extends State<PddRecommendListView> {
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                         ),
+                        SizedBox(height: 6,),
                         SimplePrice(price: '${MoneyUtil.changeF2Y(item.minGroupPrice)}'),
-                        CouponDiscountShow(value: '${MoneyUtil.changeF2Y(item.couponDiscount)}'.replaceAll('.00', ''))
+                        SizedBox(height: 12,),
+                        ShowUpAnimation(
+                            animationDuration: Duration(milliseconds: 300),
+                            child: CouponDiscountShow(value: '${MoneyUtil.changeF2Y(item.couponDiscount)}'.replaceAll('.00', '')))
                       ],
                     ),
                   )

@@ -67,8 +67,8 @@ class _SearchPageState extends State<SearchPage> {
             Row(
               children: [
                 SizedBox(
-                  width: 100,
-                  height: 100,
+                  width: 140,
+                  height: 140,
                   child: SimpleImage(
                     url: '${item.goodsImageUrl}',
                   ),
@@ -76,7 +76,7 @@ class _SearchPageState extends State<SearchPage> {
                 Expanded(
                     child: Container(
                   margin: EdgeInsets.symmetric(horizontal: 12),
-                  constraints: BoxConstraints(minHeight: 100),
+                  constraints: BoxConstraints(minHeight: 140),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -89,7 +89,7 @@ class _SearchPageState extends State<SearchPage> {
                             style: TextStyle(color: Colors.black45, fontSize: 12, fontWeight: FontWeight.bold),
                           ),
                           SizedBox(
-                            height: 2,
+                            height: 12,
                           ),
                           CouponDiscountShow(value: '${item.couponDiscount}')
                         ],
@@ -121,7 +121,7 @@ class _SearchPageState extends State<SearchPage> {
                               SimplePrice(
                                 price: '${item.minGroupPrice}',
                                 hideText: '到手价',
-                                fontSize: 14,
+                                fontSize: 20,
                               ),
                               Expanded(
                                   child: Container(
@@ -130,7 +130,7 @@ class _SearchPageState extends State<SearchPage> {
                                   '${item.mallName}',
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(fontSize: 10, color: Colors.grey),
+                                  style: TextStyle(fontSize: 12, color: Colors.grey),
                                 ),
                               ))
                             ],
