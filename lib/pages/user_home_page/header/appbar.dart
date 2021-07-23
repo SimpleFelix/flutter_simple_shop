@@ -1,4 +1,3 @@
-import 'package:dd_taoke_sdk/dd_taoke_sdk_web.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -44,10 +43,12 @@ class UserHomeAppBar extends StatelessWidget implements PreferredSizeWidget {
               Icons.settings,
               color: Colors.black,
             )),
-        IconButton(onPressed: () async {
-          final result = await DdTaokeSdkWeb().isWeChatBrowser();
-          utils.showMessage(result ? '是微信浏览器':'不是微信浏览器');
-        }, icon: Icon(Icons.cast_connected_sharp)),
+        IconButton(
+            onPressed: () async {
+              final result = await utils.weChatBro;
+              utils.showMessage(result ? '是微信浏览器' : '不是微信浏览器');
+            },
+            icon: Icon(Icons.cast_connected_sharp)),
         utils.widgetUtils.marginRight()
       ],
     );

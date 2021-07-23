@@ -9,7 +9,7 @@ class CategoryDelegate extends SliverPersistentHeaderDelegate {
   @override
   Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Container(
-        height: 75,
+        height: kToolbarHeight,
         color: Colors.white,
         alignment: Alignment.center,
         child: CategoryComponent(
@@ -20,13 +20,11 @@ class CategoryDelegate extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  // TODO: implement maxExtent
-  double get maxExtent => 75;
+  double get maxExtent => kToolbarHeight;
 
   @override
-  // TODO: implement minExtent
-  double get minExtent => 75;
+  double get minExtent => kToolbarHeight;
 
   @override
-  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) => true;
+  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) => false;
 }

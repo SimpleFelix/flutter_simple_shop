@@ -33,7 +33,7 @@ class _CategoryItemDefaultLayoutState extends State<CategoryItemDefaultLayout> {
   }
 
   void _notificationWidgetInfoTo() {
-    final RenderBox box = context.findRenderObject() as RenderBox;
+    final box = context.findRenderObject() as RenderBox;
     widget.onRendeEnd(widget.index, box.localToGlobal(Offset.zero), context.size);
   }
 
@@ -46,7 +46,7 @@ class _CategoryItemDefaultLayoutState extends State<CategoryItemDefaultLayout> {
       child: widget.index == widget.current
           ? Text(
               widget.name!,
-              style: widget.currentStyle ?? TextStyle(fontSize: 12, color: Theme.of(context).primaryColor),
+              style: widget.currentStyle ?? TextStyle(fontSize: 12, color: Colors.pinkAccent),
             )
           : Text(
               widget.name!,

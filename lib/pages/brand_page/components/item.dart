@@ -1,7 +1,8 @@
 import 'package:dd_taoke_sdk/model/brand_list_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'package:black_hole_flutter/black_hole_flutter.dart';
+import 'package:swipeable_page_route/swipeable_page_route.dart';
 import '../../../util/image_util.dart';
 import '../../../util/number_cover.dart';
 import '../../index_page/store/goods_item_layout.dart';
@@ -16,8 +17,9 @@ class BrandItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () async{
-       await Get.to(BrandDetailPage(brandId: storeInfo.brandId.toString()));
+      onTap: () async {
+        await context.navigator.push(SwipeablePageRoute(
+            builder: (_) => BrandDetailPage(brandId: storeInfo.brandId.toString())));
       },
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
@@ -63,7 +65,8 @@ class BrandItemCard extends StatelessWidget {
                       children: [
                         Text(
                           '${storeInfo.brandName}',
-                          style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
                         ),
                         Text(
                           '已售${Numeral(storeInfo.sales!)}件 >',

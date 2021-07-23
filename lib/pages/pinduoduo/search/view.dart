@@ -46,7 +46,9 @@ class _SearchPageState extends State<SearchPage> {
                     itemBuilder: (_, index) => renderItem(products[index]),
                     itemCount: products.length,
                   )
-                :loading ? LoadingWidget() : PddRecommendListView(),
+                : loading
+                    ? LoadingWidget()
+                    : PddRecommendListView(),
           ));
         })
       ]),
@@ -98,21 +100,15 @@ class _SearchPageState extends State<SearchPage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           /// 销量
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Container(
-                                alignment: Alignment.centerRight,
-                                padding: EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                                decoration: BoxDecoration(color: Colors.red.shade50, borderRadius: BorderRadius.circular(2)),
-                                child: Text(
-                                  '全网销量${item.salesTip}',
-                                  style: TextStyle(color: Colors.red, fontSize: 10),
-                                ),
-                              ),
-                            ],
+                          Container(
+                            alignment: Alignment.centerRight,
+                            padding: EdgeInsets.symmetric(horizontal: 6),
+                            decoration: BoxDecoration(color: Colors.red.shade50, borderRadius: BorderRadius.circular(2)),
+                            child: Text(
+                              '全网销量${item.salesTip}',
+                              style: TextStyle(color: Colors.red, fontSize: 12),
+                            ),
                           ),
-
                           SizedBox(
                             height: 4,
                           ),
@@ -128,8 +124,6 @@ class _SearchPageState extends State<SearchPage> {
                                 alignment: Alignment.centerRight,
                                 child: Text(
                                   '${item.mallName}',
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
                                   style: TextStyle(fontSize: 12, color: Colors.grey),
                                 ),
                               ))

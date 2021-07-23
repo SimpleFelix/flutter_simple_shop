@@ -1,15 +1,17 @@
-import 'package:after_layout/after_layout.dart';
+import 'package:dd_taoke_sdk/dd_taoke_sdk.dart';
+import 'package:dd_taoke_sdk/model/brand_list_model.dart';
 import 'package:dd_taoke_sdk/model/category.dart';
-import 'package:demo1/pages/brand_page/components/item.dart';
-import 'package:demo1/pages/brand_page/provider/brand_provider.dart';
-import 'package:demo1/pages/index_page/component/category_component.dart';
-import 'package:demo1/provider/index_provider.dart';
+import 'package:dd_taoke_sdk/params/brand_param.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:waterfall_flow/waterfall_flow.dart';
 
+import '../../common/widgets/loading_mixin.dart';
+import '../../provider/riverpod/category_riverpod.dart';
+import '../index_page/component/category_component.dart';
 import 'category_delegate.dart';
+import 'components/item.dart';
 
 /// 品牌列表页面
 class BrandListPage extends StatefulWidget {
@@ -17,27 +19,50 @@ class BrandListPage extends StatefulWidget {
   _BrandListPageState createState() => _BrandListPageState();
 }
 
-class _BrandListPageState extends State<BrandListPage> with AfterLayoutMixin<BrandListPage> {
-  CategoryController _categoryController = CategoryController();
-  EasyRefreshController _easyRefreshController = EasyRefreshController();
-  BrandProvider? _brandProvider;
+class _BrandListPageState extends State<BrandListPage> with LoadingMixin {
+  final CategoryController _categoryController = CategoryController();
+  final EasyRefreshController _easyRefreshController = EasyRefreshController();
+  int page = 1;
+  int size = 20;
+  int cid = 0;
+  List<ListElement> lists = [];
+
+  @override
+  void initState() {
+    super.initState();
+    cid = context.read(categoryRiverpod).categorys[0].cid!;
+    Future.microtask(() async {
+      setLoading(true);
+      final result = await DdTaokeSdk.instance
+          .getBrandList(param: BrandListParam(cid: '$cid', pageId: '$page', pageSize: '$size'));
+      if (result != null) {
+        lists.addAll(result.lists ?? []);
+      }
+      setLoading(false);
+    });
+  }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    if (this._brandProvider == null) this._brandProvider = Provider.of<BrandProvider>(context);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("品牌特卖")),
+      appBar: AppBar(
+        title: Text('品牌特卖'),
+        elevation: 0,
+      ),
       body: EasyRefresh.custom(
         controller: _easyRefreshController,
         header: MaterialHeader(),
         footer: MaterialFooter(),
         slivers: [
-          SliverPersistentHeader(delegate: CategoryDelegate(_categoryOnSelect, _categoryController),floating: true,),
+          SliverPersistentHeader(
+            delegate: CategoryDelegate(_categoryOnSelect, _categoryController),
+            floating: true,
+          ),
           SliverWaterfallFlow.count(crossAxisCount: 1, children: _items())
         ],
         onRefresh: _refresh,
@@ -46,7 +71,7 @@ class _BrandListPageState extends State<BrandListPage> with AfterLayoutMixin<Bra
     );
   }
 
-  List<Widget> _items() => _brandProvider!.lists
+  List<Widget> _items() => lists
       .map((e) => BrandItemCard(
             storeInfo: e,
           ))
@@ -54,27 +79,18 @@ class _BrandListPageState extends State<BrandListPage> with AfterLayoutMixin<Bra
 
   /// 刷新页面
   Future<void> _refresh() async {
-    await _brandProvider!.refresh();
     _easyRefreshController.finishRefresh();
   }
 
   /// 加载下一页
   Future<void> _load() async {
-    await _brandProvider!.load();
     _easyRefreshController.finishLoad();
   }
 
   /// 菜单被选择
-  void _categoryOnSelect(int index, Category? item) async {
+  void _categoryOnSelect(int index, Category item) async {
     _categoryController.toIndex(index);
-    _brandProvider!.setCid("${item!.cid}");
+    cid = item.cid!;
     _easyRefreshController.callRefresh();
-  }
-
-  @override
-  void afterFirstLayout(BuildContext context) async {
-    int? cid = context.read<IndexProvider>().categorys[0].cid; // 默认获取下标0的分类
-    _brandProvider!.setCid("$cid");
-    await _refresh();
   }
 }

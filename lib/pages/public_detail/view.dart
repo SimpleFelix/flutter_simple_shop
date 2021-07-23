@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:demo1/common/utils.dart';
 import 'package:demo1/util/image_util.dart';
-import 'package:demo1/widgets/component/custom_loading.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:fcontrol_nullsafety/fdefine.dart';
 import 'package:flutter/material.dart';

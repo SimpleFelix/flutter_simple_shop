@@ -1,6 +1,7 @@
 import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:demo1/common/utils.dart';
 import 'package:demo1/config/app_config.dart';
+import 'package:demo1/pages/brand_page/index.dart';
 import 'package:demo1/pages/index_page/new/index_riverpod.dart';
 import 'package:demo1/pages/pinduoduo/search/view.dart';
 import 'package:demo1/service/api_service.dart';
@@ -24,6 +25,7 @@ const zheImage = 'assets/svg/zhe.svg';
 const banjiaImage = 'assets/svg/banjia.svg';
 const mtwmImage = 'assets/svg/mt.svg';
 const chf = 'assets/svg/chf.svg';
+const pp = 'assets/svg/pp.svg';
 
 final gridMenuModles = [
   /// 领券
@@ -96,6 +98,15 @@ final gridMenuModles = [
           image: chf,
           onTap: () {
             utils.openLink(appConfig['huafeiUrl'].toString());
+          },
+          isAssets: true)),
+
+  GridMenuItem(
+      item: GridMenuModel(
+          title: '精选品牌',
+          image: pp,
+          onTap: () {
+            Get.context!.navigator.push(SwipeablePageRoute(builder: (_)=>BrandListPage(),canOnlySwipeFromEdge: true));
           },
           isAssets: true)),
 ];

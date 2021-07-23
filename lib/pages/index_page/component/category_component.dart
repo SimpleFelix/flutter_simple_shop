@@ -1,9 +1,9 @@
 import 'package:dd_taoke_sdk/model/category.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../constant/style.dart';
-import '../../../provider/index_provider.dart';
+import '../../../provider/riverpod/category_riverpod.dart';
 import 'category_item_layout.dart';
 import 'category_notification_stream.dart';
 
@@ -64,7 +64,7 @@ class _CategoryComponentState extends State<CategoryComponent> {
 
   @override
   Widget build(BuildContext context) {
-    final categorys = context.watch<IndexProvider>().categorys;
+    final categorys = context.read(categoryRiverpod).categorys;
     var extendItemsLength = widget.extendItems == null ? 0 : widget.extendItems!.length;
     return Stack(
       children: [
@@ -118,7 +118,6 @@ class _CategoryComponentState extends State<CategoryComponent> {
     final offset = _valueNotifier.value!.position![_current];
     final size = _valueNotifier.value!.size![_current];
     if(offset!=null&&size!=null) {
-      print('组件大小:$size, 组件位置:$offset');
       final widgetWidth = size.width-12;
       return AnimatedPositioned(
           bottom: 0,
@@ -180,7 +179,10 @@ class _CategoryComponentState extends State<CategoryComponent> {
         break;
       }
     }
-    widget.onSelect?.call(_index, _item);
+    if(_item!=null){
+      widget.onSelect?.call(_index, _item);
+    }
+
   }
 
   /// 判断下标是否需要插入自定义布局
@@ -214,7 +216,7 @@ class InsetCustomItem {
 /// 菜单项被选择
 /// [index] 选择的下标
 /// [item] 选择的菜单信息
-typedef SelectWithItem = void Function(int index, Category? item);
+typedef SelectWithItem = void Function(int index, Category item);
 
 class CategoryController {
   late _CategoryComponentState _state;
