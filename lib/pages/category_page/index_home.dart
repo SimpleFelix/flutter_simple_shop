@@ -21,6 +21,7 @@ class _CategoryIndexPageState extends State<CategoryIndexPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         title: Text(
           '分类',
           style: TextStyle(color: Colors.black),
