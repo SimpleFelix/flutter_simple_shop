@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-import 'package:demo1/common/utils.dart';
-import 'package:demo1/util/image_util.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:fcontrol_nullsafety/fdefine.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +9,9 @@ import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
 import 'package:get/get.dart';
 
 import '../../common/no_shadow_croll_ehavior.dart';
+import '../../common/utils.dart';
 import '../../service/api_service.dart';
+import '../../util/image_util.dart';
 import '../../widgets/extended_image.dart';
 import '../../widgets/loading_widget.dart';
 import 'abs.dart';
@@ -312,7 +312,7 @@ class _PublicDetailViewState extends State<PublicDetailView> implements PublicDe
         return;
       }
 
-      if(await utils.weChatBro){
+      if(utils.weChatBro){
         await utils.openLink(urls['mobile_short_url'].toString().replaceAll('https://', ''));
       }
 

@@ -1,6 +1,7 @@
 import 'package:dd_taoke_sdk/model/product.dart';
 import 'package:demo1/util/image_util.dart';
 import 'package:demo1/pages/index_page/store/price_layout.dart';
+import 'package:demo1/util/navigator_util.dart';
 import 'package:flutter/material.dart';
 
 /// 商品卡片布局
@@ -11,27 +12,32 @@ class StoreGoodsItemLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.grey[100]!.withOpacity(.8),
-        borderRadius: BorderRadius.all(Radius.circular(10)),
-      ),
-      child: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Stack(
-              children: [
-                Image.network(MImageUtils.magesProcessor(storeGoods.mainPic!)),
-                Positioned(
-                  bottom: 0,
-                  right: 0,
-                  child: _buildDiscountLayout(),
-                )
-              ],
-            ),
-            PriceLayout(original: '${storeGoods.actualPrice}', discounts: '${storeGoods.originalPrice}')
-          ],
+    return GestureDetector(
+      onTap: (){
+        NavigatorUtil.gotoGoodsDetailPage(context, storeGoods.id.toString());
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.grey[100]!.withOpacity(.8),
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+        ),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Stack(
+                children: [
+                  Image.network(MImageUtils.magesProcessor(storeGoods.mainPic!)),
+                  Positioned(
+                    bottom: 0,
+                    right: 0,
+                    child: _buildDiscountLayout(),
+                  )
+                ],
+              ),
+              PriceLayout(original: '${storeGoods.actualPrice}'.replaceAll('.0', ''), discounts: '${storeGoods.originalPrice}'.replaceAll('.0', ''))
+            ],
+          ),
         ),
       ),
     );

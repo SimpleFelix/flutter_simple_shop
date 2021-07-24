@@ -288,6 +288,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.0.2"
+  dd_js_util:
+    dependency: "direct main"
+    description:
+      name: dd_js_util
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.0.1"
   dd_taoke_sdk:
     dependency: "direct main"
     description:

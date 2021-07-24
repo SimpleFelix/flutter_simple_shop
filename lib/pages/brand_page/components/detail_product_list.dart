@@ -1,4 +1,6 @@
 import 'package:dd_taoke_sdk/model/product.dart';
+import 'package:demo1/util/navigator_util.dart';
+import 'package:demo1/widgets/component/coupon_discount.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 
@@ -14,43 +16,45 @@ class DetailProductList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverList(
-        delegate:
-            SliverChildBuilderDelegate(_builderList, childCount: list.length));
+    return SliverList(delegate: SliverChildBuilderDelegate(_builderList, childCount: list.length));
   }
 
   Widget _builderList(BuildContext context, int index) {
     var brandDetailGoodsList = list[index];
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-      decoration: BoxDecoration(color: Colors.white),
-      child: Row(
-        children: [
-          _buildImage(brandDetailGoodsList),
-          utils.widgetUtils.marginRight(),
-          Expanded(child: _buildData(brandDetailGoodsList))
-        ],
+    return GestureDetector(
+      onTap: () {
+        NavigatorUtil.gotoGoodsDetailPage(context, brandDetailGoodsList.id.toString());
+      },
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+        decoration: BoxDecoration(color: Colors.white),
+        child: Row(
+          children: [
+            _buildImage(brandDetailGoodsList),
+            utils.widgetUtils.marginRight(),
+            Expanded(child: _buildData(brandDetailGoodsList))
+          ],
+        ),
       ),
     );
   }
 
   Widget _buildData(Product item) {
     return Container(
-      constraints: BoxConstraints(
-        minHeight: 120
-      ),
+      constraints: BoxConstraints(minHeight: 120),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             item.title!,
-            style: TextStyle(
-                color: Colors.black,
-                fontSize: 15,
-                fontWeight: FontWeight.bold),
+            style: TextStyle(color: Colors.black, fontSize: 15, fontWeight: FontWeight.bold),
           ),
-          SimplePrice(price: item.actualPrice.toString(),orignPrice: item.originalPrice.toString(),),
+          CouponDiscountShow(value: item.couponPrice.toString().replaceAll('.0', '')),
+          SimplePrice(
+            price: item.actualPrice.toString(),
+            orignPrice: item.originalPrice.toString(),
+          ),
         ],
       ),
     );

@@ -10,10 +10,9 @@ import '../../../widgets/tag_widget.dart';
 /// 品牌信息卡片
 class BrandDetailView extends StatelessWidget {
   final BrandDetail brandDetailModel;
-  final Color bgColor;
 
   const BrandDetailView(
-      {Key? key, required this.brandDetailModel, required this.bgColor})
+      {Key? key, required this.brandDetailModel})
       : super(key: key);
 
   @override

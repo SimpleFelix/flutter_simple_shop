@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:demo1/controller/app_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -127,7 +128,7 @@ class Utils {
   }
 
   /// 判断是否为微信浏览器
-  bool get weChatBro => false;
+  bool get weChatBro => AppController.find.isWeChatBrowser;
 }
 
 Utils get utils => GetIt.instance.get<Utils>();

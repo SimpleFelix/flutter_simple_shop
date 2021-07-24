@@ -31,15 +31,19 @@ class _BrandListPageState extends State<BrandListPage> with LoadingMixin {
   void initState() {
     super.initState();
     cid = context.read(categoryRiverpod).categorys[0].cid!;
-    Future.microtask(() async {
+    Future.microtask(init);
+  }
+
+  Future<void> init({bool onLoad = false}) async {
+    if(!onLoad){
       setLoading(true);
-      final result = await DdTaokeSdk.instance
-          .getBrandList(param: BrandListParam(cid: '$cid', pageId: '$page', pageSize: '$size'));
-      if (result != null) {
-        lists.addAll(result.lists ?? []);
-      }
-      setLoading(false);
-    });
+    }
+    final result = await DdTaokeSdk.instance
+        .getBrandList(param: BrandListParam(cid: '$cid', pageId: '$page', pageSize: '$size'));
+    if (result != null) {
+      lists.addAll(result.lists ?? []);
+    }
+    setLoading(false);
   }
 
   @override
@@ -79,11 +83,15 @@ class _BrandListPageState extends State<BrandListPage> with LoadingMixin {
 
   /// 刷新页面
   Future<void> _refresh() async {
+    page  = 1;
+    await init();
     _easyRefreshController.finishRefresh();
   }
 
   /// 加载下一页
   Future<void> _load() async {
+    page++;
+    await init(onLoad: true);
     _easyRefreshController.finishLoad();
   }
 
@@ -91,6 +99,9 @@ class _BrandListPageState extends State<BrandListPage> with LoadingMixin {
   void _categoryOnSelect(int index, Category item) async {
     _categoryController.toIndex(index);
     cid = item.cid!;
+    page = 1;
+    lists.clear();
+    setState(() {});
     _easyRefreshController.callRefresh();
   }
 }

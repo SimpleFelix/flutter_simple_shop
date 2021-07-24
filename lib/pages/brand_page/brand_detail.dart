@@ -3,6 +3,8 @@ import 'package:dd_taoke_sdk/dd_taoke_sdk.dart';
 import 'package:dd_taoke_sdk/model/brand_detail_result.dart';
 import 'package:dd_taoke_sdk/model/product.dart';
 import 'package:dd_taoke_sdk/params/brand_product_param.dart';
+import 'package:demo1/common/widgets/loading_mixin.dart';
+import 'package:demo1/widgets/no_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:provider/provider.dart';
@@ -22,28 +24,21 @@ class BrandDetailPage extends StatefulWidget {
   _BrandDetailPageState createState() => _BrandDetailPageState();
 }
 
-class _BrandDetailPageState extends State<BrandDetailPage> with AfterLayoutMixin<BrandDetailPage> {
-  BrandProvider? _brandProvider;
+class _BrandDetailPageState extends State<BrandDetailPage> with AfterLayoutMixin<BrandDetailPage>, LoadingMixin {
   final EasyRefreshController _easyRefreshController = EasyRefreshController();
   List<Product> products = <Product>[];
   BrandDetail? brandDetailModel;
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    _brandProvider ??= Provider.of<BrandProvider>(context);
-  }
+  int page = 1;
 
   Widget _buildBody() {
     return EasyRefresh.custom(
       slivers: [
         SliverToBoxAdapter(
           child: AnimatedSwitcher(
-            duration: Duration(milliseconds: 300),
+            duration: Duration(milliseconds: 500),
             child: brandDetailModel == null
-                ? LoadingWidget()
-                : BrandDetailView(
-                    brandDetailModel: brandDetailModel!, bgColor: _brandProvider!.detailBgColor),
+                ? Container()
+                : BrandDetailView(brandDetailModel: brandDetailModel!),
           ),
         ),
         DetailProductList(
@@ -58,8 +53,14 @@ class _BrandDetailPageState extends State<BrandDetailPage> with AfterLayoutMixin
   // 下一页列表
   Future<void> load() async {
     _easyRefreshController.callLoad();
-    var hasNextPage = await _brandProvider!.detailNextPage();
-    _easyRefreshController.finishLoad(noMore: !hasNextPage);
+    page++;
+    final result = await DdTaokeSdk.instance.getBrandDetail(param: BrandProductParam(brandId: widget.brandId, pageId: '$page', pageSize: '20'));
+    if (result != null) {
+      products.addAll(result.list ?? []);
+      _easyRefreshController.finishLoad(noMore: (result.list ?? []).length > 20);
+    }
+    _setState();
+    _easyRefreshController.finishLoad(success: true, noMore: true);
   }
 
   @override
@@ -69,19 +70,22 @@ class _BrandDetailPageState extends State<BrandDetailPage> with AfterLayoutMixin
         title: Text('品牌详情'),
         elevation: 0,
       ),
-      body: _buildBody(),
+      body: AnimatedSwitcher(
+        duration: Duration(milliseconds: 500),
+        child: loadingState ? LoadingWidget() : _buildBody(),
+      ),
     );
   }
 
   @override
   void afterFirstLayout(BuildContext context) async {
-    final result = await DdTaokeSdk.instance.getBrandDetail(
-        param: BrandProductParam(brandId: widget.brandId, pageId: '1', pageSize: '20'));
+    setLoading(true);
+    final result = await DdTaokeSdk.instance.getBrandDetail(param: BrandProductParam(brandId: widget.brandId, pageId: '1', pageSize: '20'));
     if (result != null) {
       products.addAll(result.list ?? []);
     }
     brandDetailModel = result;
-    _setState();
+    setLoading(false);
   }
 
   void _setState() {
@@ -92,7 +96,7 @@ class _BrandDetailPageState extends State<BrandDetailPage> with AfterLayoutMixin
 
   @override
   void dispose() {
-    _brandProvider!.emptyDetail();
     super.dispose();
+    _easyRefreshController.dispose();
   }
 }

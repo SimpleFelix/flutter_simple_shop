@@ -51,6 +51,7 @@ dependencies:
   encrypt: ^5.0.0
   shelf: ^1.2.0
   dd_taoke_sdk: ^1.3.9
+  dd_js_util: ^0.0.1
   fcontrol_nullsafety: ^2.0.0
   flutter_hooks: ^0.17.0
   hooks_riverpod: ^0.14.0+4

@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
+import 'package:dd_js_util/dd_js_util.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
@@ -18,10 +19,12 @@ class AppController extends GetxController {
   static AppController get find => Get.find<AppController>();
 
   Rxn bgBytes = Rxn<Uint8List>();
+  bool isWeChatBrowser = false;
 
   @override
   void onInit() {
     adStart();
+    getIsWeChatBrowser();
     super.onInit();
   }
 
@@ -42,6 +45,15 @@ class AppController extends GetxController {
     final list = bytes.buffer.asUint8List();
     bgBytes.value = list;
     update();
+  }
+
+
+  /// 判断是否为微信浏览器
+  Future<void> getIsWeChatBrowser() async {
+    if(GetPlatform.isWeb){
+      final result = await DdJsUtil.isWeChatBrowser;
+      isWeChatBrowser = result;
+    }
   }
 
   /// 检测新版本

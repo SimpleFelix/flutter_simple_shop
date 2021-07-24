@@ -12,7 +12,6 @@ import '../pages/user_home_page/login/login_page.dart';
 import '../pages/user_home_page/order/my_order.dart';
 import '../pages/user_home_page/order/order_add.dart';
 import '../pages/user_home_page/white/index.dart';
-import 'fluro_convert_util.dart';
 
 // 路由工具类
 class NavigatorUtil {
@@ -23,10 +22,8 @@ class NavigatorUtil {
 
   // 跳转商品详情页方法
   static void gotoGoodsDetailPage(BuildContext context, String goodsId,{bool newViewPage=false}) {
-    if(newViewPage) {
       context.navigator.push(
           SwipeablePageRoute(builder: (_) => HaoDanKuDetailItem(goodsId: goodsId,)));
-    }
   }
 
 //  跳转到错误页面
