@@ -1,14 +1,13 @@
 import 'package:dd_taoke_sdk/dd_taoke_sdk.dart';
-import 'package:dd_taoke_sdk/model/activity-link_result.dart';
+import 'package:dd_taoke_sdk/model/activity_link_result.dart';
 import 'package:dd_taoke_sdk/params/activity_link_param.dart';
-import 'package:demo1/widgets/simple_appbar.dart';
 import 'package:fbutton_nullsafety/fbutton_nullsafety.dart';
 import 'package:fcontrol_nullsafety/fdefine.dart';
 import 'package:flutter/material.dart';
-import 'package:swipeable_page_route/swipeable_page_route.dart';
 
 import '../../../../common/utils.dart';
 import '../../../../common/widgets/loading_mixin.dart';
+import '../../../../widgets/simple_appbar.dart';
 
 ///
 /// @Author 梁典典
