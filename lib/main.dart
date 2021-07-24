@@ -7,6 +7,7 @@ import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:provider/provider.dart';
+import 'package:window_size/window_size.dart';
 
 import './provider/providers.dart';
 import 'ad.dart';
@@ -47,13 +48,12 @@ void main() async {
 
   /// getx 控制器
 
-  // / 构建web程序需要注释这个,会报错
-  // if (!GetPlatform.isWeb && (GetPlatform.isWindows || GetPlatform.isLinux || GetPlatform.isMacOS)) {
-  //   setWindowTitle('典典的小卖部 桌面客户端  v2.0.0');
-  //   final windowSize = Size(500, 1041);
-  //   setWindowMaxSize(windowSize);
-  //   setWindowMinSize(windowSize);
-  // }
+  if (!GetPlatform.isWeb && (GetPlatform.isWindows || GetPlatform.isLinux || GetPlatform.isMacOS)) {
+    setWindowTitle('典典的小卖部 桌面客户端  v2.0.0');
+    final windowSize = Size(500, 1041);
+    setWindowMaxSize(windowSize);
+    setWindowMinSize(windowSize);
+  }
 
   /// 启动app
   runApp(ProviderScope(child: MyApp()));

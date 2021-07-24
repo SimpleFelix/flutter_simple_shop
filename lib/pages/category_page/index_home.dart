@@ -33,9 +33,9 @@ class _CategoryIndexPageState extends State<CategoryIndexPage> {
               margin: EdgeInsets.only(bottom: 12, left: 12, right: 12),
               child: Center(
                   child: CupertinoSearchTextField(
-                placeholder: '关键字搜索',
-                placeholderStyle: TextStyle(fontSize: 13, color: Colors.grey),
-              ))),
+                    placeholder: '关键字搜索',
+                    placeholderStyle: TextStyle(fontSize: 13, color: Colors.grey),
+                  ))),
         ),
       ),
       body: EditePageHandle(
@@ -50,7 +50,10 @@ class _CategoryIndexPageState extends State<CategoryIndexPage> {
             }
             return Container(
                 margin: EdgeInsets.only(top: 12),
-                width: MediaQuery.of(context).size.width,
+                width: MediaQuery
+                    .of(context)
+                    .size
+                    .width,
                 height: Get.height - kToolbarHeight - Get.mediaQuery.padding.top,
                 child: Row(
                   children: <Widget>[

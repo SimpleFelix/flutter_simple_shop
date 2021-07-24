@@ -104,7 +104,16 @@ class Utils {
         if (await canLaunch(url)) {
           await launch(url);
         } else {
-          await launch(url.replaceAll('https://', ''));
+
+          final _newUrl = url.replaceAll('https://', '');
+          showMessage('打开url失败,即将尝试删除https://后打开 $_newUrl');
+          if(await canLaunch(_newUrl)){
+            await launch(_newUrl);
+          }else{
+            showMessage('打开url失败');
+            copy(url,message: '打开URL失败,链接已复制到剪贴板,请在浏览器访问');
+          }
+
         }
       } else {
         await launch(url);

@@ -62,3 +62,8 @@ v2.0新增(
 # 请喝咖啡
 
 ![1603946039040.png](https://static.saintic.com/picbed/huang/2020/10/29/1603946039040.png)
+
+
+```dart
+flutter build web --dart-define=FLUTTER_WEB_CANVASKIT_URL=https://unpkg.zhimg.com/canvaskit-wasm@0.24.0/bin/
+```
