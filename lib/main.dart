@@ -56,7 +56,8 @@ void main() async {
   }
 
   /// 启动app
-  runApp(ProviderScope(child: MyApp()));
+  runApp(ProviderScope(
+      child: MyApp()));
 }
 
 class MyApp extends StatefulWidget {
@@ -72,12 +73,7 @@ class _MyAppState extends State<MyApp> {
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: '典典小卖部',
-        theme: ThemeData(
-          primaryColor: Colors.white,
-          bottomNavigationBarTheme: BottomNavigationBarThemeData(
-            selectedItemColor: Colors.pink
-          )
-        ),
+        theme: ThemeData(primaryColor: Colors.white, bottomNavigationBarTheme: BottomNavigationBarThemeData(selectedItemColor: Colors.pink)),
         onInit: () {
           Get.put(AppController());
         },

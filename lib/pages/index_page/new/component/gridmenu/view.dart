@@ -4,6 +4,7 @@ import 'package:demo1/config/app_config.dart';
 import 'package:demo1/pages/brand_page/index.dart';
 import 'package:demo1/pages/index_page/new/index_riverpod.dart';
 import 'package:demo1/pages/jd/recommend/view.dart';
+import 'package:demo1/pages/mianji/mianji/view.dart';
 import 'package:demo1/pages/pinduoduo/search/view.dart';
 import 'package:demo1/service/api_service.dart';
 import 'package:flutter/cupertino.dart';
@@ -28,6 +29,7 @@ const mtwmImage = 'assets/svg/mt.svg';
 const chf = 'assets/svg/chf.svg'; // 充话费
 const pp = 'assets/svg/pp.svg'; // 品牌
 const jd = 'assets/svg/jd.svg'; // 京东
+const pyq = 'assets/svg/pyq.svg'; // 京东
 
 final gridMenuModles = [
   /// 领券
@@ -63,8 +65,8 @@ final gridMenuModles = [
               final url = (data['data'] ?? '').toString();
               print('美团推广链接:$url');
               if (url.isNotEmpty) {
-                utils.copy(url,message: '领券链接复制成功,打开浏览器粘贴即可');
-                await utils.widgetUtils.showSimpleDialog('领券链接复制成功,打开浏览器粘贴即可',title: '获取链接成功');
+                utils.copy(url, message: '领券链接复制成功,打开浏览器粘贴即可');
+                await utils.widgetUtils.showSimpleDialog('领券链接复制成功,打开浏览器粘贴即可', title: '获取链接成功');
               }
             });
             Get.context!.read(indexRiverpod).changeLoadingState(false);
@@ -131,6 +133,16 @@ final gridMenuModles = [
           image: jd,
           onTap: () {
             Get.context!.navigator.push(SwipeablePageRoute(builder: (_) => RecommendPage(), canOnlySwipeFromEdge: true));
+          },
+          isAssets: true)),
+
+  /// 面基专区
+  GridMenuItem(
+      item: GridMenuModel(
+          title: '典典面基',
+          image: pyq,
+          onTap: () {
+            Get.context!.navigator.push(SwipeablePageRoute(builder: (_) => MianjiPage(), canOnlySwipeFromEdge: true));
           },
           isAssets: true)),
 ];

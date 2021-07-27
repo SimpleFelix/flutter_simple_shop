@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'dart:math';
+
 import 'package:black_hole_flutter/black_hole_flutter.dart';
-import 'package:demo1/pages/user_home_page/white/components/code_input.dart';
-import 'package:demo1/pages/user_home_page/white/views/markdown_preview.dart';
+import 'package:demo1/util/input_utils.dart';
 import 'package:extended_text_field/extended_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -10,9 +10,11 @@ import 'package:get/get.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
 
 import '../../../common/utils.dart';
+import 'components/code_input.dart';
 import 'components/more_action_bottomsheet.dart';
 import 'components/search_goods.dart';
 import 'my_special_text_span_builder.dart';
+import 'views/markdown_preview.dart';
 
 // 发布页面
 class WhiteIndex extends StatefulWidget {
@@ -251,33 +253,7 @@ class _WhiteIndexState extends State<WhiteIndex> {
   }
 
   void insertText(String text) {
-    _focusNode.requestFocus();
-    var value = _textEditingController.value;
-    var start = value.selection.baseOffset;
-    var end = value.selection.extentOffset;
-    print('$start   $end');
-    var newText = '';
-    if (value.selection.isCollapsed) {
-      if (end > 0) {
-        newText += value.text.substring(0, end);
-      }
-      newText += text;
-      if (value.text.length > end && end >= 0) {
-        newText += value.text.substring(end, value.text.length);
-      }
-    } else {
-      print('else 进来了');
-      newText = value.text.replaceRange(start, end, text);
-      end = start;
-    }
-    print('新的文本$newText');
-    _textEditingController.value = value.copyWith(text: newText, selection: value.selection.copyWith(baseOffset: end + text.length, extentOffset: end + text.length));
-    _textEditingController.selection = TextSelection.fromPosition(TextPosition(offset: newText.length));
-    if (value.selection.isValid) {
-    } else {
-      // print('选择无效');
-      // _textEditingController.value = TextEditingValue(text: text, selection: TextSelection.fromPosition(TextPosition(offset: text.length)));
-    }
+    InputUtils.insertText(text: text, controller: _textEditingController);
   }
 
   // 删除一个商品卡片

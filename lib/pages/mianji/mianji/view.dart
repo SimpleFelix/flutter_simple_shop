@@ -1,0 +1,38 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_easyrefresh/easy_refresh.dart';
+import 'package:get/get.dart';
+
+import '../../../widgets/simple_appbar.dart';
+import '../../user_home_page/white/index.dart';
+import 'logic.dart';
+
+// 面基动态
+class MianjiPage extends StatefulWidget {
+  @override
+  _MianjiPageState createState() => _MianjiPageState();
+}
+
+class _MianjiPageState extends State<MianjiPage> {
+  final MianjiLogic logic = Get.put(MianjiLogic());
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: SimpleAppBar(title: '典典面基动态'),
+      body: EasyRefresh.custom(slivers: [
+        SliverToBoxAdapter(
+          child: MaterialButton(
+            onPressed: () => Get.to(() => WhiteIndex()),
+            child: Text('发布动态'),
+          ),
+        )
+      ]),
+    );
+  }
+
+  @override
+  void dispose() {
+    Get.delete<MianjiLogic>();
+    super.dispose();
+  }
+}
