@@ -41,18 +41,18 @@ class IndexTopicComponentCarousel extends StatelessWidget {
           onTap: (int index) async {
             final item = list[index];
             print(jsonEncode(item));
-            if(item.sourceType==1){
-              await context.navigator.push(SwipeablePageRoute(builder: (_)=> ActivityViewPage(id: '${item.topicId!}',title: item.topicName!,)));
+            if (item.sourceType == 1) {
+              await context.navigator.push(SwipeablePageRoute(builder: (_) => ActivityViewPage(id: '${item.topicId!}', title: item.topicName!)));
             }
-            if(item.sourceType==2){
+            if (item.sourceType == 2) {
               Get.context!.read(indexRiverpod).changeLoadingState(true);
-              final result =  await DdTaokeSdk.instance.getActivityLink(ActivityLinkParam(promotionSceneId: item.activityId!));
-              if(result!=null){
+              final result = await DdTaokeSdk.instance.getActivityLink(ActivityLinkParam(promotionSceneId: item.activityId!));
+              if (result != null) {
                 await utils.openTaobao(result.clickUrl);
               }
               Get.context!.read(indexRiverpod).changeLoadingState(false);
             }
-            if ((item.link??'').isNotEmpty) {
+            if ((item.link ?? '').isNotEmpty) {
               print(item.link);
               await utils.openLink(item.link!);
             }

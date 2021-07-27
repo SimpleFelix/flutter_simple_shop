@@ -55,7 +55,20 @@ final gridMenuModles = [
             });
             Get.context!.read(indexRiverpod).changeLoadingState(false);
           },
-          isAssets: true)),
+          isAssets: true,
+          onLongTap: () async {
+            // 长按复制领取链接
+            Get.context!.read(indexRiverpod).changeLoadingState(true);
+            await tkApi.meituan({'actId': '2', 'linkType': '1'}, mapHandle: (data) async {
+              final url = (data['data'] ?? '').toString();
+              print('美团推广链接:$url');
+              if (url.isNotEmpty) {
+                utils.copy(url,message: '领券链接复制成功,打开浏览器粘贴即可');
+                await utils.widgetUtils.showSimpleDialog('领券链接复制成功,打开浏览器粘贴即可',title: '获取链接成功');
+              }
+            });
+            Get.context!.read(indexRiverpod).changeLoadingState(false);
+          })),
 
   /// 排行榜
   GridMenuItem(
@@ -108,7 +121,7 @@ final gridMenuModles = [
           title: '精选品牌',
           image: pp,
           onTap: () {
-            Get.context!.navigator.push(SwipeablePageRoute(builder: (_)=>BrandListPage(),canOnlySwipeFromEdge: true));
+            Get.context!.navigator.push(SwipeablePageRoute(builder: (_) => BrandListPage(), canOnlySwipeFromEdge: true));
           },
           isAssets: true)),
 
@@ -117,7 +130,7 @@ final gridMenuModles = [
           title: '京东好货',
           image: jd,
           onTap: () {
-            Get.context!.navigator.push(SwipeablePageRoute(builder: (_)=>RecommendPage(),canOnlySwipeFromEdge: true));
+            Get.context!.navigator.push(SwipeablePageRoute(builder: (_) => RecommendPage(), canOnlySwipeFromEdge: true));
           },
           isAssets: true)),
 ];

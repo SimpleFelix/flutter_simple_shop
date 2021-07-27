@@ -24,6 +24,7 @@ class GridMenuItem extends StatelessWidget {
       builder: (BuildContext context, BoxConstraints constraints) {
         return GestureDetector(
           onTap: item.onTap,
+          onLongPress: item.onLongTap,
           child: Container(
             alignment: Alignment.center,
             padding: EdgeInsets.symmetric(vertical: 12),
