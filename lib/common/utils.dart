@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:demo1/controller/app_controller.dart';
+import 'package:filepicker_windows/filepicker_windows.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -37,19 +38,19 @@ class Utils {
 
   // 选择文件
   Future<File?> selectFile() async {
-    if (GetPlatform.isWindows) {
-      // final file = OpenFilePicker()
-      //   ..filterSpecification = {
-      //     '图片文件 (*.jpg; *.png)': '*.jpg;*.png',
-      //   }
-      //   ..defaultFilterIndex = 0
-      //   ..defaultExtension = 'jpg'
-      //   ..title = '选择图片上传';
-      //
-      // final result = file.getFile();
-      // if (result != null) {
-      //   return result;
-      // }
+    if (!GetPlatform.isWeb && GetPlatform.isWindows) {
+      final file = OpenFilePicker()
+        ..filterSpecification = {
+          '图片文件 (*.jpg; *.png)': '*.jpg;*.png',
+        }
+        ..defaultFilterIndex = 0
+        ..defaultExtension = 'jpg'
+        ..title = '选择图片上传';
+
+      final result = file.getFile();
+      if (result != null) {
+        return result;
+      }
     } else if (GetPlatform.isAndroid) {
       var _imagePicker = await ImagePicker().getImage(source: ImageSource.gallery);
       var file = File(_imagePicker!.path);

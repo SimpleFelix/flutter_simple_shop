@@ -253,7 +253,7 @@ class _WhiteIndexState extends State<WhiteIndex> {
   }
 
   void insertText(String text) {
-    InputUtils.insertText(text: text, controller: _textEditingController);
+    InputUtils.insertText(text: text, controller: _textEditingController,state: this);
   }
 
   // 删除一个商品卡片

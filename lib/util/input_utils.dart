@@ -9,13 +9,10 @@ import '../pages/user_home_page/white/my_special_text_span_builder.dart';
 class InputUtils {
   const InputUtils._();
 
-  /// Method for insert text into provided [TextEditingController].
   /// 在提供的 [TextEditingController] 中插入指定文字的方法
   ///
-  /// [state] After text was inserted, check if the [State] needs to update.
   /// 如果 [state] 有提供，将在插入文字后判断是否需要更新状态。
   ///
-  /// [selectionOffset] Selection offset after text was inserted compare to origin.
   /// 插入文字后，可手动设置光标相对原本光标的偏移量。默认为文字长度。
   static int insertText({
     required String text,
