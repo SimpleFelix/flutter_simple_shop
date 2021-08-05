@@ -1,11 +1,10 @@
-import 'package:flutter_easyrefresh/easy_refresh.dart';
-
-import '../../../widgets/loading_widget.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:get/get.dart';
 import 'package:loading_more_list/loading_more_list.dart';
 
+import '../../../widgets/loading_widget.dart';
 import 'logic.dart';
 
 class RecommendPage extends StatefulWidget {
