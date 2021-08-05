@@ -89,6 +89,7 @@ class _AppState extends State<App> with AfterLayoutMixin {
 
   @override
   Widget build(BuildContext context) {
+    final kNavIconSize = 25.0;
     return Scaffold(
       // 滚动到顶部按钮
       floatingActionButton: !showToTopBtn || _currentIndex == 2 || _currentIndex == 3 || _currentIndex == 0 || _currentIndex == 4
@@ -120,65 +121,65 @@ class _AppState extends State<App> with AfterLayoutMixin {
                 icon: _currentIndex == 0
                     ? Image.asset(
                         'assets/nav/home.png',
-                        width: 32.0,
-                        height: 32.0,
+                        width: kNavIconSize,
+                        height: kNavIconSize,
                       )
                     : Image.asset(
                         'assets/nav/home-n.png',
-                        height: 32.0,
-                        width: 32.0,
+                        height: kNavIconSize,
+                        width: kNavIconSize,
                       )),
             BottomNavigationBarItem(
                 label: '9.9包邮',
                 icon: _currentIndex == 1
                     ? Image.asset(
                         'assets/nav/jiujiu.png',
-                        width: 32.0,
-                        height: 32.0,
+                        width: kNavIconSize,
+                        height: kNavIconSize,
                       )
                     : Image.asset(
                         'assets/nav/jiujiu-n.png',
-                        height: 32.0,
-                        width: 32.0,
+                        height: kNavIconSize,
+                        width: kNavIconSize,
                       )),
             BottomNavigationBarItem(
                 label: '分类',
                 icon: _currentIndex == 2
                     ? Image.asset(
                         'assets/nav/fenlei.png',
-                        width: 32.0,
-                        height: 32.0,
+                        width: kNavIconSize,
+                        height: kNavIconSize,
                       )
                     : Image.asset(
                         'assets/nav/fenlei-n.png',
-                        height: 32.0,
-                        width: 32.0,
+                        height: kNavIconSize,
+                        width: kNavIconSize,
                       )),
             BottomNavigationBarItem(
                 label: '动态',
                 icon: _currentIndex == 3
                     ? Image.asset(
                         'assets/nav/shoucang.png',
-                        width: 32.0,
-                        height: 32.0,
+                        width: kNavIconSize,
+                        height: kNavIconSize,
                       )
                     : Image.asset(
                         'assets/nav/shoucang-n.png',
-                        height: 32.0,
-                        width: 32.0,
+                        height: kNavIconSize,
+                        width: kNavIconSize,
                       )),
             BottomNavigationBarItem(
                 label: '我的',
                 icon: _currentIndex == 4
                     ? Image.asset(
                         'assets/nav/my.png',
-                        width: 32.0,
-                        height: 32.0,
+                        width: kNavIconSize,
+                        height: kNavIconSize,
                       )
                     : Image.asset(
                         'assets/nav/my-n.png',
-                        height: 32.0,
-                        width: 32.0,
+                        height: kNavIconSize,
+                        width: kNavIconSize,
                       )),
           ]),
       body: IndexedStack(
