@@ -192,7 +192,6 @@ class _PublicDetailViewState extends State<PublicDetailView> implements PublicDe
                 ),
                 Text(
                   '${info!.title}',
-                  style: Get.textTheme.headline5!.copyWith(fontSize: 18),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),

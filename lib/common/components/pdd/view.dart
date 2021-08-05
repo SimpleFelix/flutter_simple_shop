@@ -45,8 +45,8 @@ class _PddRecommendListViewState extends State<PddRecommendListView> {
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
         return GestureDetector(
-          onTap: (){
-            context.navigator.push(SwipeablePageRoute(builder: (_)=>PublicDetailView(goodsId: item.goodsSign, type: 'pdd')));
+          onTap: () {
+            context.navigator.push(SwipeablePageRoute(builder: (_) => PublicDetailView(goodsId: item.goodsSign, type: 'pdd')));
           },
           child: Container(
               decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(5)),
@@ -62,13 +62,16 @@ class _PddRecommendListViewState extends State<PddRecommendListView> {
                           '${item.goodsName}',
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
+                          style: TextStyle(fontSize: 12),
                         ),
-                        SizedBox(height: 6,),
+                        SizedBox(
+                          height: 6,
+                        ),
                         SimplePrice(price: '${MoneyUtil.changeF2Y(item.minGroupPrice)}'),
-                        SizedBox(height: 12,),
-                        ShowUpAnimation(
-                            animationDuration: Duration(milliseconds: 300),
-                            child: CouponDiscountShow(value: '${MoneyUtil.changeF2Y(item.couponDiscount)}'.replaceAll('.00', '')))
+                        SizedBox(
+                          height: 12,
+                        ),
+                        ShowUpAnimation(animationDuration: Duration(milliseconds: 300), child: CouponDiscountShow(value: '${MoneyUtil.changeF2Y(item.couponDiscount)}'.replaceAll('.00', '')))
                       ],
                     ),
                   )

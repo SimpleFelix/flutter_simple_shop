@@ -20,6 +20,7 @@ class AppController extends GetxController {
 
   Rxn bgBytes = Rxn<Uint8List>();
   bool isWeChatBrowser = false;
+  bool showTip = true; // 是否显示提醒
 
   @override
   void onInit() {

@@ -102,11 +102,13 @@ class _SearchPageState extends State<SearchPage> {
                           /// 销量
                           Container(
                             alignment: Alignment.centerRight,
-                            padding: EdgeInsets.symmetric(horizontal: 6),
-                            decoration: BoxDecoration(color: Colors.red.shade50, borderRadius: BorderRadius.circular(2)),
-                            child: Text(
-                              '全网销量${item.salesTip}',
-                              style: TextStyle(color: Colors.red, fontSize: 12),
+                            child: Container(
+                              padding: EdgeInsets.symmetric(horizontal: 6,vertical: 2),
+                              decoration: BoxDecoration(color: Colors.red.shade50, borderRadius: BorderRadius.circular(2)),
+                              child: Text(
+                                '全网销量${item.salesTip}',
+                                style: TextStyle(color: Colors.red, fontSize: 12),
+                              ),
                             ),
                           ),
                           SizedBox(
