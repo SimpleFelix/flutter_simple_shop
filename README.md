@@ -22,6 +22,7 @@
 | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Web管理后台 | [Github (Antd Pro React TypeScript版)]( https://github.com/mdddj/ddxmb-admin)  |
 | Getx重构版   | [典典的小卖部 getx 重构版本](https://github.com/mdddj/simple_shop_v2)  |
+| jetpack compose版本   | [jetpack compose (kotlin) 版本](https://github.com/mdddj/dd_simple_shop_jetpack)  |
 
 
 我的一些小插件 (空安全支持)
