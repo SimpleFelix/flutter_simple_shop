@@ -1,18 +1,17 @@
 // Dart imports:
 import 'dart:convert';
 
-// Flutter imports:
-import 'package:flutter/cupertino.dart';
-
 // Package imports:
 import 'package:dd_taoke_sdk/network/util.dart';
+// Flutter imports:
+import 'package:flutter/cupertino.dart';
 import 'package:get_it/get_it.dart';
 
-// Project imports:
-import 'package:demo1/modals/pdd_search_item_model.dart';
 import '../common/toast.dart';
 import '../common/utils.dart';
 import '../modals/pdd_detail_model.dart';
+// Project imports:
+import '../modals/pdd_search_item_model.dart';
 import '../pages/dynamic/model/wph_detail_resul.dart';
 
 class TKApiService {

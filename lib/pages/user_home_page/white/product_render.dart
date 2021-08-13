@@ -1,5 +1,4 @@
 // Dart imports:
-import 'dart:convert';
 
 // Flutter imports:
 import 'package:flutter/cupertino.dart';
@@ -14,7 +13,6 @@ import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
 // Project imports:
 import '../../../common/utils.dart';
 import '../../../constant/style.dart';
-import '../../../modals/goods_info.dart';
 
 // 商品特殊组件显示
 

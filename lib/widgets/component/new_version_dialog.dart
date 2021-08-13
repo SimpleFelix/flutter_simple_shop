@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 // Project imports:
-import 'package:demo1/common/toast.dart';
-import 'package:demo1/common/utils.dart';
+import '../../common/toast.dart';
+import '../../common/utils.dart';
 
 /// 新版本弹窗
 class NewVersionDialog extends StatefulWidget {

@@ -1,22 +1,21 @@
 // Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 // Package imports:
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-// Project imports:
-import 'package:demo1/pages/blog/write_blog/view.dart';
-import 'package:demo1/pages/index_page/new/component/gridmenu/menu_item.dart';
-import 'package:demo1/pages/index_page/new/component/gridmenu/model.dart';
-import 'package:demo1/pages/user_home_page/pages/new_version_page.dart';
-import 'package:demo1/provider/riverpod/user_riverpod.dart';
-import 'package:demo1/widgets/wrap.dart';
 import '../../common/utils.dart';
+import '../../provider/riverpod/user_riverpod.dart';
+import '../../widgets/wrap.dart';
+// Project imports:
+import '../blog/write_blog/view.dart';
+import '../index_page/new/component/gridmenu/menu_item.dart';
+import '../index_page/new/component/gridmenu/model.dart';
 import 'header/appbar.dart';
 import 'header/index.dart';
 import 'order/index.dart';
+import 'pages/new_version_page.dart';
 
 /// 用户主页布局
 class UserIndexHome extends StatefulWidget {

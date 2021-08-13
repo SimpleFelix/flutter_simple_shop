@@ -26,7 +26,7 @@ class IndexGoodsRepository extends LoadingMoreBase<Product> {
 
   @override
   Future<bool> loadData([bool isloadMoreAction = false]) async {
-    bool isSuccess = false;
+    var isSuccess = false;
     final result = await DdTaokeSdk.instance.getProducts(param: ProductListParam(pageId: '$pageindex',pageSize: '$pageSize'));
     if(result!=null){
       addAll(result.list??[]);

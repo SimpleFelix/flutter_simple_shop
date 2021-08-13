@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:demo1/widgets/component/custom_skeleton_container.dart';
+import 'custom_skeleton_container.dart';
 
 class Skeleton extends StatelessWidget {
   final Widget? child;

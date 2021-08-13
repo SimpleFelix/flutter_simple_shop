@@ -11,16 +11,16 @@ class Search extends StatefulWidget {
 
 class _SearchState extends State<Search> {
   //定义焦点节点
-  FocusNode focusNode = new FocusNode();
+  FocusNode focusNode = FocusNode();
 
   //请求获取焦点
-  _requestFocus() {
+  FocusNode _requestFocus() {
     FocusScope.of(context).requestFocus(focusNode);
     return focusNode;
   }
 
   //返回一个文本组件
-  _getText(String text) {
+  Widget _getText(String text) {
     return TouchCallBack(
       isfeed: false,
       onParessed: () {},

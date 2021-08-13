@@ -30,7 +30,7 @@ class RefreshAndLoadMore extends StatelessWidget {
         header: WaterDropHeader(),
         footer: PullToRefreshWidgetFoot(),
         child: ListView(
-          controller: listViewCntroller??null,
+          controller: listViewCntroller,
           physics: ClampingScrollPhysics(),
           children: children!,
         ),

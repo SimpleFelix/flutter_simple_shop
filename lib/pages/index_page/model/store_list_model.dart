@@ -19,7 +19,7 @@ class StoreData {
 
 
   factory StoreData.fromJson(Map<String, dynamic> jsonRes){
-  final List<StoreInfo>? lists = jsonRes['lists'] is List ? <StoreInfo>[]: null;
+  final lists = jsonRes['lists'] is List ? <StoreInfo>[]: null;
   if(lists!=null) {
     for (final dynamic item in jsonRes['lists']) { if (item != null) { lists.add(StoreInfo.fromJson(asT<Map<String,dynamic>>(item)!));  } }
   }
@@ -62,7 +62,7 @@ class StoreInfo {
 
 
   factory StoreInfo.fromJson(Map<String, dynamic> jsonRes){
-  final List<StoreGoods>? goodsList = jsonRes['goodsList'] is List ? <StoreGoods>[]: null;
+  final goodsList = jsonRes['goodsList'] is List ? <StoreGoods>[]: null;
   if(goodsList!=null) {
     for (final dynamic item in jsonRes['goodsList']) { if (item != null) { goodsList.add(StoreGoods.fromJson(asT<Map<String,dynamic>>(item)!));  } }
   }
@@ -137,7 +137,7 @@ class StoreGoods {
 
 
   factory StoreGoods.fromJson(Map<String, dynamic> jsonRes){
-  final List<String?>? specialText = jsonRes['specialText'] is List ? <String?>[]: null;
+  final specialText = jsonRes['specialText'] is List ? <String?>[]: null;
   if(specialText!=null) {
     for (final dynamic item in jsonRes['specialText']) { if (item != null) { specialText.add(asT<String>(item));  } }
   }

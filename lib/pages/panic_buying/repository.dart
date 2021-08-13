@@ -10,7 +10,7 @@ import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Project imports:
-import 'package:demo1/provider/riverpod/category_riverpod.dart';
+import '../../provider/riverpod/category_riverpod.dart';
 
 final panicBuyingRiverpod = ChangeNotifierProvider((ref) => PanicBuyingModel());
 

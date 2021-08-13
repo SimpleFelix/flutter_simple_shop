@@ -165,41 +165,4 @@ class WaterfallGoodsCard extends StatelessWidget {
       },
     );
   }
-
-  // 标签通用
-  Widget _tag(String text, Color bgColor) {
-    return Container(
-      margin: EdgeInsets.only(left: 5.0),
-      padding: EdgeInsets.only(left: 5.0, right: 5.0),
-      decoration: BoxDecoration(
-          color: bgColor, borderRadius: BorderRadius.all(Radius.circular(2.0))),
-      child: Text(
-        text,
-        style: TextStyle(fontSize: 15, color: Colors.white),
-      ),
-    );
-  }
-
-  // 活动类型，1-无活动，2-淘抢购，3-聚划算
-  Widget _iconByActivityType(int activityType) {
-    Widget icon = Text(''); // 默认无活动
-
-    if (activityType == 3) {
-      icon = Image.asset('assets/icons/jhs.png', height: 16, width: 16);
-    }
-    if (activityType == 2) {
-      icon = Image.asset('assets/icons/qg.png', height: 16, width: 16);
-    }
-    return Container(margin: EdgeInsets.only(left: 5.0), child: icon);
-  }
-
-  // 是否12小时内上架 (1 - 是 ,0 不是)
-  Widget _isNewGoods(int newRankingGoods) {
-    return newRankingGoods == 1
-        ? Container(
-            margin: EdgeInsets.only(left: 5.0),
-            child: Image.asset('assets/icons/new.png', height: 16, width: 16),
-          )
-        : Text('');
-  }
 }

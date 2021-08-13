@@ -7,9 +7,9 @@ import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Project imports:
-import 'package:demo1/common/utils.dart';
-import 'package:demo1/controller/app_controller.dart';
-import 'package:demo1/widgets/component/tool_tip.dart';
+import '../../../common/utils.dart';
+import '../../../controller/app_controller.dart';
+import '../../../widgets/component/tool_tip.dart';
 import '../../../widgets/edit_page_handle.dart';
 import 'component/appbar.dart';
 import 'component/carousel.dart';

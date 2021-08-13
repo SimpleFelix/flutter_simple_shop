@@ -1,9 +1,6 @@
 // Dart imports:
 import 'dart:convert';
 
-// Flutter imports:
-import 'package:flutter/material.dart';
-
 // Package imports:
 import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:carousel_pro_nullsafety/carousel_pro_nullsafety.dart' as my_carousel_comp;
@@ -12,17 +9,17 @@ import 'package:dd_taoke_sdk/dd_taoke_sdk.dart';
 import 'package:dd_taoke_sdk/model/carousel_model.dart';
 import 'package:dd_taoke_sdk/params/activity_link_param.dart';
 import 'package:extended_image/extended_image.dart';
+// Flutter imports:
+import 'package:flutter/material.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
 
-// Project imports:
-import 'package:demo1/pages/activity_page/activity_view/view.dart';
-import 'package:demo1/pages/index_page/new/index_riverpod.dart';
 import '../../../common/utils.dart';
-import '../../../constant/style.dart';
-import '../../../provider/index_provider.dart';
+// Project imports:
+import '../../activity_page/activity_view/view.dart';
+import '../new/index_riverpod.dart';
 
 /// 首頁輪播圖
 class IndexTopicComponentCarousel extends StatelessWidget {

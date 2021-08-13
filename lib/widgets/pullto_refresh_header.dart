@@ -10,12 +10,10 @@ import 'package:pull_to_refresh_notification/pull_to_refresh_notification.dart';
     //    print('------------');
     var offset = info?.dragOffset ?? 0.0;
     var mode = info?.mode;
-    Widget? refreshWiget = Container();
     //it should more than 18, so that RefreshProgressIndicator can be shown fully
     if (info?.refreshWidget != null &&
         offset > 18.0 &&
         mode != RefreshIndicatorMode.error) {
-      refreshWiget = info!.refreshWidget;
     }
 
     Widget child;
@@ -41,7 +39,7 @@ import 'package:pull_to_refresh_notification/pull_to_refresh_notification.dart';
             ),
           ));
     } else {
-      String modeStr = '下拉刷新';
+      var modeStr = '下拉刷新';
       if (mode != null && mode == RefreshIndicatorMode.armed) {
         modeStr = '松手刷新';
       } else if (mode != null && mode == RefreshIndicatorMode.snap) {

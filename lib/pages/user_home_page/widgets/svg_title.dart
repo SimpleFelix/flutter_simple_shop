@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 // Project imports:
-import 'package:demo1/common/utils.dart';
+import '../../../common/utils.dart';
 
 class SvgTitle extends StatelessWidget {
   final String? svgPath;

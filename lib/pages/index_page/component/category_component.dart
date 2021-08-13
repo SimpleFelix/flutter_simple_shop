@@ -29,7 +29,6 @@ class CategoryComponent extends StatefulWidget {
 
 class _CategoryComponentState extends State<CategoryComponent> {
   int _current = 0;
-  bool _isRenderEnd = false;
   CategoryChildPosition? _categoryChildPosition;
   final ValueNotifier<CategoryChildPosition?> _valueNotifier = ValueNotifier<CategoryChildPosition?>(
       CategoryChildPosition(count: 0, position: <int, Offset>{}, size: <int, Size>{}));
@@ -40,12 +39,8 @@ class _CategoryComponentState extends State<CategoryComponent> {
     _bindController();
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
       setState(() {
-        _isRenderEnd = true;
         _categoryChildPosition = CategoryChildPosition(count: 0, position: <int, Offset>{}, size: <int, Size>{});
       });
-    });
-    _valueNotifier.addListener(() {
-      print('监听到改变:${_valueNotifier.value!.position![1]}');
     });
   }
 
@@ -63,7 +58,7 @@ class _CategoryComponentState extends State<CategoryComponent> {
 
   /// 绑定控制器
   void _bindController() {
-    if (widget.controller != null) widget.controller!.bindState(this);
+    if (widget.controller != null) widget.controller!.state = this;
   }
 
   @override
@@ -143,7 +138,6 @@ class _CategoryComponentState extends State<CategoryComponent> {
 
   @override
   void dispose() {
-    if (_valueNotifier.hasListeners) _valueNotifier.removeListener(() {});
     _valueNotifier.dispose();
     super.dispose();
   }
@@ -233,10 +227,13 @@ class CategoryController {
     _state.selectLable(index);
   }
 
-  /// 绑定状态
-  void bindState(_CategoryComponentState _categoryComponentState) {
+  // 绑定状态
+  set state(_CategoryComponentState _categoryComponentState) {
     _state = _categoryComponentState;
   }
+
+  _CategoryComponentState get state => _state;
+
 }
 
 class CategoryChildPosition {

@@ -1,14 +1,9 @@
 // Dart imports:
-import 'dart:convert';
 
 // Flutter imports:
 import 'package:flutter/material.dart';
 
-// Project imports:
-import '../modals/result.dart';
 import '../modals/favorites_model.dart';
-import '../util/request_service.dart';
-import '../util/result_obj_util.dart';
 import '../util/user_utils.dart';
 
 class UserProvider extends ChangeNotifier {
@@ -38,8 +33,8 @@ class UserProvider extends ChangeNotifier {
 
   // 确认删除收藏按钮被按下
   void removeFavoriteOk(){
-    List<Good> toRemove = [];
-    if(this.editFavoriteIds.length!=0){
+    var toRemove = <Good>[];
+    if(editFavoriteIds.isNotEmpty){
       editFavoriteIds.forEach((id){
         goods!.forEach((good){
           if(good.id.toString()==id){
@@ -48,8 +43,8 @@ class UserProvider extends ChangeNotifier {
         });
       });
       goods!.removeWhere((e)=>toRemove.contains(e));
-      this.editFavoriteIds = [];
-      this.isEditFavoriteIng = false;
+      editFavoriteIds = [];
+      isEditFavoriteIng = false;
       notifyListeners();
     }
   }
@@ -79,17 +74,17 @@ class UserProvider extends ChangeNotifier {
 
   // 重置收藏属性值
   void resetFavoriteData() {
-    this.pageInfo = null;
-    this.goods = [];
-    this.page = 1;
-    this.editFavoriteIds = [];
-    this.isEditFavoriteIng = false;
+    pageInfo = null;
+    goods = [];
+    page = 1;
+    editFavoriteIds = [];
+    isEditFavoriteIng = false;
   }
 
   // 获取用户收藏的下一页商品列表
   Future<void> loadNextPageUserFavoriteGoodsListFun() async {
-    this.page = page + 1;
-    this.loadUserFavoriteGoodsListFun(this.page);
+    page = page + 1;
+    await loadUserFavoriteGoodsListFun(page);
   }
 
   // 获取用户收藏的商品列表
@@ -100,24 +95,6 @@ class UserProvider extends ChangeNotifier {
         if(pageId==1){
           resetFavoriteData();
         }
-        await loadFavoriteGoods({'userId': user.id, 'pageId': pageId})
-            .then((res) {
-          var result = ResultUtils.format(res);
-          if (result.code == 200) {
-            var favoritesAllData =
-                FavoritesAllData.fromJson(json.decode(result.data.toString()));
-            pageInfo = favoritesAllData.pageInfo;
-            if (pageId == 1) {
-              goods = favoritesAllData.goods;
-            } else {
-              goods!.addAll(favoritesAllData.goods!);
-            }
-
-            notifyListeners();
-          } else {
-            print('获取收藏商品失败');
-          }
-        });
       }
     });
   }

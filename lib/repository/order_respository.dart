@@ -1,14 +1,10 @@
 // Dart imports:
-import 'dart:convert';
 
 // Package imports:
 import 'package:loading_more_list/loading_more_list.dart';
 
-// Project imports:
-import '../modals/result.dart';
 import '../modals/order_list_model.dart';
-import '../util/request_service.dart';
-import '../util/result_obj_util.dart';
+// Project imports:
 import '../util/user_utils.dart';
 
 class OrderRespository extends LoadingMoreBase<OrderAuditObject>{
@@ -27,35 +23,10 @@ class OrderRespository extends LoadingMoreBase<OrderAuditObject>{
   @override
   Future<bool> loadData([bool isloadMoreAction = false]) async {
     
-    bool isSuccess = false;
+    var isSuccess = false;
     
     await UserUtil.loadUserInfo().then((user) async {
       if(user!=null){
-        await findOrderList({'userId':user.id,'pageId':pageIndex,'stype':stype}).then((res){
-          Result result = ResultUtils.format(res);
-          if(result.code==200){
-
-            OrderAllData orderAllData = OrderAllData.fromJson(json.decode(result.data!));
-            _hasMore = !orderAllData.last!;
-
-            if(pageIndex==1) clear();
-
-            List<OrderAuditObject> content = orderAllData.content!;
-
-            for(OrderAuditObject item in content){
-              if(!contains(item)){
-                add(item);
-              }
-            }
-
-            pageIndex++;
-
-            isSuccess = true;
-            print('加载数据成功');
-          }else{
-            print(result.msg);
-          }
-        });
       }else{
         print('请先登录');
       }

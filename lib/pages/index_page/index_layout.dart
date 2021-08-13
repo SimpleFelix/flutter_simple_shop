@@ -34,6 +34,5 @@ class IndexPublicLayout extends StatelessWidget {
             child: child,
           )),
     );
-    ;
   }
 }

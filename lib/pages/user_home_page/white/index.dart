@@ -2,19 +2,18 @@
 import 'dart:convert';
 import 'dart:math';
 
-// Flutter imports:
-import 'package:flutter/material.dart';
-
 // Package imports:
 import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:extended_text_field/extended_text_field.dart';
+// Flutter imports:
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
 
-// Project imports:
-import 'package:demo1/util/input_utils.dart';
 import '../../../common/utils.dart';
+// Project imports:
+import '../../../util/input_utils.dart';
 import 'components/code_input.dart';
 import 'components/more_action_bottomsheet.dart';
 import 'components/search_goods.dart';

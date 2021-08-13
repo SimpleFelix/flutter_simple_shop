@@ -12,7 +12,7 @@ class ListItem extends StatelessWidget {
   final Widget? leftAction;
   final bool isCard;
 
-  ListItem({required this.title,this.actions,required this.onTap,this.leftAction,this.isCard:false});
+  ListItem({required this.title,this.actions,required this.onTap,this.leftAction,this.isCard =false});
 
   @override
   Widget build(BuildContext context) {

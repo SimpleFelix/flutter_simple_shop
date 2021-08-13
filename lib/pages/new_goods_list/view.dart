@@ -1,20 +1,19 @@
 // Flutter imports:
-import 'package:flutter/material.dart';
-
 // Package imports:
 import 'package:after_layout/after_layout.dart';
 import 'package:dd_taoke_sdk/constant/sort.dart';
 import 'package:dd_taoke_sdk/model/category.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-// Project imports:
-import 'package:demo1/pages/new_goods_list/components/sort_widget.dart';
-import '../../widgets/RoundUnderlineTabIndicator.dart';
-import '../../widgets/StickyTabBarDelegate.dart';
+import '../../widgets/round_underline_tab_indicator.dart';
 import '../../widgets/simple_appbar.dart';
+import '../../widgets/sticky_tab_bar_delegate.dart';
 import '../panic_buying/components/categorys.dart';
 import '../panic_buying/components/list.dart';
+// Project imports:
+import 'components/sort_widget.dart';
 import 'components/subcategory_view.dart';
 import 'riverpod.dart';
 

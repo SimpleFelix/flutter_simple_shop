@@ -1,14 +1,6 @@
 // Dart imports:
 import 'dart:ui';
 
-// Flutter imports:
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
-
 // Package imports:
 import 'package:common_utils/common_utils.dart';
 import 'package:dd_taoke_sdk/dd_taoke_sdk.dart';
@@ -16,6 +8,13 @@ import 'package:dd_taoke_sdk/model/coupon_link_result.dart';
 import 'package:dd_taoke_sdk/model/product.dart';
 import 'package:fbutton_nullsafety/fbutton_nullsafety.dart';
 import 'package:fcontrol_nullsafety/fdefine.dart';
+// Flutter imports:
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
@@ -26,11 +25,11 @@ import 'package:loading_more_list/loading_more_list.dart';
 import '../../../common/utils.dart';
 import '../../../modals/shop_info.dart';
 import '../../../util/image_util.dart';
-import '../../../widgets/RoundUnderlineTabIndicator.dart';
 import '../../../widgets/extended_image.dart';
 import '../../../widgets/loading_widget.dart';
 import '../../../widgets/my_drawable_start_text.dart';
 import '../../../widgets/no_data.dart';
+import '../../../widgets/round_underline_tab_indicator.dart';
 import '../../../widgets/simple_price.dart';
 import '../detail_imgs_widget.dart';
 

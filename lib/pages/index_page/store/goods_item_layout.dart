@@ -1,13 +1,12 @@
 // Flutter imports:
-import 'package:flutter/material.dart';
-
 // Package imports:
 import 'package:dd_taoke_sdk/model/product.dart';
+import 'package:flutter/material.dart';
 
+import '../../../util/image_util.dart';
+import '../../../util/navigator_util.dart';
 // Project imports:
-import 'package:demo1/pages/index_page/store/price_layout.dart';
-import 'package:demo1/util/image_util.dart';
-import 'package:demo1/util/navigator_util.dart';
+import 'price_layout.dart';
 
 /// 商品卡片布局
 class StoreGoodsItemLayout extends StatelessWidget {

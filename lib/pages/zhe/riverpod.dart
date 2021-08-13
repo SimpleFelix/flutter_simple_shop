@@ -9,13 +9,13 @@ import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Project imports:
-import 'package:demo1/provider/riverpod/category_riverpod.dart';
+import '../../provider/riverpod/category_riverpod.dart';
 
 final zheRiverpod = ChangeNotifierProvider((ref) => ZheState());
 
 class ZheState extends ChangeNotifier {
   int _page = 1;
-  int _pageSize = 20;
+  final int _pageSize = 20;
   String cid = '';
 
   bool loading = true;

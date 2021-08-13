@@ -64,7 +64,7 @@ class _UnderlinePainter extends BoxPainter {
   EdgeInsetsGeometry get insets => decoration.insets;
 
   Rect _indicatorRectFor(Rect rect, TextDirection textDirection) {
-    final Rect indicator = insets.resolve(textDirection).deflateRect(rect);
+    final indicator = insets.resolve(textDirection).deflateRect(rect);
 //    return Rect.fromLTWH(
 //      indicator.left,
 //      indicator.bottom - borderSide.width,
@@ -72,9 +72,9 @@ class _UnderlinePainter extends BoxPainter {
 //      borderSide.width,
 //    );
     //希望的宽度
-    double wantWidth = 25;
+    var wantWidth = 25.0;
     //取中间坐标
-    double cw = (indicator.left + indicator.right) / 2;
+    var cw = (indicator.left + indicator.right) / 2;
     return Rect.fromLTWH(cw - wantWidth / 2,
         indicator.bottom - borderSide.width, wantWidth, borderSide.width);
   }
@@ -82,12 +82,12 @@ class _UnderlinePainter extends BoxPainter {
   @override
   void paint(Canvas canvas, Offset offset, ImageConfiguration configuration) {
     assert(configuration.size != null);
-    final Rect rect = offset & configuration.size!;
-    final TextDirection textDirection = configuration.textDirection!;
-    final Rect indicator = _indicatorRectFor(rect, textDirection).deflate(borderSide.width / 2.0);
+    final rect = offset & configuration.size!;
+    final textDirection = configuration.textDirection!;
+    final indicator = _indicatorRectFor(rect, textDirection).deflate(borderSide.width / 2.0);
 //    final Paint paint = borderSide.toPaint()..strokeCap = StrokeCap.square;
     // 改为圆角
-    final Paint paint = borderSide.toPaint()..strokeCap = StrokeCap.round;
+    final paint = borderSide.toPaint()..strokeCap = StrokeCap.round;
     canvas.drawLine(indicator.bottomLeft, indicator.bottomRight, paint);
   }
 }
@@ -149,8 +149,8 @@ class VgTab extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Container(
-            child: icon,
             margin: const EdgeInsets.only(bottom: 10.0),
+            child: icon,
           ),
           _buildLabelText(),
         ],
@@ -160,8 +160,8 @@ class VgTab extends StatelessWidget {
     return SizedBox(
       height: height,
       child: Center(
-        child: label,
         widthFactor: 1.0,
+        child: label,
       ),
     );
   }

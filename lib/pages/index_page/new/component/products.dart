@@ -1,12 +1,11 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
-
 // Package imports:
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../../panic_buying/components/list.dart';
 // Project imports:
-import 'package:demo1/pages/index_page/new/index_riverpod.dart';
-import 'package:demo1/pages/panic_buying/components/list.dart';
+import '../index_riverpod.dart';
 
 class IndexProductss extends ConsumerWidget{
   @override

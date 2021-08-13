@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Project imports:
-import 'package:demo1/provider/riverpod/search_riverpod.dart';
-import 'package:demo1/widgets/loading_widget.dart';
+import '../../../provider/riverpod/search_riverpod.dart';
+import '../../../widgets/loading_widget.dart';
 
 class SearchInitLoadingStatus extends ConsumerWidget{
   @override

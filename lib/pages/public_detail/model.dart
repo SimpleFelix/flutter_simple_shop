@@ -3,9 +3,9 @@
 // Package imports:
 import 'package:common_utils/common_utils.dart';
 
-// Project imports:
-import 'package:demo1/pages/dynamic/model/wph_detail_resul.dart';
 import '../../modals/pdd_detail_model.dart';
+// Project imports:
+import '../dynamic/model/wph_detail_resul.dart';
 
 class PublicDetailModel {
   String type; //类型 ,taobao , jindong, pdd

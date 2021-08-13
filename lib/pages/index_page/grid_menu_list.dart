@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:loading_more_list/loading_more_list.dart';
 
 // Project imports:
-import 'package:demo1/config/app_config.dart';
+import '../../config/app_config.dart';
 import 'grid_menu.dart';
 import 'model/index_grid_menu_item_model.dart';
 

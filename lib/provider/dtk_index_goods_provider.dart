@@ -1,15 +1,10 @@
-// Dart imports:
-import 'dart:convert';
 
 // Flutter imports:
 import 'package:flutter/material.dart';
 
-// Project imports:
-import '../modals/result.dart';
 import '../modals/goods_list_modal.dart';
 import '../modals/rank_data.dart';
-import '../util/request_service.dart';
-import '../util/result_obj_util.dart';
+
 
 class DtkIndexGoodsModal extends ChangeNotifier {
   List<Datum>? goods = [];
@@ -21,31 +16,19 @@ class DtkIndexGoodsModal extends ChangeNotifier {
   bool isLoading = false; // 是否在加载数据中
 
   // 获取商品列表数据
-  getGoodsList(page) async {
+  Future<void> getGoodsList(int page) async {}
 
-  }
-
-  setLoadingState(bool isLoading) {
+  void setLoadingState(bool isLoading) {
     isLoading = isLoading;
     notifyListeners();
   }
 
-  getNextPageData() {
+  void getNextPageData() {
     page++;
     getGoodsList(page);
   }
 
   // 获取榜单数据
-  getRankGoodsList() async {
-    await getRankingList({'rankType': 1}).then((res) {
-      Result result = ResultUtils.format(res);
-      if (result.code == 200) {
-        final obj = RankListGoods.fromJson(json.decode(result.data.toString()));
-        goods = obj.data;
-        notifyListeners();
-      } else {
-        print('获取数据榜单失败');
-      }
-    });
+  void getRankGoodsList() async {
   }
 }

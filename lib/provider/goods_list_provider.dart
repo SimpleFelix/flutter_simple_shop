@@ -1,12 +1,8 @@
 // Dart imports:
-import 'dart:convert';
 
-// Project imports:
-import 'package:demo1/provider/base_provider.dart';
-import '../modals/result.dart';
 import '../modals/goods_list_modal.dart';
-import '../util/request_service.dart';
-import '../util/result_obj_util.dart';
+// Project imports:
+import 'base_provider.dart';
 
 class GoodsListProvider extends BaseProvider {
   List<GoodsItem>? goods = [];
@@ -20,44 +16,22 @@ class GoodsListProvider extends BaseProvider {
   String cids = '';
   String subcid = '';
 
-  Future<void> LoadList() async {
-    await getGoodsListFuture({'pageId':page,'sort':desc[currentIndex],'brand':brand,'cids':cids,'subcid':subcid,'pageSize':10}).then((res) {
-      Result result = ResultUtils.format(res);
-      if(result.data!=null && result.code==200){
-        GoodsList _goods = GoodsList.fromJson(json.decode(result.data.toString()));
-        if(_goods.code==0){
-          if(page==1){
-            goods  = _goods.data!.list;
-          }else{
-            goods!.addAll(_goods.data!.list!);
-          }
-          notifyListeners();
-        }else{
-          print('获取商品列表失败---------------------GoodsListProvider-');
-        }
-      }else{
-        print('获取商品列表失败---------------------GoodsListProvider-');
-      }
-//      changeLoadingState(false);
-    });
+  Future<void> loadList() async {
   }
 
-  reFresh() async{
-   this.page=1;
-   this.goods = [];
-   await LoadList();
+  void reFresh() async{
+   page=1;
+   goods = [];
+   await loadList();
   }
 
-  nextPage(){
-    this.page++;
-    LoadList();
+  void nextPage(){
+    page++;
+    loadList();
   }
 
-  subcidSele(subcid) async{
-    this.subcid = subcid;
-  }
 
-  pop(){
+  void pop(){
     goods = [];
     page = 1;
     cids = '';
@@ -66,7 +40,4 @@ class GoodsListProvider extends BaseProvider {
     brand = '';
   }
 
-  sort(curr){
-    this.currentIndex = curr;
-  }
 }

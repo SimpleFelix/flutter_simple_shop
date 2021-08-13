@@ -18,9 +18,9 @@ class IconBlockWidget extends StatelessWidget {
         children: <Widget>[
           // 图标
           Positioned(
-            child: Image.asset('assets/icons/dagou.png'),
             right: -40,
             top: -25,
+            child: Image.asset('assets/icons/dagou.png'),
           ),
 
           // 内容区

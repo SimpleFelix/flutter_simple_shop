@@ -12,7 +12,7 @@ import '../models/brand_detail_model.dart';
 class BrandProvider extends ChangeNotifier {
   int page = 1;
   int size = 10;
-  String _cid = '';
+  String cid = '';
   List<ListElement> lists = [];
   String brandId = '';
   int pageId = 1;
@@ -21,9 +21,6 @@ class BrandProvider extends ChangeNotifier {
   List<BrandDetailGoodsList> brandGoodsList = [];
   Color detailBgColor = Colors.white;
 
-  set cid(String value) => _cid = value;
-
-  String get cid => _cid;
 
   /// 加载品牌列表
   Future<void> refresh() async {

@@ -21,7 +21,7 @@ class IndexGridViewMenu extends StatelessWidget {
     return GestureDetector(
       onTap: (){
         switch(model.clickType){
-          case IndexGridMenuItemModelClickModel.INNER_VIEW:
+          case IndexGridMenuItemModelClickModel.innerView:
             model.onTap?.call();
             break;
           default:

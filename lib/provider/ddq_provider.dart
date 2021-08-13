@@ -18,7 +18,6 @@ class DdqProvider extends ChangeNotifier {
 
   /// 加载数据
   Future<void> loadData() async {
-    var data = dateTime == '' ? {} : {'roundTime': dateTime.substring(0, dateTime.length - 4)};
     final result = await DdTaokeSdk.instance.getDdq();
     if (result != null) {
       goodsList.addAll(result.goodsList ?? []);
@@ -28,10 +27,10 @@ class DdqProvider extends ChangeNotifier {
   }
 
   Future<void> timeChange(DateTime? time, int? state) async {
-    this.ddqTime = time;
-    this.goodsList = [];
-    this.status = state;
-    this.dateTime = time.toString();
-    this.loadData();
+    ddqTime = time;
+    goodsList = [];
+    status = state;
+    dateTime = time.toString();
+    await loadData();
   }
 }

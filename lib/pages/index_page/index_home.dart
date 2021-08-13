@@ -14,9 +14,7 @@ import 'package:loading_more_list/loading_more_list.dart';
 import 'package:pull_to_refresh_notification/pull_to_refresh_notification.dart';
 
 // Project imports:
-import '../../provider/dtk_index_goods_provider.dart';
-import '../../provider/index_provider.dart';
-import '../../repository/IndexGoodsRepository.dart';
+import '../../repository/index_goods_repository.dart';
 import '../../widgets/flexd/index_header_flexd_widget.dart';
 import '../../widgets/loading_more_list_indicator.dart';
 import '../../widgets/my_clipper.dart';

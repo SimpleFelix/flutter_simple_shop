@@ -1,8 +1,6 @@
 // Package imports:
 import 'package:dio/dio.dart';
 
-// Project imports:
-import '../common/utils.dart';
 
 class UserApi {
 

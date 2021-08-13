@@ -1,16 +1,15 @@
 // Flutter imports:
-import 'package:flutter/material.dart';
-
 // Package imports:
 import 'package:common_utils/common_utils.dart';
+import 'package:flutter/material.dart';
 import 'package:loading_more_list/loading_more_list.dart';
 import 'package:pull_to_refresh_notification/pull_to_refresh_notification.dart';
 
 // Project imports:
-import 'package:demo1/modals/order_list_model.dart';
-import 'package:demo1/widgets/loading_more_list_indicator.dart';
-import 'package:demo1/widgets/pullto_refresh_header.dart';
+import '../../../modals/order_list_model.dart';
 import '../../../repository/order_respository.dart';
+import '../../../widgets/loading_more_list_indicator.dart';
+import '../../../widgets/pullto_refresh_header.dart';
 
 class MyOrderHomePage extends StatefulWidget {
 
@@ -50,18 +49,16 @@ class _MyOrderHomePageState extends State<MyOrderHomePage> {
                   SliverListConfig<OrderAuditObject>(
 
                     itemBuilder: (c,item,index){
-                      String createTimeStr = DateUtil.formatDateMs(int.parse(item.createTime!),format: 'yyyy-MM-dd HH:mm:ss');
-                      String stateTip = '等待审核';
-                      Color stateTipColor = Colors.black;
-                      Icon stateIcon = Icon(Icons.info_outline,color: stateTipColor,);
+                      var createTimeStr = DateUtil.formatDateMs(int.parse(item.createTime!),format: 'yyyy-MM-dd HH:mm:ss');
+                      var stateTip = '等待审核';
+                      var stateTipColor = Colors.black;
+                      var stateIcon = Icon(Icons.info_outline,color: stateTipColor,);
                       if(item.stype==1){
                         stateTip = '审核通过';
                         stateTipColor = Colors.green;
-                        Icon stateIcon = Icon(Icons.check,color: stateTipColor,);
                       }else if(item.stype==2){
                         stateTip = '审核失效';
                         stateTipColor = Colors.deepOrange;
-                        Icon stateIcon = Icon(Icons.clear,color: stateTipColor,);
                       }
                       return Container(
                         padding: EdgeInsets.symmetric(horizontal:12,vertical: 12),

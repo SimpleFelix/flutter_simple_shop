@@ -1,21 +1,17 @@
 // Dart imports:
 import 'dart:math';
 
-// Flutter imports:
-import 'package:flutter/material.dart';
-
 // Package imports:
 import 'package:fbutton_nullsafety/fbutton_nullsafety.dart';
 import 'package:fcontrol_nullsafety/fdefine.dart';
+// Flutter imports:
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
 
 // Project imports:
-import 'package:demo1/modals/result.dart';
-import 'package:demo1/util/result_obj_util.dart';
-import 'package:demo1/util/system_toast.dart';
-import 'package:demo1/util/user_utils.dart';
-import '../../../util/request_service.dart';
+import '../../../util/system_toast.dart';
+import '../../../util/user_utils.dart';
 
 class OrderAddIndexPage extends StatefulWidget {
   @override
@@ -23,7 +19,7 @@ class OrderAddIndexPage extends StatefulWidget {
 }
 
 class _OrderAddState extends State<OrderAddIndexPage> {
-  var svgSize = 220.0;
+  double svgSize = 220.0;
   double placeholderHeight =12;
   TextEditingController textEditingController = TextEditingController();
 
@@ -67,23 +63,13 @@ class _OrderAddState extends State<OrderAddIndexPage> {
                 onPressed: () async {
 
                   // 获取文本框订单编号
-                  String orderNumber = textEditingController.value.text;
+                  var orderNumber = textEditingController.value.text;
                   if(orderNumber.length!=19){
                     SystemToast.show('订单编号格式不正确');
                     return null;
                   }
                   await UserUtil.loadUserInfo().then((user) async {
                     if (user != null) {
-                      await addOrder({'userId': user.id, 'orderNumber': orderNumber})
-                          .then((res) {
-                            Result result = ResultUtils.format(res);
-                            if(result.code==200){
-                              SystemToast.show('绑定成功');
-                              print('order:${result.data}');
-                            }else{
-                              SystemToast.show(result.msg!);
-                            }
-                      });
                     }
                   });
                 },

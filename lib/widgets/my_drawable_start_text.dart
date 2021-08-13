@@ -15,7 +15,7 @@ class DrawableStartText extends StatefulWidget {
     required this.text,
     required this.assetImage,
     this.maxLines,
-    this.lettersCountOfAfterImage: 0,
+    this.lettersCountOfAfterImage = 0,
   });
 
   @override

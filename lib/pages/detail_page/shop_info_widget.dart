@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:dd_taoke_sdk/model/product.dart';
 
 // Project imports:
-import 'package:demo1/util/image_util.dart';
+import '../../util/image_util.dart';
 
 class ShopInfoWidget extends StatelessWidget {
   final Product goodsInfo;
@@ -48,12 +48,12 @@ class ShopInfoWidget extends StatelessWidget {
                           // 店铺类型
                           goodsInfo.shopType == 1
                               ? Image.asset(
-                                  "assets/icons/tianmao.png",
+                                  'assets/icons/tianmao.png',
                                   width: 12,
                                   height: 12,
                                 )
                               : Image.asset(
-                                  "assets/icons/taobao.png",
+                                  'assets/icons/taobao.png',
                                   width: 12,
                                   height: 12,
                                 ),
@@ -63,7 +63,7 @@ class ShopInfoWidget extends StatelessWidget {
                               ? Container(
                                   margin: EdgeInsets.only(left: 5.0),
                                   child: Image.asset(
-                                    "assets/icons/jinpai.png",
+                                    'assets/icons/jinpai.png',
                                     width: 12,
                                     height: 12,
                                   ),
@@ -78,8 +78,8 @@ class ShopInfoWidget extends StatelessWidget {
                   padding: EdgeInsets.only(right: 10.0),
                   child: Container(
                     child: ElevatedButton(
-                      child: Text("全部商品"),
                       onPressed: (){},
+                      child: Text('全部商品'),
                     ),
                   ),
                 )
@@ -97,13 +97,13 @@ class ShopInfoWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Container(
-                    child: Text("宝贝描述:${goodsInfo.descScore}"),
+                    child: Text('宝贝描述:${goodsInfo.descScore}'),
                   ),
                   Container(
-                    child: Text("卖家服务:${goodsInfo.serviceScore}"),
+                    child: Text('卖家服务:${goodsInfo.serviceScore}'),
                   ),
                   Container(
-                    child: Text("物流服务:${goodsInfo.shipScore}"),
+                    child: Text('物流服务:${goodsInfo.shipScore}'),
                   )
                 ],
               ),

@@ -19,8 +19,7 @@ class IndexHomeBanner extends StatelessWidget {
         padding: EdgeInsetsDirectional.only(start: 16.0, top: 2.0,end: 2),
         leadingPadding:EdgeInsetsDirectional.only(end: 16.0) ,
         actions: <Widget>[
-          RaisedButton(
-            color: Colors.white,
+          ElevatedButton(
             onPressed: () {},
             child: Text(
               'I KNOW',
@@ -31,8 +30,7 @@ class IndexHomeBanner extends StatelessWidget {
             ),
           ),
 
-          RaisedButton(
-            color: Colors.white,
+          ElevatedButton(
             onPressed: () {},
             child: Text(
               'I IGNORE',

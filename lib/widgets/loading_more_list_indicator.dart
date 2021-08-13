@@ -27,7 +27,7 @@ class LoadingMoreListCostumIndicator extends StatelessWidget {
       {this.tryAgain,
         this.text,
         this.backgroundColor,
-        this.isSliver: false,
+        this.isSliver = false,
         this.emptyWidget});
   @override
   @override
@@ -155,9 +155,9 @@ class LoadingMoreListCostumIndicator extends StatelessWidget {
     widget = Container(
         width: double.infinity,
         height: height,
-        child: widget,
         color: backgroundColor ?? Colors.grey[200],
-        alignment: Alignment.center);
+        alignment: Alignment.center,
+        child: widget);
     return widget;
   }
 

@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:demo1/widgets/component/custom_skeleton_widget.dart';
+import '../../widgets/component/custom_skeleton_widget.dart';
 
 ///首页的加载骨架屏
 ///
@@ -71,9 +71,9 @@ class IndexLoadingSkeletonPage extends StatelessWidget {
   }
 
   Widget _buildTabItemSkeleton(BuildContext context) {
-    double pw = MediaQuery.of(context).size.width;
+    var pw = MediaQuery.of(context).size.width;
     pw = pw - 30;
-    double w = pw / 6 -30;
+    var w = pw / 6 -30;
     return Container(
       child: Skeleton(
         child: Container(

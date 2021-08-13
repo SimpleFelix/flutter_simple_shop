@@ -49,7 +49,7 @@ class UserHomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             )),
         IconButton(
             onPressed: () async {
-              final result = await utils.weChatBro;
+              final result = utils.weChatBro;
               utils.showMessage(result ? '是微信浏览器' : '不是微信浏览器');
             },
             icon: Icon(Icons.cast_connected_sharp)),

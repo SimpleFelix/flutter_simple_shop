@@ -61,7 +61,7 @@ class Toast {
     _pdHorizontal = pdHorizontal;
     _pdVertical = pdVertical;
     //获取OverlayState
-    OverlayState? overlayState = Overlay.of(context);
+    var overlayState = Overlay.of(context);
     _showing = true;
     if (_overlayEntry == null) {
       //OverlayEntry负责构建布局
@@ -103,7 +103,7 @@ class Toast {
   }
 
   //toast绘制
-  static _buildToastWidget() {
+  static Center _buildToastWidget() {
     return Center(
       child: Card(
         color: _bgColor,
@@ -123,7 +123,7 @@ class Toast {
   }
 
 //  设置toast位置
-  static buildToastPosition(context) {
+  static dynamic buildToastPosition(BuildContext context) {
     var backResult;
     if (_toastPosition == ToastPostion.top) {
       backResult = MediaQuery.of(context).size.height * 1 / 4;

@@ -20,7 +20,7 @@ class GoodsListWidget extends StatelessWidget {
       height:250,
       width: Get.width,
       child: Center(
-        child: Image.asset("assets/images/loading.gif"),
+        child: Image.asset('assets/images/loading.gif'),
       ),
     ) : Container(
       child: ListView.builder(

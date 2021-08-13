@@ -20,6 +20,7 @@ class Personal extends StatelessWidget {
             color: Colors.white,
             height: 80.0,
             child: TouchCallBack(
+              onParessed: (){},
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
@@ -52,7 +53,6 @@ class Personal extends StatelessWidget {
                   ),
                 ],
               ),
-              onParessed: (){},
             ),
           ),
           //列表项,使用ImItem渲染

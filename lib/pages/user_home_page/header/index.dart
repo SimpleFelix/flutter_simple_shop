@@ -1,16 +1,15 @@
 // Flutter imports:
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-
 // Package imports:
 import 'package:extended_image/extended_image.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-// Project imports:
-import 'package:demo1/modals/user.dart';
-import 'package:demo1/provider/riverpod/user_riverpod.dart';
 import '../../../common/utils.dart';
 import '../../../constant/style.dart';
+// Project imports:
+import '../../../modals/user.dart';
+import '../../../provider/riverpod/user_riverpod.dart';
 import '../../../util/navigator_util.dart';
 
 // 头部容器

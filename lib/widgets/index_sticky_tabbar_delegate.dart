@@ -12,16 +12,16 @@ class IndexStickyTabBarDelegate extends SliverPersistentHeaderDelegate {
       BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Container(
       margin: padding??EdgeInsets.zero,
-      color:color!=null ? color : Colors.transparent,
-      child: this.child,
+      color:color ?? Colors.transparent,
+      child: child,
     );
   }
 
   @override
-  double get maxExtent => this.child.preferredSize.height;
+  double get maxExtent => child.preferredSize.height;
 
   @override
-  double get minExtent => this.child.preferredSize.height;
+  double get minExtent => child.preferredSize.height;
 
   @override
   bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) {

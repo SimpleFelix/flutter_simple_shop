@@ -22,9 +22,9 @@ class ExtendedImageWidget extends StatelessWidget {
     required this.src,
     required this.height,
     required this.width,
-    this.radius: BorderRadius.zero,
-    this.fit: BoxFit.fill,
-    this.knowSize: true,
+    this.radius = BorderRadius.zero,
+    this.fit = BoxFit.fill,
+    this.knowSize = true,
   });
 
   @override

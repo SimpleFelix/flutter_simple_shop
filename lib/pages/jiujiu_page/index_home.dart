@@ -6,7 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 
 // Project imports:
-import '../../widgets/RoundUnderlineTabIndicator.dart';
+import '../../widgets/round_underline_tab_indicator.dart';
 import 'list.dart'; // 9.9包邮的provider
 import 'loading_status.dart';
 import 'riverpod.dart';
