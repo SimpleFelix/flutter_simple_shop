@@ -1,7 +1,11 @@
-import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+// Project imports:
 import '../../../common/utils.dart';
 
 class BottomCategoryTabs extends ConsumerWidget implements PreferredSizeWidget  {

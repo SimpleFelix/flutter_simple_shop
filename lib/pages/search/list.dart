@@ -1,8 +1,12 @@
-import 'package:demo1/pages/search/component/initloading_status.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+// Project imports:
+import 'package:demo1/pages/search/component/initloading_status.dart';
 import '../../provider/riverpod/search_riverpod.dart';
 import '../../widgets/appbar_search.dart';
 import 'component/product_list.dart';

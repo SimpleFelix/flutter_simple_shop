@@ -1,7 +1,10 @@
-import 'package:demo1/util/navigator_util.dart';
-import 'package:demo1/pages/user_home_page/widgets/svg_title.dart';
+// Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+// Project imports:
+import 'package:demo1/pages/user_home_page/widgets/svg_title.dart';
+import 'package:demo1/util/navigator_util.dart';
 
 class OrderIndex extends StatelessWidget {
   @override

@@ -1,8 +1,8 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:pull_to_refresh_notification/pull_to_refresh_notification.dart';
-
-
-
 
   Widget buildPulltoRefreshHeader(PullToRefreshScrollNotificationInfo? info) {
     //print(info?.mode);

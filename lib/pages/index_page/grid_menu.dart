@@ -1,6 +1,10 @@
-import 'package:extended_image/extended_image.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
 
+// Package imports:
+import 'package:extended_image/extended_image.dart';
+
+// Project imports:
 import 'model/index_grid_menu_item_model.dart';
 
 /// 2020年11月17日 22:36:07

@@ -1,5 +1,8 @@
-import 'package:dd_taoke_sdk/model/product.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:dd_taoke_sdk/model/product.dart';
 
 class NineGoodsProvider with ChangeNotifier {
 

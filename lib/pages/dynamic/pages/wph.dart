@@ -1,19 +1,18 @@
-import 'package:badges/badges.dart';
-import 'package:demo1/pages/detail_page/index_home.dart';
-import 'package:demo1/pages/dynamic/wph_riverpod.dart';
-import 'package:demo1/pages/index_page/store/price_layout.dart';
-import 'package:demo1/pages/public_detail/view.dart';
-import 'package:demo1/service/api_service.dart';
-import 'package:demo1/widgets/extended_image.dart';
+// Flutter imports:
+// Package imports:
 import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:html/dom.dart' as dom;
 import 'package:swipeable_page_route/swipeable_page_route.dart';
+
+import '../../../widgets/extended_image.dart';
+import '../../index_page/store/price_layout.dart';
+import '../../public_detail/view.dart';
+// Project imports:
+import '../wph_riverpod.dart';
 
 /// 唯品会精编商品列表
 class WeipinhuiJinBianGoods extends StatefulWidget {

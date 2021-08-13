@@ -1,8 +1,12 @@
-import 'package:demo1/common/toast.dart';
-import 'package:demo1/common/utils.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:get/get.dart';
 
+// Project imports:
+import 'package:demo1/common/toast.dart';
+import 'package:demo1/common/utils.dart';
 
 /// 新版本弹窗
 class NewVersionDialog extends StatefulWidget {

@@ -1,7 +1,12 @@
-import 'package:dd_taoke_sdk/model/product.dart';
-import 'package:demo1/util/image_util.dart';
+// Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:dd_taoke_sdk/model/product.dart';
+
+// Project imports:
+import 'package:demo1/util/image_util.dart';
 
 class ShopInfoWidget extends StatelessWidget {
   final Product goodsInfo;

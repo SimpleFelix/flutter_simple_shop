@@ -1,6 +1,10 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:get/get.dart';
 
+// Project imports:
 import '../../../common/utils.dart';
 import '../scan/scan_code_auth.dart';
 import '../scan/scan_view.dart';

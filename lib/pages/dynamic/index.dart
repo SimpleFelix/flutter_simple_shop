@@ -1,7 +1,9 @@
-import 'package:demo1/pages/dynamic/pages/wph.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
 
 import 'pages/pyq.dart';
+// Project imports:
+import 'pages/wph.dart';
 
 /// 动态
 class DynamicIndex extends StatefulWidget {

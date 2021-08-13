@@ -1,4 +1,6 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
 class IndexHomeBanner extends StatelessWidget {
   final info =
       'A banner displays an important, succinct message, and provides actions for users to address. '

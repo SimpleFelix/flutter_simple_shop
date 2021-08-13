@@ -1,8 +1,12 @@
-import 'package:black_hole_flutter/black_hole_flutter.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:get/get.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
 
+// Project imports:
 import '../pages/ddq_page/index_home.dart';
 import '../pages/detail_page/hdk/index_home.dart';
 import '../pages/index_page/index_home.dart';

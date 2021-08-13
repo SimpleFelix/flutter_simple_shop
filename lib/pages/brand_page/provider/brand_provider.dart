@@ -1,14 +1,18 @@
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:dd_taoke_sdk/dd_taoke_sdk.dart';
 import 'package:dd_taoke_sdk/model/brand_list_model.dart';
 import 'package:dd_taoke_sdk/params/brand_param.dart';
-import 'package:flutter/material.dart';
 
+// Project imports:
 import '../models/brand_detail_model.dart';
 
 class BrandProvider extends ChangeNotifier {
   int page = 1;
   int size = 10;
-  String cid = '';
+  String _cid = '';
   List<ListElement> lists = [];
   String brandId = '';
   int pageId = 1;
@@ -17,15 +21,17 @@ class BrandProvider extends ChangeNotifier {
   List<BrandDetailGoodsList> brandGoodsList = [];
   Color detailBgColor = Colors.white;
 
-  void setCid(String _cid) => cid = _cid;
+  set cid(String value) => _cid = value;
+
+  String get cid => _cid;
 
   /// 加载品牌列表
   Future<void> refresh() async {
     lists.clear();
     page = 1;
-   final result = await  DdTaokeSdk.instance.getBrandList(param: BrandListParam(cid: '$cid', pageId: '$page', pageSize: '$size'));
+    final result = await DdTaokeSdk.instance.getBrandList(param: BrandListParam(cid: '$cid', pageId: '$page', pageSize: '$size'));
     if (result != null) {
-      lists.addAll(result.lists??[]);
+      lists.addAll(result.lists ?? []);
     }
     notifyListeners();
   }
@@ -33,10 +39,9 @@ class BrandProvider extends ChangeNotifier {
   /// 加载下一页
   Future<void> load() async {
     page = page + 1;
-    print("正在加载下一页:$page");
-    final result = await  DdTaokeSdk.instance.getBrandList(param: BrandListParam(cid: '$cid', pageId: '$page', pageSize: '$size'));
+    final result = await DdTaokeSdk.instance.getBrandList(param: BrandListParam(cid: '$cid', pageId: '$page', pageSize: '$size'));
     if (result != null) {
-      lists.addAll(result.lists??[]);
+      lists.addAll(result.lists ?? []);
     }
     notifyListeners();
   }
@@ -52,7 +57,7 @@ class BrandProvider extends ChangeNotifier {
   }
 
   // 返回值表示是否还有下一页
-  Future<bool> detailNextPage()async{
+  Future<bool> detailNextPage() async {
     pageId = pageId = 1;
     notifyListeners();
     return false;

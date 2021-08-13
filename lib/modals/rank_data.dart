@@ -2,6 +2,7 @@
 //
 //     final rankListGoods = rankListGoodsFromJson(jsonString);
 
+// Dart imports:
 import 'dart:convert';
 
 RankListGoods rankListGoodsFromJson(String str) => RankListGoods.fromJson(json.decode(str));

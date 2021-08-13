@@ -1,14 +1,17 @@
-import '../pages/brand_page/provider/brand_provider.dart';
-import 'index_provider.dart';
+// Package imports:
 import 'package:nested/nested.dart';
 import 'package:provider/provider.dart';
 
+// Project imports:
+import '../pages/brand_page/provider/brand_provider.dart';
 import './ddq_provider.dart';
 import './dtk_index_goods_provider.dart';
 import './goods_detail_provider.dart';
 import './goods_list_provider.dart';
 import './nine_goods_provider.dart';
+import 'index_provider.dart';
 import 'user_provider.dart';
+
 // Providers---end
 
 List<SingleChildWidget> providers = [

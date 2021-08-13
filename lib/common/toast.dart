@@ -1,7 +1,12 @@
-import 'package:demo1/common/utils.dart';
+// Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:get/get.dart';
+
+// Project imports:
+import 'utils.dart';
 
 void showToast(String text) {
   utils.showMessage(text);

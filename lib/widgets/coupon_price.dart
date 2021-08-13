@@ -1,6 +1,11 @@
-import 'package:fcontrol_nullsafety/fdefine.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:fcontrol_nullsafety/fdefine.dart';
 import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
+
+// Project imports:
 import '../constant/color.dart';
 
 // 券后价小部件

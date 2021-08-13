@@ -1,12 +1,17 @@
+// Dart imports:
 import 'dart:convert';
 
+// Flutter imports:
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:extended_image/extended_image.dart';
 import 'package:extended_text/extended_text.dart';
 import 'package:fcontrol_nullsafety/fdefine.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
 
+// Project imports:
 import '../../../common/utils.dart';
 import '../../../constant/style.dart';
 import '../../../modals/goods_info.dart';

@@ -1,3 +1,4 @@
+// Dart imports:
 import 'dart:convert' show json;
 
 T? asT<T>(dynamic value) {
@@ -22,7 +23,7 @@ class BrandDetailModel {
   });
 
   factory BrandDetailModel.fromJson(Map<String, dynamic> jsonRes) {
-    final List<BrandDetailGoodsList>? list =
+    final list =
         jsonRes['list'] is List ? <BrandDetailGoodsList>[] : null;
     if (list != null) {
       for (final dynamic item in jsonRes['list']) {
@@ -109,7 +110,7 @@ class BrandDetailGoodsList {
   });
 
   factory BrandDetailGoodsList.fromJson(Map<String, dynamic> jsonRes) {
-    final List<Object?>? specialText = jsonRes['specialText'] is List ? <Object?>[] : null;
+    final specialText = jsonRes['specialText'] is List ? <Object?>[] : null;
     if (specialText != null) {
       for (final dynamic item in jsonRes['specialText']) {
         if (item != null) {

@@ -1,8 +1,13 @@
-import 'package:dd_taoke_sdk/model/brand_list_model.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+
+// Package imports:
 import 'package:black_hole_flutter/black_hole_flutter.dart';
+import 'package:dd_taoke_sdk/model/brand_list_model.dart';
+import 'package:get/get.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
+
+// Project imports:
 import '../../../util/image_util.dart';
 import '../../../util/number_cover.dart';
 import '../../index_page/store/goods_item_layout.dart';

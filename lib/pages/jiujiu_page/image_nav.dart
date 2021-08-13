@@ -1,5 +1,8 @@
-import 'package:extended_image/extended_image.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:extended_image/extended_image.dart';
 
 class ImageNav extends StatelessWidget {
   final Text? title;

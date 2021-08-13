@@ -1,12 +1,15 @@
-import 'package:black_hole_flutter/black_hole_flutter.dart';
-import 'package:dd_taoke_sdk/model/product.dart';
+// Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:black_hole_flutter/black_hole_flutter.dart';
+import 'package:dd_taoke_sdk/model/product.dart';
 import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:show_up_animation/show_up_animation.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
 
+// Project imports:
 import '../constant/style.dart';
 import '../provider/riverpod/category_riverpod.dart';
 import '../widgets/component/custom_loading.dart';

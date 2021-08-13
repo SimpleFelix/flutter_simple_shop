@@ -1,9 +1,13 @@
-import '../../provider/riverpod/search_riverpod.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+// Project imports:
+import '../../provider/riverpod/search_riverpod.dart';
 import '../../widgets/appbar_search.dart';
 import 'component/helper_show.dart';
 import 'component/key_worlds.dart';

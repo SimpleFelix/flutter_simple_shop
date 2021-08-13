@@ -294,7 +294,7 @@ packages:
       name: date_format
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.0.3"
+    version: "2.0.4"
   dd_js_util:
     dependency: "direct main"
     description:
@@ -329,7 +329,7 @@ packages:
       name: encrypt
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "5.0.0"
+    version: "5.0.1"
   extended_image:
     dependency: "direct main"
     description:
@@ -589,7 +589,7 @@ packages:
       name: get
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "4.3.4"
+    version: "4.3.7"
   get_it:
     dependency: "direct main"
     description:
@@ -673,7 +673,7 @@ packages:
       name: image_picker
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.8.3"
+    version: "0.8.3+2"
   image_picker_for_web:
     dependency: transitive
     description:
@@ -688,6 +688,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.2.0"
+  import_sorter:
+    dependency: "direct dev"
+    description:
+      name: import_sorter
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "4.6.0"
   injector:
     dependency: transitive
     description:
@@ -729,7 +736,7 @@ packages:
       name: loading_more_list
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "4.0.1"
+    version: "4.1.0"
   loading_more_list_library:
     dependency: transitive
     description:
@@ -932,7 +939,7 @@ packages:
       name: pointycastle
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "3.0.1"
+    version: "3.3.0"
   pool:
     dependency: transitive
     description:
@@ -1182,7 +1189,7 @@ packages:
       name: swipeable_page_route
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.2.2"
+    version: "0.2.3"
   synchronized:
     dependency: transitive
     description:
@@ -1211,6 +1218,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.0"
+  tint:
+    dependency: transitive
+    description:
+      name: tint
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.0.0"
   tuple:
     dependency: transitive
     description:

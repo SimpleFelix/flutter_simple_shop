@@ -1,9 +1,14 @@
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:provider/provider.dart';
+
+// Project imports:
 import 'package:demo1/common/utils.dart';
 import 'package:demo1/pages/index_page/component/component_title.dart';
 import 'package:demo1/pages/index_page/store/goods_card.dart';
 import 'package:demo1/provider/index_provider.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 /// 首页推荐商店模块
 class StoreComponentIndex extends StatelessWidget {

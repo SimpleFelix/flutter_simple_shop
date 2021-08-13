@@ -1,6 +1,11 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 import 'package:get/get.dart';
+
+// Project imports:
 import '../../widgets/extended_image.dart';
 
 class SwiperWidget extends StatelessWidget {
@@ -10,11 +15,13 @@ class SwiperWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<String> imgArr;
-    if (images != "") {
-      imgArr = images.split(",");
+    if (images != '') {
+      imgArr = images.split(',');
       return Stack(
         children: <Widget>[
           Container(
+            width: Get.width,
+            height: Get.width,
             child: Swiper(
               itemBuilder: (BuildContext context, int index) {
                 return ExtendedImageWidget(
@@ -25,10 +32,8 @@ class SwiperWidget extends StatelessWidget {
                 );
               },
               itemCount: imgArr.length,
-              pagination: new SwiperPagination(),
+              pagination: SwiperPagination(),
             ),
-            width: Get.width,
-            height: Get.width,
           ),
 
           // 返回按钮

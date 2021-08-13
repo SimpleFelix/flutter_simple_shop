@@ -1,10 +1,14 @@
+// Flutter imports:
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:dd_taoke_sdk/model/product.dart';
 import 'package:fcontrol_nullsafety/fdefine.dart';
 import 'package:flustars/flustars.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
 
+// Project imports:
 import '../common/widgets/hot.dart';
 import '../util/navigator_util.dart';
 import '../widgets/coupon_price.dart';

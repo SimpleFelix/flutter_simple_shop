@@ -1,18 +1,19 @@
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:after_layout/after_layout.dart';
 import 'package:dd_taoke_sdk/dd_taoke_sdk.dart';
 import 'package:dd_taoke_sdk/model/brand_detail_result.dart';
 import 'package:dd_taoke_sdk/model/product.dart';
 import 'package:dd_taoke_sdk/params/brand_product_param.dart';
-import 'package:demo1/common/widgets/loading_mixin.dart';
-import 'package:demo1/widgets/no_data.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
-import 'package:provider/provider.dart';
 
+// Project imports:
+import '../../common/widgets/loading_mixin.dart';
 import '../../widgets/loading_widget.dart';
 import 'components/detail_brand_info.dart';
 import 'components/detail_product_list.dart';
-import 'provider/brand_provider.dart';
 
 // 产品品牌详情页面
 class BrandDetailPage extends StatefulWidget {

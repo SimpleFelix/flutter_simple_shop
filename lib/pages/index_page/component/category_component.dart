@@ -1,7 +1,11 @@
-import 'package:dd_taoke_sdk/model/category.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:dd_taoke_sdk/model/category.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+// Project imports:
 import '../../../constant/style.dart';
 import '../../../provider/riverpod/category_riverpod.dart';
 import 'category_item_layout.dart';

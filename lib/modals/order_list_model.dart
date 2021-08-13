@@ -2,10 +2,11 @@
 //
 //     final orderAllData = orderAllDataFromJson(jsonString);
 
+// Dart imports:
 import 'dart:convert';
 
-import 'package:demo1/modals/page_info_model.dart';
-
+// Project imports:
+import 'page_info_model.dart';
 
 OrderAllData orderAllDataFromJson(String str) => OrderAllData.fromJson(json.decode(str));
 

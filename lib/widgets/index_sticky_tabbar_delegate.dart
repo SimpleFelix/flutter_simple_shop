@@ -1,4 +1,6 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
 class IndexStickyTabBarDelegate extends SliverPersistentHeaderDelegate {
   EdgeInsets? padding;
   final TabBar child;

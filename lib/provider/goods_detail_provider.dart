@@ -1,11 +1,15 @@
+// Dart imports:
 import 'dart:convert';
 
-import 'package:demo1/modals/couponData.dart';
-import 'package:demo1/util/system_toast.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
-import '../util/request_service.dart';
-import '../modals/Result.dart';
+
+// Project imports:
+import 'package:demo1/modals/coupon_data.dart';
+import 'package:demo1/util/system_toast.dart';
+import '../modals/result.dart';
 import '../modals/goods_info.dart';
+import '../util/request_service.dart';
 import '../util/result_obj_util.dart';
 import '../util/user_utils.dart';
 

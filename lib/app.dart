@@ -1,8 +1,12 @@
-import 'package:after_layout/after_layout.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:after_layout/after_layout.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 
+// Project imports:
 import './pages/category_page/index_home.dart';
 import './pages/index_page/index_home.dart';
 import './pages/jiujiu_page/index_home.dart';

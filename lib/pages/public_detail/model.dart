@@ -1,7 +1,10 @@
 // 通用类型
-import 'package:common_utils/common_utils.dart';
-import 'package:demo1/pages/dynamic/model/wph_detail_resul.dart';
 
+// Package imports:
+import 'package:common_utils/common_utils.dart';
+
+// Project imports:
+import 'package:demo1/pages/dynamic/model/wph_detail_resul.dart';
 import '../../modals/pdd_detail_model.dart';
 
 class PublicDetailModel {

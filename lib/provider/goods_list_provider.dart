@@ -1,10 +1,12 @@
+// Dart imports:
 import 'dart:convert';
 
+// Project imports:
 import 'package:demo1/provider/base_provider.dart';
+import '../modals/result.dart';
 import '../modals/goods_list_modal.dart';
 import '../util/request_service.dart';
 import '../util/result_obj_util.dart';
-import '../modals/Result.dart';
 
 class GoodsListProvider extends BaseProvider {
   List<GoodsItem>? goods = [];

@@ -1,5 +1,7 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
 
+// Project imports:
 import '../util/extended_util.dart';
 
 class LoadingWidget extends StatelessWidget {

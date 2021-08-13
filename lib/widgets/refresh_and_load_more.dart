@@ -1,7 +1,11 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
-import './pull_to_refresh_widget.dart';
 
+// Package imports:
+import 'package:pull_to_refresh/pull_to_refresh.dart';
+
+// Project imports:
+import './pull_to_refresh_widget.dart';
 
 class RefreshAndLoadMore extends StatelessWidget {
 

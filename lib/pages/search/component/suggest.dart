@@ -1,14 +1,20 @@
+// Dart imports:
 import 'dart:convert';
+
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:badges/badges.dart';
-import 'package:demo1/provider/riverpod/search_riverpod.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:dd_taoke_sdk/model/hot_search_worlds_result.dart';
+import 'package:get/get.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+// Project imports:
 import 'package:demo1/common/widgets/hot.dart';
 import 'package:demo1/pages/search/logic.dart';
+import 'package:demo1/provider/riverpod/search_riverpod.dart';
 import 'package:demo1/widgets/extended_image.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
 import '../list.dart';
 
 class Suggest extends StatelessWidget {

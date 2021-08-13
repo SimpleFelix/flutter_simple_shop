@@ -1,8 +1,12 @@
-import 'package:dd_taoke_sdk/model/product.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:dd_taoke_sdk/model/product.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:loading_more_list/loading_more_list.dart';
 
+// Project imports:
 import '../../../common/utils.dart';
 
 class ProductsList extends ConsumerWidget {

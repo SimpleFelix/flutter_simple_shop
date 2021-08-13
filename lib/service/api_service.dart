@@ -1,10 +1,15 @@
+// Dart imports:
 import 'dart:convert';
 
-import 'package:dd_taoke_sdk/network/util.dart';
-import 'package:demo1/modals/pdd_search_item_model.dart';
+// Flutter imports:
 import 'package:flutter/cupertino.dart';
+
+// Package imports:
+import 'package:dd_taoke_sdk/network/util.dart';
 import 'package:get_it/get_it.dart';
 
+// Project imports:
+import 'package:demo1/modals/pdd_search_item_model.dart';
 import '../common/toast.dart';
 import '../common/utils.dart';
 import '../modals/pdd_detail_model.dart';

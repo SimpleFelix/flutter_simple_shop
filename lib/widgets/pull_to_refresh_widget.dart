@@ -1,4 +1,7 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class PullToRefreshWidgetFoot extends StatelessWidget {

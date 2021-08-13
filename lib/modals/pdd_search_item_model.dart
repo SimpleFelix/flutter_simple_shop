@@ -1,8 +1,8 @@
+// Dart imports:
 import 'dart:convert';
-import 'dart:developer';
 
+// Project imports:
 import 'ff_convert_convert_util.dart';
-
 
 class PddSearchItemModel {
   PddSearchItemModel({
@@ -54,8 +54,7 @@ class PddSearchItemModel {
   });
 
   factory PddSearchItemModel.fromJson(Map<String, dynamic> jsonRes) {
-    final List<String>? unifiedTags =
-    jsonRes['unifiedTags'] is List ? <String>[] : null;
+    final unifiedTags = jsonRes['unifiedTags'] is List ? <String>[] : null;
     if (unifiedTags != null) {
       for (final dynamic item in jsonRes['unifiedTags']!) {
         if (item != null) {
@@ -66,7 +65,7 @@ class PddSearchItemModel {
       }
     }
 
-    final List<int>? optIds = jsonRes['optIds'] is List ? <int>[] : null;
+    final optIds = jsonRes['optIds'] is List ? <int>[] : null;
     if (optIds != null) {
       for (final dynamic item in jsonRes['optIds']!) {
         if (item != null) {
@@ -77,8 +76,7 @@ class PddSearchItemModel {
       }
     }
 
-    final List<int>? activityTags =
-    jsonRes['activityTags'] is List ? <int>[] : null;
+    final activityTags = jsonRes['activityTags'] is List ? <int>[] : null;
     if (activityTags != null) {
       for (final dynamic item in jsonRes['activityTags']!) {
         if (item != null) {
@@ -89,8 +87,7 @@ class PddSearchItemModel {
       }
     }
 
-    final List<int>? serviceTags =
-    jsonRes['serviceTags'] is List ? <int>[] : null;
+    final serviceTags = jsonRes['serviceTags'] is List ? <int>[] : null;
     if (serviceTags != null) {
       for (final dynamic item in jsonRes['serviceTags']!) {
         if (item != null) {
@@ -101,7 +98,7 @@ class PddSearchItemModel {
       }
     }
 
-    final List<int>? catIds = jsonRes['catIds'] is List ? <int>[] : null;
+    final catIds = jsonRes['catIds'] is List ? <int>[] : null;
     if (catIds != null) {
       for (final dynamic item in jsonRes['catIds']!) {
         if (item != null) {
@@ -122,8 +119,7 @@ class PddSearchItemModel {
       predictPromotionRate: asT<int>(jsonRes['predictPromotionRate'])!,
       optIds: optIds!,
       hasCoupon: asT<bool>(jsonRes['hasCoupon'])!,
-      mallCouponMaxDiscountAmount:
-      asT<int>(jsonRes['mallCouponMaxDiscountAmount'])!,
+      mallCouponMaxDiscountAmount: asT<int>(jsonRes['mallCouponMaxDiscountAmount'])!,
       descTxt: asT<String>(jsonRes['descTxt'])!,
       searchId: asT<String>(jsonRes['searchId'])!,
       couponRemainQuantity: asT<int>(jsonRes['couponRemainQuantity'])!,
@@ -152,7 +148,7 @@ class PddSearchItemModel {
       couponEndTime: asT<String>(jsonRes['couponEndTime'])!,
       couponDiscount: asT<int>(jsonRes['couponDiscount'])!,
       minNormalPrice: asT<double>(jsonRes['minNormalPrice'])!,
-      mallCouponId: asT<int>(jsonRes['mallCouponId']??0)!,
+      mallCouponId: asT<int>(jsonRes['mallCouponId'] ?? 0)!,
       goodsImageUrl: asT<String>(jsonRes['goodsImageUrl'])!,
       servTxt: asT<String>(jsonRes['servTxt'])!,
       promotionRate: asT<int>(jsonRes['promotionRate'])!,
@@ -213,53 +209,52 @@ class PddSearchItemModel {
   }
 
   Map<String, dynamic> toJson() => <String, dynamic>{
-    'mallName': mallName,
-    'mallCouponEndTime': mallCouponEndTime,
-    'mallCps': mallCps,
-    'unifiedTags': unifiedTags,
-    'mallId': mallId,
-    'hasMallCoupon': hasMallCoupon,
-    'couponTotalQuantity': couponTotalQuantity,
-    'predictPromotionRate': predictPromotionRate,
-    'optIds': optIds,
-    'hasCoupon': hasCoupon,
-    'mallCouponMaxDiscountAmount': mallCouponMaxDiscountAmount,
-    'descTxt': descTxt,
-    'searchId': searchId,
-    'couponRemainQuantity': couponRemainQuantity,
-    'couponStartTime': couponStartTime,
-    'couponMinOrderAmount': couponMinOrderAmount,
-    'goodsThumbnailUrl': goodsThumbnailUrl,
-    'lgstTxt': lgstTxt,
-    'mallCouponTotalQuantity': mallCouponTotalQuantity,
-    'onlySceneAuth': onlySceneAuth,
-    'salesTip': salesTip,
-    'activityTags': activityTags,
-    'goodsName': goodsName,
-    'merchantType': merchantType,
-    'mallCouponDiscountPct': mallCouponDiscountPct,
-    'goodsDesc': goodsDesc,
-    'mallCouponMinOrderAmount': mallCouponMinOrderAmount,
-    'serviceTags': serviceTags,
-    'mallCouponStartTime': mallCouponStartTime,
-    'planType': planType,
-    'optName': optName,
-    'minGroupPrice': minGroupPrice,
-    'mallCouponRemainQuantity': mallCouponRemainQuantity,
-    'zsDuoId': zsDuoId,
-    'goodsSign': goodsSign,
-    'shareRate': shareRate,
-    'couponEndTime': couponEndTime,
-    'couponDiscount': couponDiscount,
-    'minNormalPrice': minNormalPrice,
-    'mallCouponId': mallCouponId,
-    'goodsImageUrl': goodsImageUrl,
-    'servTxt': servTxt,
-    'promotionRate': promotionRate,
-    'catIds': catIds,
-    'optId': optId,
-  };
+        'mallName': mallName,
+        'mallCouponEndTime': mallCouponEndTime,
+        'mallCps': mallCps,
+        'unifiedTags': unifiedTags,
+        'mallId': mallId,
+        'hasMallCoupon': hasMallCoupon,
+        'couponTotalQuantity': couponTotalQuantity,
+        'predictPromotionRate': predictPromotionRate,
+        'optIds': optIds,
+        'hasCoupon': hasCoupon,
+        'mallCouponMaxDiscountAmount': mallCouponMaxDiscountAmount,
+        'descTxt': descTxt,
+        'searchId': searchId,
+        'couponRemainQuantity': couponRemainQuantity,
+        'couponStartTime': couponStartTime,
+        'couponMinOrderAmount': couponMinOrderAmount,
+        'goodsThumbnailUrl': goodsThumbnailUrl,
+        'lgstTxt': lgstTxt,
+        'mallCouponTotalQuantity': mallCouponTotalQuantity,
+        'onlySceneAuth': onlySceneAuth,
+        'salesTip': salesTip,
+        'activityTags': activityTags,
+        'goodsName': goodsName,
+        'merchantType': merchantType,
+        'mallCouponDiscountPct': mallCouponDiscountPct,
+        'goodsDesc': goodsDesc,
+        'mallCouponMinOrderAmount': mallCouponMinOrderAmount,
+        'serviceTags': serviceTags,
+        'mallCouponStartTime': mallCouponStartTime,
+        'planType': planType,
+        'optName': optName,
+        'minGroupPrice': minGroupPrice,
+        'mallCouponRemainQuantity': mallCouponRemainQuantity,
+        'zsDuoId': zsDuoId,
+        'goodsSign': goodsSign,
+        'shareRate': shareRate,
+        'couponEndTime': couponEndTime,
+        'couponDiscount': couponDiscount,
+        'minNormalPrice': minNormalPrice,
+        'mallCouponId': mallCouponId,
+        'goodsImageUrl': goodsImageUrl,
+        'servTxt': servTxt,
+        'promotionRate': promotionRate,
+        'catIds': catIds,
+        'optId': optId,
+      };
 
-  PddSearchItemModel clone() => PddSearchItemModel.fromJson(
-      asT<Map<String, dynamic>>(jsonDecode(jsonEncode(this)))!);
+  PddSearchItemModel clone() => PddSearchItemModel.fromJson(asT<Map<String, dynamic>>(jsonDecode(jsonEncode(this)))!);
 }

@@ -1,6 +1,8 @@
+// Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+// Project imports:
 import '../../../../common/utils.dart';
 import '../../../../widgets/product_search_mini.dart';
 

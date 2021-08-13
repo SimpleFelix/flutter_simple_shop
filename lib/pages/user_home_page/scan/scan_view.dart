@@ -1,8 +1,12 @@
-import 'package:ai_barcode/ai_barcode.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:ai_barcode/ai_barcode.dart';
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
 
+// Project imports:
 import '../../../common/widgets/loading_mixin.dart';
 
 /// 扫描条码页面

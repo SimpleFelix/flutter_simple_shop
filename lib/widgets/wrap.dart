@@ -1,4 +1,7 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:loading_more_list/loading_more_list.dart';
 
 /// 功能组组件

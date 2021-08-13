@@ -1,12 +1,17 @@
-import 'package:badges/badges.dart';
-import 'package:dd_taoke_sdk/model/halfday_result.dart';
-import 'package:demo1/util/navigator_util.dart';
-import 'package:demo1/widgets/extended_image.dart';
-import 'package:demo1/widgets/simple_price.dart';
+// Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:badges/badges.dart';
+import 'package:dd_taoke_sdk/model/halfday_result.dart';
 import 'package:get/get.dart';
 import 'package:loading_more_list/loading_more_list.dart';
+
+// Project imports:
+import '../../../util/navigator_util.dart';
+import '../../../widgets/extended_image.dart';
+import '../../../widgets/simple_price.dart';
 
 class BanjiaList extends StatelessWidget {
   final List<ListElement> products;

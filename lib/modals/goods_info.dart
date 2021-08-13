@@ -2,6 +2,7 @@
 //
 //     final goodsInfo = goodsInfoFromJson(jsonString);
 
+// Dart imports:
 import 'dart:convert';
 
 GoodsInfo goodsInfoFromJson(String str) => GoodsInfo.fromJson(json.decode(str));

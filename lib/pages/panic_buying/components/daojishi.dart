@@ -1,5 +1,8 @@
-import '../../../widgets/component/dao_ji_shi.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
+import '../../../widgets/component/dao_ji_shi.dart';
 
 // 倒计时组件
 class DaojishiComp extends StatelessWidget {

@@ -1,9 +1,14 @@
-import 'package:dd_taoke_sdk/model/product.dart';
-import 'package:demo1/widgets/extended_image.dart';
+// Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../../widgets/tag_widget.dart';
+
+// Package imports:
+import 'package:dd_taoke_sdk/model/product.dart';
+
+// Project imports:
+import '../../widgets/extended_image.dart';
 import '../../util/navigator_util.dart';
+import '../../widgets/tag_widget.dart';
 
 // 9.9商品卡片布局
 class GoodsItem extends StatelessWidget {

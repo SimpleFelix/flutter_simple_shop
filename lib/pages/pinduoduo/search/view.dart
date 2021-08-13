@@ -1,9 +1,13 @@
-import 'package:black_hole_flutter/black_hole_flutter.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:get/get.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
 
+// Project imports:
 import '../../../common/components/pdd/view.dart';
 import '../../../modals/pdd_search_item_model.dart';
 import '../../../widgets/appbar_search.dart';

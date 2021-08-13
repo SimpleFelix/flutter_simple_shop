@@ -1,8 +1,12 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:waterfall_flow/waterfall_flow.dart';
 
+// Project imports:
 import '../../../provider/riverpod/search_riverpod.dart';
 import '../../../widgets/waterfall_goods_card.dart';
 

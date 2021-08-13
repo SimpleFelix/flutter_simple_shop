@@ -1,13 +1,15 @@
+// Dart imports:
 import 'dart:convert';
 
+// Package imports:
 import 'package:loading_more_list/loading_more_list.dart';
 
-import '../modals/Result.dart';
+// Project imports:
+import '../modals/result.dart';
 import '../modals/order_list_model.dart';
 import '../util/request_service.dart';
 import '../util/result_obj_util.dart';
 import '../util/user_utils.dart';
-
 
 class OrderRespository extends LoadingMoreBase<OrderAuditObject>{
 

@@ -1,4 +1,4 @@
-
+// Project imports:
 import 'model.dart';
 
 abstract class PublicDetailViewAbs {

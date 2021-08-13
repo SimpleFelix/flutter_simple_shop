@@ -2,6 +2,7 @@
 //
 //     final couponInfo = couponInfoFromJson(jsonString);
 
+// Dart imports:
 import 'dart:convert';
 
 CouponInfo couponInfoFromJson(String str) => CouponInfo.fromJson(json.decode(str));

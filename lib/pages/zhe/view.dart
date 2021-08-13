@@ -1,7 +1,11 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+// Project imports:
 import '../../widgets/loading_widget.dart';
 import '../../widgets/simple_appbar.dart';
 import '../panic_buying/components/categorys.dart';

@@ -1,13 +1,8 @@
-import 'package:black_hole_flutter/black_hole_flutter.dart';
+// Flutter imports:
+// Package imports:
 import 'package:common_utils/common_utils.dart';
 import 'package:dd_taoke_sdk/dd_taoke_sdk.dart';
 import 'package:dd_taoke_sdk/model/product.dart';
-import 'package:demo1/common/toast.dart';
-import 'package:demo1/common/utils.dart';
-import 'package:demo1/util/navigator_util.dart';
-import 'package:demo1/pages/dynamic/pyq_riverpod.dart';
-import 'package:demo1/widgets/extended_image.dart';
-import 'package:demo1/widgets/simple_price.dart';
 import 'package:fbutton_nullsafety/fbutton_nullsafety.dart';
 import 'package:fcontrol_nullsafety/fdefine.dart';
 import 'package:flutter/cupertino.dart';
@@ -16,6 +11,14 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:loading_more_list/loading_more_list.dart';
+
+// Project imports:
+import '../../../common/toast.dart';
+import '../../../common/utils.dart';
+import '../../../util/navigator_util.dart';
+import '../../../widgets/extended_image.dart';
+import '../../../widgets/simple_price.dart';
+import '../pyq_riverpod.dart';
 
 class PyqList extends ConsumerWidget {
   @override

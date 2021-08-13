@@ -1,6 +1,9 @@
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:dd_taoke_sdk/model/category.dart';
 import 'package:extended_image/extended_image.dart';
-import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class SubCategoryView extends ConsumerWidget {

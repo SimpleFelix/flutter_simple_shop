@@ -1,13 +1,18 @@
+// Dart imports:
 import 'dart:ui';
 
+// Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:provider/provider.dart';
 
-import './index_layout.dart';
-import '../../util/navigator_util.dart';
+// Project imports:
 import '../../provider/ddq_provider.dart';
+import '../../util/navigator_util.dart';
 import '../../widgets/extended_image.dart';
+import './index_layout.dart';
 import 'component/component_title.dart';
 
 // 钉钉抢

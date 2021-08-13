@@ -1,3 +1,4 @@
+// Package imports:
 import 'package:dio/dio.dart';
 
 /// 请求错误类
@@ -29,7 +30,7 @@ class ErrorEntity {
       case DioErrorType.response:
         {
           try {
-            int? errCode = error.response!.statusCode;
+            var errCode = error.response!.statusCode;
             switch (errCode) {
               case 400:
                 {

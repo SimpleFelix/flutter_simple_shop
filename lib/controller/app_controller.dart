@@ -1,18 +1,18 @@
-import 'dart:convert';
+// Dart imports:
 import 'dart:typed_data';
 
+// Flutter imports:
+import 'package:flutter/services.dart';
+
+// Package imports:
 import 'package:dd_js_util/dd_js_util.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:package_info/package_info.dart';
 
+// Project imports:
 import '../network/interceptor/auth_interceptor.dart';
 import '../provider/riverpod/user_riverpod.dart';
-import '../service/api_service.dart';
-import '../widgets/component/new_version_dialog.dart';
 
 /// app 控制器
 class AppController extends GetxController {

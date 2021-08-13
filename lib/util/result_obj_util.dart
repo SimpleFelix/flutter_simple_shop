@@ -1,6 +1,8 @@
+// Dart imports:
 import 'dart:convert';
 
-import '../modals/Result.dart';
+// Project imports:
+import '../modals/result.dart';
 
 class ResultUtils {
   // 远程数据

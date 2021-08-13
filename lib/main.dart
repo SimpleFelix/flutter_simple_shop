@@ -1,7 +1,11 @@
+// Dart imports:
 import 'dart:io';
 
-import 'package:dd_taoke_sdk/network/util.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:dd_taoke_sdk/network/util.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -9,6 +13,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:provider/provider.dart';
 import 'package:window_size/window_size.dart';
 
+// Project imports:
 import './provider/providers.dart';
 import 'ad.dart';
 import 'common/service.dart';

@@ -1,12 +1,13 @@
+// Dart imports:
 import 'dart:convert';
 
-import 'package:demo1/modals/Result.dart';
+// Project imports:
+import 'package:demo1/modals/result.dart';
 import 'package:demo1/util/result_obj_util.dart';
 import 'package:demo1/util/system_toast.dart';
-
+import '../modals/shop_info.dart';
 import './api.dart';
 import './request.dart';
-import '../modals/shop_info.dart';
 
 // 这里类似java中的service
 

@@ -1,10 +1,13 @@
-import 'package:demo1/pages/dynamic/components/list.dart';
-import 'package:demo1/pages/dynamic/pyq_riverpod.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+// Package imports:
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+// Project imports:
+import '../components/list.dart';
 import '../loading.dart';
+import '../pyq_riverpod.dart';
 
 /// 朋友圈
 class PyqView extends StatefulWidget {

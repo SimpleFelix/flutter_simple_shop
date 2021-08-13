@@ -1,4 +1,7 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
 import './common/touch_callback.dart';
 
 class Search extends StatefulWidget {

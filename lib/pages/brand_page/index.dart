@@ -1,12 +1,16 @@
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:dd_taoke_sdk/dd_taoke_sdk.dart';
 import 'package:dd_taoke_sdk/model/brand_list_model.dart';
 import 'package:dd_taoke_sdk/model/category.dart';
 import 'package:dd_taoke_sdk/params/brand_param.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:waterfall_flow/waterfall_flow.dart';
 
+// Project imports:
 import '../../common/widgets/loading_mixin.dart';
 import '../../provider/riverpod/category_riverpod.dart';
 import '../index_page/component/category_component.dart';

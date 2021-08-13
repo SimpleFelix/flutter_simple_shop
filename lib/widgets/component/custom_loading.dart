@@ -1,6 +1,8 @@
-
-import 'package:extended_image/extended_image.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:extended_image/extended_image.dart';
 
 /// 图片加载loading
 Widget loadingState(ExtendedImageState state) {

@@ -1,5 +1,7 @@
+// Package imports:
 import 'package:get/get.dart';
 
+// Project imports:
 import '../../../modals/pdd_search_item_model.dart';
 import '../../../service/api_service.dart';
 

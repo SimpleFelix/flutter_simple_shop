@@ -1,5 +1,8 @@
-import '../index_page/component/category_component.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
+import '../index_page/component/category_component.dart';
 
 class CategoryDelegate extends SliverPersistentHeaderDelegate {
   final SelectWithItem onSelect;

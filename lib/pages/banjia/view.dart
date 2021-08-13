@@ -1,9 +1,13 @@
-import 'package:demo1/widgets/float_widget.dart';
-import 'package:demo1/widgets/loading_widget.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+// Project imports:
+import '../../widgets/float_widget.dart';
+import '../../widgets/loading_widget.dart';
 import '../../widgets/simple_appbar.dart';
 import 'component/appbar.dart';
 import 'component/list.dart';

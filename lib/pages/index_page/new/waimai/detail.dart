@@ -1,10 +1,14 @@
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:dd_taoke_sdk/dd_taoke_sdk.dart';
 import 'package:dd_taoke_sdk/model/activity_link_result.dart';
 import 'package:dd_taoke_sdk/params/activity_link_param.dart';
 import 'package:fbutton_nullsafety/fbutton_nullsafety.dart';
 import 'package:fcontrol_nullsafety/fdefine.dart';
-import 'package:flutter/material.dart';
 
+// Project imports:
 import '../../../../common/utils.dart';
 import '../../../../common/widgets/loading_mixin.dart';
 import '../../../../widgets/simple_appbar.dart';

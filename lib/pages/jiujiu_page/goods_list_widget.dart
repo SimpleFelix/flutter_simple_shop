@@ -1,6 +1,11 @@
-import 'package:dd_taoke_sdk/model/product.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:dd_taoke_sdk/model/product.dart';
 import 'package:get/get.dart';
+
+// Project imports:
 import './goods_item_widget.dart';
 
 class GoodsListWidget extends StatelessWidget {

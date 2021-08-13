@@ -1,7 +1,11 @@
-import 'package:demo1/pages/dynamic/pyq_riverpod.dart';
-import 'package:demo1/widgets/loading_widget.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+// Package imports:
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+import '../../widgets/loading_widget.dart';
+// Project imports:
+import 'pyq_riverpod.dart';
 
 class PyQLoading extends ConsumerWidget{
   @override

@@ -1,11 +1,13 @@
-import 'package:dd_taoke_sdk/model/brand_detail_result.dart';
-import 'package:demo1/common/utils.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:dd_taoke_sdk/model/brand_detail_result.dart';
 import 'package:get/get.dart';
 
+// Project imports:
+import '../../../common/utils.dart';
 import '../../../util/image_util.dart';
-import '../../../util/number_cover.dart';
-import '../../../widgets/tag_widget.dart';
 
 /// 品牌信息卡片
 class BrandDetailView extends StatelessWidget {
@@ -33,15 +35,6 @@ class BrandDetailView extends StatelessWidget {
     );
   }
 
-  Widget _buildData(){
-    return Container(
-      child: Text('${Numeral(brandDetailModel.fansNum!)}粉丝   ${Numeral(brandDetailModel.sales!)}近期销量',style: TextStyle(
-        color: Colors.black.withOpacity(.8),
-        fontSize: 12
-      ),),
-    );
-  }
-
   Widget _buildName() {
     return Row(
       mainAxisSize: MainAxisSize.min,
@@ -52,16 +45,8 @@ class BrandDetailView extends StatelessWidget {
               fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
         ),
         SizedBox(width: 12,),
-        InkWell(onTap: (){
-          showInfo();
-        },child: Icon(Icons.info_outline_rounded,color: Colors.black.withOpacity(.5),size: 15,),)
+        InkWell(onTap: showInfo,child: Icon(Icons.info_outline_rounded,color: Colors.black.withOpacity(.5),size: 15,),)
       ],
-    );
-  }
-
-  Widget _buildTag() {
-    return TagWidget2(
-      tag: '${brandDetailModel.brandFeatures}',
     );
   }
 

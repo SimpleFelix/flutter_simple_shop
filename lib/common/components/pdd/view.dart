@@ -1,15 +1,19 @@
-import 'package:common_utils/common_utils.dart';
-import 'package:demo1/pages/public_detail/view.dart';
-import 'package:demo1/widgets/component/coupon_discount.dart';
-import 'package:demo1/widgets/extended_image.dart';
-import 'package:demo1/widgets/simple_price.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:black_hole_flutter/black_hole_flutter.dart';
+import 'package:common_utils/common_utils.dart';
 import 'package:loading_more_list/loading_more_list.dart';
 import 'package:show_up_animation/show_up_animation.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
 
+// Project imports:
 import '../../../modals/pdd_product.dart';
+import '../../../pages/public_detail/view.dart';
+import '../../../widgets/component/coupon_discount.dart';
+import '../../../widgets/extended_image.dart';
+import '../../../widgets/simple_price.dart';
 import 'resp.dart';
 
 class PddRecommendListView extends StatefulWidget {

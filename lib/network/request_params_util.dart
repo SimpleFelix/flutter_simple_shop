@@ -1,5 +1,7 @@
+// Dart imports:
 import 'dart:convert';
 
+// Package imports:
 import 'package:crypto/crypto.dart';
 
 /// 网络请求工具类
@@ -9,15 +11,15 @@ class RequestParamsUtils{
   /// 根据request参数的key进行排序,并生成一个新的map返回
   /// 在参数上面添加了一个时间戳来进行验证
   static Map<String, String?> keySort(Map<String, String?> oldParamsMap) {
-    Map<String, String?> newParamsMap = Map();
-    String timeToken = DateTime.now().millisecondsSinceEpoch.toString();
-    oldParamsMap["timeToken"] = timeToken; // 给参数加上时间戳
-    List<String> oldKeys = oldParamsMap.keys.toList();
+    var newParamsMap = <String, String?>{};
+    var timeToken = DateTime.now().millisecondsSinceEpoch.toString();
+    oldParamsMap['timeToken'] = timeToken; // 给参数加上时间戳
+    var oldKeys = oldParamsMap.keys.toList();
     if (oldKeys.isEmpty) return newParamsMap;
     oldKeys.sort((a, b) {
-      List<int> al = a.codeUnits;
-      List<int> bl = b.codeUnits;
-      for (int i = 0; i < al.length; i++) {
+      var al = a.codeUnits;
+      var bl = b.codeUnits;
+      for (var i = 0; i < al.length; i++) {
         if (bl.length <= i) return 1;
         if (al[i] > bl[i]) {
           return 1;
@@ -26,7 +28,7 @@ class RequestParamsUtils{
       return 0;
     });
     // print(oldKeys);
-    for (int i = 0; i < oldKeys.length; i++) {
+    for (var i = 0; i < oldKeys.length; i++) {
       newParamsMap[oldKeys[i]] = oldParamsMap[oldKeys[i]];
     }
     return newParamsMap;
@@ -37,9 +39,7 @@ class RequestParamsUtils{
   /// 如果验证不通过
   /// 则非法请求
   static String generateToken(Map<String, String?> params) {
-    print("进来了");
-    String value = json.encode(params);
-    print("json="+value);
+    var value = json.encode(params);
     value = base64Encode(utf8.encode(value));
     value = encryptMD5(value);
     return value;
@@ -47,7 +47,7 @@ class RequestParamsUtils{
 
   /// md5 加密
   static String encryptMD5(String data) {
-    var content = new Utf8Encoder().convert(data);
+    var content = Utf8Encoder().convert(data);
     var digest = md5.convert(content);
     return digest.toString();
   }

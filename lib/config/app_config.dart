@@ -1,8 +1,8 @@
-import '../pages/panic_buying/view.dart';
-
+// Project imports:
 import '../pages/brand_page/index.dart';
 import '../pages/index_page/model/index_carousel_item_model.dart';
 import '../pages/index_page/model/index_grid_menu_item_model.dart';
+import '../pages/panic_buying/view.dart';
 
 const appConfig = {
   'huafeiUrl': 'https://mobile.yangkeduo.com/duo_transfer_channel.html?resourceType=39997&pid=16206457_213612380&cpsSign=CE_210717_16206457_213612380_436d52c9a6ed948def7157d39bfafc5a&duoduo_type=2'

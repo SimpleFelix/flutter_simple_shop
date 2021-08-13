@@ -1,8 +1,11 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+// Package imports:
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 
+// Project imports:
 import '../../widgets/RoundUnderlineTabIndicator.dart';
 import 'list.dart'; // 9.9包邮的provider
 import 'loading_status.dart';

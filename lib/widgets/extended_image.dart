@@ -1,6 +1,11 @@
+// Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:extended_image/extended_image.dart';
+
+// Project imports:
 import '../util/image_util.dart';
 import 'component/custom_loading.dart';
 

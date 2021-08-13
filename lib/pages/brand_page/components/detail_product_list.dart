@@ -1,11 +1,14 @@
+// Flutter imports:
+// Package imports:
 import 'package:dd_taoke_sdk/model/product.dart';
-import 'package:demo1/util/navigator_util.dart';
-import 'package:demo1/widgets/component/coupon_discount.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../common/utils.dart';
 import '../../../util/image_util.dart';
+// Project imports:
+import '../../../util/navigator_util.dart';
+import '../../../widgets/component/coupon_discount.dart';
 import '../../../widgets/simple_price.dart';
 
 /// 品牌的商品列表

@@ -1,6 +1,9 @@
-import 'package:demo1/widgets/component/custom_skeleton_widget.dart';
+// Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+// Project imports:
+import 'package:demo1/widgets/component/custom_skeleton_widget.dart';
 
 ///首页的加载骨架屏
 ///

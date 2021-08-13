@@ -1,11 +1,15 @@
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:after_layout/after_layout.dart';
 import 'package:dd_taoke_sdk/constant/sort.dart';
 import 'package:dd_taoke_sdk/model/category.dart';
-import 'package:demo1/pages/new_goods_list/components/sort_widget.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+// Project imports:
+import 'package:demo1/pages/new_goods_list/components/sort_widget.dart';
 import '../../widgets/RoundUnderlineTabIndicator.dart';
 import '../../widgets/StickyTabBarDelegate.dart';
 import '../../widgets/simple_appbar.dart';

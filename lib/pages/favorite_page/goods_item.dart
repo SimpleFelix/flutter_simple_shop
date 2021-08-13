@@ -1,14 +1,18 @@
-import 'package:demo1/util/navigator_util.dart';
-import 'package:demo1/provider/user_provider.dart';
-import 'package:demo1/util/image_util.dart';
-import 'package:demo1/widgets/coupon_price.dart';
-import 'package:demo1/widgets/extended_image.dart';
-import 'package:demo1/widgets/title_widget.dart';
+// Flutter imports:
+// Package imports:
 import 'package:fcontrol_nullsafety/fdefine.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
+
 import '../../modals/favorites_model.dart';
+// Project imports:
+import '../../provider/user_provider.dart';
+import '../../util/image_util.dart';
+import '../../util/navigator_util.dart';
+import '../../widgets/coupon_price.dart';
+import '../../widgets/extended_image.dart';
+import '../../widgets/title_widget.dart';
 
 // 收藏商品列表卡片布局
 class FavoriteGoodsItem extends StatelessWidget {
@@ -112,8 +116,8 @@ class FavoriteGoodsItem extends StatelessWidget {
 
   // 建立有效期组件
   Widget _calcDateHowLong() {
-    DateTime now = DateTime.now();
-    DateTime endTime = good.couponEndTime!;
+    var now = DateTime.now();
+    var endTime = good.couponEndTime!;
 
     var difference = endTime.difference(now);
     Widget returnWidget = FSuper(

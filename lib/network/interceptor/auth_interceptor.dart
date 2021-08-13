@@ -1,6 +1,6 @@
+// Package imports:
 import 'package:dio/dio.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:sp_util/sp_util.dart';
 
 class AuthInterceptor extends Interceptor{
   @override

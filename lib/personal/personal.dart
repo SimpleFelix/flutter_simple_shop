@@ -1,6 +1,9 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
-import '../common/touch_callback.dart';
+
+// Project imports:
 import '../common/im_item.dart';
+import '../common/touch_callback.dart';
 
 // 我的页面
 class Personal extends StatelessWidget {

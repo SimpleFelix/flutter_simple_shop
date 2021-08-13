@@ -1,12 +1,17 @@
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:dd_taoke_sdk/constant/sort.dart';
 import 'package:dd_taoke_sdk/dd_taoke_sdk.dart';
 import 'package:dd_taoke_sdk/model/category.dart';
 import 'package:dd_taoke_sdk/model/product.dart';
 import 'package:dd_taoke_sdk/params/product_list_param.dart';
-import 'package:demo1/provider/riverpod/category_riverpod.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+// Project imports:
+import 'package:demo1/provider/riverpod/category_riverpod.dart';
 
 final goodsListRiverpod = ChangeNotifierProvider((ref) => GoodsListState());
 

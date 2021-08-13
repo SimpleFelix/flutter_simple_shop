@@ -1,4 +1,15 @@
+// Flutter imports:
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:black_hole_flutter/black_hole_flutter.dart';
+import 'package:get/get.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:loading_more_list/loading_more_list.dart';
+import 'package:swipeable_page_route/swipeable_page_route.dart';
+
+// Project imports:
 import 'package:demo1/common/utils.dart';
 import 'package:demo1/config/app_config.dart';
 import 'package:demo1/pages/brand_page/index.dart';
@@ -7,13 +18,6 @@ import 'package:demo1/pages/jd/recommend/view.dart';
 import 'package:demo1/pages/mianji/mianji/view.dart';
 import 'package:demo1/pages/pinduoduo/search/view.dart';
 import 'package:demo1/service/api_service.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:loading_more_list/loading_more_list.dart';
-import 'package:swipeable_page_route/swipeable_page_route.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-
 import '../../../../banjia/view.dart';
 import '../../../../panic_buying/view.dart';
 import '../../../../zhe/view.dart';

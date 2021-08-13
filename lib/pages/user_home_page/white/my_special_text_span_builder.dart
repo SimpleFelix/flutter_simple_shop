@@ -1,6 +1,10 @@
-import 'package:extended_text_field/extended_text_field.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
 
+// Package imports:
+import 'package:extended_text_field/extended_text_field.dart';
+
+// Project imports:
 import 'at_text.dart';
 import 'code_text.dart';
 import 'image_render.dart';

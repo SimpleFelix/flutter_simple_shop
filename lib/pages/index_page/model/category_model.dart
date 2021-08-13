@@ -2,8 +2,10 @@
 //
 //     final mainCategory = mainCategoryFromJson(jsonString);
 
+// Dart imports:
 import 'dart:convert';
 
+// Flutter imports:
 import 'package:flutter/cupertino.dart';
 
 List<MainCategory> mainCategoryFromJson(String str) => List<MainCategory>.from(json.decode(str).map((x) => MainCategory.fromJson(x)));

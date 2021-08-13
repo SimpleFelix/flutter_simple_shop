@@ -1,6 +1,9 @@
+// Dart imports:
 import 'dart:convert';
-import 'package:demo1/network/request_params_util.dart';
+
 import 'aes_util.dart';
+// Project imports:
+import 'request_params_util.dart';
 
 /// 加密请求工具类
 class RequestUtil{
@@ -10,9 +13,9 @@ class RequestUtil{
   /// 返回处理加工的数据
   /// 提交服务器的原始数据
   static ServerEncryptionData handleParams(Map<String, String?> params){
-    Map<String, String?> newParams = RequestParamsUtils.keySort(params);
-    String paramsToken = RequestParamsUtils.generateToken(newParams);
-    String data = AesUtil.encryptAESCbc128WithPadding7(base64Encode(utf8.encode(json.encode(newParams))));
+    var newParams = RequestParamsUtils.keySort(params);
+    var paramsToken = RequestParamsUtils.generateToken(newParams);
+    var data = AesUtil.encryptAESCbc128WithPadding7(base64Encode(utf8.encode(json.encode(newParams))));
     print('-----------------------------------------参数&MD5-------------------------------------');
     params.keys.forEach((element) {
       print('$element = ${params[element]}');

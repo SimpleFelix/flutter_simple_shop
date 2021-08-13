@@ -1,10 +1,15 @@
-import 'package:flutter/material.dart';
-import '../util/request_service.dart';
-import '../modals/rank_data.dart';
-import '../modals/Result.dart';
-import '../modals/goods_list_modal.dart';
-import '../util/result_obj_util.dart';
+// Dart imports:
 import 'dart:convert';
+
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Project imports:
+import '../modals/result.dart';
+import '../modals/goods_list_modal.dart';
+import '../modals/rank_data.dart';
+import '../util/request_service.dart';
+import '../util/result_obj_util.dart';
 
 class DtkIndexGoodsModal extends ChangeNotifier {
   List<Datum>? goods = [];

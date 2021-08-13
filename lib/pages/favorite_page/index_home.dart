@@ -1,5 +1,5 @@
-import 'package:demo1/provider/goods_detail_provider.dart';
-import 'package:demo1/widgets/refresh_and_load_more.dart';
+// Flutter imports:
+// Package imports:
 import 'package:fbutton_nullsafety/fbutton_nullsafety.dart';
 import 'package:fcontrol_nullsafety/fdefine.dart';
 import 'package:flutter/cupertino.dart';
@@ -7,13 +7,16 @@ import 'package:flutter/material.dart';
 import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
-import 'package:demo1/provider/user_provider.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-import 'goods_item.dart';
-import '../../widgets/no_data.dart';
-import '../../util/system_toast.dart';
 import '../../constant/style.dart';
+// Project imports:
+import '../../provider/goods_detail_provider.dart';
+import '../../provider/user_provider.dart';
+import '../../util/system_toast.dart';
+import '../../widgets/no_data.dart';
+import '../../widgets/refresh_and_load_more.dart';
+import 'goods_item.dart';
 
 class FavoriteIndexHome extends StatefulWidget {
   @override
@@ -30,9 +33,9 @@ class _IndexState extends State<FavoriteIndexHome> {
     return Consumer<UserProvider>(
       builder: (context, userProvider, _) {
         return Scaffold(
-          backgroundColor: userProvider.goods!.length == 0 ? Colors.white : null,
+          backgroundColor: userProvider.goods!.isEmpty ? Colors.white : null,
           appBar: AppBar(
-            title: Text("收藏"),
+            title: Text('收藏'),
             centerTitle: true,
             actions: !userProvider.isEditFavoriteIng
                 ? <Widget>[
@@ -56,7 +59,7 @@ class _IndexState extends State<FavoriteIndexHome> {
                   controller: rc,
                   loadMoreFun: l,
                   refreshFun: r,
-                  children: userProvider.goods!.length != 0
+                  children: userProvider.goods!.isNotEmpty
                       ? this
                           .userProvider!
                           .goods!
@@ -68,8 +71,8 @@ class _IndexState extends State<FavoriteIndexHome> {
                           .toList()
                       : [
                           Padding(
-                            child: NoDataWidget(title: "暂无收藏"),
                             padding: EdgeInsets.only(top: 20),
+                            child: NoDataWidget(title: '暂无收藏'),
                           )
                         ],
                 ),
@@ -104,8 +107,8 @@ class _IndexState extends State<FavoriteIndexHome> {
                                   ),
                                   Text(userProvider.editFavoriteIds.length ==
                                           userProvider.goods!.length
-                                      ? "取消全选"
-                                      : "全选")
+                                      ? '取消全选'
+                                      : '全选')
                                 ],
                               ),
                             ),
@@ -117,38 +120,37 @@ class _IndexState extends State<FavoriteIndexHome> {
                                   children: <Widget>[
                                     FSuper(
                                       lightOrientation: FLightOrientation.LeftBottom,
-                                      text: "已选 ",
+                                      text: '已选 ',
                                       spans: [
                                         TextSpan(
                                             text: userProvider.editFavoriteIds.length.toString(),
                                             style: TextStyle(
                                                 fontSize:12,
                                                 color: Colors.black)),
-                                        TextSpan(text: " 项", style: TextStyle(color: Colors.grey))
+                                        TextSpan(text: ' 项', style: TextStyle(color: Colors.grey))
                                       ],
                                     ),
                                     FButton(
                                       width: 120,
-                                      text: "删除",
+                                      text: '删除',
                                       padding: EdgeInsets.zero,
                                       color: Colors.pinkAccent,
-                                      onPressed: userProvider.editFavoriteIds.length != 0
+                                      onPressed: userProvider.editFavoriteIds.isNotEmpty
                                           ? () {
-                                              if (userProvider.editFavoriteIds.length != 0) {
+                                              if (userProvider.editFavoriteIds.isNotEmpty) {
                                                 showDialog(
                                                     context: context,
                                                     builder: (context) => AlertDialog(
                                                           title: Text('提示'),
                                                           content: Text(('确定删除吗')),
                                                           actions: <Widget>[
-                                                            new TextButton(
-                                                              child: new Text("取消"),
+                                                            TextButton(
                                                               onPressed: () {
                                                                 Navigator.pop(context);
                                                               },
+                                                              child: Text('取消'),
                                                             ),
-                                                            new TextButton(
-                                                              child: new Text("确定"),
+                                                            TextButton(
                                                               onPressed: () async {
                                                                 userProvider.editFavoriteIds
                                                                     .forEach((id) async {
@@ -157,9 +159,10 @@ class _IndexState extends State<FavoriteIndexHome> {
                                                                           goodsId: id);
                                                                 });
                                                                 userProvider.removeFavoriteOk();
-                                                                SystemToast.show("删除成功");
+                                                                SystemToast.show('删除成功');
                                                                 Navigator.pop(context);
                                                               },
+                                                              child: Text('确定'),
                                                             ),
                                                           ],
                                                         ));
@@ -191,15 +194,15 @@ class _IndexState extends State<FavoriteIndexHome> {
   }
 
   Future<void> r() async {
-    await this.userProvider!.loadUserFavoriteGoodsListFun(1);
+    await userProvider!.loadUserFavoriteGoodsListFun(1);
     rc.refreshCompleted();
     rc.footerMode!.value = LoadStatus.idle;
   }
 
   void l() async {
     // 判断是不是最后一页
-    if (!this.userProvider!.pageInfo!.last!) {
-      await this.userProvider!.loadNextPageUserFavoriteGoodsListFun();
+    if (!userProvider!.pageInfo!.last!) {
+      await userProvider!.loadNextPageUserFavoriteGoodsListFun();
       rc.loadComplete();
     } else {
       rc.footerMode!.value = LoadStatus.noMore;
@@ -208,8 +211,8 @@ class _IndexState extends State<FavoriteIndexHome> {
 
   @override
   void didChangeDependencies() {
-    UserProvider userProvider = Provider.of<UserProvider>(context);
-    GoodsDetailProvider goodsDetailProvider = Provider.of<GoodsDetailProvider>(context);
+    var userProvider = Provider.of<UserProvider>(context);
+    var goodsDetailProvider = Provider.of<GoodsDetailProvider>(context);
     if (this.userProvider != userProvider) {
       this.userProvider = userProvider;
     }

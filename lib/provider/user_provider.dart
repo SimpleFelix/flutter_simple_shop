@@ -1,7 +1,11 @@
+// Dart imports:
 import 'dart:convert';
 
+// Flutter imports:
 import 'package:flutter/material.dart';
-import '../modals/Result.dart';
+
+// Project imports:
+import '../modals/result.dart';
 import '../modals/favorites_model.dart';
 import '../util/request_service.dart';
 import '../util/result_obj_util.dart';

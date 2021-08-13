@@ -1,6 +1,11 @@
-import 'package:demo1/util/image_util.dart';
+// Flutter imports:
 import 'package:flutter/cupertino.dart';
+
+// Package imports:
 import 'package:palette_generator/palette_generator.dart';
+
+// Project imports:
+import 'package:demo1/util/image_util.dart';
 
 class ColorUtil{
 

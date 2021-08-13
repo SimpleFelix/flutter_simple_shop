@@ -1,8 +1,14 @@
+// Dart imports:
 import 'dart:convert';
 
-import 'package:dd_taoke_sdk/network/util.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:dd_taoke_sdk/network/util.dart';
 import 'package:get/get.dart';
+
+// Project imports:
 import '../controller/app_controller.dart';
 import '../modals/user.dart';
 import 'utils.dart';

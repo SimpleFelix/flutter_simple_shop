@@ -1,8 +1,11 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:get/get.dart';
 
+// Project imports:
 import '../../../../constant/style.dart';
-
 
 class AppTitle extends StatelessWidget {
   final String text;

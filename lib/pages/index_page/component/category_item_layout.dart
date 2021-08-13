@@ -1,5 +1,7 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
 
+// Project imports:
 import 'category_notification_stream.dart';
 
 class CategoryItemDefaultLayout extends StatefulWidget {

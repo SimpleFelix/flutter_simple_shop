@@ -2,6 +2,7 @@
 //
 //     final detailImage = detailImageFromJson(jsonString);
 
+// Dart imports:
 import 'dart:convert';
 
 List<DetailImage> detailImageFromJson(String str) => List<DetailImage>.from(json.decode(str).map((x) => DetailImage.fromJson(x)));

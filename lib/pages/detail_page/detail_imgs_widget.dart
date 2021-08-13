@@ -1,6 +1,10 @@
-import 'package:extended_image/extended_image.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
 
+// Package imports:
+import 'package:extended_image/extended_image.dart';
+
+// Project imports:
 import '../../modals/goods_detail_image.dart';
 import '../../widgets/detail_simple_bborder_button.dart';
 

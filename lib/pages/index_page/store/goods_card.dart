@@ -1,6 +1,10 @@
-import 'package:dd_taoke_sdk/model/brand_list_model.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
 
+// Package imports:
+import 'package:dd_taoke_sdk/model/brand_list_model.dart';
+
+// Project imports:
 import 'goods_item_layout.dart';
 
 /// 品牌下方的商品列表

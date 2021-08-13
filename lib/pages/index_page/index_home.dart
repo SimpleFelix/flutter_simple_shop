@@ -1,15 +1,19 @@
+// Dart imports:
 import 'dart:ui';
 
+// Flutter imports:
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart' hide NestedScrollView;
+
+// Package imports:
 import 'package:after_layout/after_layout.dart';
 import 'package:dd_taoke_sdk/model/category.dart';
 import 'package:dd_taoke_sdk/model/product.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart' hide NestedScrollView;
 import 'package:get/get.dart';
 import 'package:loading_more_list/loading_more_list.dart';
 import 'package:pull_to_refresh_notification/pull_to_refresh_notification.dart';
 
-import './ddq.dart';
+// Project imports:
 import '../../provider/dtk_index_goods_provider.dart';
 import '../../provider/index_provider.dart';
 import '../../repository/IndexGoodsRepository.dart';
@@ -19,6 +23,7 @@ import '../../widgets/my_clipper.dart';
 import '../../widgets/pullto_refresh_header.dart';
 import '../../widgets/waterfall_goods_card.dart';
 import '../search/view.dart';
+import './ddq.dart';
 import 'component/category_component.dart';
 import 'component/category_item_layout.dart';
 import 'component/topic_carousel.dart';

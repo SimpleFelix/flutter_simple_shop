@@ -1,7 +1,11 @@
+// Dart imports:
 import 'dart:ui';
 
-import 'package:demo1/constant/style.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
+import 'package:demo1/constant/style.dart';
 
 // 首页滑动置顶一
 class IndexFlexdHeaderWidget extends SliverPersistentHeaderDelegate {
