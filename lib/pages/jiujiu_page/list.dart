@@ -1,25 +1,23 @@
 import 'package:dd_taoke_sdk/model/product.dart';
-import 'package:demo1/pages/jiujiu_page/riverpod.dart';
-import 'package:demo1/widgets/waterfall_goods_card.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:loading_more_list/loading_more_list.dart';
 
+import '../../widgets/waterfall_goods_card.dart';
+import 'riverpod.dart';
+
+// 9块9产品列表
 class JiuJiuProductList extends ConsumerWidget{
   @override
   Widget build(BuildContext context, ScopedReader watch) {
     final products = watch(jiujiuRiverpod).products;
     return SliverPadding(
       padding: EdgeInsets.all(8),
-        sliver: SliverWaterfallFlow.count(crossAxisCount: 2,children: products.map(renderItem).toList(),mainAxisSpacing: 8,crossAxisSpacing: 8,));
+        sliver: SliverWaterfallFlow.count(crossAxisCount: 2,mainAxisSpacing: 8,crossAxisSpacing: 8,children: products.map(renderItem).toList(),));
   }
 
+  // 产品卡片布局
   Widget renderItem(Product item){
-    return PhysicalModel(
-      color: Colors.grey.shade100,
-      elevation: 3,
-      borderRadius: BorderRadius.circular(8),
-      child: WaterfallGoodsCard(item),
-    );
+    return WaterfallGoodsCard(item);
   }
 }

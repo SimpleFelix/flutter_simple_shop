@@ -16,6 +16,7 @@ import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
 import 'package:get/get.dart';
+import 'package:loading_more_list/loading_more_list.dart';
 
 import '../../../common/utils.dart';
 import '../../../modals/shop_info.dart';
@@ -61,7 +62,6 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
   void initState() {
     super.initState();
     futureBuildData = initDatas();
-
     _tabController = TabController(length: 3, vsync: this, initialIndex: 0);
     _scrollController = ScrollController();
   }
@@ -214,111 +214,30 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
+                  IconButton(onPressed: Get.back, icon: Icon(Icons.home)),
                   Expanded(
-                      child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 12),
-                    alignment: Alignment.center,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      crossAxisAlignment: CrossAxisAlignment.center,
+                    child: WaterfallFlow.count(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 12,
+                      crossAxisSpacing: 12,
+                      padding: EdgeInsets.symmetric(horizontal: 12,vertical: 12),
                       children: <Widget>[
-                        Center(
-                          child: Column(
-                            children: <Widget>[
-                              Icon(
-                                Icons.home,
-                                size: 12,
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Text(
-                                '首页',
-                                style: TextStyle(fontSize: 12),
-                              )
-                            ],
-                          ),
-                        ),
-                        Center(
-                          child: Column(
-                            children: <Widget>[
-                              Icon(
-                                Icons.share,
-                                size: 12,
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Text(
-                                '分享',
-                                style: TextStyle(fontSize: 12),
-                              )
-                            ],
-                          ),
-                        ),
-                        Center(
-                          child: Column(
-                            children: <Widget>[
-                              Icon(
-                                Icons.local_pharmacy,
-                                size: 12,
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Text(
-                                '收藏',
-                                style: TextStyle(fontSize: 12),
-                              )
-                            ],
-                          ),
-                        ),
+                        OutlinedButton(
+                            onPressed: () async {
+                              if (couponLinkResult != null) {
+                                utils.copy(couponLinkResult!.longTpwd ?? '无优惠券', message: '复制成功,打开淘宝APP领取优惠券');
+                              }
+                            },
+                            child: Text('复制口令')),
+                        ElevatedButton(
+                            onPressed: () async {
+                              if (couponLinkResult != null) {
+                                await utils.openTaobao(couponLinkResult!.couponClickUrl ?? 'https://itbug.shop');
+                              }
+                            },
+                            child: Text('立即领券')),
                       ],
                     ),
-                  )),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      FSuper(
-                        margin: EdgeInsets.symmetric(vertical: 12),
-                        lightOrientation: FLightOrientation.LeftBottom,
-                        text: '复制口令',
-                        corner: FCorner.all(12),
-                        style: TextStyle(color: Colors.white, fontSize: 12),
-                        textAlignment: Alignment.center,
-                        padding: EdgeInsets.symmetric(horizontal: 22),
-                        gradient: LinearGradient(colors: [
-                          Colors.redAccent,
-                          Color(0xfffcad2c),
-                        ]),
-                        onClick: () async {
-                          if (couponLinkResult != null) {
-                            utils.copy(couponLinkResult!.longTpwd ?? '无优惠券', message: '复制成功,打开淘宝APP领取优惠券');
-                          }
-                        },
-                      ),
-                      SizedBox(
-                        width: 12,
-                      ),
-                      FSuper(
-                        margin: EdgeInsets.symmetric(vertical: 12),
-                        lightOrientation: FLightOrientation.LeftBottom,
-                        text: '立即领券',
-                        corner: FCorner.all(12),
-                        style: TextStyle(color: Colors.white, fontSize: 12),
-                        textAlignment: Alignment.center,
-                        padding: EdgeInsets.symmetric(horizontal: 22),
-                        gradient: LinearGradient(colors: [
-                          Colors.pinkAccent,
-                          Color(0xfffcad2c),
-                        ]),
-                        onClick: () async {
-                          if (couponLinkResult != null) {
-                            await utils.openTaobao(couponLinkResult!.couponClickUrl ?? 'https://itbug.shop');
-                          }
-                        },
-                      ),
-                    ],
                   ),
                   SizedBox(
                     width: 12,
