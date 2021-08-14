@@ -42,7 +42,7 @@ class _AdPageState extends State<AdPage> with AfterLayoutMixin {
                   ),
                 ),
               ],
-              totalRepeatCount: 4,
+              totalRepeatCount: 10,
               pause: const Duration(milliseconds: 500),
               displayFullTextOnTap: true,
               stopPauseOnTap: true,
@@ -62,3 +62,4 @@ class _AdPageState extends State<AdPage> with AfterLayoutMixin {
     await context.navigator.pushReplacement(SwipeablePageRoute(builder: (_) => App()));
   }
 }
+

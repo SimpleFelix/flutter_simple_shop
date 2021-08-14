@@ -93,7 +93,7 @@ class _AppState extends State<App> with AfterLayoutMixin {
 
   @override
   Widget build(BuildContext context) {
-    final kNavIconSize = 16.0;
+    final kNavIconSize = 18.0;
     return Scaffold(
       // 滚动到顶部按钮
       floatingActionButton: !showToTopBtn || _currentIndex == 2 || _currentIndex == 3 || _currentIndex == 0 || _currentIndex == 4
