@@ -1,3 +1,7 @@
+
+# web版本不能访问了,但是接口还可以正常使用,可以自行下载源码进行编译安卓版本或者windows版本
+
+
 <p align="center">
     <a href="https://jq.qq.com/?_wv=1027&k=Z0AHodXB"><img src="https://badgen.net/badge/QQ%E7%BE%A4/667186542/pink" /></a>
     <a href="https://itbug.shop"><img src="https://badgen.net/badge/%E5%85%B8%E5%85%B8%E7%9A%84%E5%B0%8F%E5%8D%96%E9%83%A8/v2.1.0/red" /></a>
