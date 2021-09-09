@@ -1,7 +1,7 @@
 // Flutter imports:
 // Package imports:
 import 'package:fbutton_nullsafety/fbutton_nullsafety.dart';
-import 'package:fcontrol_nullsafety/fdefine.dart';
+import 'package:fcontrol_nullsafety/fdefine.dart' as controller;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
@@ -119,7 +119,7 @@ class _IndexState extends State<FavoriteIndexHome> {
                                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   children: <Widget>[
                                     FSuper(
-                                      lightOrientation: FLightOrientation.LeftBottom,
+                                      lightOrientation: controller.FLightOrientation.LeftBottom,
                                       text: '已选 ',
                                       spans: [
                                         TextSpan(

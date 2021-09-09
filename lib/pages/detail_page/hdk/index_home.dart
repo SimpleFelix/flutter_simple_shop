@@ -7,7 +7,7 @@ import 'package:dd_taoke_sdk/dd_taoke_sdk.dart';
 import 'package:dd_taoke_sdk/model/coupon_link_result.dart';
 import 'package:dd_taoke_sdk/model/product.dart';
 import 'package:fbutton_nullsafety/fbutton_nullsafety.dart';
-import 'package:fcontrol_nullsafety/fdefine.dart';
+import 'package:fcontrol_nullsafety/fdefine.dart' as controller;
 // Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
@@ -361,7 +361,7 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
         Container(
           alignment: Alignment.topLeft,
           child: FSuper(
-            lightOrientation: FLightOrientation.LeftBottom,
+            lightOrientation: controller.FLightOrientation.LeftBottom,
             textAlign: TextAlign.start,
             spans: [
               TextSpan(text: '推荐理由: ', style: TextStyle(fontWeight: FontWeight.bold)),
@@ -489,13 +489,13 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
             child: Row(
               children: <Widget>[
                 FSuper(
-                  lightOrientation: FLightOrientation.LeftBottom,
+                  lightOrientation: controller.FLightOrientation.LeftBottom,
                   text: '满${info.couponConditions}减${info.couponPrice}',
                   backgroundColor: Colors.red,
                   textAlign: TextAlign.center,
                   textAlignment: Alignment.center,
                   style: TextStyle(color: Colors.white),
-                  corner: FCorner.all(4),
+                  corner: controller.FCorner.all(4),
                   padding: EdgeInsets.symmetric(horizontal: 12, vertical: 2),
                 ),
                 // Text(
@@ -545,11 +545,11 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           FSuper(
-            lightOrientation: FLightOrientation.LeftBottom,
+            lightOrientation: controller.FLightOrientation.LeftBottom,
             spans: <TextSpan>[TextSpan(text: '原价 ¥ ${info.originalPrice}', style: TextStyle(color: Colors.grey, decoration: TextDecoration.lineThrough))],
           ),
           FSuper(
-            lightOrientation: FLightOrientation.LeftBottom,
+            lightOrientation: controller.FLightOrientation.LeftBottom,
             text: '已售 ${info.monthSales}',
           )
         ],

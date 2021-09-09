@@ -3,7 +3,7 @@ import 'dart:math';
 
 // Package imports:
 import 'package:fbutton_nullsafety/fbutton_nullsafety.dart';
-import 'package:fcontrol_nullsafety/fdefine.dart';
+import 'package:fcontrol_nullsafety/fdefine.dart' as controller;
 // Flutter imports:
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -82,7 +82,7 @@ class _OrderAddState extends State<OrderAddIndexPage> {
             buildPlaceHolderSizedBox(),
             Container(
               child: FSuper(
-                lightOrientation: FLightOrientation.LeftBottom,
+                lightOrientation: controller.FLightOrientation.LeftBottom,
                 width: double.infinity,
                 padding: EdgeInsets.fromLTRB(
                     (16.0 + 25.0 + 12), 8, (0.0 + 8.0), 8),
