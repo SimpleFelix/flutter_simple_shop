@@ -1,8 +1,7 @@
 // Flutter imports:
-import 'package:flutter/material.dart';
-
 // Package imports:
 import 'package:black_hole_flutter/black_hole_flutter.dart';
+import 'package:flutter/material.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
 
 class SimpleAppBar extends StatelessWidget implements PreferredSizeWidget {

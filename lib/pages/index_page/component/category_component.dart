@@ -1,8 +1,7 @@
 // Flutter imports:
-import 'package:flutter/material.dart';
-
 // Package imports:
 import 'package:dd_taoke_sdk/model/category.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Project imports:
@@ -58,7 +57,7 @@ class _CategoryComponentState extends State<CategoryComponent> {
 
   /// 绑定控制器
   void _bindController() {
-    if (widget.controller != null) widget.controller!.state = this;
+    if (widget.controller != null) widget.controller!.bindState(this);
   }
 
   @override
@@ -228,8 +227,9 @@ class CategoryController {
   }
 
   // 绑定状态
-  set state(_CategoryComponentState _categoryComponentState) {
+  void bindState(_CategoryComponentState _categoryComponentState) {
     _state = _categoryComponentState;
+    print('绑定成功');
   }
 
   _CategoryComponentState get state => _state;

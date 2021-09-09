@@ -1,8 +1,7 @@
 // Flutter imports:
-import 'package:flutter/material.dart';
-
 // Package imports:
 import 'package:extended_image/extended_image.dart';
+import 'package:flutter/material.dart';
 
 // Project imports:
 import 'model/index_grid_menu_item_model.dart';

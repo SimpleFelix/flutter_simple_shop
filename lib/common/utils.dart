@@ -56,7 +56,7 @@ class Utils {
       //   return result;
       // }
     } else if (GetPlatform.isAndroid) {
-      var _imagePicker = await ImagePicker().getImage(source: ImageSource.gallery);
+      var _imagePicker = await ImagePicker().pickImage(source: ImageSource.gallery);
       var file = File(_imagePicker!.path);
       return file;
     }

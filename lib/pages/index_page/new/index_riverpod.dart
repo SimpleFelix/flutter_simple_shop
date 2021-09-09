@@ -1,10 +1,9 @@
 // Flutter imports:
-import 'package:flutter/material.dart';
-
 // Package imports:
 import 'package:dd_taoke_sdk/dd_taoke_sdk.dart';
 import 'package:dd_taoke_sdk/model/product.dart';
 import 'package:dd_taoke_sdk/params/product_list_param.dart';
+import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final indexRiverpod = ChangeNotifierProvider<IndexState>((ref)=>IndexState());

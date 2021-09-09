@@ -1,8 +1,7 @@
 // Flutter imports:
-import 'package:flutter/material.dart';
-
 // Package imports:
 import 'package:dd_taoke_sdk/model/brand_list_model.dart';
+import 'package:flutter/material.dart';
 
 // Project imports:
 import 'goods_item_layout.dart';

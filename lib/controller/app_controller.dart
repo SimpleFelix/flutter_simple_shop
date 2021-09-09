@@ -1,12 +1,11 @@
 // Dart imports:
 import 'dart:typed_data';
 
-// Flutter imports:
-import 'package:flutter/services.dart';
-
 // Package imports:
 import 'package:dd_js_util/dd_js_util.dart';
 import 'package:dio/dio.dart';
+// Flutter imports:
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 

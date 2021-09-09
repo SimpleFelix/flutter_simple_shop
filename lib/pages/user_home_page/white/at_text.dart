@@ -1,9 +1,8 @@
 // Flutter imports:
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
-
 // Package imports:
 import 'package:extended_text_field/extended_text_field.dart';
+import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
 
 class AtText extends SpecialText {
   static const String flag = '@';

@@ -1,11 +1,13 @@
 // Flutter imports:
-import 'package:flutter/material.dart';
-
 // Package imports:
 import 'package:common_utils/common_utils.dart';
 import 'package:fcontrol_nullsafety/fdefine.dart';
+import 'package:flutter/material.dart';
 import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
 
+import './action_buttons.dart';
+import './detail_imgs_widget.dart';
+import './swiper_widget.dart';
 // Project imports:
 import '../../constant/color.dart';
 import '../../service/api_service.dart';
@@ -14,9 +16,6 @@ import '../../widgets/icon_block_widget.dart';
 import '../../widgets/no_data.dart';
 import '../../widgets/title_widget.dart';
 import '../dynamic/model/wph_detail_resul.dart';
-import './action_buttons.dart';
-import './detail_imgs_widget.dart';
-import './swiper_widget.dart';
 
 //小部件
 

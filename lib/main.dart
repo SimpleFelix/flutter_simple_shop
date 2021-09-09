@@ -1,11 +1,10 @@
 // Dart imports:
 import 'dart:io';
 
-// Flutter imports:
-import 'package:flutter/material.dart';
-
 // Package imports:
 import 'package:dd_taoke_sdk/network/util.dart';
+// Flutter imports:
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -26,12 +25,14 @@ import 'service/user_api.dart';
 import 'util/navigator_util.dart';
 
 void main() async {
-  /// 初始化sdk
-  DdTaokeUtil.instance.init('https://itbug.shop', '443', debug: false); //  远程服务器
-  // DdTaokeUtil.instance.init('https://192.168.199.64', '443', debug: false); //
-  //
 
-  // await Stetho.initialize();
+  /// 初始化典典小卖部的Api sdk 文档-->[https://pub.dev/packages/dd_taoke_sdk]
+
+  DdTaokeUtil.instance.init('https://itbug.shop', '443', debug: false); //  远程服务器
+  /// DdTaokeUtil.instance.init('https://192.168.199.64', '443', debug: false); // 本地测试服务器
+
+  /// 使用浏览器查看网络请求,详情查看[https://www.jianshu.com/p/e4058e064341]
+  /// await Stetho.initialize();
 
   /// 本地缓存工具类
   await Hive.initFlutter();
@@ -51,8 +52,8 @@ void main() async {
   /// https 请求处理
   HttpOverrides.global = MyHttpOverrides();
 
-  /// getx 控制器
 
+  /// windows 版本处理函数
   if (!GetPlatform.isWeb && (GetPlatform.isWindows || GetPlatform.isLinux || GetPlatform.isMacOS)) {
     setWindowTitle('典典的小卖部 桌面客户端  v2.0.0');
     final windowSize = Size(500, 1041);

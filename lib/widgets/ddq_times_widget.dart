@@ -1,12 +1,11 @@
 // Flutter imports:
-import 'package:flutter/material.dart';
-
 // Package imports:
 import 'package:dd_taoke_sdk/model/ddq_result.dart';
+import 'package:flutter/material.dart';
 
+import './up_down_btn_widget.dart';
 // Project imports:
 import '../provider/ddq_provider.dart';
-import './up_down_btn_widget.dart';
 
 class DdqTimesWidget extends StatelessWidget {
  final  List<RoundsList>? timesList;

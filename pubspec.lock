@@ -308,7 +308,7 @@ packages:
       name: dd_taoke_sdk
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.4.3"
+    version: "1.5.1"
   decimal:
     dependency: transitive
     description:
@@ -336,7 +336,7 @@ packages:
       name: extended_image
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "4.1.0"
+    version: "4.2.1"
   extended_image_library:
     dependency: "direct main"
     description:
@@ -467,7 +467,7 @@ packages:
       name: flutter_html
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.1.1"
+    version: "2.1.2"
   flutter_layout_grid:
     dependency: transitive
     description:
@@ -481,7 +481,7 @@ packages:
       name: flutter_markdown
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.6.4"
+    version: "0.6.6"
   flutter_math_fork:
     dependency: transitive
     description:
@@ -509,7 +509,7 @@ packages:
       name: flutter_spinkit
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "5.0.0"
+    version: "5.1.0"
   flutter_stetho_null_safety:
     dependency: "direct main"
     description:
@@ -589,7 +589,7 @@ packages:
       name: get
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "4.3.7"
+    version: "4.3.8"
   get_it:
     dependency: "direct main"
     description:
@@ -673,7 +673,7 @@ packages:
       name: image_picker
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.8.3+2"
+    version: "0.8.4"
   image_picker_for_web:
     dependency: transitive
     description:
@@ -687,7 +687,7 @@ packages:
       name: image_picker_platform_interface
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.2.0"
+    version: "2.4.1"
   import_sorter:
     dependency: "direct dev"
     description:
@@ -750,7 +750,7 @@ packages:
       name: logger
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.0.0"
+    version: "1.1.0"
   logging:
     dependency: transitive
     description:
@@ -834,7 +834,7 @@ packages:
       name: palette_generator
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.3.0"
+    version: "0.3.1"
   path:
     dependency: transitive
     description:
@@ -1044,7 +1044,7 @@ packages:
       name: shared_preferences
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.0.6"
+    version: "2.0.7"
   shared_preferences_linux:
     dependency: transitive
     description:
@@ -1266,7 +1266,7 @@ packages:
       name: url_launcher
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "6.0.9"
+    version: "6.0.10"
   url_launcher_linux:
     dependency: transitive
     description:
