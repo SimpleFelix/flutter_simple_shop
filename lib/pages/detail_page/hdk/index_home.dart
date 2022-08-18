@@ -42,7 +42,8 @@ class HaoDanKuDetailItem extends StatefulWidget {
   _HaoDanKuDetailItemState createState() => _HaoDanKuDetailItemState();
 }
 
-class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProviderStateMixin {
+class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem>
+    with TickerProviderStateMixin {
   late Product info;
   CouponLinkResult? couponLinkResult;
   ShopInfo? _shopInfo;
@@ -99,9 +100,13 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
   // 顶部选项卡被切换
   void tabOnChange(int index) {
     if (index == 0) {
-      _scrollController!.animateTo(0, duration: Duration(milliseconds: 600), curve: Curves.ease);
+      _scrollController!.animateTo(0,
+          duration: Duration(milliseconds: 600), curve: Curves.ease);
     } else if (index == 1) {
-      _scrollController!.animateTo(_initImagesTopHei - ztlHei - _topAppbarHei + 5, duration: Duration(milliseconds: 600), curve: Curves.ease);
+      _scrollController!.animateTo(
+          _initImagesTopHei - ztlHei - _topAppbarHei + 5,
+          duration: Duration(milliseconds: 600),
+          curve: Curves.ease);
     }
   }
 
@@ -127,7 +132,9 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarColor: Colors.grey, statusBarIconBrightness: Brightness.light));
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+        statusBarColor: Colors.grey,
+        statusBarIconBrightness: Brightness.light));
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: null,
@@ -155,7 +162,8 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
       onNotification: (notification) {
         if (_topAppbarHei == 0) {
           setState(() {
-            _topAppbarHei = _appbarGlogbalKey.currentContext!.size!.height + MediaQueryData.fromWindow(window).padding.top;
+            _topAppbarHei = _appbarGlogbalKey.currentContext!.size!.height +
+                MediaQueryData.fromWindow(window).padding.top;
             _initImagesTopHei = getY(_detailImagesGlogbalKey.currentContext!);
           });
           addScrollListener();
@@ -166,7 +174,8 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
         children: <Widget>[
           NestedScrollView(
               controller: _scrollController,
-              headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+              headerSliverBuilder:
+                  (BuildContext context, bool innerBoxIsScrolled) {
                 return <Widget>[
                   SliverToBoxAdapter(
                     child: buildGoodsSwiper(),
@@ -185,25 +194,25 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
               body: buildGoodsDetailImaegs()),
           buildOpacityAppbar(),
           // 返回顶部按钮
-          _showToTopButton
-              ? Positioned(
-                  bottom: 80,
-                  right: 12,
-                  child: InkWell(
-                    onTap: () {
-                      _scrollController!.animateTo(0, duration: Duration(milliseconds: 600), curve: Curves.ease);
-                    },
-                    child: Container(
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.all(Radius.circular(35)), border: Border.all(width: .5, color: Colors.black26.withOpacity(.2))),
-                      child: Icon(
-                        Icons.vertical_align_top,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                )
-              : Container(),
+          // _showToTopButton
+          //     ? Positioned(
+          //         bottom: 80,
+          //         right: 12,
+          //         child: InkWell(
+          //           onTap: () {
+          //             _scrollController!.animateTo(0, duration: Duration(milliseconds: 600), curve: Curves.ease);
+          //           },
+          //           child: Container(
+          //             padding: EdgeInsets.all(10),
+          //             decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.all(Radius.circular(35)), border: Border.all(width: .5, color: Colors.black26.withOpacity(.2))),
+          //             child: Icon(
+          //               Icons.vertical_align_top,
+          //               color: Colors.black,
+          //             ),
+          //           ),
+          //         ),
+          //       )
+          //     : Container(),
 
           //底部操作栏
           Positioned(
@@ -222,19 +231,23 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
                       crossAxisCount: 2,
                       mainAxisSpacing: 12,
                       crossAxisSpacing: 12,
-                      padding: EdgeInsets.symmetric(horizontal: 12,vertical: 12),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 12, vertical: 12),
                       children: <Widget>[
                         OutlinedButton(
                             onPressed: () async {
                               if (couponLinkResult != null) {
-                                utils.copy(couponLinkResult!.longTpwd ?? '无优惠券', message: '复制成功,打开淘宝APP领取优惠券');
+                                utils.copy(couponLinkResult!.longTpwd ?? '无优惠券',
+                                    message: '复制成功,打开淘宝APP领取优惠券');
                               }
                             },
                             child: Text('复制口令')),
                         ElevatedButton(
                             onPressed: () async {
                               if (couponLinkResult != null) {
-                                await utils.openTaobao(couponLinkResult!.couponClickUrl ?? 'https://itbug.shop');
+                                await utils.openTaobao(
+                                    couponLinkResult!.couponClickUrl ??
+                                        'https://itbug.shop');
                               }
                             },
                             child: Text('立即领券')),
@@ -263,7 +276,8 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
             alignment: Alignment.topLeft,
             child: Text(
               '宝贝详情',
-              style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+              style:
+                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
             ),
           ),
           buildImagesWidget()
@@ -283,8 +297,12 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
             child: Row(
               children: <Widget>[
                 CircleAvatar(
-                  backgroundImage:
-                      (_shopInfo != null && _shopInfo!.pictUrl != null ? NetworkImage(MImageUtils.magesProcessor(_shopInfo!.pictUrl!)) : AssetImage('assets/images/ava.png')) as ImageProvider<Object>?,
+                  backgroundImage: (_shopInfo != null &&
+                              _shopInfo!.pictUrl != null
+                          ? NetworkImage(
+                              MImageUtils.magesProcessor(_shopInfo!.pictUrl!))
+                          : AssetImage('assets/images/ava.png'))
+                      as ImageProvider<Object>?,
                 ),
                 SizedBox(
                   width: 12,
@@ -364,8 +382,11 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
             lightOrientation: controller.FLightOrientation.LeftBottom,
             textAlign: TextAlign.start,
             spans: [
-              TextSpan(text: '推荐理由: ', style: TextStyle(fontWeight: FontWeight.bold)),
-              TextSpan(text: '${info.desc}', style: TextStyle(color: Colors.grey)),
+              TextSpan(
+                  text: '推荐理由: ',
+                  style: TextStyle(fontWeight: FontWeight.bold)),
+              TextSpan(
+                  text: '${info.desc}', style: TextStyle(color: Colors.grey)),
               TextSpan(
                   text: '复制文案',
                   style: TextStyle(color: Colors.pinkAccent),
@@ -391,29 +412,38 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
         InkWell(
           onTap: () async {
             if (couponLinkResult != null) {
-              await utils.openTaobao(couponLinkResult!.couponClickUrl ?? 'https://itbug.shop');
+              await utils.openTaobao(
+                  couponLinkResult!.couponClickUrl ?? 'https://itbug.shop');
             }
           },
           child: Container(
             height: 100,
             padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-            decoration: BoxDecoration(color: Color.fromRGBO(252, 54, 74, 1.0), borderRadius: BorderRadius.all(Radius.circular(5))),
+            decoration: BoxDecoration(
+                color: Color.fromRGBO(252, 54, 74, 1.0),
+                borderRadius: BorderRadius.all(Radius.circular(5))),
             child: Row(
               children: <Widget>[
                 Expanded(
                   child: Stack(
                     children: <Widget>[
                       Container(
-                        padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 12, vertical: 12),
                         alignment: Alignment.center,
-                        decoration: BoxDecoration(color: Color.fromRGBO(255, 237, 199, 1.0), borderRadius: BorderRadius.all(Radius.circular(5))),
+                        decoration: BoxDecoration(
+                            color: Color.fromRGBO(255, 237, 199, 1.0),
+                            borderRadius: BorderRadius.all(Radius.circular(5))),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
                             Container(
                               child: Text(
                                 '${info.couponPrice}元优惠券'.replaceAll('.0', ''),
-                                style: TextStyle(color: Color.fromRGBO(145, 77, 9, 1.0), fontSize: 14, fontWeight: FontWeight.bold),
+                                style: TextStyle(
+                                    color: Color.fromRGBO(145, 77, 9, 1.0),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold),
                               ),
                             ),
                             SizedBox(
@@ -422,7 +452,9 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
                             Container(
                               child: Text(
                                 '使用日期:${getTimeStr(info.couponStartTime ?? '')} - ${getTimeStr(info.couponEndTime ?? '已过期')}',
-                                style: TextStyle(color: Color.fromRGBO(145, 77, 9, 1.0), fontWeight: FontWeight.w400),
+                                style: TextStyle(
+                                    color: Color.fromRGBO(145, 77, 9, 1.0),
+                                    fontWeight: FontWeight.w400),
                               ),
                             )
                           ],
@@ -435,7 +467,9 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
                         child: Container(
                           height: 12,
                           width: 12,
-                          decoration: BoxDecoration(shape: BoxShape.circle, color: Color.fromRGBO(252, 54, 74, 1.0)),
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Color.fromRGBO(252, 54, 74, 1.0)),
                         ),
                       ),
                       Positioned(
@@ -444,7 +478,9 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
                         child: Container(
                           height: 12,
                           width: 12,
-                          decoration: BoxDecoration(shape: BoxShape.circle, color: Color.fromRGBO(252, 54, 74, 1.0)),
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Color.fromRGBO(252, 54, 74, 1.0)),
                         ),
                       )
                     ],
@@ -524,7 +560,9 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
           width: Get.width,
           child: DrawableStartText(
             lettersCountOfAfterImage: info.dtitle!.length,
-            assetImage: info.shopType == 1 ? 'assets/icons/tianmao2.png' : 'assets/icons/taobao2.png',
+            assetImage: info.shopType == 1
+                ? 'assets/icons/tianmao2.png'
+                : 'assets/icons/taobao2.png',
             text: ' ${info.title}',
             textStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
           ),
@@ -546,7 +584,13 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
         children: <Widget>[
           FSuper(
             lightOrientation: controller.FLightOrientation.LeftBottom,
-            spans: <TextSpan>[TextSpan(text: '原价 ¥ ${info.originalPrice}', style: TextStyle(color: Colors.grey, decoration: TextDecoration.lineThrough))],
+            spans: <TextSpan>[
+              TextSpan(
+                  text: '原价 ¥ ${info.originalPrice}',
+                  style: TextStyle(
+                      color: Colors.grey,
+                      decoration: TextDecoration.lineThrough))
+            ],
           ),
           FSuper(
             lightOrientation: controller.FLightOrientation.LeftBottom,
@@ -642,7 +686,9 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
           right: 12,
           bottom: 12,
           child: Container(
-            decoration: BoxDecoration(color: Colors.black26.withOpacity(.3), borderRadius: BorderRadius.all(Radius.circular(5))),
+            decoration: BoxDecoration(
+                color: Colors.black26.withOpacity(.3),
+                borderRadius: BorderRadius.all(Radius.circular(5))),
             padding: EdgeInsets.symmetric(horizontal: 12, vertical: 5),
             child: Text(
               '${curentSwaiperIndex + 1} / ${getImages().length}',
@@ -661,10 +707,12 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
       child: Container(
         key: _appbarGlogbalKey,
         padding: EdgeInsets.symmetric(horizontal: 12),
-        margin: EdgeInsets.only(top: MediaQueryData.fromWindow(window).padding.top),
+        margin:
+            EdgeInsets.only(top: MediaQueryData.fromWindow(window).padding.top),
         height: kToolbarHeight,
         width: Get.width,
-        decoration: BoxDecoration(color: Colors.white, boxShadow: [BoxShadow(color: Colors.black26)]),
+        decoration: BoxDecoration(
+            color: Colors.white, boxShadow: [BoxShadow(color: Colors.black26)]),
         child: Row(
           children: <Widget>[
             IconButton(
@@ -712,7 +760,8 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
   Container buildContainer({Widget? swiper, double? width}) {
     return Container(
       height: width ?? Get.width,
-      margin: EdgeInsets.only(top: MediaQueryData.fromWindow(window).padding.top),
+      margin:
+          EdgeInsets.only(top: MediaQueryData.fromWindow(window).padding.top),
       child: swiper,
     );
   }
@@ -738,7 +787,25 @@ class _HaoDanKuDetailItemState extends State<HaoDanKuDetailItem> with TickerProv
   }
 
   String getCatName(String fqcat) {
-    var cats = <String>['女装', '男装', '内衣', '美妆', '配饰', '鞋品', '箱包', '儿童', '母婴', '居家', '美食', '数码', '家电', '其他', '车品', '文体', '宠物'];
+    var cats = <String>[
+      '女装',
+      '男装',
+      '内衣',
+      '美妆',
+      '配饰',
+      '鞋品',
+      '箱包',
+      '儿童',
+      '母婴',
+      '居家',
+      '美食',
+      '数码',
+      '家电',
+      '其他',
+      '车品',
+      '文体',
+      '宠物'
+    ];
     return cats[int.parse(fqcat) - 1];
   }
 

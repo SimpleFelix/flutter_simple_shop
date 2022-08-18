@@ -5,14 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-// Project imports:
-import '../../../common/utils.dart';
 import '../../../controller/app_controller.dart';
-import '../../../widgets/component/tool_tip.dart';
 import '../../../widgets/edit_page_handle.dart';
 import 'component/appbar.dart';
-import 'component/carousel.dart';
-import 'component/gridmenu/view.dart';
 import 'component/products.dart';
 import 'index_riverpod.dart';
 
@@ -32,25 +27,25 @@ class _IndexHomeNewState extends State<IndexHomeNew> with AfterLayoutMixin {
         appBar: IndexHomeAppbar(),
         body: EasyRefresh.custom(
           slivers: [
-            SliverPadding(padding: EdgeInsets.only(top: 12), sliver: IndexCarousel()),
-            SliverToBoxAdapter(
-              child: ToolTip(
-                text: '注意,外卖的优惠券每天都可以领取!!呜呜呜,典典领取的美团优惠券最多只能便宜4块钱',
-                onClose: () {
-                  utils.showMessage('暂不支持关闭');
-                },
-              ),
-            ),
-            GridMenuComponent(),
-            SliverToBoxAdapter(
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-                child: Text(
-                  '典典精挑细选',
-                  style: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-              ),
-            ),
+            // SliverPadding(padding: EdgeInsets.only(top: 12), sliver: IndexCarousel()),
+            // SliverToBoxAdapter(
+            //   child: ToolTip(
+            //     text: '注意,外卖的优惠券每天都可以领取!!呜呜呜,典典领取的美团优惠券最多只能便宜4块钱',
+            //     onClose: () {
+            //       utils.showMessage('暂不支持关闭');
+            //     },
+            //   ),
+            // ),
+            // GridMenuComponent(),
+            // SliverToBoxAdapter(
+            //   child: Container(
+            //     padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+            //     child: Text(
+            //       '典典精挑细选',
+            //       style: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
+            //     ),
+            //   ),
+            // ),
             SliverPadding(
               sliver: IndexProductss(),
               padding: EdgeInsets.all(4),

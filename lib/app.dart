@@ -8,10 +8,8 @@ import 'package:get/get.dart';
 // Project imports:
 import './pages/category_page/index_home.dart';
 import './pages/index_page/index_home.dart';
-import './pages/jiujiu_page/index_home.dart';
 import './pages/user_home_page/index_home.dart';
 import './personal/personal.dart';
-import 'pages/dynamic/index.dart';
 import 'pages/index_page/new/index.dart';
 
 class App extends StatefulWidget {
@@ -44,10 +42,10 @@ class _AppState extends State<App> with AfterLayoutMixin {
     // IndexHome(),
     // IndexHomeV2(),
     IndexHomeNew(),
-    JiujiuIndexHome(scrollController: jiujiuController),
-    CategoryIndexPage(),
-    // FavoriteIndexHome(),
-    DynamicIndex(),
+    // JiujiuIndexHome(scrollController: jiujiuController),
+    // CategoryIndexPage(),
+    // // FavoriteIndexHome(),
+    // DynamicIndex(),
     UserIndexHome()
   ];
 
@@ -95,16 +93,24 @@ class _AppState extends State<App> with AfterLayoutMixin {
     final kNavIconSize = 18.0;
     return Scaffold(
       // 滚动到顶部按钮
-      floatingActionButton: !showToTopBtn || _currentIndex == 2 || _currentIndex == 3 || _currentIndex == 0 || _currentIndex == 4
+      floatingActionButton: !showToTopBtn ||
+              _currentIndex == 2 ||
+              _currentIndex == 3 ||
+              _currentIndex == 0 ||
+              _currentIndex == 4
           ? null
           : FloatingActionButton(
               onPressed: () {
                 //返回到顶部时执行动画
                 if (_currentIndex == 0) {
-                  mController.animateTo(.0, duration: Duration(milliseconds: 200), curve: Curves.ease);
+                  mController.animateTo(.0,
+                      duration: Duration(milliseconds: 200),
+                      curve: Curves.ease);
                 }
                 if (_currentIndex == 1) {
-                  jiujiuController.animateTo(.0, duration: Duration(milliseconds: 200), curve: Curves.ease);
+                  jiujiuController.animateTo(.0,
+                      duration: Duration(milliseconds: 200),
+                      curve: Curves.ease);
                 }
               },
               child: Icon(Icons.arrow_upward, color: Colors.white)),
@@ -132,45 +138,46 @@ class _AppState extends State<App> with AfterLayoutMixin {
                         height: kNavIconSize,
                         width: kNavIconSize,
                       )),
-            BottomNavigationBarItem(
-                label: '9.9包邮',
-                icon: _currentIndex == 1
-                    ? Image.asset(
-                        'assets/nav/jiujiu.png',
-                        width: kNavIconSize,
-                        height: kNavIconSize,
-                      )
-                    : Image.asset(
-                        'assets/nav/jiujiu-n.png',
-                        height: kNavIconSize,
-                        width: kNavIconSize,
-                      )),
-            BottomNavigationBarItem(
-                label: '分类',
-                icon: _currentIndex == 2
-                    ? Image.asset(
-                        'assets/nav/fenlei.png',
-                        width: kNavIconSize,
-                        height: kNavIconSize,
-                      )
-                    : Image.asset(
-                        'assets/nav/fenlei-n.png',
-                        height: kNavIconSize,
-                        width: kNavIconSize,
-                      )),
-            BottomNavigationBarItem(
-                label: '动态',
-                icon: _currentIndex == 3
-                    ? Image.asset(
-                        'assets/nav/shoucang.png',
-                        width: kNavIconSize,
-                        height: kNavIconSize,
-                      )
-                    : Image.asset(
-                        'assets/nav/shoucang-n.png',
-                        height: kNavIconSize,
-                        width: kNavIconSize,
-                      )),
+            BottomNavigationBarItem(label: '发布', icon: Icon(Icons.add)),
+            // BottomNavigationBarItem(
+            //     label: '9.9包邮',
+            //     icon: _currentIndex == 1
+            //         ? Image.asset(
+            //             'assets/nav/jiujiu.png',
+            //             width: kNavIconSize,
+            //             height: kNavIconSize,
+            //           )
+            //         : Image.asset(
+            //             'assets/nav/jiujiu-n.png',
+            //             height: kNavIconSize,
+            //             width: kNavIconSize,
+            //           )),
+            // BottomNavigationBarItem(
+            //     label: '分类',
+            //     icon: _currentIndex == 2
+            //         ? Image.asset(
+            //             'assets/nav/fenlei.png',
+            //             width: kNavIconSize,
+            //             height: kNavIconSize,
+            //           )
+            //         : Image.asset(
+            //             'assets/nav/fenlei-n.png',
+            //             height: kNavIconSize,
+            //             width: kNavIconSize,
+            //           )),
+            // BottomNavigationBarItem(
+            //     label: '动态',
+            //     icon: _currentIndex == 3
+            //         ? Image.asset(
+            //             'assets/nav/shoucang.png',
+            //             width: kNavIconSize,
+            //             height: kNavIconSize,
+            //           )
+            //         : Image.asset(
+            //             'assets/nav/shoucang-n.png',
+            //             height: kNavIconSize,
+            //             width: kNavIconSize,
+            //           )),
             BottomNavigationBarItem(
                 label: '我的',
                 icon: _currentIndex == 4
